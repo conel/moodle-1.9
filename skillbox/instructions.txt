@@ -1,0 +1,38 @@
+Any Questions, ask Scott - 3452.
+
+
+
+Yes they all have different urls. User name is admin and password password. Links are below. The idea is the button stays lit to indicate which area they are about to log into. So after the first page they should link to this page but with these pages modified. i.e. the picture replaced to the ones I built with the lit up buttons. I’ll call you later
+
+
+SkillBox
+
+
+Construction Desktop
+
+http://bksb2/constructionDesktopWEBLE/
+
+
+Carpentry & Joinery
+
+http://bksb2/SkillBOXCarpentryJoinery/
+ 
+
+Brickwork
+
+http://bksb2/SkillBOXBrickwork/
+ 
+
+Plumbing
+
+http://bksb2/SkillBOXPlumbing/
+ 
+
+Painting & Decorating
+
+http://bksb2/SkillBOXPaintingDecorating/
+
+ 
+Plastering
+
+http://bksb2/SkillBOXPlastering/

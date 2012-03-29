@@ -1,0 +1,91 @@
+<div class="qtext">
+  <?php echo $questiontext; ?>
+</div>
+
+<?php if ($image) { ?>
+  <img class="qimage" src="<?php echo $image; ?>" alt="" />
+<?php } ?>
+
+<div class="ablock clearfix">
+  <div id="<?php echo $nameprefix ?>prompt" class="prompt">
+    <?php echo $prompt .': '; ?>
+  </div>
+
+  <div class="answer">
+    <div id="<?php echo $question->id ?>image">
+      <input type="image" name="<?php echo $nameprefix ?>imagemap" id="image<?php echo $nameprefix ?>imagemap" ismap="ismap" class="qimage" src="<?php echo $CFG->wwwroot ?>/question/type/imagetarget/imagewithbullseye.php<?php echo $qimagerelative.'/'.$responsex.'/'.$responsey ?>" alt="" />
+    </div>
+    <input type="hidden" id="hidden<?php echo $nameprefix ?>previous" name="<?php echo $nameprefix ?>previous" value="<?php echo $response ?>" />
+
+    <?php echo $feedbackimg; ?>
+  </div>
+  <?php if ($feedback) { ?>
+    <div class="feedback">
+      <?php echo $feedback ?>
+    </div>
+  <?php } ?>
+
+  <div id="<?php echo $question->id ?>submit">
+  <?php
+    if (isset($submit['noscript'])) {
+      echo $submit['noscript'];
+    } ?>
+  </div>
+
+<?php if (!$fallbackonly) { ?>
+<script>
+//<![CDATA[
+
+function insertQuestion<?php echo $question->id ?>(e, vars) {
+
+Dom = YAHOO.util.Dom;
+
+var promptdiv = document.getElementById("<?php echo $nameprefix ?>prompt");
+var imagediv = document.getElementById("<?php echo $question->id ?>image");
+
+imagediv.innerHTML = '<img id="<?php echo $nameprefix ?>image" class="qimage" src="<?php echo $qimage; ?>" alt="" /><input type="hidden" id="hidden<?php echo $nameprefix ?>" name="<?php echo $nameprefix ?>" />';
+promptdiv.innerHTML = vars.prompt;
+
+<?php if(isset($submit['script'])) { ?>
+var submitdiv = document.getElementById("<?php echo $question->id ?>submit");
+submitdiv.innerHTML = "<?php echo $submit['script'] ?>";
+<?php } ?>
+
+var image = document.getElementById("<?php echo $nameprefix ?>image");
+
+if (vars.responsex != 0) {
+    var target = document.getElementById("<?php echo $nameprefix ?>target");
+    imageregion = Dom.getRegion(image);
+    targetregion = Dom.getRegion(target);
+    targetwidth = targetregion.right - targetregion.left;
+    targetheight = targetregion.bottom - targetregion.top;
+    xpos = imageregion.left + vars.responsex - ((targetwidth / 2) | 0);
+    ypos = imageregion.top + vars.responsey - ((targetheight / 2) | 0);
+    Dom.setX(target, xpos);
+    Dom.setY(target, ypos);
+}
+
+if (!vars.readonly) {
+    new MoodleImageClickItem(vars.id + "target", vars.id);
+}
+
+new YAHOO.util.DDTarget(vars.id + "image", vars.id);
+new YAHOO.util.DDTarget(vars.id + "image", vars.id);
+
+}
+
+var vars = new Object;
+vars.id = "<?php echo $nameprefix ?>";
+vars.responsex = <?php echo $responsex; ?>;
+vars.responsey = <?php echo $responsey; ?>;
+vars.readonly = <?php echo $options->readonly ? "true" : "false" ?>;
+vars.prompt = "<?php echo $jsprompt; ?>";
+
+YAHOO.util.Event.addListener(window, "load", insertQuestion<?php echo $question->id ?>, vars);
+YAHOO.util.Event.addListener("responseform", "click", ddImageClickSetHiddens, vars);
+
+//]]>
+</script>
+<?php } ?>
+
+</div>

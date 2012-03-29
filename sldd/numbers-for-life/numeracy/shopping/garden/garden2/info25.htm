@@ -1,0 +1,52 @@
+
+<HTML> 
+  <HEAD> 
+	 <TITLE>Using the calculator</TITLE>
+	 
+<link rel="stylesheet" href="../garden1/sound.css" type="text/css">
+<script language="JavaScript">
+<!--
+function MM_controlSound(x, _sndObj, sndFile) { //v3.0
+  var i, method = "", sndObj = eval(_sndObj);
+  if (sndObj != null) {
+    if (navigator.appName == 'Netscape') method = "play";
+    else {
+      if (window.MM_WMP == null) {
+        window.MM_WMP = false;
+        for(i in sndObj) if (i == "ActiveMovie") {
+          window.MM_WMP = true; break;
+      } }
+      if (window.MM_WMP) method = "play";
+      else if (sndObj.FileName) method = "run";
+  } }
+  if (method) eval(_sndObj+"."+method+"()");
+  else window.location = sndFile;
+}
+//-->
+</script>
+</head> 
+   <BODY onBlur="javascript:window.close()" BACKGROUND="../../../intro/images/backgrd1.gif">
+<img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020080912250','audio/info25.mp3')" class="sound"> 
+<table width="300">
+  <tr> 
+    <td width="65"><img src="images/calcul2.GIF" width="49" height="71" alt="calculator"></td>
+    <td width="223"> 
+      <p><font face="Arial, Helvetica, sans-serif">1. &nbsp;Press <b>Clear [c]</b></font></p>
+      <p><font face="Arial, Helvetica, sans-serif">2. &nbsp;Key in <b>1 6</b></font></p>
+    </td>
+  </tr>
+</table>
+<p><font face="Arial, Helvetica, sans-serif">3. &nbsp;Press <b>x</b> (multiply 
+  sign)</font></p>
+<p><font face="Arial, Helvetica, sans-serif">4. &nbsp;Key in <b>2</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif">5. &nbsp;Press <b>=</b></font></p>
+<p><font face="Arial, Helvetica, sans-serif">The answer appears in the screen.</font><BR>
+</p>
+<p><A HREF="javascript:window.close()"><IMG NAME="Image1" BORDER="0"
+		SRC="../../garden/images/close.gif" WIDTH="48" HEIGHT="15" alt="close"></A> 
+</p>
+<EMBED NAME='CS1020080912250' SRC='audio/info25.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

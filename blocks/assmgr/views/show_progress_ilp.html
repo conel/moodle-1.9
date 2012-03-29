@@ -1,0 +1,49 @@
+<?php
+// include standard libraries
+$PAGE->requires->js('/lib/yui/yahoo/yahoo-min.js');
+$PAGE->requires->js('/lib/yui/event/event-min.js');
+$PAGE->requires->js('/lib/yui/dom/dom-min.js');
+$PAGE->requires->js('/lib/yui/animation/animation-min.js');
+$PAGE->requires->js('/lib/yui/container/container-min.js');
+
+// include the assmgr custom library
+$PAGE->requires->js('/blocks/assmgr/views/js/lib.js');
+
+/*
+// load the standard YUI style sheet
+$PAGE->requires->css_theme(new moodle_url($CFG->wwwroot.'/lib/yui/container/assets/container.css'));
+// load the standard YUI style sheet
+$PAGE->requires->css_theme(new moodle_url($CFG->wwwroot.'/lib/yui/calendar/assets/calendar.css'));
+*/
+
+echo $OUTPUT->header();
+
+?>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+        jQuery('#header').hide();
+        jQuery('.navbar').hide();
+        jQuery('.headermenu_pages').hide();
+        jQuery('h2').hide();
+		parent.resizeIframe(document.body.scrollHeight);
+
+		// nkowald - 2011-11-14 - Make all links open in _parent - as this is added via an iframe
+		jQuery('a[href]').attr('target', '_parent');
+});
+</script>
+<style type="text/css">
+    #page, div {
+        margin:0 !important;
+        padding:0 !important;
+    }
+</style>
+
+<div class="assmgr yui-skin-sam">
+    <div id="assmgrdragdiv"></div>
+<?php
+        // include the units progress window
+        require_once($CFG->dirroot.'/blocks/assmgr/actions/view_units_progress.php');
+?>
+</div>
+</body>
+</html>

@@ -1,0 +1,626 @@
+
+<HTML> 
+  <HEAD>
+<TITLE>Garden: Four colours of slabs</TITLE>
+
+<STYLE TYPE="text/css"></STYLE>
+<LINK REL="stylesheet" HREF="../../intro/number.css" TYPE="text/css">
+<script language="JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+//-->
+</script>
+<script language="JavaScript" src="scripts/behActions.js"></script>
+<script language="JavaScript" src="scripts/behCourseBuilder.js"></script>
+<script language="JavaScript" src="scripts/interactionClass.js"></script>
+<script language="JavaScript" src="scripts/elemTextClass.js"></script>
+<link rel="stylesheet" href="sound.css" type="text/css">
+</HEAD> 
+<BODY BACKGROUND="../../images/backgrd1.gif" onLoad="MM_initInteractions();MM_preloadImages('../../images/homeb.gif','../../../images/indexb.gif')">
+<TABLE WIDTH="500" ALIGN="center">
+  <TR> 
+    <TD width="159"> <img src="../images/gardenc.gif" width="216" height="25" alt="Garden Centre"></TD>
+    <TD ALIGN="RIGHT" width="287"> 
+      <table width="200">
+        <tr> 
+          <td height="29" width="25%"> 
+            <div align="center"><a href="../../../intro/frontp2.htm"
+					 onMouseOut="MM_swapImgRestore()"
+					 onMouseOver="MM_swapImage('Image7','','../../images/homeb.gif',1)"><img
+					 name="Image7" border="0" src="../../images/home.gif" width="56" height="15" alt="home"></a></div>
+          </td>
+          <td height="29" width="25%"> 
+            <div align="center"><a href="../../../intro/index2.htm"
+					 onMouseOut="MM_swapImgRestore()"
+					 onMouseOver="MM_swapImage('Image8','','../../../images/indexb.gif',1)"><img
+					 name="Image8" border="0" src="../../../images/index.gif" width="53"height="16" alt="index"></a></div>
+          </td>
+        </tr>
+      </table>
+    </TD>
+    <TD width="38"> 
+      <div align="right"><a href="javascript:void(window.open('revision.htm', '','width=600,height=500, scrolling=yes, scrollbars=yes, screenX=1,screenY=1,top=1,left=80'))"><img src="../images/icon.gif" width="50" height="50" border="0" alt="Revision"></a></div>
+    </TD>
+  </TR>
+  <TR> 
+    <TD COLSPAN="2"> 
+      <P> <font face="Arial, Helvetica, sans-serif" size="4" color="#000099"> 
+        <img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881732970','audio/page5_6a.mp3')" class="sound"> 
+        Exercise 4 (cont). Four colours of slabs <img src="../images/pencil.gif" width="41" height="48" alt="pencil"></font></P>
+      <p><font face="Arial, Helvetica, sans-serif" size="4" color="#000099">Questions 
+        6 -10</font></p>
+      <p> 
+      <form name="form2" method="post" action="">
+        <p><font face="Arial, Helvetica, sans-serif">Name:</font> 
+          <input type="text" name="textfield" size="40">
+        </p>
+      </form>
+      <form name="form3" method="post" action="">
+        <p><font face="Arial, Helvetica, sans-serif"> Date:</font>&nbsp;&nbsp; 
+          <input type="text" name="textfield2">
+        </p>
+      </form>
+      <interaction name="Text_Singleline01" object="G01" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G01Layer"> <font face="Arial, Helvetica, sans-serif"><span name="G01question">6a. 
+        A patio needs <b>72</b> slabs. A quarter (&frac14;) of the slabs will 
+        be burnt orange, a quarter (&frac14;) will be sunset red, a quarter (&frac14;) 
+        will be golden sand, and a quarter (&frac14;) will be hazelnut brown. 
+        How many slabs are needed in each colour? &nbsp;<a
+		  href="javascript:void(window.open('info6.htm', '','width=200,height=200, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>to see how to set out the question.</span></font><span name="G01question"><br>
+        </span> 
+        <form name="G01elem" onSubmit="return false">
+          <input name="G01elemInp" type="text" onBlur="G01.e['elem'].update()" onFocus="G01.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G01controls">
+          <input name="G01judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G01')">
+          <input name="G01reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G01','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG01() {
+    G01 = new MM_interaction('G01',0,0,0,0,0,0,0,'','','f','',0);
+    G01.add('text','elem','');
+    G01.add('textComp','elem','Response1','25-32-###-1la8ks',1,0,0,1);
+    G01.init();
+    G01.am('segm','Segment: Check Time_',1,1);
+    G01.am('cond','Time At Limit_','G01.timeAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+    G01.am('segm','Segment: Correctness_',1,0);
+    G01.am('cond','Correct_01','G01.correct == true',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G01.am('end');
+    G01.am('cond','Incorrect_01','G01.correct == false',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G01.am('end');
+    G01.am('cond','Unknown Response_','G01.knownResponse == false',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G01.am('end');
+    G01.am('segm','Segment: Check Tries_',1,1);
+    G01.am('cond','Tries At Limit_','G01.triesAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+  }
+  if (window.newG01 == null) window.newG01 = newG01;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG01();';
+//-->
+</script>
+      <cbi-select object="G01"></interaction> <interaction name="Text_Singleline02" object="G02" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G02Layer"> <span name="G02question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881777460','audio/page5_6b.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">6</font><font face="Arial, Helvetica, sans-serif">b. 
+        Check your answer on a calculator.&nbsp; <a
+		  href="javascript:void(window.open('info16.htm', '','width=300,height=325, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>for how to use the calculator.</font><br>
+        </span> 
+        <form name="G02elem" onSubmit="return false">
+          <input name="G02elemInp" type="text" onBlur="G02.e['elem'].update()" onFocus="G02.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G02controls">
+          <input name="G02judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G02')">
+          <input name="G02reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G02','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG02() {
+    G02 = new MM_interaction('G02',0,0,0,0,0,0,0,'','','f','',0);
+    G02.add('text','elem','');
+    G02.add('textComp','elem','Response1','25-32-###-1la8ks',1,0,0,1);
+    G02.init();
+    G02.am('segm','Segment: Check Time_',1,1);
+    G02.am('cond','Time At Limit_','G02.timeAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+    G02.am('segm','Segment: Correctness_',1,0);
+    G02.am('cond','Correct_01','G02.correct == true',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G02.am('end');
+    G02.am('cond','Incorrect_01','G02.correct == false',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G02.am('end');
+    G02.am('cond','Unknown Response_','G02.knownResponse == false',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G02.am('end');
+    G02.am('segm','Segment: Check Tries_',1,1);
+    G02.am('cond','Tries At Limit_','G02.triesAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+  }
+  if (window.newG02 == null) window.newG02 = newG02;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG02();';
+//-->
+</script>
+      <cbi-select object="G02"></interaction> 
+      <hr>
+      <interaction name="Text_Singleline03" object="G03" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G03Layer"> <span name="G03question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881807170','audio/page5_7a.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif"><span name="G01question">7a. 
+        A patio needs <b>64</b> slabs. A quarter (&frac14;) of the slabs will 
+        be slate grey, a quarter (&frac14;) will be granite grey, a quarter (&frac14;) 
+        will be battleship grey, and a quarter </span><span name="G01question">(&frac14;) 
+        </span><span name="G01question">will be dove grey. How many slabs are 
+        needed in each colour? &nbsp;<a
+		  href="javascript:void(window.open('info7.htm', '','width=200,height=200, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>to see how to set out the question.</span></font><br>
+        </span> 
+        <form name="G03elem" onSubmit="return false">
+          <input name="G03elemInp" type="text" onBlur="G03.e['elem'].update()" onFocus="G03.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G03controls">
+          <input name="G03judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G03')">
+          <input name="G03reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G03','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG03() {
+    G03 = new MM_interaction('G03',0,0,0,0,0,0,0,'','','f','',0);
+    G03.add('text','elem','');
+    G03.add('textComp','elem','Response1','25-32-###-1la6ks',1,0,0,1);
+    G03.init();
+    G03.am('segm','Segment: Check Time_',1,1);
+    G03.am('cond','Time At Limit_','G03.timeAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+    G03.am('segm','Segment: Correctness_',1,0);
+    G03.am('cond','Correct_01','G03.correct == true',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G03.am('end');
+    G03.am('cond','Incorrect_01','G03.correct == false',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G03.am('end');
+    G03.am('cond','Unknown Response_','G03.knownResponse == false',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G03.am('end');
+    G03.am('segm','Segment: Check Tries_',1,1);
+    G03.am('cond','Tries At Limit_','G03.triesAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+  }
+  if (window.newG03 == null) window.newG03 = newG03;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG03();';
+//-->
+</script>
+      <cbi-select object="G03"></interaction> <interaction name="Text_Singleline04" object="G04" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G04Layer"> <span name="G02question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881841230','audio/page5_7b.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">7</font><font face="Arial, Helvetica, sans-serif">b. 
+        Check your answer on a calculator.&nbsp; <a
+		  href="javascript:void(window.open('info17.htm', '','width=300,height=325, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>for how to use the calculator.</font></span><span name="G04question"><br>
+        </span> 
+        <form name="G04elem" onSubmit="return false">
+          <input name="G04elemInp" type="text" onBlur="G04.e['elem'].update()" onFocus="G04.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G04controls">
+          <input name="G04judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G04')">
+          <input name="G04reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G04','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG04() {
+    G04 = new MM_interaction('G04',0,0,0,0,0,0,0,'','','f','',0);
+    G04.add('text','elem','');
+    G04.add('textComp','elem','Response1','25-32-###-1la6ks',1,0,0,1);
+    G04.init();
+    G04.am('segm','Segment: Check Time_',1,1);
+    G04.am('cond','Time At Limit_','G04.timeAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+    G04.am('segm','Segment: Correctness_',1,0);
+    G04.am('cond','Correct_01','G04.correct == true',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G04.am('end');
+    G04.am('cond','Incorrect_01','G04.correct == false',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G04.am('end');
+    G04.am('cond','Unknown Response_','G04.knownResponse == false',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G04.am('end');
+    G04.am('segm','Segment: Check Tries_',1,1);
+    G04.am('cond','Tries At Limit_','G04.triesAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+  }
+  if (window.newG04 == null) window.newG04 = newG04;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG04();';
+//-->
+</script>
+      <cbi-select object="G04"></interaction> 
+      <hr>
+      <interaction name="Text_Singleline05" object="G05" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G05Layer"> <font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881884890','audio/page5_8a.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">8</font><span name="G03question"><font face="Arial, Helvetica, sans-serif"><span name="G01question">a. 
+        A patio needs <b>200</b> slabs. A quarter (&frac14;) of the slabs will 
+        be </span><span name="G01question">brown</span><span name="G01question"> 
+        autumn leaf, a quarter (&frac14;) will be red autumn leaf, a quarter (&frac14;) 
+        will be gold autumn leaf, and a quarter (&frac14;) will be orange autumn 
+        leaf. How many slabs are needed in each colour? &nbsp;<a
+		  href="javascript:void(window.open('info8.htm', '','width=200,height=200, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>to see how to set out the question.</span></font></span><span name="G05question"><br>
+        </span> 
+        <form name="G05elem" onSubmit="return false">
+          <input name="G05elemInp" type="text" onBlur="G05.e['elem'].update()" onFocus="G05.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G05controls">
+          <input name="G05judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G05')">
+          <input name="G05reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G05','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG05() {
+    G05 = new MM_interaction('G05',0,0,0,0,0,0,0,'','','f','',0);
+    G05.add('text','elem','');
+    G05.add('textComp','elem','Response1','25-32-###-5la0ks',1,0,0,1);
+    G05.init();
+    G05.am('segm','Segment: Check Time_',1,1);
+    G05.am('cond','Time At Limit_','G05.timeAtLimit == true',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G05.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G05.setDisabled(true);\')','sp');
+    G05.am('end');
+    G05.am('segm','Segment: Correctness_',1,0);
+    G05.am('cond','Correct_01','G05.correct == true',0);
+    G05.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G05.am('end');
+    G05.am('cond','Incorrect_01','G05.correct == false',0);
+    G05.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G05.am('end');
+    G05.am('cond','Unknown Response_','G05.knownResponse == false',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G05.am('end');
+    G05.am('segm','Segment: Check Tries_',1,1);
+    G05.am('cond','Tries At Limit_','G05.triesAtLimit == true',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G05.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G05.setDisabled(true);\')','sp');
+    G05.am('end');
+  }
+  if (window.newG05 == null) window.newG05 = newG05;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG05();';
+//-->
+</script>
+      <cbi-select object="G05"></interaction> <interaction name="Text_Singleline06" object="G06" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G06Layer"> <span name="G06question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881919770','audio/page5_8b.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">8b</font></span><span name="G02question"><font face="Arial, Helvetica, sans-serif">. 
+        Check your answer on a calculator.&nbsp; <a
+		  href="javascript:void(window.open('info18.htm', '','width=300,height=325, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>for how to use the calculator.</font></span><span name="G06question"> 
+        <br>
+        </span> 
+        <form name="G06elem" onSubmit="return false">
+          <input name="G06elemInp" type="text" onBlur="G06.e['elem'].update()" onFocus="G06.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G06controls">
+          <input name="G06judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G06')">
+          <input name="G06reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G06','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG06() {
+    G06 = new MM_interaction('G06',0,0,0,0,0,0,0,'','','f','',0);
+    G06.add('text','elem','');
+    G06.add('textComp','elem','Response1','25-32-###-5la0ks',1,0,0,1);
+    G06.init();
+    G06.am('segm','Segment: Check Time_',1,1);
+    G06.am('cond','Time At Limit_','G06.timeAtLimit == true',0);
+    G06.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G06.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G06.setDisabled(true);\')','sp');
+    G06.am('end');
+    G06.am('segm','Segment: Correctness_',1,0);
+    G06.am('cond','Correct_01','G06.correct == true',0);
+    G06.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G06.am('end');
+    G06.am('cond','Incorrect_01','G06.correct == false',0);
+    G06.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G06.am('end');
+    G06.am('cond','Unknown Response_','G06.knownResponse == false',0);
+    G06.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G06.am('end');
+    G06.am('segm','Segment: Check Tries_',1,1);
+    G06.am('cond','Tries At Limit_','G06.triesAtLimit == true',0);
+    G06.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G06.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G06.setDisabled(true);\')','sp');
+    G06.am('end');
+  }
+  if (window.newG06 == null) window.newG06 = newG06;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG06();';
+//-->
+</script>
+      <cbi-select object="G06"></interaction> 
+      <hr>
+      <interaction name="Text_Singleline07" object="G07" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G07Layer"> <span name="G03question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881939210','audio/page5_9a.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif"><span name="G01question">9a. 
+        A patio needs <b>164</b> slabs. A quarter (&frac14;) of the slabs will 
+        be burnt sienna, a quarter (&frac14;) will be pale sienna, a quarter (&frac14;) 
+        will be pale ash sienna, and a quarter (&frac14;) will be sunset sienna. 
+        How many slabs are needed in each colour<span name="G03question"><span name="G01question">&nbsp;<a
+		  href="javascript:void(window.open('info9.htm', '','width=200,height=200, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>to see how to set out the question.</span></span></span></font></span><span name="G07question"><font face="Arial, Helvetica, sans-serif">&nbsp;</font></span> 
+        <form name="G07elem" onSubmit="return false">
+          <input name="G07elemInp" type="text" onBlur="G07.e['elem'].update()" onFocus="G07.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G07controls">
+          <input name="G07judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G07')">
+          <input name="G07reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G07','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG07() {
+    G07 = new MM_interaction('G07',0,0,0,0,0,0,0,'','','f','',0);
+    G07.add('text','elem','');
+    G07.add('textComp','elem','Response1','25-32-###-4la1ks',1,0,0,1);
+    G07.init();
+    G07.am('segm','Segment: Check Time_',1,1);
+    G07.am('cond','Time At Limit_','G07.timeAtLimit == true',0);
+    G07.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G07.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G07.setDisabled(true);\')','sp');
+    G07.am('end');
+    G07.am('segm','Segment: Correctness_',1,0);
+    G07.am('cond','Correct_01','G07.correct == true',0);
+    G07.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G07.am('end');
+    G07.am('cond','Incorrect_01','G07.correct == false',0);
+    G07.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G07.am('end');
+    G07.am('cond','Unknown Response_','G07.knownResponse == false',0);
+    G07.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G07.am('end');
+    G07.am('segm','Segment: Check Tries_',1,1);
+    G07.am('cond','Tries At Limit_','G07.triesAtLimit == true',0);
+    G07.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G07.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G07.setDisabled(true);\')','sp');
+    G07.am('end');
+  }
+  if (window.newG07 == null) window.newG07 = newG07;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG07();';
+//-->
+</script>
+      <cbi-select object="G07"></interaction> <interaction name="Text_Singleline08" object="G08" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G08Layer"> <span name="G02question"><font face="Arial, Helvetica, sans-serif"> 
+        </font><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881986560','audio/page5_9b.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">9b. Check your answer 
+        on a calculator.&nbsp; <a
+		  href="javascript:void(window.open('info19.htm', '','width=300,height=325, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>for how to use the calculator.</font></span><span name="G08question"><br>
+        </span> 
+        <form name="G08elem" onSubmit="return false">
+          <input name="G08elemInp" type="text" onBlur="G08.e['elem'].update()" onFocus="G08.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G08controls">
+          <input name="G08judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G08')">
+          <input name="G08reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G08','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG08() {
+    G08 = new MM_interaction('G08',0,0,0,0,0,0,0,'','','f','',0);
+    G08.add('text','elem','');
+    G08.add('textComp','elem','Response1','25-32-###-4la1ks',1,0,0,1);
+    G08.init();
+    G08.am('segm','Segment: Check Time_',1,1);
+    G08.am('cond','Time At Limit_','G08.timeAtLimit == true',0);
+    G08.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G08.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G08.setDisabled(true);\')','sp');
+    G08.am('end');
+    G08.am('segm','Segment: Correctness_',1,0);
+    G08.am('cond','Correct_01','G08.correct == true',0);
+    G08.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G08.am('end');
+    G08.am('cond','Incorrect_01','G08.correct == false',0);
+    G08.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G08.am('end');
+    G08.am('cond','Unknown Response_','G08.knownResponse == false',0);
+    G08.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G08.am('end');
+    G08.am('segm','Segment: Check Tries_',1,1);
+    G08.am('cond','Tries At Limit_','G08.triesAtLimit == true',0);
+    G08.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G08.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G08.setDisabled(true);\')','sp');
+    G08.am('end');
+  }
+  if (window.newG08 == null) window.newG08 = newG08;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG08();';
+//-->
+</script>
+      <cbi-select object="G08"></interaction> 
+      <p> </p>
+      <hr>
+      <interaction name="Text_Singleline09" object="G09" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G09Layer"> 
+        <p><span name="G03question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021882007600','audio/page5_10a.mp3')" class="sound"> 
+          </font><font face="Arial, Helvetica, sans-serif"><span name="G01question">10a. 
+          A patio needs <b>160</b> slabs. A quarter (&frac14;) of the slabs will 
+          be wetstone blue, a quarter (&frac14;) will be azure blue, a quarter 
+          (&frac14;) will be granite blue, and a quarter (&frac14;) will be midnight 
+          blue. How many slabs are needed in each colour? &nbsp;<a
+		  href="javascript:void(window.open('info10.htm', '','width=200,height=200, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+          </b>to see how to set out the question.</span></font></span><span name="G09question"><br>
+          </span> </p>
+        <form name="G09elem" onSubmit="return false">
+          <input name="G09elemInp" type="text" onBlur="G09.e['elem'].update()" onFocus="G09.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G09controls">
+          <input name="G09judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G09')">
+          <input name="G09reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G09','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG09() {
+    G09 = new MM_interaction('G09',0,0,0,0,0,0,0,'','','f','',0);
+    G09.add('text','elem','');
+    G09.add('textComp','elem','Response1','25-32-###-4la0ks',1,0,0,1);
+    G09.init();
+    G09.am('segm','Segment: Check Time_',1,1);
+    G09.am('cond','Time At Limit_','G09.timeAtLimit == true',0);
+    G09.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G09.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G09.setDisabled(true);\')','sp');
+    G09.am('end');
+    G09.am('segm','Segment: Correctness_',1,0);
+    G09.am('cond','Correct_01','G09.correct == true',0);
+    G09.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G09.am('end');
+    G09.am('cond','Incorrect_01','G09.correct == false',0);
+    G09.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G09.am('end');
+    G09.am('cond','Unknown Response_','G09.knownResponse == false',0);
+    G09.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G09.am('end');
+    G09.am('segm','Segment: Check Tries_',1,1);
+    G09.am('cond','Tries At Limit_','G09.triesAtLimit == true',0);
+    G09.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G09.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G09.setDisabled(true);\')','sp');
+    G09.am('end');
+  }
+  if (window.newG09 == null) window.newG09 = newG09;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG09();';
+//-->
+</script>
+      <cbi-select object="G09"></interaction> <interaction name="Text_Singleline10" object="G10" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G10Layer"> <span name="G02question"><font face="Arial, Helvetica, sans-serif" size="4" color="#000099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021882041430','audio/page5_10b.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">10</font><font face="Arial, Helvetica, sans-serif">b. 
+        Check your answer on a calculator.&nbsp; <a
+		  href="javascript:void(window.open('info20.htm', '','width=300,height=325, screenX=1,screenY=1,top=1,left=1'))">Click</a><b> 
+        </b>for how to use the calculator.</font></span><span name="G10question"><br>
+        </span> 
+        <form name="G10elem" onSubmit="return false">
+          <input name="G10elemInp" type="text" onBlur="G10.e['elem'].update()" onFocus="G10.e['elem'].focus()" value="" size="8">
+        </form>
+        <form name="G10controls">
+          <input name="G10judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G10')">
+          <input name="G10reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G10','reset','')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG10() {
+    G10 = new MM_interaction('G10',0,0,0,0,0,0,0,'','','f','',0);
+    G10.add('text','elem','');
+    G10.add('textComp','elem','Response1','25-32-###-4la0ks',1,0,0,1);
+    G10.init();
+    G10.am('segm','Segment: Check Time_',1,1);
+    G10.am('cond','Time At Limit_','G10.timeAtLimit == true',0);
+    G10.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G10.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G10.setDisabled(true);\')','sp');
+    G10.am('end');
+    G10.am('segm','Segment: Correctness_',1,0);
+    G10.am('cond','Correct_01','G10.correct == true',0);
+    G10.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'right\',\'width=300,height=125\')','');
+    G10.am('end');
+    G10.am('cond','Incorrect_01','G10.correct == false',0);
+    G10.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'wrong\',\'width=300,height=125\')','');
+    G10.am('end');
+    G10.am('cond','Unknown Response_','G10.knownResponse == false',0);
+    G10.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G10.am('end');
+    G10.am('segm','Segment: Check Tries_',1,1);
+    G10.am('cond','Tries At Limit_','G10.triesAtLimit == true',0);
+    G10.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G10.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G10.setDisabled(true);\')','sp');
+    G10.am('end');
+  }
+  if (window.newG10 == null) window.newG10 = newG10;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG10();';
+//-->
+</script>
+      <cbi-select object="G10"></interaction> 
+      <p><font face="Arial, Helvetica, sans-serif"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021881652940','../audio/print.mp3')" class="sound"> 
+        Print this page and place it in your folder.</font></p>
+      <TABLE WIDTH="110">
+        <TR> 
+          <TD><A HREF="page4.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image13','','../../images/backb.gif',1)"><IMG
+			 NAME="Image13" BORDER="0" SRC="../../images/back.gif" WIDTH="43" HEIGHT="15" alt="back"></A></TD>
+          <TD><A HREF="../garden5/index.htm" ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image14','','../../images/nextb.gif',1)"><IMG
+					 NAME="Image14" BORDER="0" SRC="../../images/next.gif" WIDTH="42" HEIGHT="14" alt="next"></A></TD>
+        </TR>
+      </TABLE>
+      <P ALIGN="center"> <font size="2" face="Arial, Helvetica, sans-serif"><a href="../garden1/index.htm">Patio 
+        area</a> | <a href="../garden2/index.htm">Shaped slabs</a> | <a href="../garden3/index.htm">Two 
+        colours of slabs</a> | <a href="../garden4/index.htm">Four colours of 
+        slabs</a> |<br>
+        <a href="../garden5/index.htm"> Bird tally</a> | <a href="../garden6/index.htm">Shaped 
+        planters </a> | <a href="../garden7/index.htm">Garden lights</a> | <a href="../garden8/index.htm">Wiring 
+        problems</a></font></P>
+    </TD>
+    <TD width="38">&nbsp;</TD>
+  </TR>
+</TABLE>
+<EMBED NAME='CS1021881652940' SRC='../audio/print.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881732970' SRC='audio/page5_6a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881777460' SRC='audio/page5_6b.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881807170' SRC='audio/page5_7a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881841230' SRC='audio/page5_7b.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881884890' SRC='audio/page5_8a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881919770' SRC='audio/page5_8b.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881939210' SRC='audio/page5_9a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021881986560' SRC='audio/page5_9b.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021882007600' SRC='audio/page5_10a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1021882041430' SRC='audio/page5_10b.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

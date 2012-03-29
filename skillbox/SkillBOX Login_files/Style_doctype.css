@@ -1,0 +1,39 @@
+BODY {
+	FONT-SIZE: 90%; BACKGROUND-IMAGE: url(Images/PageBg.gif)
+}
+TD {
+	FONT-SIZE: 90%; FONT-FAMILY: Tahoma; TEXT-ALIGN: center
+}
+TR {
+	FONT-SIZE: 90%; FONT-FAMILY: Tahoma; TEXT-ALIGN: center
+}
+.DataList {
+	FONT-SIZE: medium; FONT-FAMILY: Tahoma
+}
+.Gridview {
+	FONT-SIZE: medium; FONT-FAMILY: Tahoma
+}
+.text {
+	FONT-SIZE: small; FONT-FAMILY: Tahoma; TEXT-ALIGN: center
+}
+H1 {
+	MARGIN-TOP: 5px; FONT-SIZE: 150%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8
+}
+H2 {
+	MARGIN-TOP: 15px; FONT-SIZE: 130%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8
+}
+H3 {
+	MARGIN-TOP: 15px; FONT-SIZE: 110%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8; FONT-STYLE: italic
+}
+H4 {
+	MARGIN-TOP: 15px; FONT-SIZE: 90%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8
+}
+H5 {
+	MARGIN-TOP: 15px; FONT-SIZE: 90%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8; FONT-STYLE: italic
+}
+H6 {
+	MARGIN-TOP: 15px; FONT-SIZE: 90%; MARGIN-BOTTOM: 5px; COLOR: #d0d3d8
+}
+BR {
+	TEXT-DECORATION: none
+}

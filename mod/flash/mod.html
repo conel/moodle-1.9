@@ -1,0 +1,312 @@
+<?php
+//
+//    Part of Flash Activity Module :
+//    A Moodle activity module that takes care of a lot of functionality for Flash
+//    movie developeres who want their movies to work with Moodle
+//    to use Moodles grades table, configuration, backup and restore features etc.
+//    Copyright (C) 2004, 2005  James Pratt
+//    Contact  : me@jamiep.org http://jamiep.org
+//
+//    Developed for release under GPL,
+//    funded by AGAUR, Departament d'Universitats, Recerca i Societat de la
+//    Informacieneralitat de Catalunya.
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; see flash/license.txt;
+//      if not, write to the Free Software
+//    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+// This page defines the form to create or edit an instance of this module
+// It is used from /course/mod.php.  The whole instance is available as $form.
+include "$CFG->dirroot/mod/flash/lib.php";
+function flash_get_movie_list()
+{
+    global $CFG;
+    $movies=array();
+
+    $path = "$CFG->dirroot/mod/flash/movies/";
+    if ($dir = @opendir($path)) {
+        while (($file = readdir($dir)) !== false) {
+            if (is_dir($path."/".$file) && $file!='.' && $file!='..') {
+                $movies[$file]=$file;
+            }
+        }
+        closedir($dir);
+    }
+    return $movies;
+};
+function flash_get_font_list()
+{
+    global $CFG;
+    global $form;
+    $fonts=array();
+    $oldfonts=split(',', $form->fonts);
+    $path = "$CFG->dirroot/mod/flash/resources/";
+    if ($handle = @opendir($path)) {
+        while (false !== ($file = readdir($handle))) {
+            $fileBits=explode('_', $file);
+            if (!is_dir($path."/".$file) && (strtolower($fileBits[count($fileBits)-1]) == "lib.swf")) {
+                unset($fileBits[count($fileBits)-1]);
+                $fileNamePre=join('_', $fileBits);
+                $fonts[$fileNamePre]=in_array($fileNamePre, $oldfonts)?'CHECKED':'';
+            }
+        }
+        closedir($handle);
+    }
+    return $fonts;
+};
+$formHTMLFile="$CFG->dirroot/mod/flash/movies/{$form->moviename}/mod.html";
+$modfileexists=file_exists($formHTMLFile);
+
+if (empty($form->feedback) )
+{
+	$form->feedback=get_string('defaultfeedback', 'flash');
+}
+if (empty($form->guestfeedback) )
+{
+    $form->guestfeedback=get_string('defaultguestfeedback', 'flash');
+}
+?>
+<div align='center' >
+<FORM name="form" method="post" action="mod.php">
+<TABLE cellpadding=5>
+<TR>
+    <TD align=right><P><B><?php  print_string("name") ?> :</B></P></TD>
+    <TD align='left'>
+        <INPUT type="text" name="name" size=30 value="<?php  p($form->name) ?>">
+    </TD>
+</TR>
+<tr>
+    <td align=right><P><B><?php print_string("movie", "flash") ?> :</B></P></TD>
+    <TD align='left'>
+    <?php
+    if (empty($form->moviename)||(!$modfileexists))
+    {
+
+        choose_from_menu(flash_get_movie_list(), "moviename", $form->moviename);
+        helpbutton("movie", get_string("movie", "flash"), "flash");
+
+    } else
+    {
+        p($form->moviename);
+        helpbutton("movie", get_string("movie", "flash"), "flash");
+
+    }
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><B><?php print_string("noofquestions", "flash") ?> :</B></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array();
+        for ($i = 1; $i <= 50; $i++){
+            $options[$i] = $i;
+        }
+        choose_from_menu($options, "q_no", $form->q_no);
+        helpbutton("noofquestions", get_string("noofquestions", "flash"), "flash");
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><p><b><?php print_string("maximumgrade") ?> :</b></p></td>
+    <TD align='left'>
+    <?php
+    for ($i=100; $i>=1; $i--) {
+        $grades[$i] = $i;
+    }
+    $grades[0] = get_string("nograde");
+
+    choose_from_menu($grades, "grade", "$form->grade", "");
+    helpbutton("maxgrade", get_string("maximumgrade"), "quiz");
+     ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><B><?php print_string("gradingmethod", "flash") ?> :</B></P></TD>
+    <TD align='left'>
+    <?php
+
+        $options = array("ave"=>"", "best"=>"", "best_q"=>"", "last"=>"", "first"=>"");
+        foreach ($options as $value => $label)
+        {
+            $options[$value]=get_string("gradingmethod_".$value, 'flash');
+        }
+        choose_from_menu($options, "gradingmethod", $form->gradingmethod, false);
+        helpbutton("gradingmethodtype", get_string("gradingmethod", 'flash'), "flash");
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><strong><?php print_string("showgrades", "flash"); ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array("0"=>get_string('no'),"1"=>get_string('yes'));
+        choose_from_menu($options, "showgrades", $form->showgrades, false);
+        helpbutton('showgrades', get_string('showgrades', 'flash'), 'flash');
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><strong><?php print_string("showheader", "flash"); ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array("0"=>get_string('noheader', 'flash'),"1"=>get_string('yesheader', 'flash'));
+        choose_from_menu($options, "showheader", $form->showheader, false);
+        helpbutton('showheader', get_string('showheader', 'flash'), 'flash');
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><strong><?php print_string("size", "flash"); ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array("0"=>get_string('moviesize', 'flash'),"1"=>get_string('browsersize', 'flash'));
+        choose_from_menu($options, "size", $form->size, false);
+        helpbutton('size', get_string('size', 'flash'), 'flash');
+        //helpbutton('size', get_string('size', 'flash'), 'flash');
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=center colspan="2"><P><B><?php print_string('feedback', 'flash'); helpbutton("feedback", get_string('feedback', 'flash'), "flash"); ?> :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+	    <?php print_textarea(false, 10, 50, 630, 400, "feedback", $form->feedback); ?>
+
+    </TD>
+</tr>
+<tr>
+    <td align=center colspan="2"><P><B><?php print_string('guestfeedback', 'flash');helpbutton("feedback", get_string('feedback', 'flash'), "flash");  ?> :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+	    <?php print_textarea(false, 10, 50, 630, 400, "guestfeedback", $form->guestfeedback); ?>
+    </TD>
+</tr>
+<tr>
+    <td align=right><P><strong><?php print_string("usepreloader", "flash"); ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array("1"=>get_string('usepreloader_normal', 'flash'), "0"=>get_string('usepreloader_no', 'flash'), "2"=>get_string('usepreloader_mxli', 'flash'));
+        choose_from_menu($options, "usepreloader", $form->usepreloader, false);
+        helpbutton("usepreloader", get_string('usepreloader', 'flash'), "flash");
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=right valign="top"><P><strong><?php print_string("fonts", "flash");
+                                                ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+    $fonts=flash_get_font_list();
+    $firstTime=true;
+    if (count($fonts)>0)
+    {
+        foreach ($fonts as $font=>$checked)
+        {
+            echo $font."<input type=\"checkbox\" name=\"fonts[]\" value=\"$font\" $checked />";
+            if ($firstTime)
+            {
+                helpbutton("fonts", get_string('fonts', 'flash'), "flash");
+            }
+            $firstTime=false;
+            echo "<br />";
+        }
+    } else
+    {
+        print_string("nofonts", "flash");
+        helpbutton("fonts", get_string('fonts', 'flash'), "flash");
+    }
+    ?>
+    <input type="hidden" name="fontssubmitted" value="1" />
+    </td>
+</tr>
+<tr>
+    <td align=right><P><strong><?php print_string("usesplash", "flash"); ?> :</strong></P></TD>
+    <TD align='left'>
+    <?php
+        $options = array("1"=>get_string('yes'), "0"=>get_string('no'));
+        choose_from_menu($options, "usesplash", 
+                    ((!isset($form->usesplash))?"0":$form->usesplash), false);
+        helpbutton("usesplash", get_string('usesplash', 'flash'), "flash"); 
+    ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td  colspan="2" align="center"><strong>
+     <?php print_string("splash", "flash"); ?> :
+     </strong></td>
+</tr>
+<tr valign="top">
+    <td colspan="2">
+	<table>
+		<tr>
+			<td align="right" valign="middle" nowrap="nowrap">
+				<font size="1">
+				 <?php
+					helpbutton("writing", get_string("helpwriting"), "moodle", true, true);
+					echo "<br />";
+					if ($usehtmleditor) {
+					   helpbutton("richtext", get_string("helprichtext"), "moodle", true, true);
+					} else {
+					   emoticonhelpbutton("theform", "message");
+					}
+				  ?>
+				 <br />
+				 </font>
+		    </td>
+			<td>
+				<?php print_textarea($usehtmleditor, 25, 65, 630, 400, "splash", $form->splash); ?>
+			</td>
+		</tr>
+	</table>
+	</td>
+</tr>
+<tr valign="top">
+    <td align="right"><strong><?php print_string("formattexttype"); ?>:</strong></td>
+    <TD align='left'>
+    <?php
+        if ($usehtmleditor) {   /// Trying this out for a while
+            print_string('formathtml');
+            echo '<input type="hidden" name="splashformat" value="'.FORMAT_HTML.'" />';
+        } else {
+            choose_from_menu(format_text_menu(), "splashformat", $form->splashformat, "");
+        }
+        helpbutton("textformat", get_string("helpformatting"));
+     ?>
+    </td>
+</tr>
+
+
+</TABLE>
+<INPUT type="hidden" name=to_config     value="1">
+<!-- These hidden variables are always the same -->
+<INPUT type="hidden" name=course        value="<?php  p($form->course) ?>">
+<INPUT type="hidden" name=coursemodule  value="<?php  p($form->coursemodule) ?>">
+<INPUT type="hidden" name=section       value="<?php  p($form->section) ?>">
+<INPUT type="hidden" name=module        value="<?php  p($form->module) ?>">
+<INPUT type="hidden" name=modulename    value="<?php  p($form->modulename) ?>">
+<INPUT type="hidden" name=instance      value="<?php  p($form->instance) ?>">
+<INPUT type="hidden" name=mode          value="<?php  p($form->mode) ?>">
+<INPUT type="hidden" name=sesskey       value="<?php  p($USER->sesskey)?>" >
+<INPUT type="submit" value="<?php  if ($modfileexists)
+                            {
+                                print_string("nextpage", "flash");
+                            } else
+                            {
+                                print_string("savechanges");
+                            }?>">
+</FORM>
+</div>

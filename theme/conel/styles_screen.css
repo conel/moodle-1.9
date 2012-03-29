@@ -1,0 +1,22 @@
+/************************************
+*
+* Theme Name: Liip
+* Description: A 960px fixed-width theme for Moodle
+* Theme URL: http://newschoollearning.com/themes/modern
+* Version: 1.0
+* Author: Patrick Malley
+* Author URI: http://newschoollearning.com
+*
+* Customize, edit, poke, prod, and adapt to your needs.
+* However, do not share.  Unless other arrangements have been made,
+* this style sheet (regardless of modification) remains the 
+* property of NewSchool Learning and is licensed for use
+* on a single installation of Moodle.
+*
+*************************************/
+
+@import "styles_lib/styles_reset.css";
+@import "styles_lib/styles_type.css";
+@import "styles_lib/styles_base.css";
+@import "styles_lib/styles_color.css";
+@import "styles_lib/styles_links.css";

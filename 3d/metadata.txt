@@ -1,0 +1,6 @@
+BEGIN_LAYOUT
+BITMAP "Background" 0 0
+BITMAP_DOWNLOADING 0 "Empty" "Filled" 212 665
+TEXT_DOWNLOADING "Arial" 14 "Downloading" 212 640
+TEXT_LOADING "Arial" 14 "Downloading" 212 640
+END_LAYOUT

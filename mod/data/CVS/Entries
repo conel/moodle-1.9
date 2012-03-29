@@ -1,0 +1,33 @@
+/backuplib.php/1.19/Mon Sep 17 22:10:22 2007//TMOODLE_19_WEEKLY
+/comment.php/1.19.4.1/Mon Feb 23 07:24:04 2009//TMOODLE_19_WEEKLY
+/comment_form.php/1.3/Thu Dec 28 09:32:50 2006//TMOODLE_19_WEEKLY
+/css.php/1.2/Wed Dec 13 20:26:11 2006//TMOODLE_19_WEEKLY
+/edit.php/1.32.2.7/Mon Mar 23 21:22:52 2009//TMOODLE_19_WEEKLY
+/export.php/1.1.2.2/Thu Jun 12 13:49:40 2008//TMOODLE_19_WEEKLY
+/export_form.php/1.1.2.2/Sat May 31 15:03:34 2008//TMOODLE_19_WEEKLY
+/field.php/1.24.4.2/Tue Apr 22 07:30:52 2008//TMOODLE_19_WEEKLY
+/filter.php/1.11.4.1/Mon Feb 16 17:57:19 2009//TMOODLE_19_WEEKLY
+/icon.gif/1.1/Fri Dec  2 07:50:26 2005/-kb/TMOODLE_19_WEEKLY
+/import.php/1.21.2.8/Thu Mar 12 14:42:27 2009//TMOODLE_19_WEEKLY
+/index.php/1.18.2.6/Mon Apr 21 13:25:04 2008//TMOODLE_19_WEEKLY
+/js.php/1.2/Wed Dec 13 20:26:11 2006//TMOODLE_19_WEEKLY
+/lib.php/1.137.2.55/Tue Apr 21 14:13:15 2009//TMOODLE_19_WEEKLY
+/mod_form.php/1.21.2.2/Sat Jul 26 15:17:05 2008//TMOODLE_19_WEEKLY
+/pagelib.php/1.10/Thu Jul  5 04:41:07 2007//TMOODLE_19_WEEKLY
+/preset.php/1.24.2.11/Wed Jun 25 10:22:34 2008//TMOODLE_19_WEEKLY
+/preset_class.php/1.2.2.4/Thu Jul 10 09:48:45 2008//TMOODLE_19_WEEKLY
+/preset_new.php/1.2/Tue Apr  3 03:32:47 2007//TMOODLE_19_WEEKLY
+/rate.php/1.11.2.1/Wed May  6 10:16:54 2009//TMOODLE_19_WEEKLY
+/report.php/1.9/Sun Jun  3 16:17:39 2007//TMOODLE_19_WEEKLY
+/restorelib.php/1.27.2.2/Mon Mar 17 21:34:00 2008//TMOODLE_19_WEEKLY
+/rsslib.php/1.12/Thu Aug 23 06:14:26 2007//TMOODLE_19_WEEKLY
+/settings.php/1.1.2.2/Wed Dec 19 17:38:47 2007//TMOODLE_19_WEEKLY
+/styles.php/1.3.8.3/Tue Apr 22 13:34:40 2008//TMOODLE_19_WEEKLY
+/tabs.php/1.28.2.3/Thu Jun 12 13:49:40 2008//TMOODLE_19_WEEKLY
+/templates.php/1.68.2.5/Wed Apr 16 12:29:21 2008//TMOODLE_19_WEEKLY
+/version.php/1.29.2.8/Thu Jan  8 01:01:05 2009//TMOODLE_19_WEEKLY
+/view.php/1.70.2.31/Thu Jun  4 09:53:20 2009//TMOODLE_19_WEEKLY
+D/db////
+D/field////
+D/preset////
+D/simpletest////

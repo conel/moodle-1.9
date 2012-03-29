@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Learner: <?php echo fullname($learner);?></title>
+</head>
+<body style="font-family:Arial, Helvetica, sans-serif !important; font-size:14px; width:690px; margin-left:45px; margin-top:45px;">
+        <script type="text/php">
+            if ( isset($pdf) ) {
+                // add the page header
+                $header = $pdf->open_object();
+                $pdf->image("../views/images/conel.jpg", "jpg", 32, 20, 550, 77);
+                $pdf->close_object();
+                $pdf->add_object($header, "add");
+            }
+        </script>
+			<br /><br /><br /><br />
+			<table cellpadding="20" cellspacing="0" border="0">
+			<tr>
+			<td>
+				<h1>Learner Review</h1>
+				<h3><?php echo date('d F Y', time()); ?></h3>
+				<br/>
+				<h2>Learner: <?php echo fullname($learner);?><br />Personal Tutor: <?php echo !empty($lprs[key($lprs)]->tutor) ? fullname($lprs[key($lprs)]->tutor) : '';?></h2>
+				<br/>
+                <h3>Key to Attendance and Punctuality percentages</h3>
+                <ul>
+                    <li>100% to 91% is green status</li>
+                    <li>90% to 85% is amber status</li>
+                    <li>85% and below is red status</li>
+                </ul>
+                <h3>The Learner Review Procedure</h3>
+                <p>Each learner will have met with their Personal Tutor for a 1 to 1 review to discuss the progress they are making at college and any specific support they may require to help them achieve their targets and qualification.</p>
+                <p>As part of the review each Subject Lecturer completes a report and then the Personal Tutor summaries these in the Personal Tutor Summary. Targets are then set for each learner.</p>
+			</td>
+			</tr>
+			</table>
+        <script type="text/php">
+            if ( isset($pdf) ) {
+                // add the page footer
+                $font = Font_Metrics::get_font("Arial");;
+                $size = 11;
+                $color = array(0,0,0);
+                $text = "<?php echo fullname($learner);?> - ";
+                $text_width = Font_Metrics::get_text_width($text.'1', $font, $size);
+                $text .= "{PAGE_NUM}";
+                $x = ($pdf->get_width() - $text_width - 55);
+                $y = ($pdf->get_height() - 25);
+                $pdf->page_text($x, $y, $text, $font, $size, $color);
+            }
+        </script>
+		<div id="page_break" style="page-break-before:always; height="1">&nbsp;</div>
+        <?php
+        $avgs = array();
+        if(!empty($lprs)) {
+            foreach($lprs as $lpr) { ?>
+					<br /><br />
+                    <table cellspacing="0" cellpadding="0" border="1" style="font-size:13px; width:100%;">
+						<tr>
+							<th width="130">Subject</th>
+							<th>Attendance</th>
+							<th>Punctuality</th>
+						</tr>
+                        <tr>
+                            <td>
+                                <?php echo $lpr->category->name; ?><br/>
+                                <?php echo $lpr->course->fullname; ?>
+                            </td>
+                            <td align="center">
+                                <?php
+                                if(!empty($lpr->attendance->attendance)) {
+                                    echo round($lpr->attendance->attendance).'% <br/>('.map_attendance($lpr->attendance->attendance).')';
+                                    $avgs['attendance'][] = $lpr->attendance->attendance;
+                                } ?>
+                            </td>
+                            <td align="center">
+                                <?php
+                                if(!empty($lpr->attendance->punctuality)) {
+                                    echo round($lpr->attendance->punctuality).'% <br/>('.map_attendance($lpr->attendance->punctuality).')';
+                                    $avgs['punctuality'][] = $lpr->attendance->punctuality;
+                                } ?>
+                            </td>
+                        </tr>					
+						<?php
+						if(!empty($lpr->modules)) { ?>	
+							<tr>
+								<td colspan="8"><b>Modules:</b></td>
+							</tr>												
+							<tr>
+								<td colspan="8">
+									<?php 
+									if(!empty($lpr->modules)) {
+										$temp = array();
+										foreach ($lpr->modules as $module) {
+											$temp[] = $module->module_code.' '.$module->module_desc;
+										}
+										echo !empty($temp) ? implode(", ", $temp) : 'N/A';
+									}
+									?>
+								</td>
+							</tr>		
+							<?php
+						}?>
+						</table>
+						
+						<br /><br />
+						
+						<table border="0" cellspacing="0">
+                        <tr>
+                            <th align="left">Comments / Reference / Targets</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <?php
+                                if(!empty($lpr->lpr->comments)) {
+                                    echo fix_bad_html($lpr->lpr->comments);
+                                    //echo $lpr->lpr->comments;
+                                } else {
+                                    echo 'None.';
+                                }
+                                echo '<br />';
+                                if(!empty($lpr->lecturer)) {
+                                    echo fullname($lpr->lecturer).'.';
+                                } ?>
+                            </td>
+                        </tr>
+                    </table>
+                <?php
+            }
+        } else { ?>
+
+                <table cellspacing="0">
+                    <tr>
+                        <td style="text-align:left;">None.</td>
+                    </tr>
+                </table>
+
+            <?php } ?>
+        <div class="container">&nbsp;...</div>
+        <script type="text/php">
+            global $header;
+            if ( isset($pdf) ) {
+                $pdf->stop_object($header);
+            }
+        </script>
+
+        <?php
+            if ($ilp_targets != '') {
+
+                //echo '<div id="page_break_targets" style="page-break-before:always; height="1">&nbsp;</div>';
+                echo '<h2>Targets</h2>';
+                echo $ilp_targets;
+                echo '<div id="page_break_pts" style="page-break-before:always; height="1">&nbsp;</div>';
+            }
+        ?>
+
+            <h2>Personal Tutor Summary</h2>
+            <table cellspacing="0" border="1" style="font-size:13px;">
+				<tr>
+					<th width="130">Personal Tutor Summary</th>
+					<th>Minimum Target Grade</th>
+					<th>Aspirational Target Grade</th>
+					<th>Attainment / Learning</th>
+					<th>Functional Skills</th>
+					<th>Employment Skills</th>
+				</tr>
+				<tr>
+                    <td class="subject_field">
+                        <?php echo 'Tutorial Review and Action Plan<br/>N.B. The following are averages across the above subjects.'; ?>
+                    </td>
+                    <td class="indicator" align="center">
+                        <?php echo !empty($avgs[MINIMUM_TARGET_GRADE]) ? round((array_sum($avgs[MINIMUM_TARGET_GRADE])/count($avgs[MINIMUM_TARGET_GRADE])), 2) : ''; ?>
+                    </td>
+                    <td class="indicator" align="center">
+                        <?php echo !empty($avgs[ASPIRATIONAL_TARGET_GRADE]) ? round((array_sum($avgs[ASPIRATIONAL_TARGET_GRADE])/count($avgs[ASPIRATIONAL_TARGET_GRADE])),2) : ''; ?>
+                    </td>
+                    <?php
+                    /*
+                    <td class="indicator">
+                        <?php
+                        if(!empty($avgs['attendance'])) {
+                            $atten = array_sum($avgs['attendance'])/count($avgs['attendance']);
+                            echo round($atten).'% <br/>('.map_attendance($atten).')';
+                        } ?>
+                    </td>
+                    <td class="indicator">
+                        <?php
+                        if(!empty($avgs['punctuality'])) {
+                            $punc = array_sum($avgs['punctuality'])/count($avgs['punctuality']);
+                            echo round($punc).'% <br/>('.map_attendance($punc).')';
+                        } ?>
+                    </td>
+                    */?>
+                    <td class="indicator" align="center">
+                        <?php echo !empty($avgs[ATTAINMENT_LEARNING]) ? round((array_sum($avgs[ATTAINMENT_LEARNING])/count($avgs[ATTAINMENT_LEARNING])),2) : ''; ?>
+                    </td>
+                    <td class="indicator" align="center">
+                        <?php echo !empty($avgs[FUNCTIONAL_SKILLS]) ? round((array_sum($avgs[FUNCTIONAL_SKILLS])/count($avgs[FUNCTIONAL_SKILLS])),2) : ''; ?>
+                    </td>
+                    <td class="indicator" align="center">
+                        <?php echo !empty($avgs[EMPLOYMENT_SKILLS]) ? round((array_sum($avgs[EMPLOYMENT_SKILLS])/count($avgs[EMPLOYMENT_SKILLS])),2) : ''; ?>
+                    </td>
+                </tr>
+				</table>
+				
+				<br /><br />
+				
+				<table cellspacing="0" cellpadding="0">
+                <tr>
+                    <th align="left">Comments / Reference / Targets</th>
+                </tr>
+                <?php
+                if(!empty($reviews)) {
+                    foreach($reviews as $review) { ?>
+                        <tr>
+                            <td>
+                                <?php //echo fix_bad_html(strip_table($review->concernset)); ?>
+                                <?php echo strip_table($review->concernset); ?>
+                                <br/>
+                                <?php echo fullname($review); ?>.
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                } else { ?>
+                    <tr>
+                        <td colspan="6">None.</td>
+                    </tr>
+                    <?php } ?>
+            </table>
+			
+			<br />
+            <table border="1" cellspacing="0" cellspacing="0">
+                <tr>
+                    <th width="200">Course</th>
+                    <th>Attendance</th>
+                    <th>Punctuality</th>
+                </tr>
+                <?php
+                if(!empty($attendance)) {
+                    foreach($attendance as $atten) { ?>
+                        <tr>
+                            <td style="text-align:left;"><?php echo $atten->COURSE_TITLE; ?></td>
+                            <td><?php echo round($atten->ATTENDANCE*100); ?>%</td>
+                            <td><?php echo round($atten->PUNCTUALITY*100); ?>%</td>
+                        </tr>
+                        <?php }
+                } ?>
+            </table>
+    </body>
+</html>

@@ -1,0 +1,157 @@
+<?php
+    function get_word_array($text)
+    {
+        $text=preg_replace('/(<p>.+?)<\/p>/i', '$1 ', $text); //replace </P> with whitespace
+        $text=preg_replace('/<br *\/? *>/i', ' ', $text); //and <br />
+        $text=preg_replace('/<\/li>/i', ' ', $text); //and </li>
+        $text=preg_replace('/<.+?>/', '', $text); //strip all other html tags
+		$text=preg_replace('/[ \n\r\t]+/', ' ', $text); //replace multiple whitespaces with one space
+        return (split (' ', $text));
+    };
+
+    $iter=$flash_form_sess['next_q'];
+    if (empty($form->config[$iter]['question']))
+    {
+        $form->config[$iter]['question']=("<font size=\'32\'><p align=\'center\'>You can use some html tags here such as <b>bold</b> or <i>italics</i> or <u>underline</u>.</p></font>");
+    }
+
+    if ($form->to_config==3)
+    {
+    ?>
+<TR valign=top>
+    <TD align=center colspan="2"><h2><B><?php  echo 'Question '.($iter+1); p(' ('.$flash_form_sess['next_q_type'].')'); ?>:</B></h2></TD>
+</TR>
+<tr>
+    <td align=center colspan="2"><P><B>Question :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+        <table>
+        <tr><td>
+        <TEXTAREA name="config[<?php echo $iter ?>][question]" cols="30" rows="5" ><?php  p($form->config[$iter]['question']) ?></TEXTAREA>
+        </td><td>
+            <?php helpbutton("htmltags", get_string('supported_tags', "flash"), "flash");
+            echo "<br />";
+            helpbutton("htmlandembedded", get_string('htmlandembedded', "flash"), "flash");?>
+        </td>
+        </tr>
+        </table>
+    </TD>
+</tr>
+<tr>
+    <td align=right><P><B>Use Embedded Fonts :</B></P></TD>
+    <td align=left width="30%">
+    <?php
+        $options = array("1"=>"Yes", "0"=>"No");
+        choose_from_menu($options, "config[$iter][embedfonts]", $form->config[$iter][embedfonts], '');
+    ?>
+    </td>
+</tr>
+<tr>
+    <td align=center colspan="2"><P><B>Text :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+        <table>
+        <tr><td>
+            <TEXTAREA name="config[<?php echo $iter ?>][text]" cols="30" rows="5" ><?php  p($form->config[$iter]['text']) ?></TEXTAREA>
+        </td><td>
+            <?php helpbutton("htmltags", get_string('supported_tags', "flash"), "flash");
+			echo "<br />";
+			helpbutton("htmlandembedded", get_string('htmlandembedded', "flash"), "flash");?>
+		</td>
+		</tr>
+		</table>
+    </TD>
+</tr>
+<INPUT type="hidden" name=to_config     value="4">
+<INPUT type="hidden" name=config[<?php echo($iter) ?>][q_type] value="<?php p($flash_form_sess['next_q_type']); ?>">
+</TABLE>
+<?php
+	echo ('<INPUT type="submit" value="'.get_string("nextpage", "flash") .'">');
+} else
+{
+?>	
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function selectItemInMenuByName(formId, menuName, selectIndex ) {
+    myForm = document.getElementById(formId)
+    for (i=0,n=myForm.elements.length;i<n;i++) {
+        myLen = menuName.length;
+        myName = myForm.elements[i].name;
+        myType = myForm.elements[i].type;
+        if (myName.substring(0,myLen) == menuName && myType == "select-one")
+            myForm.elements[i].options[selectIndex].selected = true;
+        }
+}
+-->
+</script>
+		<TR valign=top>
+			<TD align=center colspan="2"><h2><B><?php  echo 'Question '.($iter+1); p(' ('.$flash_form_sess['next_q_type'].')'); ?>:</B></h2></TD>
+		</TR>
+		<tr>
+			<td align=center><P><B>Word :</B></P></TD>
+			<td><P><B>Grade as :</B></P></td>
+		</tr>
+<?php
+
+	$words=get_word_array($form->config[$iter]['text']);
+    $countRows=0;
+    foreach ($words as $index => $word)
+    {
+		if ( ($countRows %10) == 0)
+		{
+?>
+		<tr>
+			<td>&nbsp;</td>
+			<td>
+<?php
+        echo "Set all to <br /><a href=\"javascript:void(0);\" onclick=\"selectItemInMenuByName('jsref', 'answers[', '1');\">".
+             get_string("ignore", "flash")."</a> / ";
+        echo "<a href=\"javascript:void(0);\" onclick=\"selectItemInMenuByName('jsref', 'answers[', '0');\">".
+             get_string("wrong", "flash")."</a> / ";
+        echo "<a href=\"javascript:void(0);\" onclick=\"selectItemInMenuByName('jsref', 'answers[', '2');\">".
+             get_string("right", "flash")."</a>";
+?></TD>
+		</tr>
+<?php
+		}
+		$countRows++;
+		
+?>
+	    <tr>
+            <td align=right><P><?php echo($word) ?></P></TD>
+            <td>
+            <?php
+                $options = array("-1"=>get_string("wrong", "flash"), "0"=>get_string("ignore", "flash"), "1"=>get_string("right", "flash"));
+                choose_from_menu($options, "answers[$iter][$index]", $form->answers[$iter][$index], "");
+                if ($index==0)
+                {
+                    helpbutton("selectgrades", get_string('selectgrades', "flash"), "flash");
+                }
+            ?>
+            </td>
+        </tr>
+      <?php
+    };
+    if (($iter+1)<($form->q_no))
+    {
+        echo ('<INPUT type="hidden" name=to_config     value="2">');
+        echo ('<INPUT type="hidden" name=sess[next_q]  value="'.($flash_form_sess['next_q']+1).'">');
+
+    } else
+    {
+        echo ('<INPUT type="hidden" name=to_config     value="0">');
+    };
+    ?>
+    </TABLE>
+    <?php
+    if ($iter+1<($form->q_no))
+    {
+        echo ('<INPUT type="submit" value="'.get_string("nextpage", "flash") .'">');
+    } else
+    {
+        echo ('<INPUT type="submit" value="'.get_string("savechanges").'">');
+    };
+}
+?>

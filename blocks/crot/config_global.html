@@ -1,0 +1,28 @@
+				<div style="text-align: center;">
+	<table style="text-align: left;" border=2>
+	<tr><td><b><?php print_string('settings', 'block_crot'); ?></b>
+	<tr><td> <?php print_string('grammar_size', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_grammarsize" value="<?php if(!empty($CFG->block_crot_grammarsize)) echo $CFG->block_crot_grammarsize; else echo '30' ?>"/>
+	<tr><td> <?php print_string('window_size', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_windowsize" value="<?php if(!empty($CFG->block_crot_windowsize)) echo $CFG->block_crot_windowsize; else echo '60' ?>"/>
+	<tr><td> <?php print_string('colours', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_colours" value="<?php if(!empty($CFG->block_crot_colours)) echo $CFG->block_crot_colours; else echo '#FF0000,#0000FF, #A0A000, #00A0A0'?>"/>
+	<tr><td> <?php print_string('cluster_distance', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_clusterdist" value="<?php if(!empty($CFG->block_crot_clusterdist)) echo $CFG->block_crot_clusterdist; else echo '55'?>"/>
+	<tr><td> <?php print_string('cluster_size', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_clustersize" value="<?php if(!empty($CFG->block_crot_clustersize)) echo $CFG->block_crot_clustersize; else echo '10'?>"/>
+	<tr><td> <?php print_string('default_threshold', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_threshold" value="<?php if(!empty($CFG->block_crot_threshold)) echo $CFG->block_crot_threshold; else echo '0'?>"/>
+
+	<tr><td> &nbsp;</td><td> &nbsp;</td></tr>
+	<tr><td> <b><?php print_string('global_search_settings', 'block_crot'); ?></b></td>
+	<tr><td> <?php print_string('global_search_threshold', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_global_threshold" value="<?php if(!empty($CFG->block_crot_global_threshold)) echo $CFG->block_crot_global_threshold; else echo '90'?>"/>
+	<tr><td> <?php print_string('MS_live_key', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_live_key" value="<?php if(!empty($CFG->block_crot_live_key)) echo $CFG->block_crot_live_key; else echo 'CHANGE ME!'?>"/>
+	<tr><td> <?php print_string('global_search_query_size', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_global_search_query_size" value="<?php if(!empty($CFG->block_crot_global_search_query_size)) echo $CFG->block_crot_global_search_query_size; else echo '7'?>"/>
+	<tr><td> <?php print_string('percentage_of_search_queries', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_percentage_of_search_queries" value="<?php if(!empty($CFG->block_crot_percentage_of_search_queries)) echo $CFG->block_crot_percentage_of_search_queries; else echo '40'?>"/>
+	<tr><td> <?php print_string('number_of_web_documents', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_number_of_web_documents" value="<?php if(!empty($CFG->block_crot_number_of_web_documents)) echo $CFG->block_crot_number_of_web_documents; else echo '10'?>"/>
+	<tr><td> <?php print_string('culture_info', 'block_crot'); ?>:</td><td> <input type="textbox" name="block_crot_culture_info" value="<?php if(!empty($CFG->block_crot_culture_info)) echo $CFG->block_crot_culture_info; else echo 'en-us'?>"/>
+
+	<tr><td> &nbsp;</td><td> &nbsp;</td></tr>
+	<tr><td> <b><?php print_string('tools', 'block_crot'); ?></b></td>
+	<tr><td> <?php print_string('clean_tables', 'block_crot'); ?></td><td><input name="block_crot_delall" type="checkbox"> 
+	<tr><td> <?php print_string('test_global_serach', 'block_crot'); ?></td><td><input name="block_crot_testglobal" type="checkbox"> 
+
+	</table>
+
+	<p><input type="submit" value="<?php print_string('savechanges'); ?>" /></p>
+</div>

@@ -1,0 +1,55 @@
+
+<HTML> 
+  <HEAD> 
+	 <TITLE>Basics: Sound</TITLE>
+	  
+<script language="JavaScript">
+<!--
+function MM_controlSound(x, _sndObj, sndFile) { //v3.0
+  var i, method = "", sndObj = eval(_sndObj);
+  if (sndObj != null) {
+    if (navigator.appName == 'Netscape') method = "play";
+    else {
+      if (window.MM_WMP == null) {
+        window.MM_WMP = false;
+        for(i in sndObj) if (i == "ActiveMovie") {
+          window.MM_WMP = true; break;
+      } }
+      if (window.MM_WMP) method = "play";
+      else if (sndObj.FileName) method = "run";
+  } }
+  if (method) eval(_sndObj+"."+method+"()");
+  else window.location = sndFile;
+}
+//-->
+</script>
+<link rel="stylesheet" href="sound.css" type="text/css">
+</head> 
+   <BODY BACKGROUND="../intro/images/backgrd1.gif"
+					>
+<font face="Arial, Helvetica, sans-serif"><img src="../shopping/images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1025617276160','images/sound.mp3')" class="sound"> 
+Sound will come on automatically in the Basics section. To turn sound off: </font> 
+<p><font face="Arial, Helvetica, sans-serif">Either turn the power off on your 
+  speakers,</font></p>
+<p><font face="Arial, Helvetica, sans-serif">Or switch sound to Mute </font></p>
+<table width="388">
+  <tr> 
+    <td width="89"> 
+      <div align="center"><font face="Arial, Helvetica, sans-serif"><img src="images/soundhorn.GIF" width="25" height="25" align="left" alt="audio button"></font></div>
+    </td>
+    <td width="287"><font face="Arial, Helvetica, sans-serif">by clicking the 
+      sound button on the bottom right hand corner of your screen. </font></td>
+  </tr>
+  <tr> 
+    <td width="89"><img src="images/mute.GIF" width="79" height="135" alt="Volume controller"></td>
+    <td width="287"><font face="Arial, Helvetica, sans-serif">Drag the slider 
+      down to Mute.</font></td>
+  </tr>
+</table>
+<P><a href="javascript:window.close()"><img name="close" border="0"
+		src="../shopping/mall/mall2/images/close.gif" width="48" height="15" alt="close"></a></P>
+<EMBED NAME='CS1025617276160' SRC='images/sound.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

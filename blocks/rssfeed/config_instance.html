@@ -1,0 +1,30 @@
+<center>
+<table cellpadding="9" cellspacing="0">
+ <tr valign="top">
+     <td align="right">
+         <?php print_string('config_forum', 'block_rssfeed'); ?>:
+     </td>
+     <td>
+        <input name="conf_forum" type="checkbox" id="forum_yes" <?php if(!empty($this->config->conf_forum)) echo 'checked="checked"'; ?> value="1" />
+     </td>
+ </tr>
+  <tr valign="top">
+     <td align="right">
+         <?php print_string('config_glossary', 'block_rssfeed'); ?>:
+     </td>
+     <td>
+         <input name="conf_glossar" type="checkbox" id="glossar_yes"<? if(!empty($this->config->conf_glossar)) echo 'checked="checked"';?> value="1" />
+     </td>
+ </tr>
+ <tr>
+     <td colspan="2" align="center">
+         <input type="submit" value="<?php print_string('savechanges') ?>" />
+     </td>
+ </tr>
+ </table>
+</center>
+<script language="JavaScript">
+		function rss_info() {
+			alert('<? print_string('info','block_rssfeed')?>');
+		}
+</script>

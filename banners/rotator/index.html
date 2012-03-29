@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jQuery Banner Rotator</title>	
+    <style type="text/css">
+		/* style used for preview page only */
+		html {
+			height:100%;
+			background:#EEE;
+			background:-moz-linear-gradient(top, #FFF 0%, #CCC 100%);
+			background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#CCC));
+    	}
+    	body {
+			width:100%;
+			height:100%;
+			margin:0;
+		}
+		h1 {
+			font-size:15px;
+			font-weight:normal;
+			color:#B5FF00;
+			margin:0;
+		}
+		.container{
+			position:absolute;
+			width:825px;
+			height:300px;
+			top:50%;
+			left:50%;
+			margin-top:-150px;
+			margin-left:-412px;
+		}
+    </style>
+    <link rel="stylesheet" type="text/css" href="wt-rotator.css"/>
+	<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.wt-rotator.min.js"></script>
+	<script type="text/javascript">
+    	$(document).ready(	
+			function() {
+				$(".container").wtRotator({
+					width:825,
+					height:300,
+					button_width:24,
+					button_height:24,
+					button_margin:5,
+					auto_start:true,
+					delay:5000,
+					play_once:false,
+					transition:"fade",
+					transition_speed:800,
+					auto_center:true,
+					easing:"",
+					cpanel_position:"inside",
+					cpanel_align:"BR",
+					timer_align:"top",
+					display_thumbs:true,
+					display_dbuttons:true,
+					display_playbutton:true,
+					display_numbers:true,
+					display_timer:true,
+					mouseover_pause:false,
+					cpanel_mouseover:false,
+					text_mouseover:false,
+					text_effect:"fade",
+					text_sync:true,
+					tooltip_type:"image",
+					lock_tooltip:true,
+					shuffle:false,
+					block_size:75,
+					vert_size:55,
+					horz_size:50,
+					block_delay:25,
+					vstripe_delay:75,
+					hstripe_delay:180			
+				});
+			}
+		);
+    </script>    
+</head>
+<body> 
+<div class="container">
+	<div class="wt-rotator">
+    	<div class="screen">
+            <noscript>
+            	<!-- placeholder 1st image when javascript is off -->
+                <img src="images/madness_arch2.jpg"/>
+            </noscript>
+      	</div>
+        <div class="c-panel">
+      		<div class="buttons">
+            	<div class="prev-btn"></div>
+                <div class="play-btn"></div>    
+            	<div class="next-btn"></div>               
+            </div>
+      		<div class="thumbnails">
+                <ul>
+                    <li>
+                    	<a href="images/madness_arch2.jpg" title="architecture"><img src="images/thumbs/madness_arch2.jpg"/></a>
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>                        
+                        <div style="top:5px; left:484px; width:336px; height:0; color:#FFF; background-color:#000;">
+                           <h1>JQuery Banner Rotator</h1>
+                           Lorem ipsum no sed posse dicit, cum affert hendrerit suscipiantur in. Est an quod amet utroque, perpetua eloquentiam ea pri. 
+                           In vim alii dicam disputationi. Mea ne dicat commune petentium, dicit utamur percipit nec id. 
+                           Id velit semper fierent eum.
+                      	</div>
+                    </li>
+                    <li>
+                        <a href="images/triworks_abstract17.jpg" title="3D abstract art"><img src="images/thumbs/triworks_abstract17.jpg"/></a>
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>                        
+                        <div style="top:5px; left:5px; width:350px; height:0; color:#FFF; background-color:#000;">
+                            <h1>JQuery Banner Rotator</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Sed sed elit eget purus consequat tempor eu ac mauris. Nulla facilisi. 
+                            Vivamus consectetur molestie ipsum ac sollicitudin. 
+                            Sed venenatis est sit amet nibh molestie vel pharetra velit commodo. 
+                            Ut eros orci, sollicitudin sit amet ultricies vitae, varius ac quam. Pellentesque euismod.
+                     	</div>
+                    </li>
+           	  		<li>
+                        <a href="images/krazy-kartoons-robot-dj02.jpg" title="krazy kartoons"><img src="images/thumbs/krazy-kartoons-robot-dj02.jpg"/></a>
+                       	<a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                       	<div style="top:94px; left:484px; width:336px; height:0; color:#FFF; background-color:#000;">
+                            <h1>JQuery Banner Rotator</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Ut tincidunt mi a lectus gravida pulvinar. Aliquam viverra cursus felis, 
+                            lobortis elementum tortor malesuada non. Suspendisse hendrerit tortor a mauris auctor eu sodales metus laoreet.
+                       	</div>                              
+                    </li>
+              		<li>
+                        <a href="images/card10.jpg" title="rockable press"><img src="images/thumbs/card10.jpg"/></a>
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                        <div style="top:5px; left:484px; width:336px; height:0; color:#FFF; background-color:#000;">
+                           <h1>JQuery Banner Rotator</h1>
+                           Lorem ipsum no sed posse dicit, cum affert hendrerit suscipiantur in. Est an quod amet utroque, perpetua eloquentiam ea pri. 
+                           In vim alii dicam disputationi. Mea ne dicat commune petentium, dicit utamur percipit nec id. 
+                           Id velit semper fierent eum.
+                     	</div>                                                  	
+                    </li>
+              		<li>
+                        <a href="images/triworks_abstract26.jpg" title="3D abstract art"><img src="images/thumbs/triworks_abstract26.jpg"/></a>   
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                        <div style="top:5px; left:5px; width:350px; height:0; color:#FFF; background-color:#000;">
+                            <h1>JQuery Banner Rotator</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Sed sed elit eget purus consequat tempor eu ac mauris. Nulla facilisi. 
+                            Vivamus consectetur molestie ipsum ac sollicitudin. 
+                            Sed venenatis est sit amet nibh molestie vel pharetra velit commodo. 
+                            Ut eros orci, sollicitudin sit amet ultricies vitae, varius ac quam. Pellentesque euismod.
+                      	</div>                                                         	                   
+                  	</li>
+           	  		<li>
+                        <a href="images/triworks_objects17.jpg" title="3D objects"><img src="images/thumbs/triworks_objects17.jpg"/></a>                  
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                        <div style="top:94px; left:5px; width:350px; height:0; color:#FFF; background-color:#000;">
+                            <h1>JQuery Banner Rotator</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Ut tincidunt mi a lectus gravida pulvinar. Aliquam viverra cursus felis, 
+                            lobortis elementum tortor malesuada non. 
+                            Suspendisse hendrerit tortor a mauris auctor eu sodales metus laoreet.
+                      	</div>                                          	                          
+                    </li>
+              		<li>
+                        <a href="images/scottwills_building2.jpg" title="building"><img src="images/thumbs/scottwills_building2.jpg"/></a>        
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                        <div style="top:94px; left:484px; width:336px; height:0; color:#FFF; background-color:#000;">
+                            <h1>JQuery Banner Rotator</h1>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Ut tincidunt mi a lectus gravida pulvinar. Aliquam viverra cursus felis, 
+                            lobortis elementum tortor malesuada non. Suspendisse hendrerit tortor a mauris auctor eu sodales metus laoreet.
+                      	</div>                                                                      
+                    </li>     
+              		<li>
+                        <a href="images/moo10.jpg" title="say it in print"><img src="images/thumbs/moo10.jpg"/></a>                    
+                        <a href="http://codecanyon.net/user/webtako?ref=webtako" target="_blank"></a>
+                        <div style="top:5px; left:484px; width:336px; height:0; color:#FFF; background-color:#000;">
+                           <h1>JQuery Banner Rotator</h1>
+                           Lorem ipsum no sed posse dicit, cum affert hendrerit suscipiantur in. Est an quod amet utroque, perpetua eloquentiam ea pri. 
+                           In vim alii dicam disputationi. Mea ne dicat commune petentium, dicit utamur percipit nec id. 
+                           Id velit semper fierent eum.
+                     	</div>                            	                           
+                    </li>     
+              	</ul>
+          </div>     
+      </div>
+    </div>	
+</div>
+</body>
+</html>

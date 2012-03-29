@@ -1,0 +1,62 @@
+<macromedia-extension
+	 name="PHPObject AS2 fork"
+	 version="0.9"
+	 type="Actionscript">
+
+	<author name="Sunny Hong and James Pratt" />
+
+	<products>
+		<product name="Flash" version="6" />
+	</products>
+
+	<description>
+	<![CDATA[
+	This is an UNOFFICIAL RELEASE of PHPObject which is NOT SUPPORTED BY Sunny Hong. Contact James Pratt me@jamiep.org for support.
+	PHPObject is an opensource alternative to Flash Remoting for PHP developers. With PHPObject, you can call a method of a PHP class/library on your web server as if the class/library was defined in Flash itself. It takes care of your client-server connections and makes passing of variables (properties) between Flash MX and PHP easy, and thereby providing a convenient way to connect rich media clients with data and business logic residing on your server.<br>
+<br>
+Enjoy!<br>
+	]]>
+	</description>
+
+	<ui-access>
+	<![CDATA[
+	--------------------------------------------------------------<br>
+The actionscript files are installed to Configuration/Classes folder of Flash MX 2004. It is not necessary to copy them to your current working directory.<br>
+--------------------------------------------------------------<br>
+The PHPObject Gateway should have been distributed with this extension and is required on the server-side.<br>
+Please refer to http://ghostwire.com for updates and more information.
+	]]>
+	</ui-access>
+
+	<license-agreement>
+	<![CDATA[
+	------------------------------------------------------------<br>
+PHPObject v2.00<br>
+Copyright (C) 2003-2004 GhostWire Studios | Sunny Hong<br>
+All Rights Reserved<br>
+More information at http://ghostwire.com <br>
+and http://jamiep.org <br>
+------------------------------------------------------------<br>
+<br>
+LICENSE<br>
+<br>
+PHPObject is released under the GNU LGPL license.<br>
+<br>
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.<br>
+<br>
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.<br>
+<br>
+License granted only if full copyright notice retained.<br>
+<br>
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.<br>
+<br>
+------------------------------------------------------------
+	]]>
+	</license-agreement>
+
+	<files>
+		<file name="jamiep/Serializer.as" destination="$flash/Classes/org/jamiep"  />
+		<file name="jamiep/phpobject/PHPObject.as" destination="$flash/Classes/org/jamiep/phpobject" />
+		<file name="jamiep/phpobject/PHPLoader.as" destination="$flash/Classes/org/jamiep/phpobject" />
+	</files>
+</macromedia-extension>

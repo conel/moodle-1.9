@@ -1,0 +1,125 @@
+<!-- This page defines the form to create or edit an instance of this module -->
+<!-- It is used from /course/mod.php.  The whole instance is available as $form. -->
+<div align='center'>
+<FORM name="form" id="jsref" method="post" action="<?php echo $submitformto ?>">
+<TABLE cellpadding=5>
+<?php 
+$last_page=false;
+$flash_form_sess =& $_SESSION['flashFormSess'][$form->instance];
+if (!is_array($flash_form_sess))
+{
+    $flash_form_sess= array();
+}
+
+//default values
+
+if (empty($form->feedback))
+{
+    $form->feedback="You answered '%answer%' in %time% seconds";
+}
+if (empty($form->config['intro']))
+{
+    $form->config['intro']=("<font size=\'32\'><p align=\'center\'>You can use some html tags here such as <b>bold</b> or <i>italics</i> or <u>underline</u>.</p></font>");
+}
+if (($form->to_config) < 2)
+{
+?>
+<tr>
+    <td align=center colspan="2"><P><B>Introduction :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+        <TEXTAREA name="config[intro]" cols="30" rows="5" ><?php  p($form->config['intro']) ?></TEXTAREA> 
+		<?php helpbutton("htmltags", get_string('supported_tags', "flash"), "flash");?>
+
+    </TD>
+    </td>
+</tr>
+<tr>
+    <td align=right><P><B>Allow Retry of Questions :</B></P></TD>
+    <td>
+    <?php
+        $options = array("1"=>"Yes", "0"=>"No");
+        choose_from_menu($options, "config[allowretry]", $form->config[allowretry]);
+    ?>
+    </td>
+</tr>
+
+</TABLE>
+<INPUT type="hidden" name=to_config value="2">
+
+<!-- These hidden variables are always the same -->
+<INPUT type="hidden" name=course        value="<?php  p($form->course) ?>">
+<INPUT type="hidden" name=coursemodule  value="<?php  p($form->coursemodule) ?>">
+<INPUT type="hidden" name=section       value="<?php  p($form->section) ?>">
+<INPUT type="hidden" name=module        value="<?php  p($form->module) ?>">
+<INPUT type="hidden" name=modulename    value="<?php  p($form->modulename) ?>">
+<INPUT type="hidden" name=instance      value="<?php  p($form->instance) ?>">
+<INPUT type="hidden" name=mode          value="<?php  p($form->mode) ?>">
+<INPUT type="hidden" name=sesskey       value="<?php  p($USER->sesskey)?>" >
+<INPUT type="submit" value="<?php print_string("nextpage", "flash"); ?>">
+</FORM>
+<?php
+$flash_form_sess['next_q']=0;
+}
+elseif (($form->to_config) == 2)
+{
+    $iter=$flash_form_sess['next_q'];
+?>
+<TR valign=top>
+    <TD align=center colspan="2"><h2><B><?php  echo 'Question '.($iter+1) ?>:</B></h2></TD>
+</TR>
+
+<tr>
+    <td align=right><P><B>Question Type :</B></P></TD>
+    <td>
+    <?php
+        $options = array("Text Ordering"=>"", "Text Selection"=>"");
+        choose_from_menu($options, "sess[next_q_type]", $form->config[$iter]['q_type'], '');
+    ?>
+    </td>
+</tr>
+
+<!-- More rows go in here... -->
+</TABLE>
+<INPUT type="hidden" name=to_config     value="3">
+
+<!-- These hidden variables are always the same -->
+<INPUT type="hidden" name=course        value="<?php  p($form->course) ?>">
+<INPUT type="hidden" name=coursemodule  value="<?php  p($form->coursemodule) ?>">
+<INPUT type="hidden" name=section       value="<?php  p($form->section) ?>">
+<INPUT type="hidden" name=module        value="<?php  p($form->module) ?>">
+<INPUT type="hidden" name=modulename    value="<?php  p($form->modulename) ?>">
+<INPUT type="hidden" name=instance      value="<?php  p($form->instance) ?>">
+<INPUT type="hidden" name=mode          value="<?php  p($form->mode) ?>">
+<INPUT type="hidden" name=sesskey       value="<?php  p($USER->sesskey)?>" >
+<INPUT type="submit" value="<?php print_string("nextpage", "flash"); ?>">
+</FORM>
+<?php
+}else
+{
+    if ($flash_form_sess['next_q_type']=='Text Ordering')
+    {
+        require('text_order.html');
+    } else
+    {
+        require('text_selection.html');
+    }
+    ?>
+    
+    <!-- These hidden variables are always the same -->
+    <INPUT type="hidden" name=course        value="<?php  p($form->course) ?>">
+    <INPUT type="hidden" name=coursemodule  value="<?php  p($form->coursemodule) ?>">
+    <INPUT type="hidden" name=section       value="<?php  p($form->section) ?>">
+    <INPUT type="hidden" name=module        value="<?php  p($form->module) ?>">
+    <INPUT type="hidden" name=modulename    value="<?php  p($form->modulename) ?>">
+    <INPUT type="hidden" name=instance      value="<?php  p($form->instance) ?>">
+    <INPUT type="hidden" name=mode          value="<?php  p($form->mode) ?>">
+    <INPUT type="hidden" name=sesskey       value="<?php  p($USER->sesskey)?>" >
+
+    </FORM>
+    <?php
+} // end of if blocks
+?>
+</div>
+

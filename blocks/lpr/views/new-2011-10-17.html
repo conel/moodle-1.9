@@ -1,0 +1,273 @@
+<div class="block_lpr">
+    <form action="<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/create.php" method="post" id="ilp_form">
+        <table>
+            <tr>
+                <th colspan="5">
+                    <?php echo (!empty($category->name) ? $category->name.'<br/>' : '').$course->fullname; ?>
+                </th>
+            </tr>
+            <tr>
+                <td class="quater">
+                    <?php echo get_string('learner', 'block_lpr').': '; ?>
+                </td>
+                <td class="quater">
+                    <?php
+                    if(!empty($learner)) { ?>
+                        <a href="<?php echo $CFG->wwwroot;?>/user/view.php?id=<?php echo $learner->id; ?>&amp;course=<?php echo $course->id; ?>">
+                            <?php echo fullname($learner); ?>
+                        </a>
+                        <?php
+                    } ?>
+                </td>
+               <td class="quater <?php echo ($can_write && $editable) ? 'required' : ''; ?>">
+                    <?php echo get_string('lecturer', 'block_lpr').': '; ?>
+                    <?php if($can_write && $editable) { ?>
+                        <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
+                   <?php } ?>
+                </td>
+                <td class="quater" colspan="2">
+                    <?php
+                    if($can_write && $editable) {
+                        echo choose_from_menu($lecturers, 'lecturer_id', $lpr->lecturer_id, '&nbsp;');
+                        if (in_array('lecturer_id', $errors)) {
+                            echo '<div class="required">You must select a value.</div>';
+                        }
+                    } else {
+                        if(!empty($lecturer)) { ?>
+                            <a href="<?php echo $CFG->wwwroot;?>/user/view.php?id=<?php echo $lecturer->id; ?>&amp;course=<?php echo $course->id; ?>">
+                                <?php echo fullname($lecturer); ?>
+                            </a>
+                            <?php
+                        }
+                    } ?>
+                </td>
+            </tr>
+			<tr>
+				<td class="quater <?php echo ($can_write && $editable) ? 'required' : ''; ?>">
+					<?php echo get_string('term', 'block_lpr').': '; ?>
+					<?php if($can_write && $editable) { ?>
+                        <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
+                   <?php } ?>
+				</td>
+				<td class="quater" colspan="2">
+				<?php
+					if($can_write && $editable) {
+                        echo choose_from_menu($terms, 'term_id', $current_term, '&nbsp;');
+                        if(in_array('term_id', $errors)) {
+                            echo '<div class="required">You must select a value.</div>';
+                        }
+                    } else {
+                        echo (!empty($lpr_term)) ?  $lpr_term->term_name : 'undefined';
+                    }
+				?>
+				</td>
+			</tr>
+            <tr>
+                <td>
+                    <?php //echo get_string('assessmentgroup', 'block_lpr'); ?>
+					Reporting on unit/course:
+                </td>
+                <td colspan="4">
+                    <?php echo (!empty($category) ? $category->name . ' / ' : '').$course->fullname; ?>
+                </td>
+            </tr>
+			<tr>
+				<!--<td>Assessment Description:</td>-->
+				<td>Other units/courses reporting on:</td>
+				<td colspan="4">
+					<?php
+					if($can_write && $editable) {
+						print_textarea(true, 5, 80, 0, 0, 'unit_desc', $lpr->unit_desc);
+					} else {
+						echo !empty($lpr->unit_desc) ? $lpr->unit_desc : 'None.';
+					} ?>
+				</td>
+			</tr>
+			<tr>
+				<td <?php if ($can_write && $editable) { echo 'class="required"'; } ?>>Modules:
+				<?php if($can_write && $editable) { ?>
+                        <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
+                   <?php } ?></td>
+				<td <?php if ($can_write && $editable) { echo 'class="required"'; } ?>>Description:</td>				
+				<td <?php if ($can_write && $editable) { echo 'class="required"'; } ?>>Attendence:</td>
+				<td colspan="2" <?php if ($can_write && $editable) { echo 'class="required"'; } ?>> Punctuality:</td>
+			</tr>			
+			<?php
+			if(!empty($modules)) {
+				$total_avg = 0;
+				$total_punc = 0;
+				foreach ($modules as $module) { ?>
+					<tr>
+						<td>
+							<?php echo $module->MODULE_CODE; ?>
+						</td>
+						<td>
+							<?php echo $module->MODULE_DESC; ?>
+						</td>
+						<td>
+							<?php 
+							$avg=($module->MARKS_PRESENT/$module->MARKS_TOTAL)*100;
+							echo round($avg,2)."% (".map_attendance($avg).")"; 
+							$total_avg += $avg;
+							?>
+						</td>					
+						<td>
+							<?php 
+							$avg2=($module->PUNCT_POSITIVE/$module->MARKS_PRESENT)*100;
+							echo round($avg2,2)."% (".map_attendance($avg2).")"; 
+							$total_punc += $avg2;
+							?>
+						</td>	
+						<td>
+							<?php
+							if($editable){?>
+								<input type="hidden" value="0" name="modules[<?php echo $module->MODULE_CODE; ?>]" /> 
+								<input type="checkbox" value="1" name="modules[<?php echo $module->MODULE_CODE; ?>]" <?php echo ($module->selected == 1) ? 'checked="checked"' : null; ?> />
+								<?php
+							} ?>
+						</td>
+					</tr>
+				<?php
+				}
+			} else { ?>
+				<tr>
+					<td colspan="5"> 
+						<?php echo ($editable) ? "None available" : "None selected";  // TODO replace with token in lang file ?>
+					</td>
+				</tr>
+				<?php 
+			} ?>
+			<tr>
+                <td colspan="2" class="half">
+                    <?php echo "Average"; /*get_string('attendance', 'block_lpr');*/ ?>
+                </td>
+                <td>
+                    <?php
+                    if(!empty($total_avg)) {
+						// get total_avg 
+						$total_avg_avg = $total_avg / count($modules);
+                        //echo round($atten->attendance, 2).'% ('.map_attendance($atten->attendance).')';
+                        echo round($total_avg_avg, 2).'% ('.map_attendance($total_avg_avg).')';
+                    } ?>
+                </td>
+                <td colspan="2">
+                    <?php
+                    if(!empty($total_punc)) {
+						$total_punc_punc =  $total_punc / count($modules);
+                        echo round($total_punc_punc, 2).'% ('.map_attendance($total_punc_punc).')';
+                    } ?>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="5">
+					Subject / Unit Progress
+                    <?php //echo get_string('comments', 'block_lpr'); ?>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <?php
+                    if($can_write && $editable) {
+						// nkowald - 2011-02-01 - Default should now be an HTML table
+						if ($lpr->comments == '') {
+
+							$lpr->comments = "<table width=\"100%\"><tr><td width=\"140\">Smart Targets:</td><td>&nbsp;</td></tr><tr><td>Comments:</td><td>&nbsp;</td></tr></table>";
+							
+/*
+$lpr->comments = "Smart Targets: 
+smart targets here.
+
+Comments: 
+comments here.";
+*/
+						}
+                        print_textarea(true, 20, 80, 0, 0, 'comments', $lpr->comments);
+                        use_html_editor('comments');
+                    } else {
+                        echo !empty($lpr->comments) ? $lpr->comments : 'None.';
+                    } ?>
+					<br />
+					<div id="charlimitinfo"></div>
+                </td>
+            </tr>
+        </table>
+        <?php
+        if($can_write) { ?>
+            <div class="buttons">
+				<input type="hidden" name="course_id" value="<?php echo $course_id; ?>" />
+				<input type="hidden" name="learner_id" value="<?php echo $learner_id; ?>" />
+				<input type="hidden" name="ilp" value="<?php echo $ilp; ?>" />
+                <?php
+                if($editable) { ?>
+                    <input type="submit" name="name" value="Save"/>
+                    <input type="button" onclick="javascript:window.location = '<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/view.php?id=<?php echo $lpr->id; ?>&amp;ilp=<?php echo $ilp; ?>'" name="cancel" value="Cancel"/>
+                    <?php
+                } else { ?>
+                    <input type="button" onclick="javascript:window.location = '<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/edit.php?id=<?php echo $lpr->id; ?>&amp;ilp=<?php echo $ilp; ?>'" name="edit" value="Edit" />
+                    <?php
+                } ?>
+            </div>
+            <?php
+        } ?>
+    </form>
+</div>
+<!-- nkowald - 2011-02-01 - Limit characters on comments textarea -->
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function() {
+
+	function limitChars(textid, limit, infodiv) {
+		var text = jQuery('#'+textid).val(); 
+		var textlength = text.length;
+		if(textlength > limit) {
+			jQuery('#' + infodiv).html('You cannot write more then '+limit+' characters!');
+			jQuery('#'+textid).val(text.substr(0,limit));
+			return false;
+		} else {
+			jQuery('#' + infodiv).html('You have '+ (limit - textlength) +' characters left.');
+			return true;
+		}
+	}
+
+	// jQuery form checking
+	jQuery("#ilp_form").submit(function(e) {
+	
+		var lecturer = jQuery("#menulecturer_id").val();
+		if (lecturer == 0) {
+			alert('Lecturer is a required field');
+			jQuery("#menulecturer_id").focus();
+			return false;
+		}
+		
+		if (term == 0) {
+		var term = jQuery("#menuterm_id").val();
+			alert('Term is a required field');
+			jQuery("#menuterm_id").focus();
+			return false;
+		}
+		if (jQuery("#ilp_form input[type=checkbox]:checked").length < 1) {
+			alert("Module is a required field.\nPlease select a module to report on.");
+			return false;
+		}
+		
+	});
+	
+	jQuery(function(){
+		jQuery('#edit-comments').keyup(function(){
+			limitChars('edit-comments', 700, 'charlimitinfo');
+		})
+	});
+
+});
+//]]>
+</script>
+<?php
+if($can_write && $editable) { ?>
+    <div class="mform">
+        <div class="fdescription required">
+            There are required fields in this form marked
+            <img src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field"/>
+        </div>
+    </div>
+    <?php
+} ?>

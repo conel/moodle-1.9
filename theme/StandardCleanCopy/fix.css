@@ -1,0 +1,76 @@
+/******************************************************/
+/****** START of New Search/Phonebook styles ***********************/
+/******************************************************/
+.system_topsearcharea2
+{
+	font-size: 80%;
+	height: 24px;
+	margin: 0px;
+	padding: 1px 0px 0px 0px;
+	text-decoration: none;
+	color: #000;
+	margin:5;
+	margin-top:0;
+	margin-left:10;
+	margin-right:5;
+	/*width:980;*/
+	width:99%;
+}
+
+.system_topsearcharea2 td
+{
+	height:26px;
+}
+
+.system_topsearchtitle2
+{
+	margin: 0px;
+	padding: 0px;
+	font-size: 140%;
+}
+
+.system_topsearchform2
+{
+	font-size: 80%;
+	margin: 0px;
+	padding: 1px 0px 0px 0px;
+}
+	
+#system_formsubmit2 
+{
+	border: 0px;
+	margin: 1px 0px 1px 3px;
+	padding: 1px 1px 0px 1px;
+	position:relative; 
+	top:6;
+}
+	
+#system_formsubmit22 
+{
+	border: 0px;
+	margin: 1px 0px 1px 3px;
+	padding: 1px 1px 0px 1px;
+	position:relative; 
+	top:6;
+}
+	
+.super_highlight2 
+{
+	font-weight: bold;
+	color: #f30;
+}
+
+.system_phonebook_cell
+{
+	text-align:right;
+}
+
+/******************************************************/
+/****** END of New Search/Phonebook styles ***********************/
+/******************************************************/
+
+.system_bar_logo
+{
+	background-image: url('site_elements/images/bar_bg.jpg');
+		background-repeat: repeat-x;
+}

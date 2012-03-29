@@ -1,0 +1,10 @@
+Features
+1. add the ability to remove worksheet from the assignment
+2. add the threshold to show similar documents
+3. reset the tables if the grammar size was changed
+
+Program bugs
+1. Update processed assignment list only if the processing was successful
+2. improve coloring of similaritites on pair-wise comparison
+
+

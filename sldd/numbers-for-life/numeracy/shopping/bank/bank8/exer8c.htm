@@ -1,0 +1,287 @@
+
+<HTML> 
+  <HEAD><META NAME="Author"
+	 CONTENT="Created with Hot Potatoes by Half-Baked Software, registered to Laura Woodside-Jones.">
+	 
+	 <TITLE>Exercise 8C</TITLE> <SCRIPT LANGUAGE="JavaScript">
+
+
+
+CorrectAnswers = new Array();
+
+CorrectAnswers[0]=10;
+CorrectAnswers[1]=6;
+CorrectAnswers[2]=2;
+CorrectAnswers[3]=4;
+CorrectAnswers[4]=1;
+CorrectAnswers[5]=9;
+CorrectAnswers[6]=7;
+CorrectAnswers[7]=3;
+CorrectAnswers[8]=5;
+CorrectAnswers[9]=8;
+
+
+macrightchar='OK';
+macwrongchar='X';
+winrightchar='OK';
+winwrongchar='X';
+
+
+var platform = 'win'
+if (navigator.appVersion.indexOf('Mac') != -1) {platform = 'mac'}
+if (platform == 'mac') {
+	rightchar = unescape(macrightchar)
+	wrongchar = unescape(macwrongchar)
+}
+else {
+	rightchar = unescape(winrightchar)
+	wrongchar = unescape(winwrongchar)
+}
+
+function CheckAnswer(){
+
+	var i = 0;
+	var TotalCorrect = 0;
+	var x = 0;
+	var Score = 0;
+
+	for (i=0; i<CorrectAnswers.length; i++){
+		if (document.QuizForm.elements[i*2].selectedIndex == CorrectAnswers[i]){
+			document.QuizForm.elements[(i*2)+1].value = rightchar;
+			TotalCorrect++;
+		}
+		else{
+			document.QuizForm.elements[(i*2)+1].value = wrongchar;
+		}
+	}
+	Score = Math.floor((TotalCorrect*100)/CorrectAnswers.length);
+	document.CheckForm.ScoreBox.value = Score + '%';
+}
+
+</SCRIPT> 
+  </HEAD> 
+  <BODY BGCOLOR="#FFFFFF" TEXT="#000000"
+	BACKGROUND="../../../intro/images/backgrd1.gif"
+					
+	ONLOAD="MM_initInteractions();MM_preloadImages('../travel/images/planeb.gif','../images/homeb.gif','../images/indexb.gif','../leisure/images/batb.gif','../garden/images/treeb.gif','../images/backb.gif','../images/nextb.gif')">
+	 <CENTER> 
+		<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="1" WIDTH="85%"> 
+		  <TR> 
+			 <TD ALIGN="CENTER"><FONT SIZE="+1" FACE="Geneva,Arial"
+				COLOR="#000033">Exercise 8C</FONT></TD> 
+		  </TR> 
+		  <TR> 
+			 <TD ALIGN="CENTER"><FONT SIZE="-1" FACE="Geneva,Arial"
+				COLOR="#000033">Matching exercise<BR>&nbsp;</FONT></TD> 
+		  </TR> 
+		  <TR> 
+			 <TD ALIGN="LEFT"><FONT SIZE="-1" FACE="Arial" COLOR="#000033">Match
+				the items on the right with the items on the left.</FONT><BR>&nbsp;</TD> 
+		  </TR> 
+		  <TR> 
+			 <TD ALIGN="CENTER" BGCOLOR="#FFFFFF"> 
+				<FORM NAME="QuizForm"> 
+				  <CENTER> 
+					 <TABLE BORDER="0" CELLPADDING="5" CELLSPACING="1"> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">1.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="0"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="1" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">2.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="2"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="3" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">3.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="4"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="5" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">4.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="6"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="7" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">5.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="8"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="9" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">6.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="10"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="11" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">7.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="12"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="13" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">8.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="14"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="15" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">9.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="16"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="17" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+						<TR> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial">10.</FONT></TD> 
+						  <TD VALIGN="TOP"><FONT FACE="Geneva,Arial"> 
+							 <SELECT NAME="18"> 
+								<OPTION> </OPTION> 
+								<OPTION>seventy pounds </OPTION> 
+								<OPTION>thirty pounds </OPTION> 
+								<OPTION>one hundred and ten pounds </OPTION> 
+								<OPTION>fifty-five pounds </OPTION> 
+								<OPTION>two hundred pounds </OPTION> 
+								<OPTION>twenty-five pounds </OPTION> 
+								<OPTION>one hundred pounds </OPTION> 
+								<OPTION>three hundred and fifty pounds </OPTION> 
+								<OPTION>seventy-five pounds </OPTION> 
+								<OPTION>ten pounds </OPTION> 
+							 </SELECT></FONT></TD> 
+						  <TD VALIGN="TOP">
+							 <INPUT TYPE="TEXT" NAME="19" SIZE="3" MAXLENGTH="3"> </TD> 
+						</TR> 
+					 </TABLE> </CENTER> </FORM> </TD> 
+		  </TR> 
+		  <TR> 
+			 <TD BGCOLOR="#FFFFFF" ALIGN="CENTER"> 
+				<FORM NAME="CheckForm"> 
+				  <P><FONT FACE="Geneva,Arial"><INPUT TYPE="button" VALUE="Check"
+					 ONCLICK="CheckAnswer()"> Your score is
+					 <INPUT TYPE="TEXT" NAME="ScoreBox" SIZE="4"
+					  MAXLENGTH="4"></FONT></P></FORM></TD> 
+		  </TR> 
+		</TABLE> </CENTER> </BODY>
+</HTML>

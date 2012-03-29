@@ -1,0 +1,79 @@
+ul#get_help {
+    list-style-type:none;
+    width:483px;
+    height:450px;
+    margin:0 auto;
+    padding-left:12px;
+}
+ul#get_help li {
+    display:block;
+    float:left;
+    margin-bottom:10px;
+}
+ul#get_help li a {
+    display:block;
+    text-align:center;
+    line-height:1.25em;
+    font-size:0.95em;
+}
+li.gh1 a, li.gh2 a, li.gh3 a, li.gh4 a {
+    padding-top:108px;
+    height:35px;
+    margin-bottom:6px;
+}
+li.gh1 a {
+    width:122px;
+    background:transparent url(button-1-anti-bullying.png) no-repeat top center;
+}
+li.gh2 a {
+    width:116px;
+    background:transparent url(button-2-careers.png) no-repeat top center;
+}
+li.gh3 a {
+    width:123px;
+    background:transparent url(button-3-elearning-support.png) no-repeat top center;
+}
+li.gh4 a {
+    width:115px;
+    background:transparent url(button-4-esafety.png) no-repeat top center;
+}
+li.gh5 a, li.gh6 a, li.gh7 a, li.gh8 a {
+    padding-top:101px;
+    height:40px;
+}
+li.gh5 a {
+    width:122px;
+    background:transparent url(button-5-learner-guidance-policies.png) no-repeat top center;
+}
+li.gh6 a {
+    width:116px;
+    background:transparent url(button-6-learner-support.png) no-repeat top center;
+}
+li.gh7 a {
+    width:123px;
+    background:transparent url(button-7-mentoring.png) no-repeat top center;
+}
+li.gh8 a {
+    width:115px;
+    background:transparent url(button-8-recruit-direct.png) no-repeat top center;
+}
+li.gh9 a, li.gh10 a, li.gh11 a, li.gh12 a {
+    padding-top:95px;
+    height:40px;
+}
+li.gh9 a {
+    width:122px;
+    background:transparent url(button-9-safeguarding.png) no-repeat top center;
+}
+li.gh10 a {
+    width:116px;
+    background:transparent url(button-10-student-help-reporting.png) no-repeat top center;
+}
+li.gh11 a {
+    width:123px;
+    background:transparent url(button-11-student-success.png) no-repeat top center;
+}
+li.gh12 a {
+    width:115px;
+    background:transparent url(button-12-welfare.png) no-repeat top center;
+}

@@ -1,0 +1,41 @@
+2009-09-25 Friday 08:19  leothiessen
+
+	* config_global.html, lang/en_utf8/block_mrcutejr.php: 
+	
+	CONTRIB-1532 - ***ADDS EXPERIMENTAL AJAX SEARCH IN "NAME" FIELD
+	WHEN CREATING A RESOURCE***
+
+2009-08-12 Wednesday 02:57  leothiessen
+
+	* block_mrcutejr.php, config_global.html,
+	lang/en_utf8/block_mrcutejr.php: 
+	
+	CONTRIB-1474 - added basic import tool that parses files in the
+	mrcutejr repository folder and provides guesses for db values, then
+	spits out an xls file which can be tweaked, converted to csv then
+	reimported to very rapidly import a whole lot of files efficiently
+
+2009-08-07 Friday 06:25  leothiessen
+
+	* block_mrcutejr.php, config_global.html, db/install.xml,
+	lang/en_utf8/block_mrcutejr.php: 
+	
+	CONTRIB-1470 - Almost all files changed; update is primarily to
+	make repository files be stored outside of site files & access to a
+	resource only possible (to a student) if they have access to the
+	course that the resource is made available in.	Other tweaks
+	include: search improved (included realreference field), can
+	include nested sub-directories, any editingteacher can now edit the
+	repository (rather than username base as before), admin settings
+	reduced to 1 optional setting, added * to required form fields,
+	fixed a non-functioning "continue" button on a particular error
+	screen.  See http://tracker.moodle.org/browse/CONTRIB-1470
+
+2009-07-29 Wednesday 09:45  arborrow
+
+	* block_mrcutejr.php, config_global.html, db/install.xml,
+	lang/en_utf8/block_mrcutejr.php: 
+	
+	CONTRIB-1439 - adding MrCuteJr package contributed and maintained
+	by Leo Thiessen
+

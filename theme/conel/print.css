@@ -1,0 +1,16 @@
+div.yui-u table {
+	width:98% !important;
+	border:1px solid #CCCCCC;
+}
+div.ilp_post {
+	display:block;
+	clear:both;
+	margin:20px 0;
+}
+div.block_ilp_ilptarget {
+	display:table;
+	width:100%;
+}
+div.navigation, div.validators {
+	display:none;
+}

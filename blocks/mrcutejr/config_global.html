@@ -1,0 +1,93 @@
+<?php
+/*
+ **************************************************************************
+ *                                                                        *
+ *                                                                        *
+ *                            THIS SCRIPT                                 *
+ *                                and                                     *
+ *                         www.bydistance.com                             *
+ *                 brought to you by Visions Encoded Inc.                 *
+ *                                                                        *
+ *                                                                        *
+ *                                                                        *
+ *             Visit us online at http://visionsencoded.com/              *
+ *                You Bring The Vision, We Make It Happen                 *
+ **************************************************************************
+ **************************************************************************
+ * NOTICE OF COPYRIGHT                                                    *
+ *                                                                        *
+ * Copyright (C) 2009                                                     *
+ *                                                                        *
+ * This program is free software; you can redistribute it and/or modify   *
+ * it under the terms of the GNU General Public License as published by   *
+ * the Free Software Foundation; either version 2 of the License, or      *
+ * (at your option) any later version.                                    *
+ *                                                                        *
+ * This program is distributed in the hope that it will be useful,        *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of         *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the          *
+ * GNU General Public License for more details:                           *
+ *                                                                        *
+ *                  http://www.gnu.org/copyleft/gpl.html                  *
+ *                                                                        *
+ *                                                                        *
+ *                                                                        *
+ **************************************************************************
+ */
+ 
+/*
+ * This is the form used to define the settings under Site Administration->Modules->Blocks->MrCUTE Jr. Repository
+ */
+
+//repository directory
+$defaultdir = $CFG->dataroot.'/mrcutejr';
+$repodir = !empty($CFG->block_mrcutejr_repository) ? $CFG->block_mrcutejr_repository : $defaultdir;
+$ajaxyes = "";
+$ajaxno = ' checked="checked"';
+if(!empty($CFG->block_mrcutejr_enable_ajax_search) && $CFG->block_mrcutejr_enable_ajax_search==1) {
+    $ajaxyes = ' checked="checked"';
+    $ajaxno = "";
+}
+
+?>
+<div id="block_mrcutejr">
+    <fieldset class="block_mrcutejr">
+        <legend>
+            <?php print_string('configlegend', 'block_mrcutejr'); ?>
+        </legend>
+        <br />
+        <label>
+            <?php print_string('repository', 'block_mrcutejr', '<span class="monospace">'."$defaultdir</span>"); ?>
+            <br />
+            <input size="60" type="text" name="block_mrcutejr_repository" value="<?php echo $repodir ?>" />
+        </label>
+        <br />
+        <label>
+            <?php print_string('enableajaxsearch', 'block_mrcutejr'); ?>
+            <input type="radio" name="block_mrcutejr_enable_ajax_search" value="1"<?php echo $ajaxyes; ?> />
+            <?php print_string('enabled', 'block_mrcutejr'); ?>
+            <input type="radio" name="block_mrcutejr_enable_ajax_search" value="0"<?php echo $ajaxno; ?> />
+            <?php print_string('disabled', 'block_mrcutejr'); ?>
+        </label>
+        <br />
+        <br />
+        <input type="submit" value="<?php print_string('savechanges'); ?>" /> 
+    </fieldset>
+    &nbsp;
+    <div id="mrcutejr_block_adminonly">
+        <h3><?php print_string('admintools', 'block_mrcutejr'); ?></h3>
+        <ul>
+            <li>
+                <a href="<?php echo $CFG->wwwroot.'/mod/resource/type/mrcutejr/import.php'; ?>" target="_blank">
+                    <?php print_string('importtoolname', 'block_mrcutejr'); ?>
+                </a> - <?php print_string('importtooldescription', 'block_mrcutejr'); ?>
+            </li>
+        </ul>
+    </div>
+    <div id="mrcutejr_block_tips">
+        <p>
+            <?php print_string('developedat','block_mrcutejr');?>
+            <a href="http://bydistance.com" target="_blank">bydistance.com</a>.
+        </p>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+
+<HTML> 
+  <HEAD> 
+	 <TITLE>Mall: Arriving late</TITLE>
+	  
+<script language="JavaScript">
+<!--
+function MM_controlSound(x, _sndObj, sndFile) { //v3.0
+  var i, method = "", sndObj = eval(_sndObj);
+  if (sndObj != null) {
+    if (navigator.appName == 'Netscape') method = "play";
+    else {
+      if (window.MM_WMP == null) {
+        window.MM_WMP = false;
+        for(i in sndObj) if (i == "ActiveMovie") {
+          window.MM_WMP = true; break;
+      } }
+      if (window.MM_WMP) method = "play";
+      else if (sndObj.FileName) method = "run";
+  } }
+  if (method) eval(_sndObj+"."+method+"()");
+  else window.location = sndFile;
+}
+//-->
+</script>
+<link rel="stylesheet" href="sound.css" type="text/css">
+</head> 
+   <BODY onBlur="javascript:window.close()" BACKGROUND="../../../intro/images/backgrd1.gif">
+<P> <font face="Arial, Helvetica, sans-serif" size="4" color="#0000FF"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1021015350800','audio/info4.mp3')" class="sound"> 
+  </font><font face="Arial, Helvetica, sans-serif">Quarter of an hour is 15 minutes.</font></P>
+<P><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="388" height="332">
+    <param name=movie value="images/clock.swf">
+    <param name=quality value=high>
+    <embed src="images/clock.swf" quality=high pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="388" height="332">
+    </embed> 
+  </object></P>
+<P><A HREF="javascript:window.close()"><IMG NAME="Image1" BORDER="0"
+		SRC="images/close.gif" WIDTH="48" HEIGHT="15" alt="close"></A> </P>
+<EMBED NAME='CS1021015350800' SRC='audio/info4.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

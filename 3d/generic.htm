@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+<TITLE>Generic</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<script type="text/javascript">
+	<!--
+
+	function setupFunction(aCommand){
+		//Uncomment the line below to see the string that was built in Lingo get passed into this function.
+			//eval( aCommand );
+	    	var tCommand = "executeCommand('" + aCommand + "')";
+	    	//Set a delay to avoid synchronous problems on some systems.
+		window.setTimeout( tCommand, 100);
+	}
+   	function executeCommand(aCommand){
+		//alert( aCommand );
+    	var result = eval(aCommand);
+	  	//window.document.pluginexample.EvalScript( result );
+   	}
+	function FinalCommit(){
+		persistData();
+	    //Set a delay to avoid synchronous problems on some systems.
+		terminateCommunication();
+	}
+
+   	//-->
+	</script>
+
+	<!-- VBSCRIPT                                                                                   -->
+	<!-- From Shockwave, externalEvent first gets passed to the Internet Explorer ActiveX control.  -->
+	<!-- The Javascript command which was sent from the Shockwave will first go to the ActiveX      -->
+	<!-- VBscript code where we will simply redirect it along to JavaScript here.		            -->
+
+	<script type="text/vbscript">
+		sub Generic_ExternalEvent(byVal aCommand)
+			//Uncomment the line below to see the string that was built in Lingo get passed into this function
+
+			//msgBox(aCommand)
+
+			//Pass this string along to Javascript.
+ 			call setupFunction(aCommand)
+		end sub
+    </script>
+
+</HEAD>
+<BODY bgColor="#FFFFFF">
+
+<script type="text/javascript">
+<!--
+
+var tMajorVersion = 10;
+var tMinorVersion = 0;
+var tShockwaveFound = 0;
+
+if (navigator.mimeTypes && navigator.mimeTypes["application/x-director"] && navigator.mimeTypes["application/x-director"].enabledPlugin) {
+
+	if (navigator.plugins && navigator.plugins["Shockwave for Director"] && (tVersionIndex = navigator.plugins["Shockwave for Director"].description.indexOf(".")) != - 1) {
+		var tMajorVersionString = navigator.plugins["Shockwave for Director"].description.substring(tVersionIndex-2, tVersionIndex);
+		var tMinorVersionString = navigator.plugins["Shockwave for Director"].description.substring(tVersionIndex+1, tVersionIndex+2);
+		if (parseInt(tMajorVersionString) >= tMajorVersion) {
+			if (tMinorVersion > 0) {
+				if (parseInt(tMinorVersionString) >= tMinorVersion) {
+					tShockwaveFound = 1;
+				}
+			} else {
+				tShockwaveFound = 1;
+			}
+		}
+	}
+
+} else if (navigator.userAgent && navigator.userAgent.indexOf("MSIE")>=0 && (navigator.userAgent.indexOf("Windows 95")>=0 || navigator.userAgent.indexOf("Windows 98")>=0 || navigator.userAgent.indexOf("Windows NT")>=0 )) {
+
+	var tVersionString = "";
+	document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+	document.write('on error resume next \n');
+	document.write('set tSWControl = CreateObject("SWCtl.SWCtl") \n');
+	document.write('if IsObject(tSWControl) then \n');
+	document.write('tVersionString = tSWControl.ShockwaveVersion("") \n');
+	document.write('end if');
+	document.write('</SCRIPT\> \n');
+	if (tVersionString != "") {
+		tVersionIndex = tVersionString.indexOf(".")
+		var tMajorVersionString = tVersionString.substring(tVersionIndex-2, tVersionIndex);
+		var tMinorVersionString = tVersionString.substring(tVersionIndex+1, tVersionIndex+2);
+		if (parseInt(tMajorVersionString) >= tMajorVersion) {
+			if (tMinorVersion > 0) {
+				if (parseInt(tMinorVersionString) >= tMinorVersion) {
+					tShockwaveFound = 1;
+				}
+			} else {
+				tShockwaveFound = 1;
+			}
+		}
+	}
+
+}
+
+var cookieData = "";
+if(document.cookie.length > 0)
+{
+	cookieData = unescape(document.cookie);
+}
+else
+{
+	cookieData = "";
+}
+
+if ( tShockwaveFound ) {
+	var szParamStr = "";
+	document.write('<object classid="clsid:233C1507-6A77-46A4-9443-F871F945D258"');
+	document.write(' codebase="https://download.macromedia.com/pub/shockwave/cabs/director/sw.cab#version=11,5,0,593"');
+	document.write(' ID=Generic name=Generic WIDTH=1024 HEIGHT=768 VIEWASTEXT>');
+	document.write('<PARAM NAME=src VALUE="https://clg.conel.ac.uk/VLE/3d/generic.dcr">');
+	document.write('<PARAM NAME=swText VALUE="IE">');
+	document.write('<PARAM NAME=sw1 VALUE="' + szParamStr + '">');
+	document.write('<PARAM NAME=swStretchStyle VALUE=fill>');
+	document.write('<param name=PlayerVersion value=11>');
+	document.write('<PARAM NAME=bgColor VALUE=#FFFFFF>');
+	document.write('<PARAM NAME=swRemote VALUE="');
+	document.write("swSaveEnabled='true' swVolume='true' swRestart='true' swPausePlay='true' swFastForward='true' swContextMenu='true' ");
+	document.write('">\n');
+	document.write("<EMBED SRC='https://clg.conel.ac.uk/VLE/3d/generic.dcr' swText='Firefox' ");
+	document.write(' bgColor=#FFFFFF name=Generic sw1="' + szParamStr + '" sw2="' + cookieData + '" WIDTH=1024 HEIGHT=768 swStretchStyle=fill ');
+	document.write('swRemote="');
+	document.write("swSaveEnabled='true' swVolume='true' swRestart='true' swPausePlay='true' swFastForward='true' swContextMenu='true' ");
+	document.write('"');
+	document.write(' TYPE="application/x-director" PlayerVersion=11 pluginspage="https://www.macromedia.com/shockwave/download/">');
+	document.write('</EMBED>');
+	document.write('</OBJECT>');
+
+} else if (!(navigator.appName && navigator.appName.indexOf("Netscape")>=0 && navigator.appVersion.indexOf("2.")>=0)){
+	document.write('A newer version of Shockwave must be installed to display this content. Please update your Shockwave installation.');
+}
+//-->
+</script>
+<NOEMBED>A newer version of Shockwave must be installed to display this content. Please update your Shockwave installation.</NOEMBED>
+<NOSCRIPT>Browser scripting disabled, player detection cannot be performed.</NOSCRIPT>
+</body>
+</html>

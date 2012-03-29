@@ -1,0 +1,63 @@
+<p align="center"><strong>HTML-taggar som stödjs i Flash</strong></p>
+
+<p>Flash stödjer några enkla htm-taggar. Och några av dessa formaterar text på ett något annorlunda sätt än vanlig html.</p>
+<p>Taggarna här nedan är de som stödjs av Flash:</p>
+<blockquote>
+<pre>&lt;font size='32'&gt;&lt;p align='center'&gt; Du kan använda några <br />html-taggar här som till exempel <br />&lt;b&gt;fet&lt;/b&gt; <br />&lt;i&gt;kursiv&lt;/i&gt; <br /> &lt;u&gt;understrykning&lt;/u&gt;<br />&lt;/p&gt;&lt;/font&gt;</pre>
+</blockquote>
+<p>Det kommer då att se ut så här: </p>
+<p align='center'><div style="font-size:32px;">Du kan använda några html-taggar<br /> här som t.ex. <b>fet</b> eller <i>kursiv</i> eller <br /><u>understrykning</u>.
+</div>
+<p><strong>Glöm inte att inrama värden på attribut med apostrofer.</strong> </p>
+<p>Du kan ofta utelämna &quot; eller ' runt värden i vanlig html. 
+Det här fungerar till exempel i html:</p>
+<blockquote>
+    <pre>&lt;font size=32&gt;Hallå&lt;/font&gt; 
+&lt;-- fungerar inte i Flash --&gt;</pre>
+</blockquote>
+<p>Flash är inte så förlåtande så glöm inte apostroferna.</p>
+<p><strong>&lt;font&gt;-taggen. </strong></p>
+<p>I Flash så tolkas storleken på typsnittet i pixlar. Det stödjer attribut för färg som till exempel:</p>
+<blockquote>
+    <pre>&lt;font size=&quot;32&quot; color=&quot;#00FF00&quot;&gt;
+Den här texten är 32 pixlar hög och grön &lt;/font&gt; </pre>
+</blockquote>
+<p>och det skulle se ut så här:</p>
+<div style="font-size:32px; color:#00FF00">
+    <blockquote>
+        <p>Den här texten är 32 pixlar hög och grön</u>.</p>
+    </blockquote>
+</div>
+<p><strong>&lt;img&gt;-taggen.</strong> </p>
+<p>img-taggen stödjs för att ladda in inte-progressiva jpgs and .swf filer. Detta fungerar dock bara för den som använder Flash 7.0.</p>
+<p><strong>&lt;p&gt;-taggen.</strong> </p>
+<p>Du kan använda p-taggen 'p' för att justera text. De följande varianterna stödjs &lt;p align=&quot;left&quot;&gt;&lt;/p&gt;,&lt;p align=&quot;centre&quot;&gt;&lt;/p&gt; and &lt;p align=&quot;right&quot;&gt;&lt;/p&gt;. </p>
+<p><strong>Enheter i listor &lt;li&gt;&lt;/li&gt;-taggar.</strong></p>
+<p>Du kan använda &lt;li&gt;&lt;/li&gt; enligt exemplet nedan:</p>
+<p>Fördelar med Flash : </p>
+<blockquote>
+    <pre> &lt;li&gt;oberoende av typ av webbläsare &lt;/li&gt;
+ &lt;li&gt;kraftfull plattform för skript på klientsidan &lt;/li&gt;
+ &lt;li&gt;det är lätt att skapa multimediala  applikationer &lt;/li&gt;
+ &lt;li&gt;spelaren och Flash-filmerna är små filer &lt;/li&gt;</pre>
+</blockquote>
+<p>Det skulle se ut som nedan:</p>
+<p> <ul><li>oberoende av typ av webbläsare</li>
+    <li>kraftfull plattform för skript på klientsidan </li>
+    <li>det är lätt att skapa multimediala  applikationer </li>
+<li>spelaren och Flash-filmerna är små filer</li></ul>
+</p> 
+<p>&lt;ol&gt; (ordnad lista) och &lt;ul&gt; (inte-ordnad lista) taggar går inte att använda.</p>
+<p><strong>&lt;a&gt; Ankar-taggen.</strong></p>
+<p>Ankar-taggen kan Du använda för att åstadkomma en länk. Normalt sett så kommer den inte att ha färg eller vara understruken på det sätt som den skulle vara i vanlig html. Men Du kan själv ge ankare stil enligt nedan:</p>
+<blockquote>
+    <pre>&lt;a href=&quot;http://jamiep.org&quot;&gt;&lt;font color=&quot;#0000FF&quot;&gt;&lt;u&gt;Min webbplats!&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</pre>
+</blockquote>
+<p>Det skulle se ut som nedan:</p>
+<blockquote>
+    <p><a href="http://jamiep.org">Min webbplats!</a></p>
+</blockquote>
+<p>Tänk efter noga när Du använder ankare inom en aktivitet eftersom, om en användare väljer att klicka på ett ankare så kommer de att avbryta denna aktivitet mitt i. Du kan dock använda attributet 'target' för att öppna länken i ett nytt fönster på nedanstående sätt:</p>
+<blockquote>
+    <p>&lt;a href=&quot;http://jamiep.org&quot; target=&quot;_blank&quot; &gt;&lt;font color=&quot;#0000FF&quot;&gt;&lt;u&gt;Min webbplats!&lt;/u&gt;&lt;/font&gt;&lt;/a&gt; </p>
+</blockquote>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<hotpot-jmatch-file>
+<version>5</version>
+
+<data>
+<title>Reading the thermometer</title>
+
+<reading>
+<include-reading>0</include-reading>
+<include-timer>0</include-timer>
+<time-limit>1</time-limit>
+<internal-reading>1</internal-reading>
+<path-to-reading></path-to-reading>
+<reading-title></reading-title>
+<reading-text></reading-text>
+
+</reading>
+
+<matching-exercise>
+<default-right-item>???
+</default-right-item>
+
+<pair>
+<left-item><text>&lt;img src=&quot;images/16deg.gif&quot; alt=&quot;16deg.gif&quot; width=&quot;52&quot; height=&quot;87&quot; align=&quot;left&quot; border=&quot;0&quot;&gt;&lt;/img&gt;</text>
+<fixed>1</fixed>
+</left-item>
+<right-item><text>16&amp;deg</text>
+<fixed>0</fixed>
+</right-item></pair>
+
+<pair>
+<left-item><text>&lt;img src=&quot;images/17deg.gif&quot; alt=&quot;17deg.gif&quot; width=&quot;52&quot; height=&quot;87&quot; align=&quot;left&quot; border=&quot;0&quot;&gt;&lt;/img&gt;</text>
+<fixed>1</fixed>
+</left-item>
+<right-item><text>17&amp;deg;</text>
+<fixed>0</fixed>
+</right-item></pair>
+
+<pair>
+<left-item><text>&lt;img src=&quot;images/10deg.gif&quot; alt=&quot;10deg.gif&quot; width=&quot;52&quot; height=&quot;88&quot; align=&quot;left&quot; border=&quot;0&quot;&gt;&lt;/img&gt;</text>
+<fixed>1</fixed>
+</left-item>
+<right-item><text>10&amp;deg</text>
+<fixed>0</fixed>
+</right-item></pair>
+
+<pair>
+<left-item><text>&lt;img src=&quot;images/19deg.gif&quot; alt=&quot;19deg.gif&quot; width=&quot;52&quot; height=&quot;87&quot; align=&quot;left&quot; border=&quot;0&quot;&gt;&lt;/img&gt;</text>
+<fixed>1</fixed>
+</left-item>
+<right-item><text>19&amp;deg</text>
+<fixed>0</fixed>
+</right-item></pair>
+
+<pair>
+<left-item><text>&lt;img src=&quot;images/18deg.gif&quot; alt=&quot;18deg.gif&quot; width=&quot;52&quot; height=&quot;87&quot; align=&quot;left&quot; border=&quot;0&quot;&gt;&lt;/img&gt;</text>
+<fixed>1</fixed>
+</left-item>
+<right-item><text>18&amp;deg</text>
+<fixed>0</fixed>
+</right-item></pair>
+</matching-exercise>
+</data>
+
+<hotpot-config-file>
+<jmatch>
+<exercise-subtitle>Matching exercise</exercise-subtitle>
+<instructions>Match the items on the right with the items on the left.</instructions>
+<next-ex-url>nextpage.htm</next-ex-url>
+<send-email>0</send-email>
+<top-frame-size>25</top-frame-size><top-frame-units>%</top-frame-units>
+<guess-correct>Correct! Well done.</guess-correct>
+<guess-incorrect>Sorry! Try again. Incorrect matches have been removed.</guess-incorrect>
+</jmatch>
+
+<global>
+<your-score-is>Your score is </your-score-is>
+<correct-indicator>OK</correct-indicator>
+<incorrect-indicator>X</incorrect-indicator>
+<remaining-time>Remaining time:</remaining-time>
+<start-reading>Start reading</start-reading>
+<show-reading-again>Show reading again</show-reading-again>
+<times-up>Your time is over!</times-up>
+<click-to-show>Click on the button to see the reading.</click-to-show>
+<check-caption>Check</check-caption>
+<ok-caption>OK</ok-caption>
+<next-ex-caption>=&gt;</next-ex-caption>
+<back-caption>&lt;=</back-caption>
+<contents-caption>Index</contents-caption>
+<include-next-ex>0</include-next-ex>
+<include-contents>0</include-contents>
+<include-back>0</include-back>
+<contents-url>index.htm</contents-url>
+<graphic-url></graphic-url>
+<font-face>Geneva,Arial</font-face>
+<page-bg-color>#ffffff</page-bg-color>
+<title-color>#000033</title-color>
+<ex-bg-color></ex-bg-color>
+<text-color>#000000</text-color>
+<link-color>#0000ff</link-color>
+<vlink-color>#0000cc</vlink-color>
+<nav-bar-color>#000066</nav-bar-color>
+<formmail-url>http://your.server.address/cgi-bin/FormMail.pl</formmail-url>
+<email>you@yourplace.com</email>
+<name-please>Please enter your name:</name-please>
+</global>
+</hotpot-config-file>
+</hotpot-jmatch-file>

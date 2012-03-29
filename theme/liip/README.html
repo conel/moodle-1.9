@@ -1,0 +1,21 @@
+<h3>Liip Custom Theme</h3>
+<hr />
+
+<p>Liip is a 900px fixed-width theme for Moodle.</p>
+
+<p>It is built atop styles_layout.css from the Standard theme.</p>
+
+<p>Config.php pulls in styles_screen.css, which then pulls in the style sheets within the styles_lib directory.  The contents of styles_lib are as follows:</p>
+<ul>
+	<li><strong>styles_type.css</strong>: contains all starting typographical styles</li>
+	<li><strong>styles_reset.css</strong>: resets browser and standard settings</li>
+	<li><strong>styles_links.css</strong>: contains styling for all links on the page</li>
+	<li><strong>styles_color.css</strong>: contains all starting color styles and image backgrounds</li>
+	<li><strong>styles_base.css</strong>: contains everything else</li>
+</ul>
+
+<p>Please keep in mind that styles_base.css does contain some typographical and color styles.  To separate all of these in a Moodle theme adds unnecessary weight to the theme.  Whenever possible, howerer, color and type have been separated.</p>
+
+<p>The theme contains styles_ie6.css and styles_ie7.css in case they are found to be necessary down the road.  But, by default, they are empty and not being used.  If browser compatibility becomes an issue down the road, open config.php and turn meta.php on to include these CSS files.</p>
+
+This custom theme was created by Patrick Malley of <a href="http://newschoollearning.com">NewSchool Learning</a>, and is licensed for single installation to Liip.  

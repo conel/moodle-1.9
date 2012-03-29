@@ -1,0 +1,778 @@
+/*******************************************************************
+ styles_color.css
+  
+ This CSS file contains all font definitions like family, size,
+ weight, text-align, letter-spacing etc.
+
+ Styles are organised into the following sections:
+  core
+  header
+  footer
+
+  admin
+  blocks
+  calendar
+  course
+  doc
+  grades
+  login
+  message
+  tabs
+  user
+
+  various modules
+
+*******************************************************************/
+
+
+/***
+ *** Core
+ ***/
+
+body {
+	margin:0;
+	padding:0;
+	background:url(pix/bg/bg.jpg) repeat-x top;
+}
+
+body, table, td, th, li {
+	font-family: "Arial", Verdana, Lucida, Helvetica, sans-serif;
+	color:#000;
+}
+
+a:link,
+a:visited {
+	color:#2856be;
+	text-decoration: normal;
+}
+
+
+
+blockquote 
+{
+    margin:1em;
+    padding:0 0 0 40px;  
+    color:#666;
+    background:url(pix/blockquote.gif) no-repeat left top;
+}
+
+li {
+	padding-bottom:2px;
+}
+
+#layout-table {
+	margin-top:10px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#middle-column {
+	border: none;
+	padding: 0px;
+	margin:  0px;
+	background:#fff;
+	text-align: left;
+}
+
+#left-column,
+#right-column {
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: left;
+}
+
+#page {
+	margin:10px 35px;
+	padding: 0px;
+	background:/*#f0f0d8*/ #fff;
+	min-width: 920px;
+	max-width: 1200px;
+	border: 0px solid #BFDFFE;
+	text-align: left;
+	background:#fff;
+}
+
+
+
+#page_home {
+	margin:10px 35px;
+	padding: 0px;
+	background:#fff;
+	width: 920px;
+	border: 1px solid #BFDFFE;
+	text-align: left;
+}
+
+#content {
+	padding-top:4px;
+	font-size: 0.8em;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+#content-wrapper {
+  width:900px;
+  margin:0 auto;
+}
+
+.cell {
+	background: none !important;
+}
+
+.r1 {
+	background-color: #eee !important;
+}
+
+.generaltable .cell {
+	border-color:#BFDFFE;
+}
+
+/***
+ *** Header
+ ***/
+ 
+#header-bg {
+  height:152px;
+  background: url("pix/bg/header_right_bg.gif") repeat-x top right;
+}
+
+#header-sml-bg {
+  height:52px;
+  background: url("pix/bg/header_right_sml_bg.gif") repeat-x top right;
+}
+
+#header-home, #header {
+  background:none !important;
+  color:#000;
+  padding-top:20px;
+}
+
+#header-home .headermain,
+#header .headermain {
+  color:#fff;
+  position:absolute;  /*Delete if not using logo*/
+  left:-9999px;  /*Delete if not using logo*/
+}
+
+
+
+#header-home h1.headermain,
+#header h1.headermain {
+	margin:0px 0 0 0px;
+	padding-left: 0px;
+	z-index: 3;
+	position: absolute;
+}
+
+#header-home h1.site_title  {
+	margin:0px 0 0 0px;
+	padding-left: 80px;
+	padding-top: 40px;
+	z-index: 3;
+	position: absolute;
+	color: #0845cf;
+}
+
+#header h1.site_title {
+	margin:0px 0 0 0px;
+	margin-left: -50px;
+	margin-top: -10px;
+	z-index: 3;
+	position: absolute;
+	color: #0845cf;
+}
+
+.header-wrap {
+  width:900px;
+  margin:0 auto;
+}
+
+.headermenu {
+	padding-top:7px;
+}
+
+.header-logo {
+   z-index: 1;
+   position: absolute;
+   width: 400px;
+   height: 152px;
+   top: 10px;
+   left: 35px;
+}
+
+#header-home-description {
+  background:#ffffff;
+  color: #000000;
+  border-top:2px solid #000000;
+  border-bottom:2px solid #000000;
+}
+
+.logininfo a, #header-home {
+  color: #000
+}
+
+#header-home .logininfo {
+  margin-top: 10px;
+}
+
+#header .logininfo {
+  margin-top: -10px;
+  text-align: right;
+}
+
+/* NavBar */
+
+
+ img.tabs {
+  margin-right: -4px !important;
+}
+
+.navbar {
+  border:none;
+  height:30px;
+  padding:0px;
+  padding-left: 10px;
+  border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.navbar .navbutton {
+  margin-top:0;
+}
+
+.navbar a:link,
+.navbar a:visited {
+  color:#2856be;
+  font-weight:bold;
+}
+
+.navbar a:hover,
+.navbar a:active {
+  color:#0845cf;
+}
+
+.navbar .breadcrumb .sep {
+  color:#ccc;
+  padding:0 4px;
+  font-size:0.8em;
+}
+
+.navbar {
+  background:#b2b2b2 url(pix/bg/navbar_bg.jpg) repeat-x;
+}
+
+.breadcrumb {
+  font-weight:normal;
+  padding-top: -10px;
+}
+
+.breadcrumb ul li {
+  margin:0;
+  color:#000;
+}
+
+.mainheading {
+  color: #3867d2;
+  padding-top: 5px;
+}
+
+/* Description & Nav Bar */
+
+#header-home-description {
+  width:900px;
+}
+
+#header-home-description {
+  margin:11px auto;
+  height:30px;
+}
+
+.description {
+  padding:8px 0 0 5px;
+  text-align:center;
+}
+
+.description, .breadcrumb {
+    font:0.9em/1.25 normal Georgia, "Times New Roman", Times, serif;
+}
+
+.breadcrumb {
+  padding:6px 0 0 3px;
+}
+
+.breadcrumb .sep {
+  font-size:0.75em;
+  padding:0 2px;
+}
+
+.navbar .navbutton {
+  margin:4px 3px;
+}
+
+/***
+ *** Footer
+ ***/
+
+#footer .logininfo {
+	font-size: 1em;
+	padding-top: 30px;
+}
+
+#footer .logininfo a{
+	color:  #000;
+}
+
+.helplink {
+	padding-top: 20px;
+	font-size: 1em;
+}
+
+.helplink a {
+	color:  #000;
+}
+
+
+#footer .homelink a{
+	color: #000;
+}
+
+#footer {
+	color:#000;
+	font-size: .7em;
+	text-align: center;
+	background:url(pix/bg/footer_bg.jpg) repeat top;
+	padding-top: 0px !important;
+	height:  106px;
+	margin-top: 0px;
+}
+
+
+
+
+/***
+ *** Blocks
+ ***/
+
+.sideblock .header,
+.sideblock h2.header {
+    border:none;
+}
+
+.block_adminblock .header {
+  font-family:"Arial", Verdana, Lucida, Helvetica, sans-serif;
+  color: #fff;
+ }
+ 
+.sideblock .header {
+	background: #fff url(pix/bg/block_bg.gif) repeat-x ;
+	border: #BFDFFE solid 1px;
+	font-family:"Arial", Verdana, Lucida, Helvetica, sans-serif;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+
+.sideblock h2 {
+	color:#000;
+	font-weight: bold !important;
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font-size: 1em;
+}
+
+.sideblock .content {
+	background: #FCFCFC;
+	border: #BFDFFE solid 1px;
+	border-top: #d8e4d7 solid 1px;
+	padding-bottom:  10px;;
+}
+
+.sideblock .content a:link,
+.sideblock .content a:visited {
+	color:  #000;
+}
+	
+.sideblock .header .hide-show img.hide-show-image {
+	background: url(pix/t/switch_minus.gif) no-repeat top;
+}
+
+.sideblock.hidden .header .hide-show img.hide-show-image {
+  background: url(pix/t/switch_plus.gif) no-repeat top;
+}
+
+.sideblock .icon {
+  padding: 0 6px 1px 0;
+}
+.sideblock .title {
+	margin:0 6px 1px 12px;
+	padding-bottom: 3px;
+}
+
+.sideblock {
+	margin-bottom:8px;
+	background: #eee;
+	border: none;
+	width:200px;
+}
+
+.sideblock h2 a {
+	color:#fff;
+}
+
+.block_rss_client ul li {
+  padding-left: 4px;
+}
+
+.sideblock ul li,
+.section li,
+#calendar .calendarmonth li {
+	list-style-image: none;
+}
+
+.sideblock ul li {
+  margin-bottom: 4px;
+}
+
+.block_login .btn {
+}
+
+.sideblock .r0,
+.sideblock .r1 {
+	background: none !important;
+}
+
+.sideblock .message {
+	text-align:center;
+}
+
+.sideblock .date {
+	font-size: 0.8em;
+}
+
+.sideblock .date a {
+	color:#2F221D;
+}
+
+.sideblock .footer {
+	font-size:0.8em;
+}
+
+.block_site_main_menu .footer select {
+	font-size: .9em;
+}
+
+/***
+ *** Calendar
+ ***/
+
+#calendar .maincalendar .controls {
+	background-color: #c7dbe6;
+	border-bottom-color: #c7dbe6;
+	color:  #fff;
+}
+
+#calendar .maincalendar .controls a{
+	color: #fff;
+}
+
+#calendar .maincalendar .filters table, #calendar .sidecalendar .filters table, .block_calendar_month .filters table {
+	background-color: #ffff99;
+	color: #000;
+}
+
+#calendar .maincalendar .filters table a, #calendar .sidecalendar .filters table a, .block_calendar_month .filters table a {
+	color: #000;
+}
+
+#calendar .nottoday, .minicalendar .nottoday {
+	border-color: #000;
+	background: #fff;
+}
+
+#calendar .maincalendar .filters {
+	font-size: 0.8em;
+}
+
+#calendar .maincalendar .eventlist .event .date {
+  font-size:0.8em;
+}
+
+#calendar .maincalendar .eventlist .event .name {
+  font-weight: bold;
+}
+
+.boxaligncenter {
+	text-align: center;
+ }
+
+.boxaligncenter table {
+	margin:auto;
+}
+
+.generaltable tbody tr td {
+	font-size: 0.8em;
+}
+
+.calendar-controls .previous,
+.calendar-controls .next {
+	font-size: 0.8em;
+}
+
+/***
+ *** Course
+ ***/
+
+h2.headingblock {
+	border:none;
+	background: #fff;
+	color:#000;
+	padding:5px;
+	font-weight: bold !important;
+	font-size: 1.4em;
+}
+
+.headingblock a {
+	color:#F6EEDE;
+	font-size:0.8em;
+}	
+
+body#site-index .headingblock,
+body#course-view .headingblock {
+  margin-bottom: 5px;
+}
+
+.coursebox {
+	border:1px #BFDFFE solid;
+}
+
+
+.courseboxcontent {
+	border:1px #BFDFFE solid;
+	background-color:#e9e6d9;
+}
+
+#bdb8ade-view .weekscss .content {
+  background: #f0f0d8;
+  border:1px #BFDFFE solid;
+}
+
+#course-view .section td.content {
+	border:1px #aBFDFFEaa solid;
+}
+
+#course-view .weekscss .section,
+#course-view .section td.side {
+  background: #fff;
+  border:1px #BFDFFE solid;
+}
+
+#course-view .weekscss .current,
+#course-view .current td.side {
+  background: #BCCFDF;
+}
+
+#course-view .weekscss .hidden,
+#course-view .hidden td.side {
+  background: #DDDDDD;
+}
+
+.generalbox.sitetopic {
+	border:none;
+	padding-left:0;
+	padding-right:0;
+	font-size:0.9em;
+	margin-bottom: 10px;
+}
+
+#mod-resource-view .generalbox table.files{
+	margin:auto;
+}
+
+.message #page {
+	margin: 0;
+}
+
+.glossarycontrol .helplink,
+.message .helplink {
+	float:none;
+}
+
+/***
+ *** Modules: Assignment
+ ***/
+ 
+
+
+/***
+ *** Modules: Forum
+ ***/
+
+.forumpost {
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    border: none;
+}
+
+.forumpost .side  {
+    background-color: #fff;
+    background-image: url('pix/bottom-left.png'); 
+    background-repeat:  no-repeat;
+    background-position: bottom right; 
+}
+
+.forumpost .picture  {
+    background-color: #fff;
+    background-image: url('pix/top-left.png'); 
+    background-repeat:  no-repeat;
+    vertical-align: bottom;
+    background-position: top right; 
+    padding-right: 15px;
+    padding-top: 0;
+}
+.forumpost .topic  {
+    background-color: #fff;
+    background-image: url('pix/top-right.png'); 
+    background-repeat:  no-repeat;
+    background-position: top right; 
+    padding-right: 15px;
+    padding-left: 0;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    border: none;
+}
+.forumpost .content  {
+    background-image: url('pix/bottom-right.png'); 
+    background-repeat:  no-repeat;
+    background-position: bottom right; 
+    padding-bottom: 10px;
+    padding-right: 15px;
+    padding-top: 0;
+    padding-left: 0;
+    border: none;
+}
+
+.forumpost .picture img {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+/***
+ *** Misc: Other
+ ***/
+
+
+fieldset.invisiblefieldset {
+	background: none;
+	padding-top:6px;
+}
+
+fieldset {
+	background-color: #f0fbfd;
+	border:1px dashed #0e3f72;
+}
+
+legend {
+	padding-left: 10px;
+	padding-bottom: 4px;
+	padding-right: 10px;
+	padding-top: 4px;
+	font-style: italic;
+	font-family: "Arial", Verdana, Lucida, Helvetica, sans-serif;
+	background: #3762a6;
+	color:#fff;
+
+}
+
+.generaltable .header,
+.forumheaderlist .header,
+.logtable th,
+.generalbox th {
+	background:#c7dbe6;
+	color:  #000;
+	border-bottom: 2px solid #336699;
+	border-right: 1px solid #f3ece3;
+	font-size:0.9em;
+}
+
+.paging {
+	font-size: 0.8em;
+}
+
+#intro.box.generalbox {
+	margin-top:10px;
+	border-style: dotted;
+}
+
+.singlebutton.forumaddnew {
+	margin-bottom:15px;
+}
+
+#adminsettings #admin-calendar_weekend table td label {
+	font-size:0.8em;
+}
+
+#message-history #page,
+#message-user #page,
+body#message-user,
+body#message-history,
+body#message-messages,
+body#message-index,
+body#message-send,
+#message-index #page,
+body#course-info,
+#course-info #page,
+#help #page,
+body#help,
+body#mod-resource-view,
+#mod-resource-view #page,
+#mod-glossary-showentry #page,
+#course-group #page,
+body#course-group,
+body#question-preview,
+#question-preview #page,
+body#mod-quiz-comment,
+#mod-quiz-comment #page,
+#mod-quiz-comment #footer {
+  margin: 0 !important;
+  background:#fff !important;
+  min-width:0px !important;
+}
+
+.message .credits,
+#mod-resource-view .credits,
+#help .credits{
+	display:none;
+}
+
+.profileeditor,
+.logselectform {
+	text-align: center;
+}
+
+.singlebutton {
+	padding:4px;
+}
+
+img.userpicture,
+img.grouppicture {
+   background-color: #f9f9f9;
+   padding-left: 3px !important;
+   padding-right: 3px !important;
+   padding-top: 3px !important;
+   padding-bottom: 10px !important;
+   border: 1px solid #ddd;
+   border-bottom-color: #888;
+   border-right-color: #888;
+}
+
+a:hover img.userpicture,
+a:hover img.grouppicture {
+    background-color: #c2e5fa;
+}
+
+.userinfobox img.userpicture {
+   background-image: url('pix/frame.jpg');
+   padding: 25px !important;
+   border: none !important;
+}

@@ -1,0 +1,228 @@
+body {
+	margin:0;
+	padding:0;
+	font-size:1em;
+	background-color:#fff;
+	font-family:Arial, Helvetica, Sans-serif;
+	color:#252426;
+	line-height:1.6em;
+}
+#holder {
+	padding:20px 30px;
+}
+h1 {
+	margin:0;
+	padding:0;
+	margin-bottom:20px;
+}
+h3 {
+	margin-bottom:10px;
+	text-shadow:rgba(255, 255, 255, 0.9) 2px 1px 1px !important;
+}
+label {
+	cursor:pointer;
+}
+a {
+	color:#21538F;
+}
+.error {
+	color:red;
+	font-weight:bold;
+}
+#banners_holder {
+	width:520px;
+}
+.actions {
+	display:block;
+	float:left;
+	width:170px;
+	font-size:0.9em;
+}
+.link {
+	display:block;
+	width:240px;
+	float:left;
+	text-align:right;
+	background:url(img/icon-new-window.png) no-repeat right center;
+	padding-right:16px;
+	overflow:hidden;
+}
+.banner {
+	margin-bottom:20px;
+	border:1px solid #B1B1B1;
+	background-color:#EBEBEB;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.2) 1px 1px 10px;
+	box-shadow:rgba(0, 0, 0, 0.2) 1px 1px 10px;
+	-moz-border-radius:12px;
+	border-radius:12px;
+	height:203px;
+}
+.inactive {
+	opacity:0.3;
+	filter:alpha(opacity=30);
+}
+.position {
+	display:block;
+	float:left;
+	width:61px;
+	text-align:center;
+	background-color:#fff;
+	-moz-border-radius:12px;
+	border-radius:12px;
+	border:2px solid #6F6F6F;
+	z-index:666;
+	margin-left:-1px;
+	height:201px;
+	margin-top:-1px;
+}
+.position a {
+	display:block;
+	text-align:center;
+}
+.position a img {
+	border:none;
+}
+.moveup, .count, .movedown {
+	display:block;
+	height:45px;
+	text-align:center;
+	padding:10px 0;
+}
+.moveup {
+	padding-top:7px;
+}
+.movedown {
+	padding-bottom:10px;
+}
+.count {
+	font-size:3em;
+	font-weight:bold;
+	padding-top:25px;
+	height:36px;
+	text-shadow:rgba(0, 0, 0, 0.2) 2px 2px 2px !important;
+}
+.banner_details {
+	display:block;
+	float:right;
+	padding:10px;
+}
+.banner h4 {
+	margin:0;
+	padding:0;
+}
+.clear_both {
+	clear:both;
+}
+.actions, .link {
+	margin-top:7px;
+}
+#banner_edit_form label {
+}
+p.note {
+	font-size:0.85em;
+	margin:0;
+	padding:0;
+	margin-top:4px;
+	font-weight:bold;
+}
+#banner_add_form, #banner_edit_form {
+	display:none;
+	margin-bottom:25px;
+	background-color:#EBEBEB;
+	padding:15px;
+	border:1px solid #CACACA;
+
+	border:1px solid #B1B1B1;
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.25, rgb(232,232,232)),
+		color-stop(0.93, rgb(250,250,250))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(232,232,232) 25%,
+		rgb(250,250,250) 93%
+	);
+}
+#banner_add_form h3, #banner_edit_form h3 {
+	margin:0;
+	padding:0;
+	margin-bottom:10px;
+}
+#banner_edit_form {
+	display:block;
+}
+#add_banner {
+	display:block;
+}
+#upload_link {
+	width:420px;
+}
+label {
+	font-weight:bold;
+	display:block;
+	width:70px;
+}
+a.add_banner{ 
+	display:block;
+	color:#555555;
+	font-weight:bold;
+	height:31px;
+	line-height:31px;
+	margin-bottom:25px;
+	text-decoration:none;
+	width:150px;
+	border:1px solid #B1B1B1;
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	text-align:center;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.93, rgb(250,250,250)),
+		color-stop(0.25, rgb(232,232,232))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(250,250,250) 93%,
+		rgb(232,232,232) 25%
+	);
+}
+a.add_banner:hover { 
+	color:#3C3C3C;
+	border:1px solid #8C8C8C;
+	box-shadow: 0 2px 3px rgba(0,0,0,.2);
+}
+.add{
+	background:url(img/icon-add.gif) no-repeat 10px 8px;
+	text-indent:13px;
+	display:block;
+}
+a.edit, a.delete, a.disable, a.enable {
+	display:block;
+	float:left;
+	text-indent:14px;
+	margin-right:9px;
+	color:#000;
+}
+a.edit {
+	background:url(img/icon-edit.gif) no-repeat 0;
+}
+a.delete {
+	background:url(img/icon-delete.gif) no-repeat 0;
+}
+a.disable {
+	background:url(img/icon-hide.gif) no-repeat 0;
+}
+a.enable {
+	background:url(img/icon-show.gif) no-repeat 0;
+}

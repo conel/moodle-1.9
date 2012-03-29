@@ -1,0 +1,97 @@
+<?php
+	// nkowald - 2009-09-01 - Custom background colours for each course. Uses parent bgcolour if individual category colour not set.
+    $page_id = ((isset($_GET['id'])) && ($_GET['id'] != '') && is_numeric($_GET['id'])) ? $_GET['id'] : '';
+	$background_colour = '';
+	
+	if ($page_id != '') {
+		$query = 'SELECT cat_colour FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $page_id . ' AND cat_colour <> "#"';
+		$result_bgc = get_record_sql($query);
+		
+		$background_colour = ($result_bgc) ? $result_bgc->cat_colour : '';
+		
+		// no bg colour set - look a path up until bgcolour found
+		if ($background_colour == '') {
+		
+			// check if we're in course view, if so find category course is under
+			if ( (strpos($_SERVER['SCRIPT_NAME'],'/course/view.php')) !== FALSE ) {
+				$query = 'SELECT category FROM ' . $CFG->prefix . 'course WHERE id=' . $page_id;
+				$category_id = get_record_sql($query);
+				$page_id = ($category_id) ? $category_id->category : $page_id;
+			}
+			
+			$query = 'SELECT path FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $page_id;
+			$result_path = get_record_sql($query);
+			if ($result_path) {
+				$path = substr($result_path->path,1); // remove first '/' for count
+				$paths = explode('/',$path);
+				
+				// Reverse array to get colour from parent of page (if exists)
+				$paths = array_reverse($paths);
+				
+				foreach ($paths as $path_id) {
+					$query = 'SELECT cat_colour FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $path_id . ' AND cat_colour <> "#"';
+					$result_bgc = get_record_sql($query);
+					$colour = ($result_bgc) ? $result_bgc->cat_colour : '';
+					
+					if ($colour != '') {
+						$background_colour = $colour;
+						break;
+					}
+				} // foreach
+			}
+		} // if bgcolor
+		
+	} else {
+		$background_colour = '';
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html<?php echo $direction ?>>
+<head>
+<?php echo $meta ?>
+<meta name="keywords" content="moodle, <?php echo $title ?> " />
+<title><?php echo $title ?></title>
+<link rel="shortcut icon" href="<?php echo $CFG->themewww .'/'. current_theme() ?>/favicon.ico" />
+<link title="access_stylesheet" rel="stylesheet" href="<?php if($CFG->wwwroot != $CFG->httpswwwroot) {echo $CFG->httpswwwroot;} else {echo $CFG->wwwroot;} ?>/blocks/accessibility/userstyles.php" type="text/css" />
+<?php 
+if ($background_colour != '') {
+echo '<style type="text/css">
+    .sideblock .header, .sideblock .header .title {
+        background-color:'.$background_colour.' !important;
+    }
+</style>';
+}
+?>
+<script type="text/javascript" src="<?php echo $CFG->themewww .'/'. current_theme() ?>/jquery-1.7.min.js"></script>
+<?php include("$CFG->javascript"); ?>
+</head>
+
+<?php
+	$inside_body = ($focus) ? $bodytags . ' onload="setfocus()"' : ' '.$bodytags;
+	echo "<body$inside_body>\n";
+	echo "<div id=\"page\">
+	<div id=\"shrinkwrapper\">\n";
+	
+	if ($home) {
+		// This gets printed on the home page only
+		$random_num = rand(1,4);
+		echo '<div id="header-home" class="clearfix">
+			<h1 class="headermain">'.$heading.'</h1>
+			<div id="header_holder"><a href="/"><img src="'.$CFG->themewww .'/'. current_theme().'/pix/banner'.$random_num.'.jpg" alt="E-Zone" width="350" height="80" /></a></div>
+		</div>';
+		
+	} else if ($heading) {
+		// This gets printed on any other page with a heading
+		echo'<div class="headermenu_pages">'.$menu.'</div>
+		<div id="header" class="clearfix"><h1 class="headermain">'.$heading.'</h1></div>';
+	}
+	
+	if ($navigation) {
+		// This is the navigation bar with breadcrumbs ?>
+		<div class="navbar clearfix">
+			<div class="breadcrumb"><?php print_navigation($navigation); ?></div>
+			<div class="navbutton"><?php echo $button; ?></div>
+		</div>
+	<?php } ?>
+    <!-- END OF HEADER -->
+    <div id="content">

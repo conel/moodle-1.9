@@ -1,0 +1,81 @@
+/*******************************************************************
+ styles_variable.css
+  
+ This CSS file contains all color definitions like 
+ background-color, font-color, border-color etc.
+
+ 
+
+*******************************************************************/
+
+/***
+ ***  Core
+ ***/
+
+a:link,
+a:visited {
+  color:#ff0000;
+}
+
+a:hover {
+  color:#5390a0;
+}
+  
+body {
+  background: #a3d2de url('images/background.jpg') repeat-y center top;
+  border-color:#ffffff;
+  width: 960px;
+  margin-left: auto; 
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+
+.surround {
+  background: #ffffff;
+  border-top: 3px solid #ffffff;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+}
+
+.menubar {
+  background: #dddddd url('images/menubar.jpg') repeat-x;
+
+}
+
+.navbar {
+  background: #a3d2de;
+  border-color:#a3d2de;
+  color: #5390a0;
+}
+
+.navbar a:link {
+    color: #5390a0;
+}
+.navbar a:visited {
+    color: #5390a0;
+}
+.navbar a:hover {
+    color: #cc0000;
+}
+
+
+div.headermenu 
+{
+	color:#ffffff;
+}
+
+.breadcrumb .sep, #admin-report-simpletest-index .sep {
+  color:#5390a0;
+}
+
+.breadcrumb a{
+  color:#5390a0;
+}
+
+.minicalendar a,
+.calendarmonth a {
+  color:#ff0000;
+}
+

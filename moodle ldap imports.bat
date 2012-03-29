@@ -1,0 +1,1 @@
+php  C:\Inetpub\moodle\auth\ldap\auth_ldap_sync_users.php > c:\output.txt

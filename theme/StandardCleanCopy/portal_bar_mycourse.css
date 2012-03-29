@@ -1,0 +1,1226 @@
+/******************************************************/
+/****** START of New Search/Phonebook styles ***********************/
+/******************************************************/
+.system_topsearcharea2
+{
+	font-size: 80%;
+	height: 24px;
+	margin: 0px;
+	padding: 1px 0px 0px 0px;
+	text-decoration: none;
+	color: #000;
+	margin:5;
+	margin-top:0;
+	margin-left:10;
+	margin-right:5;
+	/*width:980;*/
+	width:99%;
+}
+
+.system_topsearcharea2 td
+{
+	height:26px;
+}
+
+.system_topsearchtitle2
+{
+	margin: 0px;
+	padding: 0px;
+	font-size: 140%;
+}
+
+.system_topsearchform2
+{
+	font-size: 80%;
+	margin: 0px;
+	padding: 1px 0px 0px 0px;
+}
+	
+#system_formsubmit2 
+{
+	border: 0px;
+	margin: 1px 0px 1px 3px;
+	padding: 1px 1px 0px 1px;
+	position:relative; 
+	top:6;
+}
+	
+#system_formsubmit22 
+{
+	border: 0px;
+	margin: 1px 10px 1px 1px;
+	padding: 1px 1px 0px 1px;
+	position:relative; 
+	top:6;
+}
+	
+.super_highlight2 
+{
+	font-weight: bold;
+	color: #f30;
+}
+
+.system_phonebook_cell
+{
+	text-align:right;
+}
+
+/******************************************************/
+/****** END of New Search/Phonebook styles ***********************/
+/******************************************************/
+
+/******************************************************/
+/****** Start of New Tab styles ***********************/
+/******************************************************/
+
+/* Created by Paul Maple on 02/02/08 - contact x3856  */
+/* Edited by Lee McDonald 07/02/2008 - contact x3244  */
+
+/***** top text - this is above the main menu bar *****/
+.system_bar_text 
+{
+	color: #0066cb;
+	font-size: 80%;
+	height: 36px;
+	width: 98%;
+}
+
+.system_bar
+{
+	margin:5px;
+	margin-top:0;
+	margin-bottom:0;
+}
+
+.system_bar td
+{
+	background-repeat: repeat-x;
+}
+
+.system_bar_logo
+{
+	background-image: url("site_elements/images/bar/bar_bg.jpg"); 
+	background-repeat: repeat-x;  
+	position: relative; 
+	z-index: 3;
+	height:36px; 
+	text-align: left;
+	width:49.5%;
+}
+
+.system_search   
+{
+	background-image: url("site_elements/images/bar/bar_bg.jpg"); 
+	background-repeat: repeat-x;  
+	position: relative; 
+	z-index: 3;
+	height:36px; 
+	text-align: right;
+	width:49.5%;
+}
+
+/************************************/
+/***** BAR ***************/
+/*************************************/
+
+/***** home *****/
+.system_btn_home   
+{
+	background-image: url("site_elements/images/bar/home_off.jpg"); 
+	background-repeat: no-repeat;  
+	position: relative; 
+	z-index: 3;
+	width: 108px; 
+	height:36px; 
+}
+
+.system_btn_home A:link  
+{
+	position: relative;
+	z-index: 3;
+	width: 108px;
+	height:36px;
+}
+
+.system_btn_home A  
+{
+	display: block;
+	position: relative;
+	z-index: 3;
+	width: 108px;
+	height:36px;
+}
+
+.system_btn_home A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+
+.system_btn_home A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/home_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 10;
+width: 108px;
+height:36px;}
+
+.system_btn_home_on   
+{
+	background-image: url("site_elements/images/bar/home_on.jpg"); 
+	background-repeat: no-repeat;  
+	position: relative; 
+	z-index: 3;
+	width: 108px; 
+	height:36px; 
+}
+
+.system_btn_home_on A:link  
+{
+	position: relative;
+	z-index: 3;
+	width: 108px;
+	height:36px;
+}
+
+.system_btn_home_on A  
+{
+	display: block;
+	position: relative;
+	z-index: 3;
+	width: 108px;
+	height:36px;
+}
+
+.system_btn_home_on A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+
+.system_btn_home_on A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/home_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 10;
+width: 108px;
+height:36px;}
+
+
+/***** course *****/
+.system_btn_course   {
+background-image: url("site_elements/images/bar/course_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+
+.system_btn_course A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/course_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+.system_btn_course_on   {
+background-image: url("site_elements/images/bar/course_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_course_on   {
+background-image: url("site_elements/images/bar/course_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_course_on A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course_on A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course_on A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_course_on A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/course_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+/***** services *****/
+.system_btn_services   {
+background-image: url("site_elements/images/bar/services_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_services A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/services_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+.system_btn_services_on   {
+background-image: url("site_elements/images/bar/services_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+.system_btn_services_on   {
+background-image: url("site_elements/images/bar/services_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_services_on A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services_on A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services_on A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_services_on A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/services_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+/***** library *****/
+.system_btn_library   {
+background-image: url("site_elements/images/bar/library_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_library A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/library_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+.system_btn_library_on   {
+background-image: url("site_elements/images/bar/library_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_library_on   {
+background-image: url("site_elements/images/bar/library_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_library_on A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library_on A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library_on A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_library_on A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/library_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+
+/***** university *****/
+.system_btn_university   {
+background-image: url("site_elements/images/bar/university_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 109px; 
+height:36px; 
+}
+
+.system_btn_university A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/university_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 109px;
+height:36px;}
+
+
+.system_btn_university_on   {
+background-image: url("site_elements/images/bar/university_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 109px; 
+height:36px; 
+}
+
+.system_btn_university_on A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university_on A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university_on A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_university_on A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/university_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 109px;
+height:36px;}
+
+/***** teaching and learning *****/
+.system_btn_tandl {
+background-image: url("site_elements/images/bar/teaching_and_learning_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_tandl_on {
+background-image: url("site_elements/images/bar/teaching_and_learning_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 108px; 
+height:36px; 
+}
+
+.system_btn_tandl A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_tandl A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_tandl A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 108px;
+height:36px;
+}
+
+.system_btn_tandl A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/teaching_and_learning_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 108px;
+height:36px;}
+
+/***** faculties *****/
+.system_btn_faculties   {
+background-image: url("site_elements/images/bar/faculties_off.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 109px; 
+height:36px; 
+}
+
+.system_btn_faculties_on   {
+background-image: url("site_elements/images/bar/faculties_on.jpg"); 
+background-repeat: no-repeat;  
+position: relative; 
+z-index: 3;
+width: 109px; 
+height:36px; 
+}
+
+.system_btn_faculties A:link  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_faculties A  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_faculties A:visited  {
+display: block;
+position: relative;
+z-index: 3;
+width: 109px;
+height:36px;
+}
+
+.system_btn_faculties A:hover   {
+display: block;
+background-repeat: none;
+background-image: url("site_elements/images/bar/faculties_on.jpg");
+background-repeat: no-repeat;
+position: relative;
+top: -1px;
+z-index: 3;
+width: 109px;
+height:36px;}
+
+/******************************************************/
+/****** End of New Tab styles ***********************/
+/******************************************************/
+
+/******************************************************/
+/****** START of New Breadcrumb styles ***********************/
+/******************************************************/
+.system_breadcrumbs {
+	margin: 0px 0px 10px 0px;
+	padding: 0px 0px 0px 0px;
+	background-color:#ffffff;
+/*	width:980*/
+	}
+	
+.system_breadcrumbs td {
+	height: 18px;
+    text-decoration: none;
+	margin: 0px 0px 0px 0px;
+	padding: 3px 10px 3px 10px;
+	font-size: 60%;
+	color: #000;
+	background-color:#fff;
+	}
+
+.system_breadcrumbs a {
+	color: #0066CB; text-decoration: none
+	}
+
+.system_breadcrumbs a:visited {
+	color: #0066CB; text-decoration: none
+	}
+
+.system_breadcrumbs a:hover {
+	color: #000; text-decoration: underline
+	}
+
+
+/******************************************************/
+/****** END of New Breadcrumb styles ***********************/
+/******************************************************/
+
+/******************************************************/
+/****** START of New MyLinks styles ***********************/
+/******************************************************/
+.system_my_links
+{
+	margin:8px;
+	margin-top:6;
+	width:200px;
+	margin-right:15px;
+}
+
+.system_my_links img
+{
+	margin:3 0 0 0;
+}
+
+.system_my_links_divide
+{
+	color:#000;
+	height:1px;
+	width:100%
+	border:0;
+	margin-bottom:8px;
+	margin-top:8px;
+}
+
+.system_my_links a:link
+{
+	font-size:70%;
+	text-decoration:none;
+/*	color:0066CB;*/
+	color:#0066CB;
+}
+
+.system_my_links a:visited
+{
+	font-size:70%;
+	text-decoration:none;
+/*	color:0066CB;*/
+	color:#0066CB;
+}
+
+.system_my_links a:hover
+{
+	font-size:70%;
+	text-decoration:underline;
+	color:#0066CB;
+}
+
+.system_my_links_top_left
+{
+	background-image: url("../images/my_links/top_left.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:27px;
+}
+
+.system_my_links_top_centre
+{
+background-image: url("../images/my_links/top_centre.jpg"); 
+	background-repeat: x-repeat;  
+	text-align:left;
+	font-size:90%;
+}
+
+.system_my_links_top_right
+{
+	background-image: url("../images/my_links/top_right.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:27px;
+}
+
+.system_my_links_left
+{
+	background-image: url("../images/my_links/middle_left.jpg"); 
+	background-repeat: y-repeat;  
+	width:11px;
+}
+
+.system_my_links_right
+{
+	background-image: url("../images/my_links/middle_right.jpg"); 
+	background-repeat: y-repeat;  
+	width:11px;
+}
+
+.system_my_links_middle_centre
+{
+	vertical-align:middle;
+}
+
+.system_my_links_bottom_left
+{
+	background-image: url("../images/my_links/bottom_left.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:13px;
+}
+
+.system_my_links_bottom_centre
+{
+	background-image: url("../images/my_links/bottom_centre.jpg"); 
+	background-repeat: x-repeat;
+	height:13px;
+}
+
+.system_my_links_bottom_right
+{
+	background-image: url("../images/my_links/bottom_right.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:13px;
+}
+/******************************************************/
+/****** END of New MyLinks styles ***********************/
+/******************************************************/
+
+/******************************************************/
+/****** START of New Campus news styles *****************/
+/******************************************************/
+.system_campus_news_container
+{
+	width:630px;
+	margin-right:15px
+}
+
+.system_campus_news
+{
+	width:630px;
+	margin-bottom:15px;
+	margin-right:0;
+}
+
+.system_campus_news td
+{
+	vertical-align:top;
+}
+
+.system_campus_news p, .system_campus_news li, .system_campus_news h2, .system_campus_news h4
+{
+	font-size:70%
+}
+
+.system_campus_news_item_200
+{
+	width:215px;
+	padding-right:15px;
+}
+
+.system_campus_news_item_200_end
+{
+	width:200px;
+}
+
+.system_campus_news_item_415
+{
+	width:415;
+	padding-right:15px;
+}
+
+.system_campus_news_item_630
+{
+	width:645;
+	padding-right:15px;
+}
+
+.system_campus_news_item_307_end
+{
+	width:307px;
+}
+
+.system_campus_news_item_307
+{
+	width:322;
+	padding-right:15px;
+}
+
+.system_campus_news_story_by_1
+{
+	font-size:60%;
+	color:#736F6E;
+}
+
+.system_campus_news_read_more
+{
+	font-size:80%;
+}
+
+
+.system_campus_news a:link
+{
+	text-decoration:none;
+	color:blue;
+}
+
+.system_campus_news a:visited
+{
+	text-decoration:none;
+	color:blue;
+}
+
+.system_campus_news a:hover
+{
+	text-decoration:underline;
+	color:red;
+}
+
+.system_campus_news_list_arrow 
+{
+	/*list-style-image:url(http://portal-live.solent.ac.uk/site_elements/templates/campus_link_templates/images/arrow.gif);*/
+	padding:0px;
+	margin:0;
+	margin-top:10px;
+	list-style-type:disc;
+}
+/******************************************************/
+/****** END of New Campus news styles ********************/
+/******************************************************/
+
+
+
+
+/******************************************************/
+/****** START of Document Finder styles ********************/
+/******************************************************/
+.system_document_finder
+{
+width:200px;
+margin:8px;
+margin-bottom:15px;
+}
+
+.system_document_finder td
+{
+		padding-top:8px;
+}
+
+.system_document_finder a:link
+{
+	font-size:70%;
+	text-decoration:none;
+	color:blue;
+}
+
+.system_document_finder a:visited
+{
+	font-size:70%;
+	text-decoration:none;
+	color:blue;
+}
+
+.system_document_finder a:hover
+{
+	font-size:70%;
+	text-decoration:underline;
+	color:red;
+}
+/******************************************************/
+/****** END  of Document Finder styles ********************/
+/******************************************************/
+
+/******************************************************/
+/****** START  of Daily news styles ********************/
+/******************************************************/
+.system_daily_news_top_left2
+{
+	background-image: url("../images/my_links/top_left.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:27px;
+}
+
+.system_daily_news_top_centre2
+{
+	background-image: url("../images/my_links/top_centre.jpg"); 
+	background-repeat: x-repeat;  
+	text-align:left;
+	font-size:90%;
+}
+
+.system_daily_news_top_right2
+{
+	background-image: url("../images/my_links/top_right.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:27px;
+}
+
+.system_daily_news_left2
+{
+	background-image: url("../images/my_links/middle_left.jpg"); 
+	background-repeat: y-repeat;  
+	width:11px;
+}
+
+.system_daily_news_right2
+{
+	background-image: url("../images/my_links/middle_right.jpg"); 
+	background-repeat: y-repeat;  
+	width:11px;
+}
+
+.system_daily_news_bottom_left2
+{
+	background-image: url("../images/my_links/bottom_left.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:13px;
+}
+
+.system_daily_news_bottom_centre2
+{
+	background-image: url("../images/my_links/bottom_centre.jpg"); 
+	background-repeat: x-repeat;
+	height:13px;
+}
+
+.system_daily_news_bottom_right2
+{
+	background-image: url("../images/my_links/bottom_right.jpg"); 
+	background-repeat: no-repeat;  
+	width:11px;
+	height:13px;
+}
+
+.system_daily_news
+{
+	margin:0px;
+	margin-bottom:15px;
+	margin-top:15px;
+	width:630px;
+}
+
+.system_daily_news_top_left
+{
+	/*background-image: url("../images/my_links/top_left.jpg"); 
+	background-repeat: no-repeat;  */
+	width:11px;
+	height:27px;
+}
+
+.system_daily_news_top_centre
+{
+/*background-image: url("../images/my_links/top_centre.jpg"); 
+	background-repeat: x-repeat;  */
+	text-align:left;
+	font-size:90%;
+}
+
+.system_daily_news_top_right
+{
+	/*background-image: url("../images/my_links/top_right.jpg"); 
+	background-repeat: no-repeat;  */
+	width:11px;
+	height:27px;
+}
+
+.system_daily_news_left
+{
+	/*background-image: url("../images/my_links/middle_left.jpg"); 
+	background-repeat: y-repeat;  */
+	width:11px;
+}
+
+.system_daily_news_right
+{
+	/*background-image: url("../images/my_links/middle_right.jpg"); 
+	background-repeat: y-repeat;  */
+	width:11px;
+}
+
+.system_daily_news_middle_centre
+{
+	vertical-align:middle;
+	padding-bottom:20px;
+	width:304;
+}
+
+.system_daily_news_bottom_left
+{
+	/*background-image: url("../images/my_links/bottom_left.jpg"); 
+	background-repeat: no-repeat;  */
+	width:11px;
+	height:13px;
+}
+
+.system_daily_news_bottom_centre
+{
+	/*background-image: url("../images/my_links/bottom_centre.jpg"); 
+	background-repeat: x-repeat;*/
+	height:13px;
+}
+
+.system_daily_news_bottom_right
+{
+	/*background-image: url("../images/my_links/bottom_right.jpg"); 
+	background-repeat: no-repeat;  */
+	width:11px;
+	height:13px;
+}
+
+.system_daily_news a:link
+{
+	font-size:70%;
+	text-decoration:none;
+	color:blue;
+}
+
+.system_daily_news a:visited
+{
+	font-size:70%;
+	text-decoration:none;
+	color:blue;
+}
+
+.system_daily_news a:hover
+{
+	font-size:70%;
+	text-decoration:underline;
+	color:red;
+}
+
+.system_daily_news_divide
+{
+	color:#000;
+	height:1px;
+	width:100%
+	border:0;
+	margin-bottom:8px;
+	margin-top:8px;
+}
+
+.system_daily_news_teaser
+{
+	font-size:60%;
+	color:#736F6E;
+	
+}
+/******************************************************/
+/****** END  of Daily news styles ********************/
+/******************************************************/
+
+
+
+/******************************************************/
+/****** START of New footer  styles ***********************/
+/******************************************************/
+.system_footer_bar
+{
+	margin:5;
+}
+
+.system_footer_bar_left
+{
+	width:100%;
+	background-image:url('http://portal-live.solent.ac.uk/site_elements/images/bar/feedback_centre.jpg');
+}
+
+.system_footer_bar_right
+{
+	width:132;
+}
+/******************************************************/
+/****** END of New footer  styles ***********************/
+/******************************************************/

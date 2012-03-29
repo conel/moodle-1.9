@@ -1,0 +1,6 @@
+/Composite.php////*///
+/Core.php////*///
+/FixNesting.php////*///
+/MakeWellFormed.php////*///
+/RemoveForeignElements.php////*///
+/ValidateAttributes.php////*///

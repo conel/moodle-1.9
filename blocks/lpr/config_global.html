@@ -1,0 +1,66 @@
+<?php
+/**
+ * Displays a form to edit the settings for the LPR block.
+ *
+ * @copyright &copy; 2009 University of London Computer Centre
+ * @author http://www.ulcc.ac.uk, http://moodle.ulcc.ac.uk
+ * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
+ * @package LPR
+ * @version 1.0
+ */
+?>
+<script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/mootools.js"></script>
+<script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/calendar.compat.js"></script>
+<div style="text-align: center;">
+     <?php
+    // config for LPR Block goes here
+    $module = 'project/lpr';
+    $config = get_config($module);
+
+    if (!isset($config->pdf_path)) {
+        $config->pdf_path = $CFG->dirroot."/blocks/lpr/print";
+    } 
+	
+	if (!isset($config->academicyear)) {
+		
+		$ac_year =	date('y');
+		$ac_year .=	date('y')+1;
+		
+		
+		$ac_rec = get_record('academic_years','ac_year_code',$ac_year);
+		
+		if (!empty($ac_rec))	{
+			$config->academicyear = $ac_year;			
+			
+		}
+
+		
+		
+		//check if the academicyear exists 
+		//if it des set the acdemic year to that year 
+		//retrieve term dates and save 
+    } 
+	
+	$academicyears 	=	get_records('academic_years');
+
+	
+	?>
+    <p>
+        PDF export path
+        <label>
+            <input type="text" style="width:400px;" name="pdf_path" id="pdf_path"
+                value="<?php echo stripslashes($config->pdf_path); ?>" />
+        </label>
+    </p>
+	<p>
+        Current Academic Year
+        <label>
+            <select name="academicyear">
+				<?php foreach($academicyears as $ac) {?>
+						<option value="<?php echo $ac->ac_year_code; ?>" <?php if ($ac->ac_year_code == $config->academicyear) echo 'selected="selected"'; ?> ><?php echo $ac->ac_year_name; ?></option>
+				<?php } ?>
+			</select>
+        </label>
+    </p>
+    <input type="submit" value="<?php print_string('savechanges') ?>" />
+</div>

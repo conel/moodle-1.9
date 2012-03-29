@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>RockSlideshow Examples</title>
+<link href="slideshow/styles/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="slideshow/rokslideshow/mootools-release-1.11.js"></script>
+<script type="text/javascript" src="slideshow/rokslideshow/rokslideshow.js"></script>
+
+</head>
+<body>
+
+	<div class="wrapper">
+
+		<div id="slidewrap">
+			<div id="slideshow"></div>
+			<div id="loadingDiv"></div>
+		</div>
+		<script type="text/javascript">
+			window.RokSlideshowPath = '';
+
+			var myshow;
+			window.addEvent('load', function(){
+				var imgs = [];
+
+				imgs.push({
+					file: '1.jpg',
+					title: 'Audi RS8 V-12 TDI LeMans Concept - Front Angle View',
+					desc: 'V-12 Diesel concept version based on the LeMans winning V-10 race car.',
+					url: 'http://www.rocketwerx.com/forum'
+				});
+				imgs.push({
+					file: '2.jpg',
+					title: 'Audi RS8 V-12 TDI LeMans Concept - Back Angle View',
+					desc: 'More aggressive body panels gives this concept a mean look',
+					url: 'http://www.rockettheme.com'
+				});
+				imgs.push({
+					file: '3.jpg',
+					title: 'Audi RS8 V-12 TDI LeMans Concept - Side View',
+					desc: 'THe unique orange/grey color scheme makes this concept stand out from the crowd.',
+					url: 'http://demo.rockettheme.com'
+				});
+				imgs.push({
+					file: '4.jpg',
+					title: 'Audi RS8 V-12 TDI LeMans Concept - Front View',
+					desc: 'Any lower and this RS8 would be scooping up tar as it drives down the road.',
+					url: 'http://tutorials.rockettheme.com'
+				});
+				imgs.push({
+					file: '5.jpg',
+					title: 'Audi RS8 V-12 TDI LeMans Concept - Front View',
+					desc: 'Notice the roof mounted cooling for the mid-engine configuration',
+					url: '#'
+				});
+
+				myshow = new Slideshow('slideshow', { 
+					type: 'combo',
+					showTitleCaption: 1,
+					captionHeight: 45,
+					width: 450, 
+					height: 300, 
+					pan: 20,
+					zoom: 30,
+					loadingDiv: 1,
+					resize: true,
+					duration: [2000, 9000],
+					transition: Fx.Transitions.Expo.easeOut,
+					images: imgs, 
+					path: "/slideshow/images/'
+				});
+
+				myshow.caps.h2.setStyles({
+					color: '#fff',
+					fontSize: '13px'
+				});
+				myshow.caps.p.setStyles({
+					color: '#ccc',
+					fontSize: '11px'
+				});
+			});
+		</script>    
+		<div class="clr" />
+
+		
+	</div>
+</body>
+</html>

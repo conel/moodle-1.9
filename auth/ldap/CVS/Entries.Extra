@@ -1,0 +1,7 @@
+/README-LDAP////*///
+/auth.php////*///
+/auth_ldap_sync_users.php////*///
+/config.html////*///
+/ntlmsso_attempt.php////*///
+/ntlmsso_finish.php////*///
+/ntlmsso_magic.php////*///

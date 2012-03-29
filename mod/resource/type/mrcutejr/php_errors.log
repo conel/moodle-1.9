@@ -1,0 +1,7 @@
+[27-Oct-2010 10:33:46] PHP Fatal error:  Call to undefined function strreplace() in C:\inetpub\moodle\mod\resource\type\mrcutejr\search.php on line 364
+[27-Oct-2010 10:34:12] PHP Fatal error:  Call to undefined function strreplace() in C:\inetpub\moodle\mod\resource\type\mrcutejr\search.php on line 364
+[27-Oct-2010 10:35:58] PHP Parse error:  syntax error, unexpected '>' in C:\inetpub\moodle\mod\resource\type\mrcutejr\search.php on line 366
+[27-Oct-2010 10:36:05] PHP Parse error:  syntax error, unexpected '>' in C:\inetpub\moodle\mod\resource\type\mrcutejr\search.php on line 366
+[02-Nov-2010 16:24:27] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ')' in C:\inetpub\moodle\mod\resource\type\mrcutejr\import.php on line 104
+[02-Nov-2010 16:24:34] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in C:\inetpub\moodle\mod\resource\type\mrcutejr\import.php on line 103
+[02-Nov-2010 16:24:36] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in C:\inetpub\moodle\mod\resource\type\mrcutejr\import.php on line 103

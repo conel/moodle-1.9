@@ -1,0 +1,111 @@
+/*!!!!!!!!!!! QuickMenu Core CSS [Do Not Modify!] !!!!!!!!!!!!!*/
+.qmmc .qmdivider{
+	display:block;
+	font-size:1px;
+	border-width:0px;
+	border-style:solid;
+	position:relative;
+	z-index:1;
+}
+.qmmc .qmdividery{
+	float:left;
+	width:0px;
+}
+.qmmc .qmtitle{
+	display:block;
+	cursor:default;
+	white-space:nowrap;
+	position:relative;
+	z-index:1;
+}
+.qmclear {
+	font-size:1px;
+	height:0px;
+	width:0px;
+	clear:left;
+	line-height:0px;
+	display:block;
+	float:none !important;
+}
+.qmmc {
+	position:relative;
+	zoom:1;
+	z-index:10;
+}
+.qmmc a, .qmmc li {
+	float:left;
+	display:block;
+	white-space:nowrap;
+	position:relative;
+	z-index:1;
+}.qmmc div a, .qmmc ul a, .qmmc ul li {
+	float:none;
+}
+.qmsh div a {
+	float:left;
+}.qmmc div{
+	visibility:hidden;
+	position:absolute;
+}.qmmc li {
+	z-index:auto;
+}
+.qmmc ul {
+	left:-10000px;
+	position:absolute;
+	z-index:10;
+}.qmmc, .qmmc ul {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}.qmmc li a {
+	float:none
+}
+.qmmc li:hover>ul{
+	left:auto;
+}#qm0 ul {
+	top:100%;
+}
+#qm0 ul li:hover>ul{
+	top:0px;
+	left:100%;
+}
+
+
+/*!!!!!!!!!!! QuickMenu Styles !!!!!!!!!!!*/
+
+
+	/* QuickMenu 0 */
+
+	/*"""""""" (MAIN) Items""""""""*/	
+	#qm0 a	
+	{
+		margin-left: -6px;
+		padding:10px 15px 5px 10px;
+		color:#fff;
+		font-weight: bold;
+		font-family:arial;
+		font-size:13px;
+		text-decoration:none;
+		background-image:url('navbg.gif');
+	}
+	
+		/*"""""""" (MAIN) hover state """"""""*/	
+	#qm0 a:hover	
+	{	
+		background-color:#429ECE;
+		background-image:url('navbghover.gif');
+		color:#ffffff;
+	}
+
+
+	/*"""""""" Custom Rule""""""""*/	
+	ul#qm0 ul	
+	{	
+		padding:10px;
+		margin:-2px 0px 0px;
+		background-color:#f7f7f7;
+		border-width:1px;
+		border-style:solid;
+		border-color:#dadada;
+	}
+

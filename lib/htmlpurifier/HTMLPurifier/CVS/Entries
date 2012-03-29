@@ -1,0 +1,63 @@
+/AttrCollections.php/1.2/Tue Aug 21 22:07:15 2007//TMOODLE_19_WEEKLY
+/AttrDef.php/1.2.2.2/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+/AttrTransform.php/1.3/Tue Aug 21 22:07:24 2007//TMOODLE_19_WEEKLY
+/AttrTypes.php/1.3/Sun Sep 23 15:47:29 2007//TMOODLE_19_WEEKLY
+/AttrValidator.php/1.1.2.2/Wed Sep 24 21:24:14 2008//TMOODLE_19_WEEKLY
+/CSSDefinition.php/1.4.2.2/Wed Sep 24 21:24:14 2008//TMOODLE_19_WEEKLY
+/ChildDef.php/1.2/Tue Aug 21 22:07:15 2007//TMOODLE_19_WEEKLY
+/Config.php/1.3.2.3/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+/ConfigDef.php/1.2/Tue Aug 21 22:07:30 2007//TMOODLE_19_WEEKLY
+/ConfigSchema.php/1.3/Tue Aug 21 22:07:19 2007//TMOODLE_19_WEEKLY
+/ContentSets.php/1.2/Tue Aug 21 22:07:37 2007//TMOODLE_19_WEEKLY
+/Context.php/1.2/Tue Aug 21 22:07:32 2007//TMOODLE_19_WEEKLY
+/Definition.php/1.1/Tue Aug 21 22:07:32 2007//TMOODLE_19_WEEKLY
+/DefinitionCache.php/1.1.2.1/Mon May 19 06:23:20 2008//TMOODLE_19_WEEKLY
+/DefinitionCacheFactory.php/1.1.2.1/Mon May 19 06:23:20 2008//TMOODLE_19_WEEKLY
+/Doctype.php/1.1/Tue Aug 21 22:07:31 2007//TMOODLE_19_WEEKLY
+/DoctypeRegistry.php/1.1/Tue Aug 21 22:07:22 2007//TMOODLE_19_WEEKLY
+/ElementDef.php/1.3.2.1/Mon May 19 06:23:21 2008//TMOODLE_19_WEEKLY
+/Encoder.php/1.2.2.2/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+/EntityLookup.php/1.2/Tue Aug 21 22:07:42 2007//TMOODLE_19_WEEKLY
+/EntityParser.php/1.2/Tue Aug 21 22:07:31 2007//TMOODLE_19_WEEKLY
+/Error.php/1.2/Tue Aug 21 22:07:28 2007//TMOODLE_19_WEEKLY
+/ErrorCollector.php/1.1/Tue Aug 21 22:07:29 2007//TMOODLE_19_WEEKLY
+/Filter.php/1.2/Tue Aug 21 22:07:16 2007//TMOODLE_19_WEEKLY
+/Generator.php/1.2/Tue Aug 21 22:07:38 2007//TMOODLE_19_WEEKLY
+/HTMLDefinition.php/1.4.2.2/Mon May 19 06:23:21 2008//TMOODLE_19_WEEKLY
+/HTMLModule.php/1.2.2.1/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+/HTMLModuleManager.php/1.4.2.2/Wed Sep 24 21:24:14 2008//TMOODLE_19_WEEKLY
+/IDAccumulator.php/1.2.2.2/Mon May 19 06:23:21 2008//TMOODLE_19_WEEKLY
+/Injector.php/1.1.2.1/Mon Dec 24 21:06:35 2007//TMOODLE_19_WEEKLY
+/Language.php/1.2.2.1/Mon May 19 06:23:20 2008//TMOODLE_19_WEEKLY
+/LanguageFactory.php/1.2.2.1/Mon May 19 06:23:20 2008//TMOODLE_19_WEEKLY
+/Length.php/1.1.2.1/Wed Sep 24 21:24:14 2008//TMOODLE_19_WEEKLY
+/Lexer.php/1.3.2.1/Mon Dec 24 21:06:35 2007//TMOODLE_19_WEEKLY
+/PercentEncoder.php/1.2.2.1/Mon May 19 06:23:20 2008//TMOODLE_19_WEEKLY
+/Printer.php/1.2/Tue Aug 21 22:07:18 2007//TMOODLE_19_WEEKLY
+/Strategy.php/1.2/Tue Aug 21 22:07:43 2007//TMOODLE_19_WEEKLY
+/TagTransform.php/1.2/Tue Aug 21 22:07:23 2007//TMOODLE_19_WEEKLY
+/Token.php/1.2/Tue Aug 21 22:07:18 2007//TMOODLE_19_WEEKLY
+/TokenFactory.php/1.2/Tue Aug 21 22:07:34 2007//TMOODLE_19_WEEKLY
+/URI.php/1.1.2.2/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+/URIDefinition.php/1.1/Tue Aug 21 22:07:36 2007//TMOODLE_19_WEEKLY
+/URIFilter.php/1.1.2.1/Mon Dec 24 21:06:35 2007//TMOODLE_19_WEEKLY
+/URIParser.php/1.1.2.1/Mon May 19 06:23:21 2008//TMOODLE_19_WEEKLY
+/URIScheme.php/1.2/Tue Aug 21 22:07:28 2007//TMOODLE_19_WEEKLY
+/URISchemeRegistry.php/1.3/Sun Sep 23 15:47:29 2007//TMOODLE_19_WEEKLY
+/UnitConverter.php/1.1.2.1/Wed Sep 24 21:24:15 2008//TMOODLE_19_WEEKLY
+D/AttrDef////
+D/AttrTransform////
+D/ChildDef////
+D/ConfigDef////
+D/DefinitionCache////
+D/EntityLookup////
+D/Filter////
+D/HTMLModule////
+D/Injector////
+D/Language////
+D/Lexer////
+D/Printer////
+D/Strategy////
+D/TagTransform////
+D/URIFilter////
+D/URIScheme////

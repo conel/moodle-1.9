@@ -1,0 +1,16 @@
+<table cellpadding="9" cellspacing="0">
+ <tr valign="top">
+     <td align="right">  <?php print_string('default_threshold', 'block_crot'); ?>   </td>
+     <td> <input type="text" name="threshold" size="30" value="<?php echo isset($this->config->threshold)?p($this->config->threshold):'60'; ?>" /> </td>
+ </tr>
+ <tr valign="top">
+     <td align="right">  <?php print_string('grammar_size', 'block_crot'); ?>   </td>
+     <td> <input type="text" name="grammar_size" size="30" value="<?php echo isset($this->config->grammar_size)?p($this->config->grammar_size):'5'; ?>" /> </td>
+ </tr>
+ <tr>
+     <td colspan="2" align="center">
+         <input type="submit" value="<?php print_string('savechanges') ?>" />
+     </td>
+ </tr>
+</table>
+

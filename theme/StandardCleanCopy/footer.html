@@ -1,0 +1,55 @@
+
+</div> <!-- end div containerContent -->
+<!-- START OF FOOTER -->
+<style type="text/css">
+<!--
+.style3 {font-size: 80%}
+-->
+</style>
+
+<div id="footer">
+
+<?php
+    echo '<p class="helplink">';
+    echo page_doc_link(get_string('moodledocslink'));
+    echo '</p>';
+?>
+  <table bgcolor="#FFFFFF" style="padding-left: 0px; padding-right: 0px;" width="100%" height="22px" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td bgcolor="#FFFFFF" width = "42%" style="background-image: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/feedback_centre.jpg'); background-repeat: repeat-x"><div align="left"><img src='<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/feedback_left.jpg' alt="left" width="8" height="22" /></div></td>
+      <td bgcolor="#FFFFFF" width = "43%" style="background-image: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/feedback_centre.jpg'); background-repeat: repeat-x"></td>
+      <td bgcolor="#FFFFFF" style="background-image: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/feedback_centre.jpg'); background-repeat: repeat-x"><div align="right"><a target="_blank" href="http://portal-live.solent.ac.uk/course/mycourse_feedback_form.aspx" title="myCourse feedback and comment"><img src='<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/feedback_right.jpg' border="0" alt="myCourse feedback and comment" title="myCourse feedback and comment"></a></div></td>
+    </tr>
+  </table>
+  <div> 
+    <P align=center><span class="style3"><STRONG>&copy;2006-2008 Southampton Solent 
+      University<BR>
+      </STRONG>East Park Terrace, Southampton, Hampshire SO14 0YN UK</FONT> </FONT></span><BR>
+      <span class="style3"><a href="http://mycourse.solent.ac.uk/theme/standard_clean_copy/Usage.html" target="_blank">Terms and conditions of <em>my</em>Course use</a></span>      <BR>
+    </P>
+<?php if ($navigation and false) { ?>
+    <div class="navbar clearfix">
+        <div class="breadcrumb"><?php print_navigation($navigation); ?></div>
+        <div class="menu"><?php echo $menu; ?></div>
+    </div>
+<?php } ?>
+
+
+<?php if (!empty($performanceinfo)) {
+          echo $performanceinfo;
+} ?>
+
+<?php if (debugging()) {
+?>
+        <div class="validators"><ul>
+          <li><a href="http://validator.w3.org/check?verbose=1&amp;ss=1&amp;uri=<?php echo urlencode(qualified_me()) ?>">Validate HTML</a></li>
+          <li><a href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=-1&amp;url1=<?php echo urlencode(qualified_me()) ?>">Section 508 Check</a></li>
+          <li><a href="http://www.contentquality.com/mynewtester/cynthia.exe?rptmode=0&amp;warnp2n3e=1&amp;url1=<?php echo urlencode(qualified_me()) ?>">WCAG 1 (2,3) Check</a></li>
+        </ul></div>
+<?php } ?>
+
+
+</div>
+</div>
+</body>
+</html>

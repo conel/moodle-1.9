@@ -1,0 +1,153 @@
+table#timetable_tt {
+    border:1px solid #CCC;
+}
+table#timetable_tt td {
+    border:1px solid #CCC;
+    background-color:#FFFFE6;
+}
+
+/* Current Day */
+table#timetable_tt tr.current td {
+    background-color:#FFE8DD;
+    color:#000;
+}
+table#timetable_tt tr.current td.day {
+    background-color:#83859E;
+    font-weight:bold;
+    color:#fff;
+}
+table#timetable_tt tr.current td.day span, table#timetable_tt tr td.day span {
+    font-weight:normal;
+    display:block;
+    margin-top:-2px;
+}
+/* Current Day */
+
+table#timetable_tt td.details, table#timetable_tt tr.current td.details {
+    font-size:0.8em;
+    color:#1B1B1B;
+    padding:6px;
+}
+table#timetable_tt td.details span, table#timetable_tt tr.current td.details span {
+    font-size:1.05em;
+}
+table#timetable_tt td.details a {
+    text-decoration:none;
+    color:#505656;
+}
+table#timetable_tt td.details a:hover {
+    text-decoration:underline;
+    color:#000;
+}
+table#timetable_tt thead td {
+    font-size:0.9em;
+    background-color:#597BA2;
+    color:#fff;
+}
+table#timetable_tt td.day {
+    color:#fff;
+    font-size:0.9em;
+    background-color:#9496AB;
+    text-align:center;
+}
+table#timetable_tt td.day span {
+    font-size:0.9em;
+    color:#E8E8E8;
+}
+
+#timetable_holder h2 {
+    text-transform:capitalize;    
+    font-size:1.4em;
+}
+#timetable_holder h2 span {
+    color:#9B9B9B;
+    text-transform:lowercase;
+}
+
+table#timetable_tt td.course1, table#timetable_tt tr.current td.course1 {
+    /*background-color:#99FFCC;*/
+    background-color:#CCFF99;
+}
+table#timetable_tt td.course2, table#timetable_tt tr.current td.course2 {
+    background-color:#CCFF99;
+}
+table#timetable_tt td.course3, table#timetable_tt tr.current td.course3 {
+    background-color:#CFFCC9;
+}
+table#timetable_tt td.course4, table#timetable_tt tr.current td.course4 {
+    background-color:#FFCC99;
+}
+table#timetable_tt td.course5, table#timetable_tt td.current td.course5 {
+    background-color:#FF9999;
+}
+table#timetable_tt td.course6, table#timetable_tt tr.current td.course6 {
+    background-color:#FF6666;
+}
+table#timetable_tt td.course7, table#timetable_tt tr.current td.course7 {
+    background-color:#FF99FF;
+}
+table#timetable_tt td.course8, table#timetable_tt tr.current td.course8 {
+    background-color:#CC99FF;
+}
+table#timetable_tt td.course9, table#timetable_tt tr.current td.course9 {
+    background-color:#99CCFF;
+}
+table#timetable_tt td.course10, table#timetable_tt tr.current td.course10 {
+    background-color:#66CCFF;
+}
+table#timetable_tt td.course11, table#timetable_tt tr.current td.course11 {
+    background-color:#66FF33;
+}
+table#timetable_tt td.course12, table#timetable_tt tr.current td.course12 {
+    background-color:#FFFF66;
+}
+table#timetable_tt td.course13, table#timetable_tt tr.current td.course13 {
+    background-color:#FF9966;
+}
+table#timetable_tt td.course14, table#timetable_tt tr.current td.course14 {
+    background-color:#FF66CC;
+}
+table#timetable_tt td.course15, table#timetable_tt tr.current td.course15 {
+    background-color:#CC66FF;
+}
+table#timetable_tt td.course16, table#timetable_tt tr.current td.course16 {
+    background-color:#6699FF;
+}
+table#timetable_tt td.course17, table#timetable_tt tr.current td.course17 {
+    background-color:#CC6699;
+}
+table#timetable_tt td.course18, table#timetable_tt tr.current td.course18 {
+    background-color:#00FF99;
+}
+table#timetable_tt td.course19, table#timetable_tt tr.current td.course19 {
+    background-color:#00FFCC;
+}
+table#timetable_tt td.course20, table#timetable_tt tr.current td.course20 {
+    background-color:#FFCC00;
+}
+#timetable_tt_navigation {
+    width:100%;
+    padding-bottom:7px;
+}
+#time_week_prev {
+    width:50%;
+    float:left;
+    text-align:left;
+}
+#time_week_next {
+    width:50%;
+    float:left;
+    text-align:right;
+}
+p#timetable_link {
+    margin:0;
+    padding:0;
+    background:transparent url(pix/icon_timetable.gif) no-repeat 0 3px;
+    padding-left:23px;
+}
+select#week_select {
+    font-size:0.7em;
+}
+#timetable_holder form {
+    display:inline;
+}

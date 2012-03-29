@@ -1,0 +1,110 @@
+/accesslib.php/1.421.2.106/Sat May 23 20:07:12 2009//TMOODLE_19_WEEKLY
+/adminlib.php/1.153.2.74/Fri May  1 10:21:58 2009//TMOODLE_19_WEEKLY
+/authlib.php/1.8.2.7/Wed May 13 05:35:37 2009//TMOODLE_19_WEEKLY
+/base32.php/1.2/Tue May 17 02:20:10 2005//TMOODLE_19_WEEKLY
+/blocklib.php/1.129.2.7/Mon Jan 12 06:03:10 2009//TMOODLE_19_WEEKLY
+/componentlib.class.php/1.7.2.6/Wed Apr  2 06:10:01 2008//TMOODLE_19_WEEKLY
+/cookieless.php/1.4/Wed Jan  3 15:00:13 2007//TMOODLE_19_WEEKLY
+/cookies.js/1.1/Sat Feb  5 21:37:43 2005//TMOODLE_19_WEEKLY
+/cssconstants.php/1.2/Wed Jan 24 07:08:50 2007//TMOODLE_19_WEEKLY
+/csshover.htc/1.3/Wed Jan  3 19:33:49 2007//TMOODLE_19_WEEKLY
+/csvlib.class.php/1.1.2.2/Mon Nov  5 00:49:29 2007//TMOODLE_19_WEEKLY
+/customcheckslib.php/1.1.2.3/Sat Jan 12 18:49:38 2008//TMOODLE_19_WEEKLY
+/datalib.php/1.439.2.32/Wed Jun 10 05:49:56 2009//TMOODLE_19_WEEKLY
+/ddllib.php/1.59.2.4/Mon Dec  8 01:18:44 2008//TMOODLE_19_WEEKLY
+/default.ttf/1.2/Wed Apr  5 22:48:14 2006/-kb/TMOODLE_19_WEEKLY
+/deprecatedlib.php/1.41.2.12/Mon May  4 20:24:45 2009//TMOODLE_19_WEEKLY
+/dmllib.php/1.116.2.32/Sun Feb 15 23:04:43 2009//TMOODLE_19_WEEKLY
+/dropdown.js/1.1.2.1/Fri May  2 02:10:29 2008//TMOODLE_19_WEEKLY
+/eaccelerator.class.php/1.3/Thu Sep 20 06:51:13 2007//TMOODLE_19_WEEKLY
+/editorlib.php/1.3/Sat Apr 22 16:36:35 2006//TMOODLE_19_WEEKLY
+/environmentlib.php/1.27.2.4/Sun Feb  8 21:30:06 2009//TMOODLE_19_WEEKLY
+/eventslib.php/1.16.2.3/Mon Oct  6 22:07:10 2008//TMOODLE_19_WEEKLY
+/excellib.class.php/1.12.2.4/Mon Apr 14 22:40:55 2008//TMOODLE_19_WEEKLY
+/filelib.php/1.50.2.28/Thu May  7 08:55:50 2009//TMOODLE_19_WEEKLY
+/filterlib.php/1.24.10.4/Wed Feb 18 11:02:11 2009//TMOODLE_19_WEEKLY
+/formslib.php/1.129.2.22/Tue Jun  2 10:37:24 2009//TMOODLE_19_WEEKLY
+/gdlib.php/1.14.2.3/Thu Feb 21 05:23:24 2008//TMOODLE_19_WEEKLY
+/gradelib.php/1.120.2.31/Thu Apr 30 19:04:51 2009//TMOODLE_19_WEEKLY
+/graphlib.php/1.20.10.3/Wed Jun 11 08:22:35 2008//TMOODLE_19_WEEKLY
+/grouplib.php/1.22.2.8/Thu Apr  9 08:16:47 2009//TMOODLE_19_WEEKLY
+/htaccess/1.14/Mon Nov 14 22:58:02 2005//TMOODLE_19_WEEKLY
+/html2text.php/1.8.26.7/Mon Jun 15 05:38:59 2009//TMOODLE_19_WEEKLY
+/html2text_readme.txt/1.1.2.4/Mon Jun 15 05:38:59 2009//TMOODLE_19_WEEKLY
+/index.html/1.1/Sat Mar 20 04:08:19 2004//TMOODLE_19_WEEKLY
+/javascript-mod.php/1.1/Sat Apr 16 12:10:44 2005//TMOODLE_19_WEEKLY
+/javascript-static.js/1.39.2.5/Mon Apr  6 02:56:25 2009//TMOODLE_19_WEEKLY
+/javascript.php/1.36.2.4/Tue Mar 31 03:24:15 2009//TMOODLE_19_WEEKLY
+/kses.php/1.4.2.3/Sat Mar  1 13:10:39 2008//TMOODLE_19_WEEKLY
+/languages.md5/1.1.18.1/Sun Dec 30 22:19:06 2007//TMOODLE_19_WEEKLY
+/languages.php/1.7/Mon Dec 11 10:07:47 2006//TMOODLE_19_WEEKLY
+/lexer.php/1.1/Mon Jan 31 07:39:03 2005//TMOODLE_19_WEEKLY
+/listlib.php/1.14.2.1/Thu Nov 27 10:53:40 2008//TMOODLE_19_WEEKLY
+/locallib.php/1.10.2.5/Tue Jun  2 04:13:11 2009//TMOODLE_19_WEEKLY
+/markdown.php/1.8/Mon Sep 17 12:37:51 2007//TMOODLE_19_WEEKLY
+/mathslib.php/1.4.2.1/Mon Dec 10 16:53:11 2007//TMOODLE_19_WEEKLY
+/md5.js/1.1/Fri Jan 23 08:40:29 2004//TMOODLE_19_WEEKLY
+/memcached.class.php/1.1/Wed Dec 27 22:47:51 2006//TMOODLE_19_WEEKLY
+/moodlelib.php/1.960.2.136/Mon Jul  6 18:51:31 2009//TMOODLE_19_WEEKLY
+/odbc.php/1.2/Sun Sep 26 04:54:03 2004//TMOODLE_19_WEEKLY
+/odslib.class.php/1.10.2.1/Wed Apr 16 07:05:06 2008//TMOODLE_19_WEEKLY
+/olson.php/1.25/Tue Oct  2 01:43:07 2007//TMOODLE_19_WEEKLY
+/overlib.js/1.4/Fri Jul 13 10:09:51 2007//TMOODLE_19_WEEKLY
+/pagelib.php/1.62.2.8/Fri Jan 25 08:34:37 2008//TMOODLE_19_WEEKLY
+/pdflib.php/1.5.2.1/Mon Jan 28 05:27:13 2008//TMOODLE_19_WEEKLY
+/profilerlib.php/1.3/Tue Mar 20 02:59:35 2007//TMOODLE_19_WEEKLY
+/questionlib.php/1.119.2.28/Sat Jun 20 23:33:39 2009//TMOODLE_19_WEEKLY
+/recaptchalib.php/1.1.2.4/Mon Mar 31 12:17:59 2008//TMOODLE_19_WEEKLY
+/rsslib.php/1.52.2.5/Fri May 22 15:17:22 2009//TMOODLE_19_WEEKLY
+/scroll_to_errors.js/1.2/Mon Jan 22 20:15:13 2007//TMOODLE_19_WEEKLY
+/searchlib.php/1.13.6.1/Wed Apr 16 03:35:37 2008//TMOODLE_19_WEEKLY
+/session-test.php/1.5/Sun Sep 12 12:40:51 2004//TMOODLE_19_WEEKLY
+/setup.php/1.212.2.27/Mon Jun  8 01:16:15 2009//TMOODLE_19_WEEKLY
+/setuplib.php/1.22.2.6/Fri May  8 21:30:31 2009//TMOODLE_19_WEEKLY
+/simpletestlib.php/1.6.2.3/Mon Jun 22 17:06:04 2009//TMOODLE_19_WEEKLY
+/soaplib.php/1.1/Tue Feb  7 00:20:50 2006//TMOODLE_19_WEEKLY
+/statslib.php/1.54.6.14/Sat Nov 29 14:30:57 2008//TMOODLE_19_WEEKLY
+/tablelib.php/1.24.2.5/Thu May 22 02:33:56 2008//TMOODLE_19_WEEKLY
+/textlib.class.php/1.25/Wed Oct 10 05:25:15 2007//TMOODLE_19_WEEKLY
+/timezone.txt/1.1.4.5/Mon Mar 16 17:53:55 2009//TMOODLE_19_WEEKLY
+/tokeniserlib.php/1.4/Wed Oct 10 05:25:15 2007//TMOODLE_19_WEEKLY
+/ufo.js/1.3/Wed Sep 12 10:14:12 2007//TMOODLE_19_WEEKLY
+/uploadlib.php/1.25.4.3/Mon Jul 14 02:37:24 2008//TMOODLE_19_WEEKLY
+/validateurlsyntax.php/1.4.2.2/Tue Oct 30 10:15:27 2007//TMOODLE_19_WEEKLY
+/weblib.php/1.970.2.140/Mon Jun 22 17:08:41 2009//TMOODLE_19_WEEKLY
+/wiki_to_markdown.php/1.11.18.1/Thu Jul 10 09:48:45 2008//TMOODLE_19_WEEKLY
+/womenslib.php/1.1/Tue Mar  1 08:45:05 2005//TMOODLE_19_WEEKLY
+/wordlist.txt/1.2/Mon Aug 12 07:44:53 2002//TMOODLE_19_WEEKLY
+/xhtml.xsl/1.1/Tue Dec 12 07:24:32 2006//TMOODLE_19_WEEKLY
+/xmlize.php/1.6.6.1/Fri Apr 11 03:59:14 2008//TMOODLE_19_WEEKLY
+D/FirePHPCore////
+D/adodb////
+D/ajax////
+D/bennu////
+D/db////
+D/editor////
+D/evalmath////
+D/excel////
+D/form////
+D/fpdf////
+D/geoip////
+D/grade////
+D/htmlpurifier////
+D/json////
+D/magpie////
+D/mp3player////
+D/overlib////
+D/pclzip////
+D/pear////
+D/phpmailer////
+D/phpxml////
+D/simpletest////
+D/simpletestlib////
+D/smarty////
+D/snoopy////
+D/soap////
+D/speller////
+D/tcpdf////
+D/typo3////
+D/xmldb////
+D/yui////

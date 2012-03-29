@@ -1,0 +1,111 @@
+
+<HTML> 
+  <HEAD> 
+	 <TITLE>Opening Page</TITLE>
+	  
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_controlSound(x, _sndObj, sndFile) { //v3.0
+  var i, method = "", sndObj = eval(_sndObj);
+  if (sndObj != null) {
+    if (navigator.appName == 'Netscape') method = "play";
+    else {
+      if (window.MM_WMP == null) {
+        window.MM_WMP = false;
+        for(i in sndObj) if (i == "ActiveMovie") {
+          window.MM_WMP = true; break;
+      } }
+      if (window.MM_WMP) method = "play";
+      else if (sndObj.FileName) method = "run";
+  } }
+  if (method) eval(_sndObj+"."+method+"()");
+  else window.location = sndFile;
+}
+//-->
+</SCRIPT>
+ <STYLE TYPE="text/css"></STYLE>
+	 
+  
+<link rel="stylesheet" href="numeracy/intro/number.css" type="text/css">
+</HEAD> 
+<BODY BACKGROUND="numeracy/images/backgrd.jpg" bgcolor="#FFFF99" >
+<TABLE WIDTH="562" ALIGN="center">
+  <TR> 
+    <TD width="566"> </TD>
+  </TR>
+  <TR> 
+    <TD width="566" align="center" > 
+              <p><img src="numeracy/shopping/images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1024904074710','numeracy/intro/audio/start.mp3')" class="number"> 
+                &nbsp;<font color="#CC3300" size="+7"> <font face="Verdana, Arial, Helvetica, sans-serif"><b>Numbers</b> 
+                for Life</font></font></p>
+              <p><font face="Verdana, Arial, Helvetica, sans-serif"><font size="+1">Adult 
+                Core Curriculum Entry Levels 2 and 3</font></font></p>
+              
+      <p><img src="numeracy/images/logo.jpg" alt="Numbers for life cover logo" width="500" height="216"></p>
+              <div align="center"> 
+                <div align="center"> 
+                  <p><font face="Arial, Helvetica, sans-serif"><b>Numbers for 
+                    Life</b> is a Basic Skills resource <br>
+                    showing how numbers are used in everyday life.</font></p>
+                  <p></p>
+                </div>
+              </div>
+              
+      <table width="436">
+        <tr align="center"> 
+          <td><img src="numeracy/images/neclogoforlight.gif" width="100" height="61" alt="NEC logo"></td>
+          <td>
+            <img src="numeracy/images/beacon.gif" width="37" height="60"><br>
+            <font face="Arial, Helvetica, sans-serif" size="-1">Beacon&nbsp;Award&nbsp;Winner<br>
+            2002-2003&nbsp;Programme</font> </td>
+          <td><img src="numeracy/images/dctlogo2.gif" width="83" height="40" alt="Dudley logo"></td>
+        </tr>
+      </table>
+            <p><font face="Arial, Helvetica, sans-serif"><br>
+            </font></p>
+          <table width="91" align="left">
+            <tr> 
+              
+          <td><a href="numeracy/intro/copyright.htm" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('next','','numeracy/images/nextb.gif',1)"><img name="next" border="0" src="numeracy/images/next.gif" width="42" height="14" alt="Next"></a></td>
+            </tr>
+          </table>
+         </TD>
+  </TR>
+</TABLE>
+<embed name='CS1024904074710' src='numeracy/intro/audio/start.mp3' loop=false 
+autostart=false MASTERSOUND hidden=true width=0 height=0>
+</embed>
+</BODY>
+</HTML>

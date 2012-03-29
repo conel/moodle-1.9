@@ -1,0 +1,60 @@
+<form method="post" action="module.php" name="form">
+<input type="hidden" name="sesskey" value="<?php echo sesskey(); ?>" />
+
+<table cellpadding=9 cellspacing=0 >
+<tr valign=top>
+    <td align=right>object_dirroot:</td>
+    <td><?php
+	if (empty($CFG->object_dirroot)) $CFG->object_dirroot = 'repository';
+	print "<input type='text' name='object_dirroot' value='$CFG->object_dirroot' />";
+    ?>
+    </td>
+	<td>
+    <?php print_string("config_dirroot", "object") ?>
+    </td>
+</tr>
+<tr valign=top>
+    <td align=right>object_webroot:</td>
+    <td><?php
+	if (empty($CFG->object_webroot)) $CFG->object_webroot = $CFG->wwwroot . '/mod/object/repository';
+	print "<input type='text' name='object_webroot' value='$CFG->object_webroot' />";
+    ?>
+    </td>
+	<td>
+    <?php print_string("config_webroot", "object") ?>
+    </td>
+</tr>
+<tr valign=top>
+    <td align=right><?php print_string("config_repository_size", "object"); ?>:</td>
+    <td><?php
+	if (empty($CFG->object_browser_w)) $CFG->object_browser_w = 970;
+	print "<input type='text' name='object_browser_w' value='$CFG->object_browser_w' size='3' />";
+	if (empty($CFG->object_browser_h)) $CFG->object_browser_h = 600;
+	print " x <input type='text' name='object_browser_h' value='$CFG->object_browser_h' size='3' />";
+    ?>
+    </td>
+	<td>
+    <?php print_string("config_browser_size", "object") ?>
+    </td>
+</tr>
+<tr valign=top>
+    <td align=right>object_auto_description:</td>
+    <td><?php
+	if (empty($CFG->object_auto_description)) $CFG->object_auto_description = true;
+	echo "<input type='hidden' name='object_auto_description' value='0'>";
+	echo "<input type='checkbox' name='object_auto_description' "; 
+	if ($CFG->object_auto_description === '1') echo "checked='true'";
+	echo "value='1' />";
+    ?>
+    </td>
+	<td>
+    <?php print_string("config_auto_description", "object") ?>
+    </td>
+</tr>
+<tr>
+    <td colspan=3 align=center>
+    <input type="submit" value="<?php print_string("savechanges") ?>"></td>
+</tr>
+</table>
+
+</form>

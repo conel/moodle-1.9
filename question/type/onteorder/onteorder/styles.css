@@ -1,0 +1,18 @@
+<style type="text/css">
+.wyraz{
+	background-color:#cccccc;
+	padding:5px;
+	display:inline;
+	margin:5px;
+	line-height:40px;
+}
+.odp{
+	background-color:#cccccc;
+	padding:5px;
+	margin:5px;
+}
+textarea{
+	width:480px;
+	height:300px;
+}
+</style>

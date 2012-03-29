@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/lpr/db" VERSION="20100301" COMMENT="XMLDB file for Moodle LPR block"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="block_lpr" COMMENT="The learner progress report table." NEXT="block_lpr_indicators">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="The fullname of each instance of the module." PREVIOUS="id" NEXT="course_id"/>
+        <FIELD NAME="course_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The mantatory foreign key reference of the related course." PREVIOUS="name" NEXT="learner_id"/>
+        <FIELD NAME="learner_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The foreign key reference of the user for which the LPR is being conducted." PREVIOUS="course_id" NEXT="lecturer_id"/>
+        <FIELD NAME="lecturer_id" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The foreign key reference to the user record of the course teacher." PREVIOUS="learner_id" NEXT="sequence"/>
+        <FIELD NAME="sequence" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The ordinal number indicating how many LPRs have been completed for this learner / course pairing." PREVIOUS="lecturer_id" NEXT="comments"/>
+        <FIELD NAME="comments" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" COMMENT="Freet text comments about the learner's progress." PREVIOUS="sequence" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record creation." PREVIOUS="comments" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record modification." PREVIOUS="timecreated" NEXT="unit_desc"/>
+        <FIELD NAME="unit_desc" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" ENUM="false" PREVIOUS="timemodified"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for block_lpr" NEXT="course_id_fk"/>
+        <KEY NAME="course_id_fk" TYPE="foreign" FIELDS="course_id" REFTABLE="course" REFFIELDS="id" PREVIOUS="primary" NEXT="learner_id_fk"/>
+        <KEY NAME="learner_id_fk" TYPE="foreign" FIELDS="learner_id" REFTABLE="user" REFFIELDS="id" PREVIOUS="course_id_fk" NEXT="lecturer_id_fk"/>
+        <KEY NAME="lecturer_id_fk" TYPE="foreign" FIELDS="lecturer_id" REFTABLE="user" REFFIELDS="id" PREVIOUS="learner_id_fk"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_lpr_indicators" COMMENT="A set of progress indicator questions, with a numeric answer bound." PREVIOUS="block_lpr" NEXT="block_lpr_indicator_answers">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="indicator"/>
+        <FIELD NAME="indicator" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="The charasteristic question." PREVIOUS="id" NEXT="bound"/>
+        <FIELD NAME="bound" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The numeric bound of the indicator." PREVIOUS="indicator" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record creation." PREVIOUS="bound" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record modification." PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_lpr_indicator_answers" COMMENT="The answers to progress indicators for a given lpr." PREVIOUS="block_lpr_indicators" NEXT="block_lpr_attendances">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="lpr_id"/>
+        <FIELD NAME="lpr_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The foreign key reference of the lpr." PREVIOUS="id" NEXT="indicator_id"/>
+        <FIELD NAME="indicator_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The foreign key reference of the progress indicator." PREVIOUS="lpr_id" NEXT="answer"/>
+        <FIELD NAME="answer" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The numeric answer." PREVIOUS="indicator_id" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record creation." PREVIOUS="answer" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Timestamp of record modification." PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="lpr_id_fk"/>
+        <KEY NAME="lpr_id_fk" TYPE="foreign" FIELDS="lpr_id" REFTABLE="block_lpr" REFFIELDS="id" PREVIOUS="primary" NEXT="indicator_id_fk"/>
+        <KEY NAME="indicator_id_fk" TYPE="foreign" FIELDS="indicator_id" REFTABLE="block_lpr_indicators" REFFIELDS="id" PREVIOUS="lpr_id_fk"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_lpr_attendances" COMMENT="The punctuality and attendance statistics for the lpr, broken down into units by optional external id." PREVIOUS="block_lpr_indicator_answers" NEXT="block_lpr_mis_modules">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="lpr_id"/>
+        <FIELD NAME="lpr_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The foreign key reference of the learner progress report." PREVIOUS="id" NEXT="attendance"/>
+        <FIELD NAME="attendance" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" DECIMALS="2" COMMENT="The percentile of attendance." PREVIOUS="lpr_id" NEXT="punctuality"/>
+        <FIELD NAME="punctuality" TYPE="number" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" DECIMALS="2" COMMENT="The percentile of punctuality." PREVIOUS="attendance" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The timestamp of record creation." PREVIOUS="punctuality" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="The timestamp of record modification." PREVIOUS="timecreated"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="lpr_id_fk"/>
+        <KEY NAME="lpr_id_fk" TYPE="foreign" FIELDS="lpr_id" REFTABLE="block_lpr" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="block_lpr_mis_modules" COMMENT="This is where the user(tutor) can select Modules for reporting on in the LPR for attendance and punctuality." PREVIOUS="block_lpr_attendances">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="lpr_id"/>
+        <FIELD NAME="lpr_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" ENUM="false" COMMENT="Foreign reference to the LPR" PREVIOUS="id" NEXT="module_code"/>
+        <FIELD NAME="module_code" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="Foreign key reference to the MIS module codes" PREVIOUS="lpr_id" NEXT="module_desc"/>
+        <FIELD NAME="module_desc" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" ENUM="false" COMMENT="Module Description from the MIS at time of record creation." PREVIOUS="module_code" NEXT="punct_positive"/>
+        <FIELD NAME="punct_positive" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="The number of times a learner was puctual" PREVIOUS="module_desc" NEXT="marks_present"/>
+        <FIELD NAME="marks_present" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="The number of times a learner was present" PREVIOUS="punct_positive" NEXT="marks_total"/>
+        <FIELD NAME="marks_total" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="The total number of classes a learner could of attended" PREVIOUS="marks_present" NEXT="selected"/>
+        <FIELD NAME="selected" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" ENUM="false" COMMENT="Selected for LPR report" PREVIOUS="marks_total"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" NEXT="lpr_idfk"/>
+        <KEY NAME="lpr_idfk" TYPE="foreign" FIELDS="lpr_id" REFTABLE="block_lpr" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="module_code_index" UNIQUE="false" FIELDS="module_code" NEXT="module_code_lpr_id_index"/>
+        <INDEX NAME="module_code_lpr_id_index" UNIQUE="false" FIELDS="module_code, lpr_id" PREVIOUS="module_code_index"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+  <STATEMENTS>
+    <STATEMENT NAME="insert block_lpr_indicators" TYPE="insert" TABLE="block_lpr_indicators" COMMENT="Initial insert of records on table block_lpr_indicators">
+      <SENTENCES>
+        <SENTENCE TEXT="(indicator, bound, timecreated, timemodified) VALUES ('Attainment/Learning', 10, 1253874516, 1253874516)" />
+        <SENTENCE TEXT="(indicator, bound, timecreated, timemodified) VALUES ('Functional Skills', 10, 1253874516, 1253874516)" />
+        <SENTENCE TEXT="(indicator, bound, timecreated, timemodified) VALUES ('Employment Skills', 10, 1253874516, 1253874516)" />
+        <SENTENCE TEXT="(indicator, bound, timecreated, timemodified) VALUES ('Minimum Target Grade', 10, 1253874516, 1253874516)" />
+        <SENTENCE TEXT="(indicator, bound, timecreated, timemodified) VALUES ('Aspirational Target Grade', 10, 1253874516, 1253874516)" />
+      </SENTENCES>
+    </STATEMENT>
+  </STATEMENTS>
+</XMLDB>

@@ -1,0 +1,210 @@
+<?php
+echo '<script type="text/javascript" src="'.$CFG->wwwroot.'/blocks/lpr/config_functions.js"></script>';
+?>
+<div style="text-align: center;">
+
+<?php $categories = get_categories();
+
+      $cat_no = count($categories);
+
+    $module = 'project/ilp';
+    $config = get_config($module);
+
+        if (!isset($config->ilp_show_student_info))
+            { $config->ilp_show_student_info = 0; }
+        if (!isset($config->ilp_show_personal_reports))
+            { $config->ilp_show_personal_reports = 0; }
+        if (!isset($config->ilp_show_subject_reports))
+            { $config->ilp_show_subject_reports = 0; }
+        if (!isset($config->ilp_show_targets))
+            { $config->ilp_show_targets = 0; }
+        if (!isset($config->ilp_show_concerns))
+            { $config->ilp_show_concerns = 0; }
+        if (!isset($config->ilp_show_achieved_targets))
+            { $config->ilp_show_achieved_targets = 0; }
+        if (!isset($config->ilp_limit_categories))
+            { $config->ilp_limit_categories = 0; }
+        if (empty($config->ilp_categories))
+            { $config->ilp_categories = ''; }
+        if (!isset($config->ilp_user_guide_link))
+            { $config->ilp_user_guide_link = 0; }
+        if (!isset($config->ilp_show_lprs))
+            { $config->ilp_show_lprs = 0; }
+        if (!isset($config->ilp_lprs_course_specific))
+            { $config->ilp_lprs_course_specific = 0; }
+?>
+
+<table cellpadding="9" cellspacing="0" style="text-align:left" >
+<tr valign="top">
+    <td align="right">ilp_user_guide_link:</td>
+    <td colspan="2">
+    <?php print_textfield('ilp_user_guide_link', $config->ilp_user_guide_link, $alt = '',$size=50,$maxlength=0, $return=false); ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_student_info:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_student_info", $config->ilp_show_student_info, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_student_info", "block_ilp") ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_personal_reports:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_personal_reports", $config->ilp_show_personal_reports, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_personal_reports", "block_ilp") ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_subject_reports:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_subject_reports", $config->ilp_show_subject_reports, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_subject_reports", "block_ilp") ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_targets:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_targets", $config->ilp_show_targets, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_targets", "block_ilp") ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_concerns:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_concerns", $config->ilp_show_concerns, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_concerns", "block_ilp") ?></p>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center"><hr /></td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_achieved_targets:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_achieved_targets", $config->ilp_show_achieved_targets, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_achieved_targets", "block_ilp") ?>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center"><hr /></td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_show_lprs:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_show_lprs", $config->ilp_show_lprs, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_show_lprs", "block_ilp") ?></p>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_lprs_course_specific:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_lprs_course_specific", $config->ilp_lprs_course_specific, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_lprs_course_specific", "block_ilp") ?></p>
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center"><hr /></td>
+</tr>
+<tr>
+    <td colspan="3"><h3>Target Grades</h3>
+</tr>
+<tr>
+    <td valign="top">Add Target Grade:</td>
+    <td colspan="2">
+        <?php print_textfield('ilp_target_grade', '', $alt = '',$size=50,$maxlength=0, $return=false); ?>
+        <input type="submit" value="Add Grades" />
+        <p>(add multiple target grades by separating them with a comma e.g. A,B,C)</p>
+    </td>
+</tr>
+<tr>
+    <td valign="top">Target Grades:</td>
+    <td colspan="2">
+<?php
+    // Get a list of Target grades from the database
+    $query = "SELECT id, name FROM mdl_targets";
+    if ($targets = get_records_sql($query)) {
+        $targs = array();
+        foreach ($targets as $target) {
+            $targs[$target->id] = $target->name;
+        }
+        echo '<table cellpadding="5" cellspacing="3">';
+        echo '<tr><th width="220">Target Name</th><th>Action</th></tr>';
+        $i = 0;
+        foreach ($targs as $key => $value) {
+            $bg_col = ($i % 2) ? '#F4F4F4' : '#FFF';
+            echo '<tr style="background-color:'.$bg_col.';">';
+                echo "<td>" . $value . "</td><td><a href=\"$key\" class=\"target_rename\" title=\"$value\">rename</a> | <a href=\"$key\" class=\"target_delete\" title=\"$value\">delete</a></td>";
+            echo '</tr>';
+            $i++;
+        }
+        echo '</table>';
+        echo '<div id="target_rename_holder" style="display:none;">Rename to: <input id="target_to_rename" type="text" name="target_rename" value="" style="width:280px;" /><input type="submit" value="Rename" /></div>';
+        echo '<input id="target_id_rename" type="hidden" name="target_id_rename" value="" />';
+        echo '<input id="target_id_to_del" type="hidden" name="target_id_to_delete" value="" />';
+    } else {
+        echo '<p>No targets have been added yet</p>';
+    }
+?>
+        <br /><br />
+    </td>
+</tr>
+<tr>
+    <td colspan="3" align="center"><hr /></td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_limit_categories:</td>
+    <td>
+    <?php choose_from_menu_yesno ("ilp_limit_categories", $config->ilp_limit_categories, "", "", ""); ?>
+    </td>
+    <td>
+    <?php print_string("config_ilp_limit_categories", "block_ilp") ?>
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right">ilp_categories:</td>
+    <td colspan="2">
+    <?php print_textfield('ilp_categories', $config->ilp_categories, $alt = '',$size=50,$maxlength=0, $return=false); ?>
+    </td>
+</tr>
+<tr>
+    <td>&nbsp;</td>
+    <td colspan="2">
+    <?php print_string("config_ilp_categories", "block_ilp") ?>
+    </td>
+</tr>
+<tr><th>&nbsp;</th><th>ID</th><th>Category Name</th></tr>
+<?php foreach ($categories as $category){
+        echo '<tr><td>&nbsp;</td><td>'.$category->id.'</td><td colspan="2">'.$category->name.'</td></tr>';
+        }
+?>
+<tr>
+    <td colspan="3" align="center">
+    <input type="submit" value="<?php print_string("savechanges") ?>" /></td>
+</tr>
+</table>
+
+<?php if (1 or $usehtmleditor) {
+
+          use_html_editor();
+
+      }
+
+?>
+

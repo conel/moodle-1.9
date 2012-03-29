@@ -1,0 +1,49 @@
+a, a:link, a:visited,
+a:hover, a:active {
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.sideblock a:link,
+.sideblock a:visited,
+.headermenu a:link,
+.headermenu a:visited,
+#footer a:link,
+#footer a:visited,
+.navbar a:link,
+.navbar a:visited,
+.commands span a:link,
+.commands span a:visited {
+  text-decoration: none;
+}
+
+.sideblock a:hover,
+.headermenu a:hover,
+#footer a:hover,
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.homelink a:link,
+.homelink a:visited,
+.homelink a:hover {
+  color: #000;
+  text-decoration: none;
+}
+.homelink a:link,
+.homelink a:visited {
+  border-top: 1px solid #cecece;
+  border-bottom: 2px solid #4a4a4a;
+  border-left: 1px solid #cecece;
+  border-right: 2px solid #4a4a4a;
+}
+.homelink a:hover {
+  border-bottom: 1px solid #cecece;
+  border-top: 2px solid #4a4a4a;
+  border-right: 1px solid #cecece;
+  border-left: 2px solid #4a4a4a;
+}
+

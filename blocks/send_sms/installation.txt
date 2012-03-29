@@ -1,0 +1,162 @@
+==========================
+ Files to put live
+==========================
+
+/moodle/
+-------------------------
+- config.php
+
+
+/moodle/lang/en_utf8
+-------------------------
+- block_send_sms.php
+
+
+/moodle/blocks/send_sms/
+-------------------------
+- block_send_sms.php
+- send_sms_login.php
+- send_sms_logout.php
+- send_sms_do.php
+- functions.js
+- mobile_format.html
+- config_instance.html
+- send_sms.css
+
+
+/moodle/blocks/send_sms/lang/en_utf8/
+--------------------------------------
+- block_send_sms.php
+
+
+Styles - backup
+-------------------------------
+/* nkowald added styles 01/08/09 */
+
+/* ----------------------------- */
+/*    Send SMS Module styles     */
+/* ----------------------------- */
+#result {
+	display:none;
+	color:#000;
+	font-weight:bold;
+	background-color:#FFF9E1;
+	border:1px solid #FED292;
+	font-size:0.85em;
+	line-height:1.35em;
+	margin-bottom:7px;
+	padding:5px;
+}
+#result h2 {
+	margin:0;
+	padding:0;
+	margin-bottom:10px;
+}
+#result span {
+	display:block;
+	font-weight:normal;
+	border:none;
+}
+#result span strong {
+	font-weight:bold;
+}
+#result ul {
+	margin:0;
+	padding:0;
+	margin:2px 0 3px 16px;
+}
+#result ul  li {
+	border-bottom:none;
+	font-weight:normal;
+	margin:0;
+	padding:0;
+	margin-top:2px;
+}
+a#view_format {
+	text-decoration:underline;
+}
+#send_sms_mobile_numbers, #send_sms_message, input#sms_username, input#sms_password {
+	width:160px;
+	width:97%;
+}
+#send_sms_message {
+	font-size:1em;
+}
+#instructions {
+	display:none;
+	margin:6px 0 7px 0;
+	font-size:0.87em;
+	line-height:1.6em;
+	background-color:#CEDBDE;
+	color:#5A656B;
+}
+#instructions div {
+	display:block;
+	padding:5px 9px;
+}
+#instructions strong {
+	font-weight:bold;
+}
+#instructions span {
+	margin-top:5px;
+	display:block;
+}
+#logged_in {
+	margin-bottom:10px;
+	line-height:1.3em;
+}
+#logged_in p {
+	margin:0;
+	padding:0;
+}
+#logged_in strong {
+	font-weight:normal;
+	color:#000;
+}
+#logged_in a {
+	color:#0225B3;
+	text-decoration:underline;
+}
+#logged_in a:hover {
+	text-decoration:none;
+}
+#logged_in p.user_logout {
+	text-align:right;
+}
+#send_sms_button {
+	margin-top:5px;
+}
+input.sign_in {
+	margin-top:7px;
+}
+label {
+	cursor:pointer;
+}
+p.small {
+	font-size:0.85em;
+	color:#939393;
+	line-height:1.45em;
+	color:#464646;
+	margin-top:2px;
+	background-color:#E4ECED;
+	padding:7px;
+}
+.smaller {
+	font-size:0.88em;
+	color:#939393;
+}
+p.smaller {
+	line-height:1.13em;
+	font-size:0.8em;
+	margin:4px 0 8px 0;
+	color:#353535;
+}
+strong.error {
+	color:red !important;
+}
+#char_count {
+	border-width:0;
+	background:transparent none; 
+}
+/* //Send SMS Module styles */
+/* ----------------------------- */

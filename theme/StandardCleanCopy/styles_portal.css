@@ -1,0 +1,97 @@
+/***
+ *** PORTAL / CONTENSIS STYLES ****
+ ***/
+ 
+ /***
+ *** TOP MENU****
+ ***/
+
+.system_topmenu {
+	font-weight: bold;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	color: #fff;
+
+	position: relative;
+	width: 100%;
+	min-width: 720px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 1px 0px;
+	background: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/portal_black_bg.gif') top left
+	}
+
+.system_topmenu ul {
+	width: 630px;
+	margin: 0px auto 0px auto;
+	padding: 0px 0px 0px 0px;
+	list-style-type: none
+	}
+	
+.system_topmenu li {
+	position: relative;
+	text-align: center;
+	margin: 0px 0px 0px 1px;
+	padding: 0px 0px 0px 0px;
+	width: 100px;
+	float: left;
+	list-style-type: none
+	}
+	
+/* When adding new horizontal menu items, to reduce the size of the text slightly change the size here */
+
+.system_topmenu a {
+	
+	font-weight: bold;
+	display: block;
+	margin: 0px 0px 0px 0px;
+	padding: 3px 0px 4px 0px;
+	text-decoration: none !important;
+	color: #fff;
+	list-style-type: none
+	}
+	
+.system_topmenu a:link {
+	text-decoration: none;
+	}
+	
+.system_topmenu a:visited {
+	text-decoration: none
+	}
+	
+.system_topmenu a:hover{
+	text-decoration: none;
+	color: #FFCC00;
+	background: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/portal_red_bg.gif') top left #EE1C23
+	}
+	
+	 /***
+ *** HEADER****
+ ***/
+	
+	.system_header {
+	height: 50px;
+	width: 100%;
+	background: url('<?php echo "$CFG->wwwroot/theme/$CFG->theme" ?>/portal_headerbg.gif') top left repeat-x #EE1C23
+	}
+
+.system_section_header {
+	font-size: 160%;
+	font-weight: bold;
+	float: left;
+	margin: 20px 0px 0px 13px;
+	padding: 0px 0px 1px 0px;
+	color: #FFFF99
+	}
+
+.system_portal_name {
+	font-size: 160%;
+	clip: right;
+	float: right;
+	margin: 20px 98px 0px 0px;
+
+	color: #ffa500
+	}
+
+.breadcrumb ul {
+  display:inline;
+}

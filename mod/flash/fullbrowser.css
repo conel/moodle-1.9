@@ -1,0 +1,16 @@
+HTML {
+    height : 100%;
+    width : 100%;
+    overflow: hidden;
+     margin : 0;
+}
+BODY {height :100%; width : 100%; margin : 0;}
+DIV#content {height :100%; width : 100%; margin : 0;}
+DIV#page {height :100%; width : 100%; margin : 0;}
+DIV.clearer {display :none;}
+#footer {display :none; margin : 0;}
+#header {display :none;}
+HR, BR{display :none;}
+#layout {width: 100%; height: 100%;margin : 0;}
+#flashcontent {width: 100%; height: 100%; margin : 0;}
+embed {width: 100%; height: 100%;margin : 0;}

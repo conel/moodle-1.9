@@ -1,0 +1,40 @@
+<br />
+<div class="block_lpr_buttons">
+<?php
+// nkowald - 2010-07-01 
+$course_id_post = (isset($_GET['course_id']) && $_GET['course_id'] != '') ? $_GET['course_id'] : 0;
+$user_id_post = (isset($_GET['learner_id']) && $_GET['learner_id'] != '') ? $_GET['learner_id'] : 0;
+
+// you can create an LPR without selecting a course, but not without selecting a learner
+if ($can_write && !empty($learner)) { ?>
+        <form action="<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/create.php?<?php echo implode('&amp;', $params); ?>" method="post">
+            <div>
+                <input type="submit" name="submit" value="<?php echo get_string('createnew','block_lpr'); ?>" />
+            </div>
+        </form>
+<?php
+}
+if ($can_view && !empty($learner)) {
+	echo '<form action="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$course_id_post.'&amp;userid='.$user_id_post.'&amp;status=4" method="post">';
+	echo '<div><input type="submit" name="submit" value="View 10 Latest LPRs" /></div></form>';
+}
+// display a small form for adjusting the number of records to display in the table 
+?>
+
+ </div>
+<form action="<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/list.php?<?php echo http_build_query($_GET); ?>" method="post">
+    <table id="optiontable" class="block_lpr_center">
+        <tr>
+            <td>
+                <input type="hidden" id="updatepref" name="updatepref" value="1" />
+                <label for="perpage"><?php //echo get_string('pagesize','block_lpr');?>LPRS per page:</label>
+            </td>
+            <td>
+                <input type="text" id="perpage" name="perpage" size="1" value="<?php echo $perpage;?>" />
+            </td>
+            <td>
+                <input type="submit" value="<?php echo get_string('savepreferences'); ?>" />
+            </td>
+        </tr>
+    </table>
+</form>

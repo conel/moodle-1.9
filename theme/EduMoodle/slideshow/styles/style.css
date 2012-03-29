@@ -1,0 +1,28 @@
+.clr {
+	clear: both;
+}
+.wrapper {
+	width: 970px;
+	margin: 0 auto;
+}
+#slidewrap {
+	border: 0;
+	margin: 0;
+	padding: 0px;
+}
+#slidewrap div { 
+ text-align: right;
+}
+#footer {
+	border-top: 2px solid #eee;
+	margin-top: 2em;
+	font-weight: bold;
+	text-align: right;
+	color: #999;
+}
+#loadingDiv {
+	text-align: center;
+	font-family: verdana;
+	font-size: 10pt;
+	font-weight: bold;
+}

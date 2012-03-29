@@ -1,0 +1,49 @@
+Crot Anti Plagiarism plug-in installation
+
+The plug-in is in the earliest development stage.
+we encourage you to report all the bugs (obviously there are  many) to (moodlecrot at gmail.com)
+
+As for now, the plug-in was tested in Linux environment only. 
+It was tested on Ubuntu 8.04 and SUSE 11(mostly).
+
+Plugin is not compatible with Moodle 2.0 !
+
+Of course global search will work only if your server has access to the web.
+
+
+0. REQUIRED SOFTWARE AND SETTINGS
+
+0.1 PACKAGES (apart form those ones that are required by Moodle): 
+  php_soap is a must for global search functionality)
+  php_zip is a must for DOCX (MS-Work 2007) and ODT (Open Office) documents
+  
+0.2 SETTINGS in php ini 
+  allow_url_fopen = On
+
+0.3 MS Application ID key
+You need to obtain the MS Application ID key from the Microsoft to use the global search features.  
+Open one of the following links to get the ID : 
+
+http://msdn.microsoft.com/en-us/library/dd251020.aspx
+or 
+http://www.bing.com/developers
+
+and follow the instructions to get the key.
+
+INSTALLATION
+1. untar the crot folder into blocks/crot. Set the appropriate permissions and ownership (the same as you have for other blocks in your enviroment)
+2. login to Moodle as an admin and open Notifications in the admin's menu. Moodle should setup the required tables for you.
+3. Open Modules/Blocks/Anti-Plagiarism link from the admin's menu.
+4. put MS-Application ID key in the appropriate text box.
+5. Other settings you may change later based on your experience with the plug-in. The complete description of these settings is not ready yet. 
+6. Select Test global search to run a quick test of global search. If it works you will see results of test search query on the next step.
+7. Click Save Changes button
+
+IMPLEMENTATION
+1. Login as a teacher to the course you want the plug-in to be implemented.
+2. Turn editing on and add Anti-plagiarism block to the course.
+3. Go to the Anti-plagiarism / Settings and select the assignments to be processed by the plug-in. Local search means that the plug-in will look for similar documents in the student submissions storage locally, in the current course.  If you want it to compare current submissions with submissions from other courses you should add Anti-plagiarism module to the other courses and mark the assignments to be searched. Global search means that the plug-in will look for similar documents on the web. 
+4. Save settings and wait for the cron scheduler to process the assignments. Processing may consume a lot of time; of course it depends on the server and external channel bandwidth. Global search consumes more time as it requires querying the search engine and downloading similar files from the Internet. Performance test results are available at http://www.siberiasoft.info/index.php/doc/44-crot-for-moodle-installation.html
+5. Open report and compare documents.
+
+6. Send your comments to (moodlecrot [at] gmail.com)

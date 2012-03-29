@@ -1,0 +1,25 @@
+<div class="block_lpr">
+    <?php
+    // print the table
+    $table->print_html();
+    ?>
+</div>
+<br />
+<?php
+// display a small form for adjusting the number of records to display in the table ?>
+<form action="<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/targets_unachieved.php?<?php echo http_build_query($_GET); ?>" method="post">
+    <table id="optiontable" class="block_lpr_center">
+        <tr>
+            <td>
+                <input type="hidden" id="updatepref" name="updatepref" value="1" />
+                <label for="perpage"><?php echo get_string('pagesize','block_lpr');?>:</label>
+            </td>
+            <td>
+                <input type="text" id="perpage" name="perpage" size="1" value="<?php echo $perpage;?>" />
+            </td>
+            <td>
+                <input type="submit" value="<?php echo get_string('savepreferences'); ?>" />
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,51 @@
+<?php 
+	$nazwa = 'resp'.$question->id.'_';
+?>
+
+<div class="qtext">
+<?php 
+	echo $questiontext.'<br /><br />';
+	$odpowiedzi=explode("[split]", $state->responses['']);
+	$wyrazy=explode("\n", $question->options->sentence);
+	$wyrazyDobrze=explode("\n", $question->options->sentence);
+	$i=0;
+	shuffle($wyrazy);
+	for($i=0; $i<count($wyrazy); $i++){
+		$wyrazy[$i]=rtrim($wyrazy[$i]);
+		
+		if($state->event==3 && $state->raw_grade==1){
+		echo '<div id="odp'.$i.'_'.$question->id.'" class="odp">';
+		echo $wyrazyDobrze[$i];
+		echo '</div>';
+		}else{
+		echo '<div id="odp'.$i.'_'.$question->id.'" class="odp" onclick="odpowiedz(this,'.$question->id.', '.$i.');" onmouseover="podswietlOdpowiedz(this)" onmouseout="odswietlOdpowiedz(this)">';
+		echo '&nbsp;';
+		echo '</div>';
+		}
+		
+	}
+	$i=0;
+	echo '<br />';
+	foreach($wyrazy as $wyraz){
+		if($state->event!=3 || $state->raw_grade!=1){
+			echo '<div id="wyraz'.$i.'_'.$question->id.'" class="wyraz" onclick="zaznaczone(this);" onmouseover="podswietlWyraz(this)" onmouseout="odswietlWyraz(this)">'.$wyraz.'</div>';
+		}
+		$i++;
+	}
+?>
+	<input name="<?php echo $nazwa; ?>" style="display:none;" onclick="sprawdz();" id="<?php echo $nazwa;?>" />
+</div>
+
+<?php if ($image) { ?>
+    <img class="qimage" src="<?php echo $image; ?>" alt="" />
+<?php } ?>
+
+<div class="ablock clearfix">
+    <?php if ($feedback) { ?>
+        <div class="feedback">
+            <?php echo $feedback ?>
+        </div>
+    <?php } ?>
+
+    <?php $this->print_question_submit_buttons($question, $state, $cmoptions, $options); ?>
+</div>

@@ -1,0 +1,88 @@
+2009-09-25 Friday 08:19  leothiessen
+
+	* ajaxsearch.js, mrcutejr.js, resource.class.php, search.php: 
+	
+	CONTRIB-1532 - ***ADDS EXPERIMENTAL AJAX SEARCH IN "NAME" FIELD
+	WHEN CREATING A RESOURCE***
+
+2009-08-25 Tuesday 03:25  leothiessen
+
+	* import.php, forms/form_import_csv_mrcutejr.php: 
+	
+	CONTRIB-1470 - improper cvs commit (forgot to add files before
+	commiting) - added new files now and re-committing
+
+2009-08-12 Wednesday 02:57  leothiessen
+
+	* config.php, mrcutejr.css, search.php,
+	lang/en_utf8/resource_mrcutejr.php: 
+	
+	CONTRIB-1474 - added basic import tool that parses files in the
+	mrcutejr repository folder and provides guesses for db values, then
+	spits out an xls file which can be tweaked, converted to csv then
+	reimported to very rapidly import a whole lot of files efficiently
+
+2009-08-08 Saturday 03:02  leothiessen
+
+	* forms/: form_edit_mrcutejr.php, form_new_mrcutejr.php,
+	form_search_mrcutejr.php: 
+	
+	CONTRIB-1470 removed debug code ini_set call in 3 forms (php)
+	scripts
+
+2009-08-07 Friday 06:34  leothiessen
+
+	* Crypt_Xtea.php, get.php, mrcutejr_auth.php, preview.php: 
+	
+	CONTRIB-1470 - Update with the newly added files (dev is a little
+	new to cvs); this update is primarily to make repository files be
+	stored outside of site files & access to a resource only possible
+	(to a student) if they have access to the course that the resource
+	is made available in.  Other tweaks include: search improved
+	(included realreference field), can include nested sub-directories,
+	any editingteacher can now edit the repository (rather than
+	username base as before), admin settings reduced to 1 optional
+	setting, added * to required form fields, fixed a non-functioning
+	"continue" button on a particular error screen.  See
+	http://tracker.moodle.org/browse/CONTRIB-1470
+
+2009-08-07 Friday 06:25  leothiessen
+
+	* config.php, edit.php, get_icon.php, mrcutejr.css, mrcutejr.js,
+	new.php, resource.class.php, search.php,
+	forms/form_edit_mrcutejr.php, forms/form_new_mrcutejr.php,
+	forms/form_search_mrcutejr.php, lang/en_utf8/resource_mrcutejr.php:
+	
+	
+	CONTRIB-1470 - Almost all files changed; update is primarily to
+	make repository files be stored outside of site files & access to a
+	resource only possible (to a student) if they have access to the
+	course that the resource is made available in.	Other tweaks
+	include: search improved (included realreference field), can
+	include nested sub-directories, any editingteacher can now edit the
+	repository (rather than username base as before), admin settings
+	reduced to 1 optional setting, added * to required form fields,
+	fixed a non-functioning "continue" button on a particular error
+	screen.  See http://tracker.moodle.org/browse/CONTRIB-1470
+
+2009-08-04 Tuesday 01:17  leothiessen
+
+	* mrcutejr.js: 
+	
+	Updated set_value() to insert description into resource summery in
+	both cases: HTMLArea enabled or not (previously didn't work with
+	HTMLArea enabled).  This may need further updating for Moodle 2.0
+	when it's release (unless same code happens to work for however the
+	new TinyMCE editor is implemented).
+
+2009-07-29 Wednesday 09:45  arborrow
+
+	* edit.php, config.php, get_icon.php, icon.gif,
+	mod_resource_dynamic_custom_icons.patch, mrcutejr.css, mrcutejr.js,
+	new.php, resource.class.php, search.php,
+	lang/en_utf8/resource_mrcutejr.php, forms/form_edit_mrcutejr.php,
+	forms/form_new_mrcutejr.php, forms/form_search_mrcutejr.php: 
+	
+	CONTRIB-1439 - adding MrCuteJr package contributed and maintained
+	by Leo Thiessen
+

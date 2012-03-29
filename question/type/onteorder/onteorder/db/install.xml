@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="question/type/onteorder/db" VERSION="2007021505" COMMENT="XMLDB file for Moodle question/type/onteorder">
+  <TABLES>
+    <TABLE NAME="question_onteorder" COMMENT="Sentences for onteorder questions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" ENUM="false" NEXT="question"/>
+		<FIELD NAME="question" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" ENUM="false" NEXT="sentence" PREVIOUS="id"/>
+        <FIELD NAME="sentence" TYPE="text" NOTNULL="true" SEQUENCE="false" ENUM="false" PREVIOUS="question"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for question_onteorder"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

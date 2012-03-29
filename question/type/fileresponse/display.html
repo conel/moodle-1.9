@@ -1,0 +1,43 @@
+<div class="qtext">
+    <?php echo $questiontext; ?>
+</div>
+
+<?php if ($image) { ?>
+    <img class="qimage" src="<?php echo $image; ?>" alt="" />
+<?php } ?>
+
+<div class="ablock clearfix">
+    <div class="ablock">
+        <?php
+            echo "$struploadfile ($strmaxsize)";
+        ?>
+        <br />
+        <?php
+            echo "$struploadform";
+        ?>
+    </div>
+
+    <?php if ($uploadfeedback) { ?>
+        <div class="feedback message">
+            <?php echo $uploadfeedback; ?>
+        </div>
+    <?php } ?>
+
+    <?php if ($struploadedfile) { ?>
+        <div class="answer">
+            <?php echo $struploadedfile; ?>
+        </div>
+    <?php } ?>
+
+    <?php if ($showessay) { ?>
+        <div class="answer">
+            <?php echo $answer; ?>
+        </div>
+    <?php } ?>
+
+	<?php 
+		// nkowald - 2011-02-14 - For some reason setting this makes it work.
+		$cmoptions->optionflags = 1; 
+		$this->print_question_submit_buttons($question, $state, $cmoptions, $options); 
+	?>
+</div>

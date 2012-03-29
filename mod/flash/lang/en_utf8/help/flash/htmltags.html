@@ -1,0 +1,65 @@
+<p align="center"><strong>HTML Tags Supported in Flash</strong></p>
+
+<p>Flash supports some simple html tags. And some of the HTML tags format text in a slightly different way to in normal html.</p>
+<p>The tags in the following are supported by Flash :</p>
+<blockquote>
+    <pre>&lt;font size='32'&gt;&lt;p align='center'&gt;You 
+can use some html tags 
+here such as &lt;b&gt;bold&lt;/b&gt; or &lt;i&gt;italics&lt;/i&gt; 
+or &lt;u&gt;underline&lt;/u&gt;.&lt;/p&gt;&lt;/font&gt;</pre>
+</blockquote>
+<p>Which would look something like this : </p>
+<p align='center'><div style="font-size:32px;">You can use some html tags here such as <b>bold</b> or <i>italics</i> or <u>underline</u>.
+</div>
+<p><strong>Don't forget inverted commas around attribute values.</strong> </p>
+<p>You can often drop the &quot; or ' inverted commas around values in normal html. For example this works in html :</p>
+<blockquote>
+    <pre>&lt;font size=32&gt;Hello&lt;/font&gt; 
+&lt;-- doesn't work in Flash --&gt;</pre>
+</blockquote>
+<p>Flash is not so forgiving don't forget your inverted commas.</p>
+<p><strong>The &lt;font&gt; tag. </strong></p>
+<p>In Flash the font size is interpreted as a pixel size. It supports color attributes such as :</p>
+<blockquote>
+    <pre>&lt;font size=&quot;32&quot; color=&quot;#00FF00&quot;&gt;
+This text is 32 pixels high and green&lt;/font&gt; </pre>
+</blockquote>
+<p>Which would appear as :</p>
+<div style="font-size:32px; color:#00FF00">
+    <blockquote>
+        <p>This text is 32 pixels high and green</u>.</p>
+    </blockquote>
+</div>
+<p><strong>The &lt;img&gt; tag.</strong> </p>
+<p>The image tag is supported for loading non progressive jpgs and .swf files. But this only works for people who have the Flash 7.0 player installed.</p>
+<p><strong>The &lt;p&gt; tag.</strong> </p>
+<p>You can use the paragraph tag to align text &lt;p align=&quot;left&quot;&gt;&lt;/p&gt;,&lt;p align=&quot;centre&quot;&gt;&lt;/p&gt; and &lt;p align=&quot;right&quot;&gt;&lt;/p&gt; are supported. </p>
+<p><strong>List Items &lt;li&gt;&lt;/li&gt; tags.</strong></p>
+<p>You can use &lt;li&gt;&lt;/li&gt; as follows :</p>
+<p>Advantages of Flash : </p>
+<blockquote>
+    <pre>&lt;li&gt;cross browser compatibility&lt;/li&gt;
+ &lt;li&gt;powerful client side scripting platform &lt;/li&gt;
+ &lt;li&gt;multimedia  applications easy to author &lt;/li&gt;
+ &lt;li&gt;player and Flash movies are small files &lt;/li&gt;</pre>
+</blockquote>
+<p>Which would appear as follows :</p>
+<p> <ul><li>cross browser compatibility</li>
+    <li>powerful client side scripting platform </li>
+    <li>multimedia  applications easy to author </li>
+<li>player and Flash movies are small files </li></ul>
+</p> 
+<p>&lt;ol&gt; (ordered list) and &lt;ul&gt; (unordered list) tags are ignored.</p>
+<p><strong>&lt;a&gt; Anchor Tag.</strong></p>
+<p>The anchor tag can be used to make a link. Normally it won't be coloured or underlined as it would be in normal html. But you can style anchors yourself as follows :</p>
+<blockquote>
+    <pre>&lt;a href=&quot;http://jamiep.org&quot;&gt;&lt;font color=&quot;#0000FF&quot;&gt;&lt;u&gt;My site!&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;</pre>
+</blockquote>
+<p>Which would appear as :</p>
+<blockquote>
+    <p><a href="http://jamiep.org">My site!</a></p>
+</blockquote>
+<p>Think carefully when using anchors within an activity as obviously a user clicking on an anchor will mean they abort the activity halfway through. You can use the target attribute though to open a link in a new window as follows :</p>
+<blockquote>
+    <p>&lt;a href=&quot;http://jamiep.org&quot; target=&quot;_blank&quot; &gt;&lt;font color=&quot;#0000FF&quot;&gt;&lt;u&gt;My site!&lt;/u&gt;&lt;/font&gt;&lt;/a&gt; </p>
+</blockquote>

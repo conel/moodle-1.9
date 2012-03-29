@@ -1,0 +1,347 @@
+<div class="block_lpr">
+    <?php require_once("{$CFG->dirroot}/blocks/lpr/views/js/reports.js.php"); ?>
+    
+    <div id="category_browser" class="category_browser">
+        <a class="sitename" href="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/reports.php?category_id=0&amp;start_date=<?php echo $start_date; ?>&amp;end_date=<?php echo $end_date; ?>">
+            <?php echo $SITE->shortname; ?>
+        </a>
+        <ul>
+            <?php recursively_print_categories($categories, $start_date, $end_date); ?>
+        </ul>
+    </div>
+    <div class="category_report">
+       <?php
+		if ($category_id !== NULL) {
+        if(!empty($learner)) { ?>
+			<script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/mootools.js"></script>
+			<script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/calendar.compat.js"></script>
+			<form method="get" action="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/reports.php?>">
+				<div class="date_selector">
+					<?php
+					// add all the current page params as hidden values
+					foreach($_GET as $name => $value) {
+						// except the ones we're setting in this form
+						if($name != 'start_date' && $name != 'end_date') {
+							echo "<input type='hidden' name='$name' value='$value' />";
+						}
+					} ?>
+					<label for="start_date">Start Date:</label>
+					<input type="text" id="start_date" name="start_date" value="<?php echo $start_date; ?>" />
+					<label for="end_date">End Date:</label>
+					<input type="text" id="end_date" name="end_date" value="<?php echo $end_date; ?>" />
+					<input type="submit" value="Update" />
+					<script type="text/javascript">
+						window.addEvent(
+							'domready',
+							function() {
+								reportsCal = new Calendar({
+									start_date: { start_date: 'd/m/Y' },
+									end_date: { end_date: 'd/m/Y' }
+									}, { pad: 1, direction: -1, classes: ['lpr_calendar']}
+								);//, navigation: 2
+							});
+					</script>
+				</div>
+			</form>
+			<table>
+					<tr>
+						<th>
+							<?php echo get_string('metric', 'block_lpr'); ?>
+						</th>
+						<th>
+							<?php echo get_string('average', 'block_lpr'); ?>
+						</th>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('attendance', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+							<?php
+							if(!empty($atten->attendance)) {
+								echo round($atten->attendance, 2).'% ('.map_attendance($atten->attendance).')';
+							} ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('punctuality', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+							<?php
+							if(!empty($atten->punctuality)) {
+								echo round($atten->punctuality, 2).'% ('.map_attendance($atten->punctuality).')';
+							} ?>
+						</td>
+					</tr>
+					<?php
+					foreach($indicators as $ind) { ?>
+						<tr>
+							<td class="half">
+								<?php echo $ind->indicator; ?>
+							</td>
+							<td class="half">
+								<?php echo !empty($answers[$ind->id]) ? round($answers[$ind->id]->answer, 2) : null; ?>
+							</td>
+						</tr>
+						<?php
+					} ?>
+				</table>
+			<?php
+				echo "Statistics for <i>".fullname($learner)."</i> in course <i>{$course->shortname}</i>.<br/>";
+                echo "Averages computed across {$lpr_count} LPR(s), ";
+			?>
+				
+            <h2 class="main">All Courses</h2>
+            <table>
+                <tr>
+                    <th>
+                        <?php echo get_string('metric', 'block_lpr'); ?>
+                    </th>
+                    <th>
+                        <?php echo get_string('average', 'block_lpr'); ?>
+                    </th>
+                </tr>
+                <tr>
+                    <td class="half">
+                        <?php echo get_string('attendance', 'block_lpr'); ?>
+                    </td>
+                    <td class="half">
+                        <?php
+                        if(!empty($atten_learner->attendance)) {
+                            echo round($atten_learner->attendance, 2).'% ('.map_attendance($atten_learner->attendance).')';
+                        } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="half">
+                        <?php echo get_string('punctuality', 'block_lpr'); ?>
+                    </td>
+                    <td class="half">
+                        <?php
+                        if(!empty($atten_learner->punctuality)) {
+                            echo round($atten_learner->punctuality, 2).'% ('.map_attendance($atten_learner->punctuality).')';
+                        } ?>
+                    </td>
+                </tr>
+                <?php
+                foreach($indicators as $ind) { ?>
+                    <tr>
+                        <td class="half">
+                            <?php echo $ind->indicator; ?>
+                        </td>
+                        <td class="half">
+                            <?php echo !empty($answers_learner[$ind->id]) ? round($answers_learner[$ind->id]->answer, 2) : null; ?>
+                        </td>
+                    </tr>
+                    <?php
+                } ?>
+            </table>
+            <?php
+            echo "Statistics for <i>".fullname($learner)."</i> in all courses.<br/>";
+            echo "Averages computed across {$lpr_count_learner} LPRs, ";
+            $params = $_GET;
+            unset($params['course_id']);
+            $url = "{$CFG->wwwroot}/blocks/lpr/actions/list.php?risk=1&amp;".http_build_query($params);
+            echo "of which ".(($lpr_risks_all > 0) ? "<a href='{$url}' class='risk'>{$lpr_risks_all} are at risk</a>" : "0 are at risk").".";?>
+            <br/><br/>
+        <?php }else {
+		
+				for($i=0;$i<$lpr_db->count_terms($config->academicyear);$i++) {
+				
+					$term = $lpr_db->get_terms($config->academicyear,$i+1);
+					
+					$url_param = "start_date={$term->term_start_date}&end_date={$term->term_end_date}";
+					
+					$url_param = (!empty($course_id)) ? $url_param."&course_id={$course_id}": $url_param;
+					
+					$url_param = (!empty($category_id)) ? $url_param."&category_id={$category_id}": $url_param;
+
+		?>
+				<table>
+					<tr>
+						<th>
+							<?php echo get_string('term', 'block_lpr'); ?>
+							<?php echo $i+1; ?>
+							(<?php echo date('d F Y',$term->term_start_date); ?>-<?php echo date('d F Y',$term->term_end_date); ?>)
+						</th>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('incompleteilp', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/list_incomplete.php?{$url_param}"; ?>">
+							<?php
+								echo "{$unfinished_count[$i]}/{$learner_count[$i]} ({$finished_avg[$i]}%)";
+							?>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('tutorreviewsoutstanding', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/outstanding_reviews.php?{$url_param}"; ?>">
+							<?php
+								echo "{$tutor_reviews_out[$i]}/{$learner_count[$i]} ({$review_avg[$i]}%)";
+							?>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							Subject Targets Outstanding
+							<?php //echo get_string('subjectreportsoutstanding', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/outstanding_subject.php?{$url_param}"; ?>">
+							<?php
+								echo "{$subject_reports_out[$i]}/{$subject_reports[$i]} ({$subject_avg[$i]}%)";
+							?>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('studentstatus', 'block_lpr'); ?>
+						</td>
+						<td>
+						 <?php echo get_string('redstatus', 'block_lpr'); ?>
+						</td>
+						<td>
+						 <?php echo get_string('amberstatus', 'block_lpr'); ?>
+						</td>
+						<td>
+						 <?php echo get_string('greenstatus', 'block_lpr'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php
+								//echo "{$finished_count}/{$learner_count} ({$finished_avg}%)";
+							?>
+						</td>
+						<td>
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/student_status.php?{$url_param}"; ?>&status=<?php echo CONCERN_RED;?>" >
+							<?php echo (empty($red_status[$i])) ? 0 :  $red_status[$i];?>
+							</a>
+						</td>
+						<td >
+							
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/student_status.php?{$url_param}"; ?>&status=<?php echo CONCERN_AMBER;?>" >
+							<?php echo (empty($amber_status[$i])) ? 0 : $amber_status[$i];?>
+							</a>
+							
+						</td>
+						<td>
+							<a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/student_status.php?{$url_param}"; ?>&status=<?php echo CONCERN_GREEN;?>" >
+							<?php echo (empty($green_status[$i])) ? 0 : $green_status[$i];?>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('target', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+                            <a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/targets_unachieved.php?{$url_param}"; ?>">
+							<?php
+								echo "{$target_complete[$i]}/{$target_set[$i]} ({$targets_avg[$i]}%)";
+							?>
+                            </a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('goodperformance', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+                            <a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/good_performance_records.php?{$url_param}"; ?>">
+							<?php echo (empty($performance_post[$i])) ? 0 : $performance_post[$i];?>
+                            </a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('causeforconcern', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+                            <a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/cause_for_concerns.php?{$url_param}"; ?>">
+							<?php echo (empty($concern_posts[$i])) ? 0 : $concern_posts[$i];?>
+                            </a>
+						</td>
+					</tr>
+					<tr>
+						<td class="half">
+							<?php echo get_string('studentprogress', 'block_lpr'); ?>
+						</td>
+						<td class="half">
+                            <a href="<?php echo "{$CFG->wwwroot}/blocks/lpr/actions/student_progress.php?{$url_param}"; ?>">
+							<?php echo (empty($progress_posts[$i])) ? 0 : $progress_posts[$i];?>
+                            </a>
+						</td>
+					</tr>
+				</table>
+		<?php 	} 
+		
+		
+		?>
+		<?php
+
+		if(!empty($students)) { ?>
+            <table>
+                <tr>
+                    <th><?php echo get_string('students'); ?></th>
+                </tr>
+                <?php
+                foreach($students as $student) { ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/reports.php?category_id=<?php echo $category_id;?>&amp;course_id=<?php echo $course_id; ?>&amp;learner_id=<?php echo $student->id; ?>&amp;start_date=<?php echo $start_date; ?>&amp;end_date=<?php echo $end_date; ?>">
+                                <?php echo fullname($student); ?>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php
+                } ?>
+            </table>
+            <?php
+        } elseif(!empty($courses)) { ?>
+            <table>
+                <tr>
+                    <th><?php echo get_string('courses'); ?></th>
+                </tr>
+                <?php
+                foreach($courses as $c) { ?>
+                    <tr>
+                        <td>
+                            <a href="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/reports.php?category_id=<?php echo $category_id;?>&amp;course_id=<?php echo $c->id; ?>&amp;start_date=<?php echo $start_date; ?>&amp;end_date=<?php echo $end_date; ?>">
+                                <?php echo $c->fullname; ?>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php
+                } ?>
+            </table>
+            <?php
+        }
+
+		}
+        } else {
+            // No category ID set: display instructions here.
+            echo '<h2>Instructions</h2>';
+            echo '<p>Please select a category from the menu to view E-ILP statistics.</p>';
+        }
+?>
+    </div>
+    <div class="clearer"></div>
+    <script type="text/javascript">
+        //<![CDATA[
+        window.onload = function() {
+            restore_category_menu(<?php echo $category_id; ?>);
+        }
+        //]]>
+    </script>
+</div>

@@ -1,0 +1,1 @@
+Drop these images into your theme/autumn/pix/ directory for less "autumn" look.

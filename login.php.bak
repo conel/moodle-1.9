@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en"/>
+	<title>eZone: Login to the site</title>
+	<link rel="icon" href="" type="image/ico" />
+	<link rel="shorcut icon" " />
+
+</head> 
+<body>
+
+<div id="holder">
+<h2>Returning to this web site?</h2>
+
+<p>Login here using your username and password<br/>(Cookies must be enabled in your browser)<span class="helplink">
+
+        <div class="loginerrors"><span class="error">Your session has timed out.  Please login again.</span></div>        
+		
+		<form action="https://clg.conel.ac.uk/VLE/login/index.php" method="post" id="login">
+          <div class="loginform">
+            <div class="form-label"><label for="username">Username</label></div>
+            <div class="form-input">
+              <input type="text" name="username" id="username" size="15" value="ezoneadmin" />
+            </div>
+
+            <div class="form-label"><label for="password">Password</label></div>
+			
+            <div class="form-input">
+			  <input type="password" name="password" id="password" size="15" value="" />
+              <input type="submit" value="Login" />
+              <input type="hidden" name="testcookies" value="1" />
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <div class="subcontent guestsub">
+        <div class="desc">
+          Some courses may allow guest access        
+		  </div>
+		  
+	<form action="index.php" method="post" id="guestlogin">
+	  <div class="guestform">
+		<input type="hidden" name="username" value="guest" />
+		<input type="hidden" name="password" value="guest" />
+		<input type="hidden" name="testcookies" value="1" />
+		<input type="submit" value="Login as a guest" />
+	  </div>
+	</form>
+		
+</div>
+
+</body>
+</html>		

@@ -1,0 +1,119 @@
+<?php
+	//$email = 'NKowald@staff.conel.ac.uk'; // Testing email address
+    $email = $USER->email;
+?>
+<div class="block_lpr">
+    <div class="export mform">
+        <?php
+        if(!empty($msg)) {
+            echo "<div class='msg'>{$msg}</div>";
+        } ?>
+        <script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/mootools.js"></script>
+        <script type="text/javascript" src="<?php echo $CFG->wwwroot;?>/blocks/lpr/views/js/calendar.compat.js"></script>
+
+        <form action="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/print.php" method="post" id="pdf_export">
+        <fieldset class="clearfix">
+            <legend class="ftoggler">Filters</legend>
+                <table class="pdf_exports">
+				<?php 
+				if(!$single) {?>
+                    <tr>
+                        <td><label for="folder">Output Folder</label></td>
+                        <td><input id="folder" type="text" name="folder" value="<?php echo date('Y-m-d', time());?>" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="menucategory_id">Category</label></td>
+                        <td><?php echo choose_from_menu($categories, 'category_id', '', '&nbsp;'); ?>
+                            <?php 
+                        } else { ?>
+                            <input id="folder" type="hidden" name="folder" value="singleprint" />
+                            <input id="folder" type="hidden" name="single" value="1" />
+                            <?php 
+                        } ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="menulearner_id">Learner</label></td>
+                        <td><?php echo choose_from_menu($learners, 'learner_id', $learner_id, '&nbsp;'); ?></td>
+                    </tr>
+                    <?php // nkowald - 2011-04-11 - Adding Email Address field ?>
+                    <tr>
+                        <td><label for="email">Email To</label></td>
+                        <td><input type="text" name="email" value="<?php echo $email; ?>" id="email_field" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="start_date">Date Range</label></td>
+                        <td>
+                            <span>
+                                <input id="start_date" name="start_date" type="text" value="" />
+                                <input id="end_date" name="end_date" type="text" value="" />
+                            </span>
+                            <script type="text/javascript">
+                                window.addEvent(
+                                    'domready',
+                                    function() {
+                                        exportCal = new Calendar({
+                                            start_date: { start_date: 'd/m/Y' },
+                                            end_date: { end_date: 'd/m/Y' }
+                                            }, { pad: 1, direction: -1, classes: ['lpr_calendar']}
+                                        );//, navigation: 2
+                                    });
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><p class="center"><input type="submit" value="Generate" /></p></td>
+                    </tr>
+                </table>
+                </fieldset>
+            </form>
+		<?php if(!$single) { ?>		
+            <form action="<?php echo $CFG->wwwroot; ?>/blocks/lpr/actions/print.php" method="post" enctype="multipart/form-data">
+                <fieldset class="clearfix">
+				<legend class="ftoggler">CSV Upload</legend>
+                <table class="pdf_exports">
+                    <tr>
+                        <td><label for="csv_folder">Output Folder</label></td>
+                        <td><input id="csv_folder" type="text" name="folder" value="<?php echo date('Y-m-d', time());?>" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="csv_file">File</label></td>
+                        <td><input id="csv_file" type="file" name="csv_file" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email_field2">Email To</label></td>
+                        <td><input type="input" name="email" value="<?php echo $email; ?>" id="email_field2" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="start_date_file">Date Range</label></td>
+                        <td>
+						<span>
+							<input id="start_date_file" name="start_date" type="text" value="" />
+							<input id="end_date_file" name="end_date" type="text" value="" />
+						</span>
+						<script type="text/javascript">
+							window.addEvent(
+								'domready',
+								function() {
+									exportCal = new Calendar({
+										start_date_file: { start_date_file: 'd/m/Y' },
+										end_date_file: { end_date_file: 'd/m/Y' }
+										}, { pad: 1, direction: -1, classes: ['lpr_calendar']}
+									);//, navigation: 2
+								});
+						</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><p class="center"><input type="submit" value="Generate" /></p></td>
+                    </tr>
+                </table>
+                </fieldset>
+				</form>
+            <p class="center" style="font-size:1.1em;"><a href="export.php?single=1" style="color:#000;">Print Single LPR</a></p>
+			<?php } ?>
+            <?php if ($single) { ?>
+            <p class="center" style="font-size:1.1em;"><a href="export.php" style="color:#000;">Print Multiple LPRs</a></p>
+			<?php } ?>
+    </div>
+</div>

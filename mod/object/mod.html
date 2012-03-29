@@ -1,0 +1,79 @@
+<?php
+	
+
+    if (empty($form->name)) $form->name = '';
+	if (empty($form->start_url)) $form->start_url = '';
+	if (empty($form->material_root)) $form->material_root = '';
+	if (empty($form->imsmanifest)) $form->imsmanifest = '';
+	if (!isset($CFG->object_auto_description)) $CFG->object_auto_description = '1';
+	
+	echo "
+<form name=\"form\" method=\"post\" action=\"mod.php\">
+<center>";
+	echo "
+<table cellpadding=\"5\">
+<tr valign=\"top\">
+    <td align=\"right\"></td>
+	<td align=\"left\">";
+	if (empty($CFG->object_browser_w)) $CFG->object_browser_w = 970;
+	if (empty($CFG->object_browser_h)) $CFG->object_browser_h = 600;
+	
+	button_to_popup_window ("/mod/object/finder.php?reset=true", "coursefiles", get_string("browse","object"), $CFG->object_browser_h, $CFG->object_browser_w, $strchooseafile);	
+	helpbutton("browse", get_string("browse", "object"), "object");
+	
+	echo "
+	</td>
+	</tr>
+	<tr valign=\"top\">
+    <td align=\"right\"><strong>
+	";
+	print_string("name", "object");
+	echo ":</strong>";
+	echo "
+    </td>
+    <td align=\"left\">
+		<input type='text' name='name' value='$form->name' size='40' />
+	";
+	helpbutton("name", get_string("name", "object"), "object");
+	echo "
+		<input type='hidden' name='start_url' value='$form->start_url' />
+		<input type='hidden' name='material_root' value='$form->material_root' />
+		<input type='hidden' name='imsmanifest' value='$form->imsmanifest' />
+    </td>
+</tr>
+<tr valign=\"top\">
+    <td align=\"right\"><strong>
+	";
+	print_string("summary", "object");
+	echo ":</strong><br />";
+	helpbutton("summary", get_string("summary", "object"), "object", true, true);
+	echo "
+	</td>
+	<td align=\"left\">
+	";
+	if ($CFG->object_auto_description === '1') print_textarea(false, 20, 60, 680, 400, 'summary', $form->summary);
+	else print_textarea(true, 20, 60, 680, 400, 'summary', $form->summary);
+	echo "
+	</td>
+</tr>
+	";
+?>
+</table>
+<?php
+
+?>
+<!-- these hidden variables are always the same -->
+<input type="hidden" name="course"        value="<?php  p($form->course) ?>" />
+<input type="hidden" name="sesskey"       value="<?php  p($form->sesskey) ?>" />
+<input type="hidden" name="coursemodule"  value="<?php  p($form->coursemodule) ?>" />
+<input type="hidden" name="section"       value="<?php  p($form->section) ?>" />
+<input type="hidden" name="module"        value="<?php  p($form->module) ?>" />
+<input type="hidden" name="modulename"    value="<?php  p($form->modulename) ?>" />
+<input type="hidden" name="instance"      value="<?php  p($form->instance) ?>" />
+<input type="hidden" name="mode"          value="<?php  p($form->mode) ?>" />
+
+<?php 
+	echo '<input type="submit" value="'; print_string("savechanges"); echo '" />';
+?>
+</center>
+</form>

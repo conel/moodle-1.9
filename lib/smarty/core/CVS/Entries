@@ -1,0 +1,23 @@
+/core.assemble_plugin_filepath.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.assign_smarty_interface.php/1.2/Thu Sep 16 17:13:13 2004//TMOODLE_19_WEEKLY
+/core.create_dir_structure.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.display_debug_console.php/1.2/Thu Sep 16 17:13:13 2004//TMOODLE_19_WEEKLY
+/core.get_include_path.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.get_microtime.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.get_php_resource.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.is_secure.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.is_trusted.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.load_plugins.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.load_resource_plugin.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.process_cached_inserts.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.process_compiled_include.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.read_cache_file.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.rm_auto.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.rmdir.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.run_insert_handler.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.smarty_include_php.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.write_cache_file.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.write_compiled_include.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.write_compiled_resource.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+/core.write_file.php/1.1/Mon May 31 05:29:10 2004//TMOODLE_19_WEEKLY
+D

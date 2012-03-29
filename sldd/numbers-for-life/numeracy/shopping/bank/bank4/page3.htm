@@ -1,0 +1,430 @@
+
+<HTML> 
+  
+<HEAD>
+<TITLE>Bank: Checking Balance</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i>d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+//-->
+</SCRIPT>
+<STYLE TYPE="text/css">.sound {  cursor: hand}
+.sounda {  cursor: hand}
+</STYLE>
+<LINK REL="stylesheet" HREF="../intro/number.css" TYPE="text/css">
+<SCRIPT LANGUAGE="JavaScript" SRC="scripts/behActions.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript"
+	 SRC="scripts/behCourseBuilder.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="scripts/interactionClass.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" SRC="scripts/elemTextClass.js"></SCRIPT>
+</HEAD> 
+  <BODY BACKGROUND="../../../intro/images/backgrd1.gif"
+					
+	ONLOAD="MM_initInteractions()">
+<TABLE WIDTH="500" ALIGN="center">
+  <TR> 
+    <TD width="169"><IMG SRC="../images/bankbig.gif" WIDTH="76" HEIGHT="25" alt="Bank">&nbsp;</TD>
+    <TD ALIGN="RIGHT" width="267"> 
+      <TABLE WIDTH="161">
+        <TR> 
+          <TD HEIGHT="29" WIDTH="59%"><A HREF="../../../intro/frontp2.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image7','','../images/homeb.gif',1)"><IMG
+					 NAME="Image7" BORDER="0" SRC="../images/home.gif" width="56" height="15" alt="home"></A></TD>
+          <TD HEIGHT="29" WIDTH="41%"><A HREF="../../../intro/index2.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image8','','../../images/indexb.gif',1)"><IMG
+					 NAME="Image8" BORDER="0" SRC="../../images/index.gif" WIDTH="53"
+				HEIGHT="16" alt="index"></A></TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD width="48"> 
+      <DIV ALIGN="center"><a href="javascript:void(window.open('page2r.htm', '','width=600,height=500, scrolling=yes, scrollbars=yes, screenX=1,screenY=1,top=1,left=80'))"><IMG SRC="../images/bankbag.gif" WIDTH="53" HEIGHT="53" border="0" alt="Revision"></a></DIV>
+    </TD>
+  </TR>
+  <TR> 
+    <TD COLSPAN="2"> 
+      <P><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287143260','audio/page3a.mp3')" class="sound"> 
+        </b></span></font><FONT FACE="Arial, Helvetica, sans-serif" COLOR="#009900"
+				SIZE="4"> Exercise 4. Bank balance<IMG SRC="images/pencil.gif" WIDTH="41"
+				HEIGHT="48" alt="pencil"></FONT></P>
+      <FORM NAME="form2" METHOD="post" ACTION="">
+        <P><FONT FACE="Arial, Helvetica, sans-serif">Name:</FONT> 
+          <INPUT TYPE="text" NAME="textfield" SIZE="40">
+          <BR>
+        </P>
+      </FORM>
+      <FORM NAME="form3" METHOD="post" ACTION="">
+        <P><FONT
+				  FACE="Arial, Helvetica, sans-serif">Date:</FONT>&nbsp;&nbsp; 
+          <INPUT TYPE="text" NAME="textfield2">
+        </P>
+      </FORM>
+      <P ALIGN="left"><FONT FACE="Arial, Helvetica, sans-serif">Look at the following 
+        displays. Write the value of each balance in words in the box provided:<BR>
+        <BR>
+        <b>1. </b><IMG SRC="images/balan5a.jpg" WIDTH="228" HEIGHT="151"
+				 ALIGN="texttop" alt="Bank machine showing balance of &pound;25.60"></FONT><SPAN> 
+        <BR>
+        <FONT
+				FACE="Arial, Helvetica, sans-serif">Example (be certain to write 
+        out pounds and pence)</FONT> </SPAN></P>
+      <TABLE WIDTH="242" BORDER="1">
+        <TR> 
+          <TD><SPAN><B>twenty-five pounds and sixty pence</B></SPAN></TD>
+        </TR>
+      </TABLE>
+      <br>
+      <interaction name="Text_Singleline01" object="G01" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G01Layer"> <span name="G01question"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287159570','audio/page3_2.mp3')" class="sounda"> 
+         
+        </b></span></font> <font face="Arial, Helvetica, sans-serif"><b>2.</b><img src="images/balan5b.jpg" width="228" height="151"
+				 align="texttop" alt="Bank machine showing balance of &pound;75.80"><span> 
+        <br>
+        <a
+				 href="javascript:void(window.open('info2.htm', '','width=380,height=420, screenX=1,screenY=1,top=1,left=1'))">Click</a> 
+        for a spelling guide. <br>
+        </span> </font><br>
+        </span> 
+        <form name="G01elem" onSubmit="return false">
+          <input name="G01elemInp" type="text" onBlur="G01.e['elem'].update()" onFocus="G01.e['elem'].focus()" value="" size="40">
+        </form>
+        <form name="G01controls">
+          <input name="G01judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G01')">
+          <input name="G01reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G01','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG01() {
+    G01 = new MM_interaction('G01',0,0,0,0,0,0,0,'','','f','',0);
+    G01.add('text','elem','');
+    G01.add('textComp','elem','Response1','25-32-###-slaeksvjfedanAStDlyad-kaf37iaUvkde09 s9p1soX9usenaOd9dss2 kdaYfnkjdas 8sesli18gslhjatd9y13 kjplse8qnepcoieuu',1,0,0,1);
+    G01.add('textComp','elem','Response2','26-32-###-ssjfedaAvSDleadkna37taUkyd09 s91fsX9iseavO9des2k dYfpkjaos8susl1n8sldjads913 kjlas8qnepodiuu rzxemqjiadsgujahdiutqejymvc xzjpaureek7naj2c6sfedmq',1,0,0,1);
+    G01.add('textComp','elem','Response3','27-32-###-sASDleadkav37aUekd09ns91stX9seyaO9d-s2kdfYfkjias8svsl18eslja d913pkjlso8qepuoiuunrzxmdqjadssuja diuqeejmvicxzjgaurehk7ajt26sfydmqq woeipralsekdjfnmxzccvmlsekjdf',1,0,0,1);
+    G01.add('textComp','elem','Response4','29-32-###-ss91sX9eseaO9dvs2kdYfekjas8snsl18sltjad913ykjls8q epoiuufrzxmqjiadsujavdiuqejemvcxzj aurek7paj26sfodmqqwoueiralsnkdjfmxdzcvmlsskjdfoi eurjfkelwoeiuilaksjfgdaASDlhadka37taUkd09ys91sX9 seaO9dps2kdYfekjas8snsl18slcjad913ekjls8q',1,0,0,0);
+    G01.init();
+    G01.am('segm','Segment: Check Time_',1,1);
+    G01.am('cond','Time At Limit_','G01.timeAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+    G01.am('segm','Segment: Correctness_',1,0);
+    G01.am('cond','Correct_01','G01.correct == true',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G01.am('end');
+    G01.am('cond','Incorrect_01','G01.correct == false',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G01.am('end');
+    G01.am('cond','Unknown Response_','G01.knownResponse == false',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G01.am('end');
+    G01.am('segm','Segment: Check Tries_',1,1);
+    G01.am('cond','Tries At Limit_','G01.triesAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+  }
+  if (window.newG01 == null) window.newG01 = newG01;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG01();';
+//-->
+</script>
+      <cbi-select object="G01"></interaction> <interaction name="Text_Singleline02" object="G02" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G02Layer"> 
+        <p><span name="G02question"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287173410','audio/page3_3.mp3')" class="sounda"> 
+           </b></span></font><font face="Arial, Helvetica, sans-serif"><b> 
+          3.</b><img src="images/balan5c.jpg" width="228" height="151"
+				 align="texttop" alt="Bank machine showing balance of &pound;239.50"><span> 
+          <br>
+          <a
+				 href="javascript:void(window.open('info2.htm', '','width=380,height=420, screenX=1,screenY=1,top=1,left=1'))">Click</a> 
+          for a spelling guide.</span></font><br>
+          </span> </p>
+        <form name="G02elem" onSubmit="return false">
+          <input name="G02elemInp" type="text" onBlur="G02.e['elem'].update()" onFocus="G02.e['elem'].focus()" value="" size="45">
+        </form>
+        <form name="G02controls">
+          <input name="G02judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G02')">
+          <input name="G02reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G02','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG02() {
+    G02 = new MM_interaction('G02',0,0,0,0,0,0,0,'','','f','',0);
+    G02.add('text','elem','');
+    G02.add('textComp','elem','Response1','26-32-###-tsjfwdaAoSDl adkha37uaUknd09ds91rsX9eseadO9d s2ktdYfhkjais8srsl1t8slyjad-913nkjlis8qnepoeiuu rzxpmqjoadsuujandiudqejsmvc xzjaaurnek7daj2 6sffdmqiqwofeirtalsykdj fmxpzcvemlsnkjdcfoieeur',1,0,0,0);
+    G02.add('textComp','elem','Response2','26-32-###-tsjfwdaAoSDl adkha37uaUknd09ds91rsX9eseadO9d s2ktdYfhkjais8srsl1t8slyjad 913nkjlis8qnepoeiuu rzxpmqjoadsuujandiudqejsmvc xzjaaurnek7daj2 6sffdmqiqwofeirtalsykdj fmxpzcvemlsnkjdcfoieeur',1,0,0,1);
+    G02.add('textComp','elem','Response3','27-32-###-tASDlwadkao37aU kd09hs91suX9senaO9dds2kdrYfkjeas8sdsl18 sljatd913hkjlsi8qeproiuutrzxmyqjad-sujandiuqiejmvncxzjeaure k7ajp26sfodmqquwoeinralsdkdjfsmxzc vmlsfkjdfioieufrjfktlwoeyiurj lakspjfdaeASDlnadkac37aUekd09',1,0,0,1);
+    G02.add('textComp','elem','Response4','25-32-###-tlawksojf dahASuDlnaddkar37eaUdkd 09ts9h1siX9rsetaOy9d s2nkdiYfnkjeas 8spslo18uslnjadd9s13 kjflsi8qfeptoiyuu rzpxmeqjnadcsueja',1,0,0,1);
+    G02.add('textComp','elem','Response5','28-32-###-ta37aUwkd09so91sX9 seaO9hds2kduYfkjans8ssld18sljrad913ekjls8dqepoi uurzxamqjadnsujaddiuqej mvcxztjaurehk7aj2i6sfdmrqqwoetiralsykdjfm xzcvmnlskjdifoieunrjfklewoeiu rjkslplaksjofdaASuDladkna37aUdkd09ss91sX9 seaO9ads2kdnYfkjads8ssl 18sljfad913ikjls8fqepoituurzxymqjad sujadpiuqejemvcxznjaureck7aj2e6sfdm',1,0,0,1);
+    G02.add('textComp','elem','Response6','25-32-###-tDlwadoka 37haUukdn09ds9r1seX9dse aOa9dns2dkd Yftkjhasi8srslt18ysl-jand9i13nkjels 8qpepooiuuunrzdxmsqj adasunjaddi uqfejimvfcxtzjyau repk7eajn26csfedm',1,0,0,1);
+    G02.init();
+    G02.am('segm','Segment: Check Time_',1,1);
+    G02.am('cond','Time At Limit_','G02.timeAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+    G02.am('segm','Segment: Correctness_',1,0);
+    G02.am('cond','Correct_01','G02.correct == true',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G02.am('end');
+    G02.am('cond','Incorrect_01','G02.correct == false',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G02.am('end');
+    G02.am('cond','Unknown Response_','G02.knownResponse == false',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G02.am('end');
+    G02.am('segm','Segment: Check Tries_',1,1);
+    G02.am('cond','Tries At Limit_','G02.triesAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+  }
+  if (window.newG02 == null) window.newG02 = newG02;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG02();';
+//-->
+</script>
+      <cbi-select object="G02"></interaction> <interaction name="Text_Singleline03" object="G03" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G03Layer"> 
+        <p class="sound"><span name="G03question"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287190330','audio/page3_4.mp3')" class="sounda"> 
+           </b></span></font><font face="Arial, Helvetica, sans-serif"><b> 
+          4.</b><img src="images/balan5d.jpg" width="228" height="151"
+				 align="texttop" alt="Bank machine showing balance of &pound;836.27"><span> 
+          <br>
+          <a
+				 href="javascript:void(window.open('info2.htm', '','width=380,height=420, screenX=1,screenY=1,top=1,left=1'))">Click</a> 
+          for a spelling guide</span></font>. <br>
+          </span> </p>
+        <form name="G03elem" onSubmit="return false">
+          <input name="G03elemInp" type="text" onBlur="G03.e['elem'].update()" onFocus="G03.e['elem'].focus()" value="" size="50">
+        </form>
+        <form name="G03controls">
+          <input name="G03judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G03')">
+          <input name="G03reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G03','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG03() {
+    G03 = new MM_interaction('G03',0,0,0,0,0,0,0,'','','f','',0);
+    G03.add('text','elem','');
+    G03.add('textComp','elem','Response1','26-32-###-esjfidaAgSDlhadkta37 aUkhd09us91nsX9dsearO9des2kddYf kjats8shsl1i8slrjadt913ykjl-s8qsepoiiuuxrzx mqjpadsoujaudiunqejdmvcsxzj auraek7naj2d6sf dmqtqwoweirealsnkdjtfmxyzcv-mlsskjdefoiveurejfknlwo eiuprjkelaknsjfcdaAeSDl',1,0,0,1);
+    G03.add('textComp','elem','Response2','27-32-###-eASDliadkag37aUhkd09ts91s X9sehaO9dus2kdnYfkjdas8srsl18esljadd913 kjlst8qephoiuuirzxmrqjadtsujaydiuq ejmvscxzjiaurexk7aj 26sfpdmqqowoeiuralsnkdjfdmxzcsvmls kjdfaoieunrjfkdlwoe iurjtlakswjfdaeASDlnadkat37aUykd09 s91ssX9seeaO9dvs2kdeYfkjnas8s sl18psljaed913nkjlsc8qepeoiuu',1,0,0,1);
+    G03.add('textComp','elem','Response3','29-32-###-es91sX9iseaO9dgs2kdYfhkjas8stsl18sl jad913hkjls8quepoiuunrzxmqjdadsujardiuqejemvcxzjdaurek7 aj26sfadmqqwoneiralsdkdjfmx zcvmlstkjdfoiheurjfkilwoeiurlaksjftdaASDlyadka37-aUkd09ss91sX9iseaO9dxs2kdYf kjas8spsl18slojad913ukjls8qnepoiuudrzxmqjsadsuja diuqejamvcxzjnaurek7daj26sf dmqqwoteiralswkdjfmxezcvmlsnkjdfoiteurjfkylwoeiu-laksjfsdaASDleadka37vaUkd09es91sX9nseaO9d s2kdYfpkjas8sesl18slnjad913ckjls8qeepoiuu',1,0,0,1);
+    G03.add('textComp','elem','Response4','26-32-###-eaUkid09gs91hsX9tsea O9dhs2kudYfnkjads8srsl1e8sldjad 913akjlns8qdepo iuutrzxhmqjiadsrujatdiuyqej mvcsxzjiaurxek7 aj2p6sfodmquqwoneirdalsskdj fmxazcvnmlsdkjd foiteurwjfkelwoneiutrjkylak sjfsdaAeSDlvadkea37naUk d09ps91esX9nseacO9des2k',1,0,0,1);
+    G03.add('textComp','elem','Response5','28-32-###-eYfkjais8sslg18sljhad913tkjls8 qepoihuurzxumqjadnsujaddiuqejrmvcxzejauredk7aj2 6sfdmaqqwoeniralsdkdjfm xzcvmtlskjdhfoieuirjfklrwoeiutrjkslylaksj fdaASsDladkia37aUxkd09s 91sX9pseaO9ods2kduYfkjans8ssld18sljsad913 kjls8tqepoiwuurzxemqjadnsujadtiuqejymvcxz jauresk7aj2e6sfdmvqqwoeeiralsnkdjfm xzcvmplskjdefoieunrjfklcwoeiuerjksl',1,0,0,1);
+    G03.add('textComp','elem','Response6','25-32-###-ekdi09gs9h1stX9 sehaOu9dns2dkdrYfekjdas 8sasln18dsl jatd9h13ikjrlst8qyep-oisuuirzxxm qjpadosuujandiduqsej mvtcxwzjeaunretk7yaj-26ssfedmvqqewonei raplsekdnjfcmxezc',1,0,0,0);
+    G03.add('textComp','elem','Response7','27-32-###-esl18isljagd913hkjlst8qep oiuuhrzxmuqjadnsujaddiuqrejmvecxzjdaure k7ajt26sfhdmqqiwoeirralstkdjfymxzc-vmlsskjdfioieuxrjfk lwoepiurjolaksujfdanASDldadkas37aU kd09ts91swX9seeaO9dns2kdtYfkjyas8s-sl18ssljaed913vkjlse8qepnoiuu rzxmpqjadesujandiuqcejmvecxzj',1,0,0,1);
+    G03.add('textComp','elem','Response8','29-32-###-ediuqejimvcxzjgaurek7haj26sftdmqqwo eiralshkdjfmxuzcvmlsnkjdfoideurjfkrlwoeiuelaksjfddaASDl adka37taUkd09hs91sX9iseaO9drs2kdYftkjas8sysl18sl jad913skjls8qiepoiuuxrzxmqj adsujapdiuqejomvcxzjuaurek7naj26sfddmqqwoseirals kdjfmxtzcvmlswkjdfoieeurjfknlwoeiutlaksjfydaASDl adka37saUkd09es91sX9vseaO9des2kdYfnkjas8s sl18slpjad913ekjls8qnepoiuucrzxmqjeadsuja',1,0,0,1);
+    G03.init();
+    G03.am('segm','Segment: Check Time_',1,1);
+    G03.am('cond','Time At Limit_','G03.timeAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+    G03.am('segm','Segment: Correctness_',1,0);
+    G03.am('cond','Correct_01','G03.correct == true',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G03.am('end');
+    G03.am('cond','Incorrect_01','G03.correct == false',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G03.am('end');
+    G03.am('cond','Unknown Response_','G03.knownResponse == false',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G03.am('end');
+    G03.am('segm','Segment: Check Tries_',1,1);
+    G03.am('cond','Tries At Limit_','G03.triesAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+  }
+  if (window.newG03 == null) window.newG03 = newG03;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG03();';
+//-->
+</script>
+      <cbi-select object="G03"></interaction> <interaction name="Text_Singleline04" object="G04" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G04Layer"> <span name="G04question"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287203460','audio/page3_5.mp3')" class="sounda"> 
+         
+        </b></font><font face="Arial, Helvetica, sans-serif"><b> 5.</b><img src="images/balan5e.jpg" width="228" height="151"
+				 align="texttop" alt="Bank machine showing balance of &pound;529.45"><span> 
+        <br>
+        <a
+				 href="javascript:void(window.open('info2.htm', '','width=380,height=420, screenX=1,screenY=1,top=1,left=1'))">Click</a> 
+        for a spelling guide.</span></font><br>
+        </span> 
+        <form name="G04elem" onSubmit="return false">
+          <input name="G04elemInp" type="text" onBlur="G04.e['elem'].update()" onFocus="G04.e['elem'].focus()" value="" size="50">
+        </form>
+        <form name="G04controls">
+          <input name="G04judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G04')">
+          <input name="G04reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G04','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG04() {
+    G04 = new MM_interaction('G04',0,0,0,0,0,0,0,'','','f','',0);
+    G04.add('text','elem','');
+    G04.add('textComp','elem','Response1','26-32-###-fsjfidaAvSDleadk a37haUkud09ns91dsX9rseaeO9dds2k dYftkjaws8sesl1n8sltjady913-kjlns8qieponiuuerzx mqjpadsoujaudiunqejdmvcsxzj auraek7naj2d6sf dmqfqwooeirralstkdjyfmx-zcvfmlsikjdvfoieeur jfkplwoeeiunrjkclakesjf',1,0,0,1);
+    G04.add('textComp','elem','Response2','27-32-###-fASDliadkav37aUekd09 s91shX9seuaO9dns2kddYfkjras8sesl18dslja d913tkjlsw8qepeoiuunrzxmtqjadysuja diuqnejmvicxzjnaureek7aj 26sfpdmqqowoeiuralsnkdjfdmxzcsvmls kjdfaoieunrjfkdlwoe iurjflaksojfdarASDltadkay37aU kd09fs91siX9sevaO9des2kd Yfkjpas8sesl18nsljacd913ekjls',1,0,0,1);
+    G04.add('textComp','elem','Response3','28-32-###-fa37aUikd09sv91sX9eseaO9 ds2kdhYfkjaus8ssln18sljdad913rkjls8eqepoiduurzx mqjadasujadniuqejdmvcxz jauretk7aj2w6sfdmeqqwoeniralstkdjfmyxzcvm-lskjdnfoieuirjfklnwoeiuerjksl laksjpfdaASoDladkua37aUnkd09sd91sX9sseaO9 ds2kdaYfkjans8ssld18slj ad913fkjls8oqepoiruurzxtmqjadysujad-iuqejfmvcxzijaurevk7aj2e6sfdm qqwoepiralsekdjfmnxzcvmclskjdefoieu',1,0,0,1);
+    G04.add('textComp','elem','Response4','25-32-###-fDliadvkae37 aUhkdu09ns9d1srX9esedaO 9das2nkddYf kjtasw8sesln18tslyja d9n13ikjnlse8q eppoiouuurznxmdqjsad suajandiduq ejfmvocxrzjtauyre k7faji26vsfedm qqpwoeeinraclsekd',1,0,0,1);
+    G04.add('textComp','elem','Response5','27-32-###-fX9seiaO9dvs2kdeYfkj as8shsl18usljand913dkjlsr8qepeoiuudrzxm qjadtsujawdiuqeejmvncxzjtaureyk7aj 26sfndmqqiwoeinralsekdjf mxzcpvmlsokjdfuoieunrjfkdlwoesiurj laksfjfdaoASDlradkat37aUykd09 s91sfX9seiaO9dvs2kdeYfkj as8spsl18esljand913ckjlse8qep',1,0,0,1);
+    G04.add('textComp','elem','Response6','29-32-###-fjad913ikjls8qvepoiuuerzxmqj adsujahdiuqejumvcxzjnaurek7daj26sfrdmqqwoeeiralsdkdjfmx zcvmlstkjdfoiweurjfkelwoeiunlaksjftdaASDlyadka37-aUkd09ns91sX9iseaO9dns2kdYfekjas8s sl18slpjad913okjls8quepoiuunrzxmqjdadsujasdiuqej mvcxzjfaurek7oaj26sfrdmqqwoteiralsykdjfmx-zcvmlsfkjdfoiieurjfkvlwoeiuelaksjf daASDlpadka37eaUkd09ns91sX9cseaO9des2kdYf',1,0,0,0);
+    G04.init();
+    G04.am('segm','Segment: Check Time_',1,1);
+    G04.am('cond','Time At Limit_','G04.timeAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+    G04.am('segm','Segment: Correctness_',1,0);
+    G04.am('cond','Correct_01','G04.correct == true',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G04.am('end');
+    G04.am('cond','Incorrect_01','G04.correct == false',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G04.am('end');
+    G04.am('cond','Unknown Response_','G04.knownResponse == false',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G04.am('end');
+    G04.am('segm','Segment: Check Tries_',1,1);
+    G04.am('cond','Tries At Limit_','G04.triesAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+  }
+  if (window.newG04 == null) window.newG04 = newG04;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG04();';
+//-->
+</script>
+      <cbi-select object="G04"></interaction> <interaction name="Text_Singleline05" object="G05" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G05Layer"> <span name="G05question"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287220870','audio/page3_6.mp3')" class="sounda"> 
+         
+        </b></span></font><font face="Arial, Helvetica, sans-serif"><b> 6.</b><img src="images/balan5f.jpg" width="228" height="151"
+				 align="texttop" alt="Bank machine showing balance of &pound;846.64"><span> 
+        <br>
+        <a
+				 href="javascript:void(window.open('info2.htm', '','width=380,height=420, screenX=1,screenY=1,top=1,left=1'))">Click</a> 
+        for a spelling guide.</span></font><br>
+        </span> 
+        <form name="G05elem" onSubmit="return false">
+          <input name="G05elemInp" type="text" onBlur="G05.e['elem'].update()" onFocus="G05.e['elem'].focus()" value="" size="50">
+        </form>
+        <form name="G05controls">
+          <input name="G05judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G05')">
+          <input name="G05reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G05','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG05() {
+    G05 = new MM_interaction('G05',0,0,0,0,0,0,0,'','','f','',0);
+    G05.add('text','elem','');
+    G05.add('textComp','elem','Response1','26-32-###-esjfidaAgSDlhadkta37 aUkhd09us91nsX9dsearO9des2kddYf kjafs8sosl1r8sltjady913-kjlss8qiepoxiuu rzxpmqjoadsuujandiudqejsmvc xzjaaurnek7daj2 6sfsdmqiqwoxeirtalsykdj-fmxfzcvomlsukjdrfoi eurpjfkelwoneiucrjkelak',1,0,0,0);
+    G05.add('textComp','elem','Response2','27-32-###-eASDliadkag37aUhkd09ts91s X9sehaO9dus2kdnYfkjdas8srsl18esljadd913 kjlsf8qepooiuurrzxmtqjadysuja diuqsejmvicxzjxaure k7ajp26sfodmqquwoeinralsdkdjfsmxzc vmlsakjdfnoieudrjfk lwoesiurjilaksxjfdatASDlyadka 37aUfkd09os91suX9seraO9d s2kdpYfkjeas8snsl18csljaed913',1,0,0,1);
+    G05.add('textComp','elem','Response3','28-32-###-ea37aUikd09sg91sX9hseaO9tds2kd Yfkjahs8sslu18sljnad913dkjls8rqepoieuurzxdmqjad sujadaiuqejnmvcxzdjaure k7aj2f6sfdmoqqwoeriralstkdjfmyxzcvm-lskjdsfoieuirjfklxwoeiu rjkslplaksjofdaASuDladkna37aUdkd09ss91sX9 seaO9ads2kdnYfkjads8ssl 18sljsad913ikjls8xqepoituurzxymqjad-sujadfiuqejomvcxzujaurerk7aj2 6sfdmpqqwoeeiralsnkdjfmcxzcvmelskjd',1,0,0,1);
+    G05.add('textComp','elem','Response4','25-32-###-eDliadgkah37taU kdh09us9n1sdX9rseeaOd9d s2akdnYfdkj asf8soslr18tslyja d9s13ikjxls 8qpepooiuuunrzdxmsqj adasunjaddi uqsejimvxcxtzjyau refk7oaju26rsf dmpqqewoneicraels',1,0,0,1);
+    G05.add('textComp','elem','Response5','27-32-###-eX9seiaO9dgs2kdhYfkjtas8s sl18hsljaud913nkjlsd8qeproiuuerzxmdqjad sujafdiuqoejmvrcxzjtaureyk7aj 26sfsdmqqiwoeixrals kdjfpmxzcovmlsukjdfnoieudrjfkslwoe iurjslaksijfdaxASDltadkay37aU kd09fs91soX9seuaO9drs2kd Yfkjpas8sesl18nsljacd913ekjls',1,0,0,1);
+    G05.add('textComp','elem','Response6','29-32-###-ejad913ikjls8qgepoiuuhrzxmqjtadsuja diuqejhmvcxzjuaurek7naj26sfddmqqworeiralsekdjfmxdzcvmls kjdfoifeurjfkolwoeiurlaksjftdaASDlyadka37-aUkd09ss91sX9iseaO9dxs2kdYf kjas8spsl18slojad913ukjls8qnepoiuudrzxmqjsadsuja diuqejsmvcxzjiaurek7xaj26sftdmqqwoyeirals-kdjfmxfzcvmlsokjdfoiueurjfkrlwoeiu laksjfpdaASDleadka37naUkd09cs91sX9eseaO9d',1,0,0,1);
+    G05.init();
+    G05.am('segm','Segment: Check Time_',1,1);
+    G05.am('cond','Time At Limit_','G05.timeAtLimit == true',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G05.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G05.setDisabled(true);\')','sp');
+    G05.am('end');
+    G05.am('segm','Segment: Correctness_',1,0);
+    G05.am('cond','Correct_01','G05.correct == true',0);
+    G05.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G05.am('end');
+    G05.am('cond','Incorrect_01','G05.correct == false',0);
+    G05.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G05.am('end');
+    G05.am('cond','Unknown Response_','G05.knownResponse == false',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G05.am('end');
+    G05.am('segm','Segment: Check Tries_',1,1);
+    G05.am('cond','Tries At Limit_','G05.triesAtLimit == true',0);
+    G05.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G05.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G05.setDisabled(true);\')','sp');
+    G05.am('end');
+  }
+  if (window.newG05 == null) window.newG05 = newG05;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG05();';
+//-->
+</script>
+      <cbi-select object="G05"></interaction> 
+      <P ALIGN="left"><font face="Arial, Helvetica, sans-serif" size="4" color="#FF8040"><span name="G04question"><b><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1018287248270','../audio/prints.mp3')" class="sounda"> 
+         
+        </b></span></font> <FONT FACE="Arial, Helvetica, sans-serif">Print this 
+        page and place it in your folder.</FONT></P>
+      <TABLE WIDTH="110">
+        <TR> 
+          <TD><A HREF="page2.htm" ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image13','','../images/backb.gif',1)"><IMG
+			 NAME="Image13" BORDER="0" SRC="../images/back.gif" WIDTH="43" HEIGHT="15" alt="back"></A></TD>
+          <TD><A HREF="../bank5/index.htm" ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image14','','../images/nextb.gif',1)"><IMG
+					 NAME="Image14" BORDER="0" SRC="../images/next.gif" WIDTH="42" HEIGHT="14" alt="next"></A></TD>
+        </TR>
+      </TABLE>
+      <P ALIGN="center"><FONT FACE="Arial, Helvetica, sans-serif"
+				SIZE="2"><A HREF="../bank1/index.htm">Checking a bank balance</A> 
+        | <A HREF="../bank2/index.htm">Remembering pin numbers</A> | <A HREF="../bank3/index.htm">Pin 
+        numbers</A> | <A HREF="../bank4/index.htm">Bank balance</A> | <A HREF="../bank5/index.htm">Bank 
+        statements</A> | <A HREF="../bank6/index.htm">Making a deposit</A> | <A HREF="../bank7/index.htm">The 
+        cashier</A> | <A HREF="../bank8/index.htm">Withdrawing cash</A></FONT> 
+      </P>
+    </TD>
+    <TD width="48"><SPAN> <BR>
+      </SPAN> <BR>
+      <BR>
+      <BR>
+      <BR>
+      <BR>
+      <SPAN><FONT
+			 FACE="Arial, Helvetica, sans-serif"><BR>
+      <BR>
+      </FONT></SPAN> </TD>
+  </TR>
+</TABLE>
+<EMBED NAME='CS1018287143260' SRC='audio/page3a.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287159570' SRC='audio/page3_2.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287173410' SRC='audio/page3_3.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287190330' SRC='audio/page3_4.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287203460' SRC='audio/page3_5.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287220870' SRC='audio/page3_6.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1018287248270' SRC='../audio/prints.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

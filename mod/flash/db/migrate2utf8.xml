@@ -1,0 +1,29 @@
+<DBMIGRATION type="mod/flash" VERSION="2006071300">
+  <TABLES>
+    <TABLE name="flash">
+      <FIELDS>
+        <FIELD name="name" method="NO_CONV" type="varchar" length="255" />
+        <FIELD name="moviename" method="NO_CONV" type="varchar" length="255" />
+        <FIELD name="gradingmethod" method="NO_CONV" type="varchar" length="255" />
+        <FIELD name="config" method="NO_CONV" type="text" length="0" />
+        <FIELD name="answers" method="NO_CONV" type="text" length="0" />
+        <FIELD name="guestfeedback" method="NO_CONV" type="text" length="0" />
+        <FIELD name="feedback" method="NO_CONV" type="text" length="0" />
+        <FIELD name="fonts" method="NO_CONV" type="text" length="0" />
+        <FIELD name="splash" method="NO_CONV" type="text" length="0" />
+      </FIELDS>
+    </TABLE>
+    <TABLE name="flash_accesses" />
+    <TABLE name="flash_answers" >
+      <FIELDS>
+        <FIELD name="answer" method="NO_CONV" type="text" length="0" />
+      </FIELDS>
+    </TABLE>
+    <TABLE name="flash_movies" />
+      <FIELDS>
+        <FIELD name="bgcolor" method="NO_CONV" type="varchar" length="7" />
+        <FIELD name="moviename" method="NO_CONV" type="varchar" length="255" />
+      </FIELDS>
+    </TABLE>
+    <TABLES>
+</DBMIGRATION>

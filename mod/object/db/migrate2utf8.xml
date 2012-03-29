@@ -1,0 +1,33 @@
+<DBMIGRATION type="mod/object" VERSION="2005120100">
+  <TABLES>
+    <TABLE name="object">
+      <FIELDS>
+        <FIELD name="name" method="PLAIN_SQL_UPDATE" type="varchar" length="255">
+          <SQL_DETECT_COURSE>
+            SELECT course FROM {$CFG->prefix}object WHERE id = RECORDID
+          </SQL_DETECT_COURSE>
+        </FIELD>
+        <FIELD name="summary" method="PLAIN_SQL_UPDATE" type="text" length="0">
+          <SQL_DETECT_COURSE>
+            SELECT course FROM {$CFG->prefix}object WHERE id = RECORDID
+          </SQL_DETECT_COURSE>
+        </FIELD>
+        <FIELD name="start_url" method="PLAIN_SQL_UPDATE" type="text" length="0">
+          <SQL_DETECT_COURSE>
+            SELECT course FROM {$CFG->prefix}object WHERE id = RECORDID
+          </SQL_DETECT_COURSE>
+        </FIELD>
+        <FIELD name="material_root" method="PLAIN_SQL_UPDATE" type="text" length="0">
+          <SQL_DETECT_COURSE>
+            SELECT course FROM {$CFG->prefix}object WHERE id = RECORDID
+          </SQL_DETECT_COURSE>
+        </FIELD>
+        <FIELD name="imsmanifest" method="PLAIN_SQL_UPDATE" type="varchar" length="255">
+          <SQL_DETECT_COURSE>
+            SELECT course FROM {$CFG->prefix}object WHERE id = RECORDID
+          </SQL_DETECT_COURSE>
+        </FIELD>
+      </FIELDS>
+    </TABLE>
+  </TABLES>
+</DBMIGRATION>

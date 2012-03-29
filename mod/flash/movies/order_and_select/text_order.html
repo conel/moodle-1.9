@@ -1,0 +1,65 @@
+<?php 
+    $iter=$flash_form_sess['next_q'];
+    //defaults :
+    if (empty($form->config[$iter]['question']))
+    {
+        $form->config[$iter]['question']=("<font size=\'32\'><p align=\'center\'>You can use some html tags here such as <b>bold</b> or <i>italics</i> or <u>underline</u>.</p></font>");
+    }?>
+<TR valign=top>
+    <TD align=center colspan="2"><h2><B><?php  echo 'Question '.($iter+1); p(' ('.$flash_form_sess['next_q_type'].')'); ?>:</B></h2></TD>
+</TR>
+<tr>
+    <td align=center colspan="2"><P><B>Question :</B></P></TD>
+</TR>
+<tr>
+    <td align=center colspan="2">
+        <TEXTAREA name="config[<?php echo $iter ?>][question]" cols="30" rows="5" ><?php  p($form->config[$iter]['question']) ?></TEXTAREA>
+        <?php helpbutton("htmltags", get_string('supported_tags', "flash"), "flash");?>
+    </TD>
+    </td>
+</tr>
+<TR valign=top>
+    <TD align=right><P><B>Font for Text :</B></P></TD>
+    <TD>
+        <INPUT type="text" name="config[<?php echo $iter ?>][font]" size=30 value="<?php  p($form->config[$iter]['font']) ?>">
+        <?php helpbutton("orderfont", get_string('orderfont', "flash"), "flash");?>
+    </TD>
+</TR>
+<tr>
+    <td align=right><P><B>Seperate By :</B></P></TD>
+    <td>
+    <?php
+        $seperatorOptions = array(' '=>'Word', 'Multi Byte Character'=>'Character', '|'=>'|', ','=>',', ':'=>':', ';'=>';', '%'=>'%');
+        choose_from_menu($seperatorOptions, "config[$iter][seperator]", $form->config[$iter]['seperator']);
+    ?>
+    </td>
+</tr>
+
+<TR valign=top>
+    <TD align=right><P><B>Text :</B></P></TD>
+    <TD>
+        <INPUT type="text" name="config[<?php echo $iter ?>][text]" size=30 value="<?php  p($form->config[$iter]['text']) ?>">
+    </TD>
+</TR>
+<?php
+    if (($iter+1)<($form->q_no))
+    {
+        echo ('<INPUT type="hidden" name=to_config     value="2">');
+        $flash_form_sess['next_q']++;
+    } else
+    {
+        echo ('<INPUT type="hidden" name=to_config     value="0">');
+    };
+    echo ('<INPUT type="hidden" name=config['.$iter.'][q_type] value="'.s($flash_form_sess['next_q_type']).'">');
+
+?>
+    </TABLE>
+<?php
+if ($iter+1<($form->q_no))
+{
+    echo ('<INPUT type="submit" value="'.get_string("nextpage", "flash") .'">');
+} else
+{
+    echo ('<INPUT type="submit" value="'.get_string("savechanges").'">');
+};
+?>

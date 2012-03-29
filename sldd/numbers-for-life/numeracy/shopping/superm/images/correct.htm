@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Right</title>
+
+<script language="JavaScript">
+<!--
+function MM_controlSound(x, _sndObj, sndFile) { //v3.0
+  var i, method = "", sndObj = eval(_sndObj);
+  if (sndObj != null) {
+    if (navigator.appName == 'Netscape') method = "play";
+    else {
+      if (window.MM_WMP == null) {
+        window.MM_WMP = false;
+        for(i in sndObj) if (i == "ActiveMovie") {
+          window.MM_WMP = true; break;
+      } }
+      if (window.MM_WMP) method = "play";
+      else if (sndObj.FileName) method = "run";
+  } }
+  if (method) eval(_sndObj+"."+method+"()");
+  else window.location = sndFile;
+}
+//-->
+</script>
+</head>
+
+<BODY onBlur="javascript:window.close()" BACKGROUND="../../images/backgrd1.gif" onLoad="MM_controlSound('play','document.CS1026137010080','well_done.mp3')">
+<div align="center"> 
+  <p><img src="../images/right.gif" width="163" height="51" alt="Well done! You are right!"> 
+  </p>
+  <p align="left"><a href="javascript:window.close()"> <img name="Image1" border="0"
+		src="../images/closeb.gif" width="47" height="15" alt="close"></a> </p>
+</div><embed name='CS1026137010080' src='well_done.mp3' loop=false 
+autostart=false MASTERSOUND hidden=true width=0 height=0>
+    </embed>
+</body>
+</html>

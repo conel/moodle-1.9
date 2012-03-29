@@ -1,0 +1,1534 @@
+Server Time: Tue, 03 Mar 2009 08:54:30 +0000
+
+
+Starting activity modules
+Processing module function assignment_cron ...done.
+Processing module function chat_cron ...done.
+Processing module function forum_cron ...Starting digest processing...
+Cleaned old digest records
+done.
+Processing module function journal_cron ...done.
+Processing module function scorm_cron ...done.
+Processing module function workshop_cron ...done.
+Finished activity modules
+Starting blocks
+Processing cron function for search....Global searching is not enabled. Nothing performed by search.
+done.
+Finished blocks
+Starting admin reports
+Finished admin reports
+Updating languages cache
+Removing expired enrolments ...none found
+Starting main gradebook job ...
+done.
+Running backups if required...
+    Checking backup status...OK
+    Getting admin info
+    Deleting old data
+    Checking courses
+        Skipping deleted courses
+            0 courses
+        CONEL's eZone
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        moodle test course
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Childcare NVQ L2
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CETLS
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        DTLLS
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        PTLLS
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ3 Beauty Therapy General
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Literacy
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC Nat Diploma – IT Practitioners – Computing
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Interactive Whiteboards Unit (WBS0006OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Fundamentals Unit (WBS0003OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 2 Resources (ESXXX2OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry 1 1525 (Entry1-1525)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CERAMICS FOR BEGINNERS (CE4022AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Moodle Unit (WBS0005OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Outlook and Internet Unit (WBS0009OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Excel Unit (WBS0004OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ PowerPoint Unit (WBS0001OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        eCPD Framework (ST-0007-OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Word Unit (WBS0002OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT Accounting Foundation BP6001EB 
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro To Office Skills With English ( BP6031AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        STARTING A SMALL BUSINESS <BP7041EB>
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        MICROSOFT PROJECT FOR BEGINNERS  [BP7403AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        VAT, HOW TO CALCULATE RETURNS (BP8002EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Unit 3 Internet and email Pre entry level 3  *AC2841AW *
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Introduction to Computing  *AC2851WR*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        WBS learning styles test (WBS0008OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BUSINESS AWARENESS AND PROFESSIONAL CONDUCT AND HOLISTIC MASSAGE DIPLOMA (ITEC)  (CH6071AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CTL Induction (ST-0018-HR)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Teaching Staff Induction *ST-0016-OL*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry 3 - 1535 (Entry3-1535)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 2 Resources 1546 (L2-1546)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 1 1544 (Level1-1544)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ENGLISH FOR MEDICAL PROFESSIONS L1 (EP5502AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ENGLISH FOR MEDICAL PROFESSIONS L1  [EP5503AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        PREPARATION FOR IELTS STAGE 2 (EP5913AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Preparation For Ielts ( EP5981EB )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Pronunciation Workshop  (EP7102AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS B ENTRY 1 STAGE 3 MORNINGS  [ES5463EB] Annelouise's class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Lower Intermediate A E2 Stage 1 AM  *ES5511EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS A ENTRY 1 STAGE 2 MORNINGS  (ES5474EB) David's Class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IN THE COMMUNITY E1  (NL3332WS)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL  IN THE COMMUNITY  E1 [NL3333WS]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE / E2 - STAGE 2 (ES5516EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE A ENTRY 2 STAGE 2 (ES6512AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS B ENTRY 1 STAGE 2 [ES5462EB] Annelouise's Class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Beginners E1 Stage 1 PM  *ES5472EB* Ruth and Annelouise's class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE B ENTRY 2 STAGE 2 (ES6532AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE C ENTRY 2 STAGE 2  (ES6542AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE D ENTRY 2 STAGE 2 (ES6552AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL LOWER INTERMEDIATE ENTRY 2 [ES6992WR]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Beginners Stage 2 (Annelouise's Class)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IT Entry 2/Entry 3 (Brendan's class)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NLDC Lower Intermediate ESOL E2  *NL2221WR*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS / E1 - STAGE 3 [ES5477EB] Annelouise's Class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Sexual Health Awareness Week
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE B E3 STAGE 2 EVE  (ES5712EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS / E1 - STAGE 3 [ES5478EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IN THE COMMUNITY  E3 (NL5552SD)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IN THE COMMUNITY  E3 [NL5553SD]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BASIC BEGINNERS E1 STAGE 2 (ES6252AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intermediate Stage 3 at Ebury (Ruth's Class)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intermediate Stage 1 (Carolina's class) ES5491EB
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BEGINNERS A E1 STAGE 3[ES6403FF]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Beginners S1  *ES6411AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Intermediate E3 Stage 1 PM  *ES5492EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE / E3 - STAGE 2 (ES5494EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE / E3 - STAGE 2 (ES5495EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Sandra's ESOL BEGINNERS ENTRY 1 STAGE 3 [ES6433AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE / ENTRY 3 STAGE 3 [ES5497EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE / ENTRY 3 STAGE 3 [ES5498EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        LISTENING AND SPEAKING FOR BEGINNERS (ENTRY 1) (ES6902AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Intermediate S1 (B)  *ES8424AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        WRITING & SPELLING FOR PRE-ENTRY / ENTRY 1: STAGE 3 (ENTRY 1)  [ES6903AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE A ENTRY 3 STAGE 2 (ES8431AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Language & IT for the Bus Industry
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Intermediate E3 Stage 2 ES 8432 Debbie
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE B ENTRY 3 STAGE 2 (ES8432AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NLDC Beginners ESOL E1 *NL1111AW*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE B ENTRY 3 STAGE 2 (ES8434AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Citizenship Entry 3 / Level 1
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE A ENTRY 3 STAGE 2 (ES8435AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Improve Your Pronunciation E3/L1 ( ES2233AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Arancha's Intermediate class
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IT - E2 / E3 (ES5422EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IT - E2 / E3 [ES5423EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE B ENTRY 3 STAGE 3 [ES8442AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE A ENTRY 3 STAGE 3 [ES8443AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A LEVEL 1 STAGE 2 MORNINGS  (ES5538EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A LEVEL 1 STAGE 3 MORNINGS  [ES5539EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL INTERMEDIATE B ENTRY 3 STAGE 3 (ES8444AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B LEVEL 1 STAGE 2 MORNINGS  (ES5558EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL IT Entry 3 Level 1 (Ruth's class)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE LEVEL 1 STAGE 2  (ES8599AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate A *ES5527EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Reading & Writing Skills – Advanced  (ES8604AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Advanced S1   *ES8801AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE / L1 - STAGE 2 (ES5528EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL ADVANCED LEVEL STAGE 3[ES8821AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE / L1 - STAGE 3 [ES5529EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL ADVANCED  LEVEL 2 STAGE 2 - (ES 8811) Brian
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate A (Brendan's Class) *ES5531EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BASIC BEGINNERS (PRE ENTRY) STAGE 3  [ES6293PC]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BASIC BEGINNERS E1 STAGE 3  [ES6253AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NLDC ESOL for Beginners *NL0001KC*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate A L1 Stage 1 AM  *ES5537EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate B *ES5551EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ADULT LITERACY - LEVEL 2 STAGE 2  (BS0307AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate B Stage 1 EVE  *ES5552EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        COMPUTERS & MATHS  (NL0012KC)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B / L1 - STAGE 2 (ES5553EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult Literacy - Level 2: Stage 1  *BS0306AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Move Up Numeracy  Entry 3 - Level 1 ( BS2031AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B / L1 - STAGE 2 (ES5563FR)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Pre-GCSE English Level 1 - 2 (BS8091AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate B L1 Stage 1  *ES5591EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A  LEVEL 1 STAGE 2 (ES8578AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Spanish Beginners Stage 1  *ML6902AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        SPANISH BEGINNERS STAGE 3  [ML6923AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B LEVEL 1 STAGE 2 (ES8581AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Spanish Beginners Stage 1 ( ML6955AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A LEVEL 1 STAGE 2 (ES8582AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        SPANISH UPPER INTERMEDIATE STAGE 1-3  [ML7003AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B LEVEL 1 STAGE 2 (ES8583AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FIRST STEPS MAKE-UP SKILLS AND SPECIAL EFFECTS  (MU4022EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FIRST STEPS MAKE-UP SKILLS AND SPECIAL EFFECTS  [MU4023EB]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC National Award in Make-up Skills (MU4073EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A LEVEL 1 STAGE 2 (ES8584AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        DIGITAL PHOTOGRAPHY 2[PH2214AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE B LEVEL 1 STAGE 2 (ES8585AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Beginners Digital Photography  *PH3001EB*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ PowerPoint Unit (HR0001OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Word Unit (HR0002OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A LEVEL 1 STAGE 3 [ES8593AM]
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Grammar in Use – Upper Intermediate (ES8641AM)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL UPPER INTERMEDIATE A / L1 - STAGE1 (ES5532EB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Upper Intermediate Extra
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Moodle Unit (HR0005OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Interactive Whiteboards Unit (HR0006OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CLAIT Stage 1 - ICT Skills for Work  *AC2011AM*
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Beginners Digital Photography ( PH3005AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Outlook & Internet Unit (HR0007OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Using Your Camera Creatively - Unit 1 ( PH3120AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Sandra's course
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Btec Award In Digital Level 1 - Unit 2 ( PH3121AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Btec 1st Cert Digital Level 2 -  Unit 1 ( PH3213AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Digital Studio And Postproduction Unit2  ( PH3222AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Excel Unit (HR-0004-OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fusion-Digital & Film-Based Photo U3 ( PH3231AM )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Fundamentals Unit (HR0003OL)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Kathy's course
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Assistive Technology
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Key and Functional Skills Demo
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to IT (AC3MICT3-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC First Diploma IT Practitioners
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Childcare NVQ L3
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CACTUS Lounge
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC Introductory Diploma IT @ Work
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC National IT Practitioners
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Childcare NVQ L4
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation PTD L2 Yr1 GpA (CR2MENS6-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation PTD L2 Yr1 GpB (CR2MENS6-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation PTD L2 Y2 (CR2MENS6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation FT L2 Yr1 GpA (CR2MENT6-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation FT L2 Yr1 GpB (CR2MENT6-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation FT L2 Yr2 (CR2MENT6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies FT Yr1GpA (CR2MPLM6-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies FT Yr1GpB (CR2MPLM6-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies FT Yr1GpC (CR2MPLM6-8DA21C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies FT Yr2GpA (CR2MPLM6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies FT Yr2GpB (CR2MPLM6-8DA22B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing WBL Yr1 GrpA (CR2MPLMW-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing WBL ProgLed Yr1 (CR2MPLMW-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing WBL Yr2 GrpA (CR2MPLMW-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies PTDYr1GpA (CR2MPLS6-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing Studies PTDYr1GpB (CR2MPLS6-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing PTDYr2 GpA (CR2MPLS6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing PTDYr2 GpB (CR2MPLS6-8DA22B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Basic Plumbing PTDYr2GpC (Clsd) (CR2MPLS6-8DA22C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation PTD L3 GpA (CR3MENS6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation PTD L3 GpB (CR3MENS6-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Plumbing Studies L3 PTD (CR3MPLM6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Plumbing Studies L3 WBL (CR3MPLMW-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro Cert in Construction (ESOL) (IC1MCNE6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Plumbing PTD GpA (NV2MPLM6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Plumbing PTD GpB (NV2MPLM6-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Plumbing WBL Yr2 GpA (NV2MPLMW-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Electrotech WBL Holding Group (NV3MELEW-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Electrical Services PTD (NV3MELS6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Plumbing PTD GpA (NV3MPLM6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Plumbing WBL GpA (NV3MPLMW-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Brickwork FT GpA (CR1MBRK6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Brickwork FT GpB (CR1MBRK6-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Carpentry & Joinery PTD (CR1MCAP6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Carpentry & Joinery FT GpA (CR1MCAR6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Carpentry & Joinery FT GpB (CR1MCAR6-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Carpentry & Joinery FT GpC (Clsd) (CR1MCAR6-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Painting & Decorating FT GpA (CR1MPDC6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FCA Painting & Decorating FT GpB (CR1MPDC6-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICA Brickwork FT (CR2MBRK6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICA Carpentry & Joinery PTD (CR2MCAP6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICA Carpentry & Joinery FT GpA (CR2MCAR6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICA Painting & Decorating (CR2MPDC6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ACA Carpentry & Joinery PTD (CR3MCAR6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Foundation Dip in Construction Yr10 (FP1MCON1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Higher Dip in Construction Y110 (HP2MCON1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro Cert in Construction (IC1MCNT6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Construction Yr11 (K42MCNT6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Construction - Special Schools (K4EMCNP6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Skills4Work Life Construct Yr10 (K4EMCNT6-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Skills4Work Life Construct Yr11 GpA (K4EMCNT6-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Skills4Work Life Construct Yr11 GpB (K4EMCNT6-8DA22B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NA in Construction (NA3MCNT6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Construction (NC3MCNT6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 1 Carpentry & Joinery (NV1MCAJ6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Brickwork (NV2MBRK6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Carpentry & Joinery (NV2MCAJ6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Painting & Decorating (NV2MPDC6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Carpentry & Joinery (NV3MCAJ6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 Wood Occupations WBL (NV3MWOOW-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry to Employment Autumn GpA (VOEME2EW-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 2 Certificate in Housing Autmn GpA (CR2MHSS6-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 2 Certificate in Housing Autmn GpB (CR2MHSS6-8DAS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Management & Maint Nat Cert CIH (NC3MHSM6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NC in Supported Housing CIH (NC3MHSS5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tenant Participation Nat Cert. (NC3MHST6-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Studies in Context - HOU 1001 (UN4M1001-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Studies in Context - HOU 1001 (UN4M1001-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Management - HOU 1002 (UN4M1002-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Management - HOU 1002 (UN4M1002-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing in Society - HOU 1003 GpA (UN4M1003-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Development - HOU 1004 GpA (UN4M1004-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Work Based Learning - HOU 2103 (UN4M2103-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Res. in health & social care - IPH 2222 (UN5M2002-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing in Policy and Finance - HOU 2101 (UN5M2101-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Organisations - HOU 2102 (UN5M2102-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Placement - HSS 3001 (UN5M3001-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Context of Contemp. Housing - HOU 3101 (UN5M3101-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Regeneation & Community - HOU 3102 (UN5M3102-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Work Based Learning - HOU 3103 (UN5M3103-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dissertation 60 Credits - HSS 3360 (UN5M3360-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Organisations & Finance - HOU 4701 (UN5M4701-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Policy and Strategy - HOU 4708 (UN5M4708-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Housing Management & Law - HOU 4711 (UN5M4711-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Regeneration & Development - HOU 4721 (UN5M4721-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Research&Dissertation HOU 4960 (UN5M4960-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fnd Award in Caring4Children ESOL GpA (CR1MFAC7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fnd Award in Caring4Children ESOL GpB (CR1MFAC7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Working with Children in Sch GpA (CR2MCCC7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Working with Children in Sch GpB (CR2MCCC7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert In Child Care & Education GpA (CR2MCCE7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert In Child Care & Education GpB (CR2MCCE7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert Work With Children in Sch (JWS) GpA (CR2MCCJ7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert Work With Children in Sch (JWS) GpB (CR2MCCJ7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry to Childcare (CREMPCH7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip In Child Care Education Yr1 (DP3MCCE7-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip In Child Care Education Yr2 (DP3MCCE7-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Fnd Award Caring for Childred Yr11 (K41MFAC7-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Children's CLD FE (NV2MCCL7-8WA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Children's CLD Sat Sep07 (NV2MCCL7-8WA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Children's CLD May 2006 (NV2MCCL7-8WA33A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Children's CLD Eve Jan08 GpA (NV3MCCL7-8EA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Children's CLD Eve Jan08 GpB (NV3MCCL7-8EA22B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Children's CLD Sat Oct07 (NV3MCCL7-8WA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to HE Diploma Health & Human Scn (AC3MHHS7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to HE Diploma Midwifery (AC3MMDF7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to HE Diploma Nursing (AC3MNSH7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert In Intro to Counselling Autumn (CR2MCSK7-8EAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert In Intro to Counselling Spring (CR2MCSK7-8EBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert In Intro to Counselling Summer (CR2MCSK7-8ECS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Person Centred Art Therapy (CR2MPCTF-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Learn Power (CREMLRP1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD Health Pathway GpA (FD2MHSC7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD Health Pathway GpB (FD2MHSC7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FND Degree In Counselling Yr1 (FN4MCNCH-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        FND Degree In Counselling Yr2 (FN4MCNCH-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Nat Cert in Dental Nursing (NC3MDRS7-8EA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Health Studies Yr1 (NC3MHLS7-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Health Studies Yr2 (NC3MHLS7-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry to Health and Social Care (CREMHSC7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Care Pathway GpA (FD2MCRA7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Care Pathway GpB (Clsd) (FD2MCRA7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Caring (ESOL) (FD2MCRE7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID in Health & Social Care (ID1MHSC7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID in Health & Social Care (ESOL) (ID1MHSE7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Care Yr1 (NC3MCAR7-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Care Yr2 (NC3MCAR7-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        A2 Psychology (A23MPSY1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        A2 Sociology (A23MSOC1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access To Psychology (AC3MPSY1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access To Social Work GpA (AC3MSCW7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access To Social Work GpB (AC3MSCW7-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AS Government and Politics (Clsd) (AS3MGAP1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AS Psychology (Clsd) (AS3MPSY1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AS Sociology (Clsd) (AS3MSOC1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Youth Work (CR2MYTH7-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Youth Justice GpA (CR3MCJS7-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to Biological Science (AC3MBOS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to Engineering (AC3MENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry Level Science (ESOL) (CREMSCE1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Applied Science GpA (FD2MAPS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC IC in Science (Level 1) (IC1MSCN1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Applied Science Yr10 (K42MAPS1-8WA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Applied Science Yr11 (K42MAPS1-8WA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Applied Forensic Scnc Yr1 (NC3MAPS1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Applied Forensic Scnc Yr2 (NC3MAPS1-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Applied Medical Scnc Yr1 (NC3MEDS1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Applied Medical Scnc Yr2 (NC3MEDS1-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Accelerate Yr10 (K41MACC1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Accelerate Yr11 (K41MACC1-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD for IT GpA (FD2MICT3-8DA11A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD for IT GpB (FD2MICT3-8DA11B)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD for IT GpC (ESOL) (FD2MICT3-8DA11C)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD for IT (Networking) (FD2MNWK3-8DA11A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID for IT GpA (ID1MITW3-8DA11A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID for IT GpB (ID1MITW3-8DA11B)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC for IT & Business Yr1 GpA (NC3MITB3-8DA21A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC for IT & Business Yr1 GpB (NC3MITB3-8DA21B)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC for IT & Business Yr2 GpA (NC3MITB3-8DA22A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC for Networking Yr1 (NC3MNWK3-8DA21A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC for Networking Yr2 (NC3MNWK3-8DA22A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to Media (AC3MMED4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Art & Design (FD2MARD1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Art & Design (Fashion) (FD2MFAS1-8DA11A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Media (FD2MMED1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID in Grahic Desing & Media (ID1MARM1-8DA11A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Art,Des,Fas YMA Yr11 (K42MADF4-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Art & Des Games YMA Yr10 (K42MADG4-8DA21A)
+            SKIPPING - hidden+unmodified
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Art & Des Games YMA Yr11 (K42MADG4-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Art&Design (DesignPatway) Yr1 (NC3MARD1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Art&Design (ArtPathway) Yr1 (NC3MART1-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Games Development Yr1 GrpA (NC3MGDV4-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Games Development Yr1 GrpB (NC3MGDV4-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC/D in Media Video Yr1 (NC3MMVD4-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC Foundation Diploma in Art & Design (ND3MFNS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ND in Media Video Yr2 (ND3MMVD4-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Entry to Music Technology (CREMMUS4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Music GpA (FD2MMUS4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Music GpB (FD2MMUS4-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Performing Arts (FD2MPRA4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Music Technology GpA (NC3MMUS4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Music Technology GpB (NC3MMUS4-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Performing Arts (Acting) (NC3MPAR4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Production Arts (NC3MPRD4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fitness Instructor Award L1 GpA (CR1MFNS5-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fitness Instructor Award L1 GpB (CR1MFNS5-8DAS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Award in Community Sports Leadership Lv2 (CR2MCSL5-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fitness Instructor Award L2 GpA (CR2MFNS5-8DB11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fitness Instructor Award L2 GpB (CR2MFNS5-8DB11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Personal Training L3 (CR3MPTR5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Public Services (FD2MPLS5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ID in Public Services (ID1MPSV5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC ID in Public Srvcs Yr10 (K41MPLD5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC Intro Cert in Public Srvcs Yr11 (K42MPLC5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Public Services Yr10 (K42MPLD5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC BTEC FD in Public Services Yr11 (K42MPLD5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Skills4Wrk LifeSprt Yr10 (K4EMSWK5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ND in Public Services Yr1 (ND3MPSV5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ND in Public Services Yr2 (ND3MPSV5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ND in Sport Yr1 (ND3MSPR5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC ND in Sport Yr2 (ND3MSPR5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English for Service Industries (CR1MSRV5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip in Hairdressing (Clsd) (DP3MHAR5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Salon Services Hair Yr10 (K41MSRW5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Salon Services Hair Yr11 (K41MSRW5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Skills4Wrk Life HairYr10 (Clsd) (K41MSWL5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC C&G Diploma in Hair YMA Yr11 (K42MHAR5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 1 Hair ESOL (NV1MHAE5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 1 Hair FT for all age groups (NV1MHAR5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ In Barbering Evening (NV2MBAR5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2Hairdressing FT (Adult) Yr1 (NV2MHRA5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2Hairdressing FT (Adult) Yr2 (NV2MHRA5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2Hairdressing Yr1 Eve (NV2MHRA5-8EA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2Hairdressing Yr2 Eve (NV2MHRA5-8EA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Hairdressing ESOL Y 1 (NV2MHRE5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Hairdressing ESOL Y 2 (NV2MHRE5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Hairdressing FT (Yng) Yr1 GpA (NV2MHRY5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Hairdressing FT (Yng) Yr1 GpB (NV2MHRY5-8DA21B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 Hairdressing FT (Yng) Yr2 GpA (NV2MHRY5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Hairdressing CarryOversApril 08 (NV3MHAR5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Hairdressing Eve (NV3MHAR5-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Hairdressing FT (NV3MHRA5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Fashion and Photo Make-Up GpA (CR2MFPUF-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Fashion and Photo Make-Up GpB (CR2MFPUF-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip in Theatre & Media Make-Up Arts (DP3MTMU5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Salon Services Yr10 (K41MSRF5-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert Salon Services Yr11 (K41MSRF5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPCCertSkills4WorknglifeBeautyYr11(Clsd) (K41MSWB5-8DA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 1 in Beauty Therapy (ESOL) (NV1MBTE5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 1 in Beauty Therapy FT (NV1MBTY5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Beauty Therapy (ESOL) (NV2MBTE5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Beauty Therapy MakeUp FT (NV2MBTM5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Beauty Therapy FT (NV2MBTY5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Beauty Therapy Eve (NV2MBTY5-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 2 in Nail Services FE (NV2MNLS5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Beauty Therapy Massage (NV3MBTS5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Beauty Therapy General (NV3MBTY5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to Business (AC3MBUS2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro Cert in Business (ESOL) GpA (CR1MBSE2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro Cert in Business (ESOL) GpB (CR1MBSE2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro Cert in Retail (CR1MRTL2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Skill for Working Life Business (CREMSWL2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Business GpA (FD2MBUS2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Business GpB (FD2MBUS2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NA in Business (NA3MBUS2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC NC in Business GpA (NC3MBUS2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 2 Accounts Full Time GpA (NV2MACC2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 2 Accounts Eve M & W (NV2MACC2-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 2 Accounts Saturday (NV2MACC2-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 2 Accounts Full Time with ESOL GpA (NV2MACE2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 2 Accounts Full Time with ESOL GpB (NV2MACE2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 3 in Accounting Full Time GpA (NV3MACC2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 3 Accounts Tu & Th GrpA (NV3MACC2-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 3 Accounts Tu & Th GrpB (NV3MACC2-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 4 Accounts Eve (September NewStarts) (NV4MACC2-8EA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 4 Accounts Eve Carry Overs (NV4MACC2-8EA22A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait WDG (CR1MCLD1-8EAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait WDG OJG (CR1MCLJ1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Autumn GpA (CR1MCLT1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Autumn GpB (CR1MCLT1-8DAS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Spring GpA (CR1MCLT1-8DBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Spring GpB (CR1MCLT1-8DBS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Autumn Eve GpA (CR1MCLT1-8EAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Spring Eve GpA (CR1MCLT1-8EBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Spring Eve GpB (CR1MCLT1-8EBS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Autumn Saturday (CR1MCLT1-8WAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait Spring Saturday (CR1MCLT1-8WBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait WGLC (CR1MCLW1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Clait WGLC Eve (CR1MCLW1-8EAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Level 1 Day (CR1MICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Autumn GpA (CREMFST1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Autumn GpB (CREMFST1-8DAS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Spring GpA (CREMFST1-8DBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Spring GpB (CREMFST1-8DBS1B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Autumn Eve (CREMFST1-8EAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Spring Eve (CREMFST1-8EBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Autmn Saturday (CREMFST1-8WAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT 1st Steps E3 Spring Saturday (CREMFST1-8WBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 3 GpA (CREMICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 3 GpB (CREMICT1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 3 Eve (CREMICT1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 2 GpA (CRFMICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 2 GpB (CRFMICT1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 2 GpA Eve (CRFMICT1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 1 GpA (CRGMICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Entry 1 GpB (CRGMICT1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Level 2 Sep Day (NV2MITQ1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ 2 Spirng Day (NV2MITQ1-8DB11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ 2 Sep Evening GpA (NV2MITQ1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ 2 Spring Evening (NV2MITQ1-8EB11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Level 2 Sep Saturday GpA (NV2MITQ1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ITQ Level 2 Sep Saturday GpB (NV2MITQ1-8WA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        A2 English Lang & Lit (A23MLNL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AS English Lang & Lit (Clsd) (AS3MLNL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Level 1 GpA (BS1MENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Level 1 GpB (BS1MENG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Level 1 Eve (BS1MENG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Move on Literacy L1 Autumn (BS1MLIT1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Move on Literacy L1 Summer (BS1MLIT1-8DCS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Skills for Writing GpA (BS1MSFW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Skills for Writing GpB (BS1MSFW1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Skills for Writing Eve (BS1MSFW1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Level 2 GpA (BS2MENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Level 2 GpB (BS2MENG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English L2 Eve (BS2MENG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Move on Literacy Level 2 Autmn (BS2MLIT1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Move on Literacy Level 2 Spring (BS2MLIT1-8DCS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Pre GCSE English (BS2MPRE1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Pre GCSE English Eve (BS2MPRE1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Communication Skills (BSEMCMS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Communication Skills Eve (BSEMCMS1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 GpA (BSEMENL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 GpB (BSEMENL1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 GpC (BSEMENL1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 Eve GpA (BSEMENL1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 Eve GpB (BSEMENL1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Saturday School English Level 1 (BSEMENL1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Prepare for Work Day Autumn (Clsd) (BSEMPRW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Prepare for Work Day Spring (BSEMPRW1-8DB11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 GpA (BSFMENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 GpB (BSFMENG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 GpC (BSFMENG1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 Eve GpA (BSFMENG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 Eve GpB (BSFMENG1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E1 (BSGMENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E1 Eve (BSGMENG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English PreEntry (BSHMENE1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English PreEntry Eve (BSHMENE1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        GCSE English (GC2MENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        GCSE English Eve GpA (GC2MENG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        GCSE English Eve GpB (GC2MENG1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 5 Tue GpA (TUEMBSK2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 6 Tue GpB (TUEMBSK2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 7 Tue GpC (TUEMBSK2-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 8 Tue GpD (TUEMBSK2-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 16 Frd GpA (TUEMBSK5-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 17 Frd GpB (TUEMBSK5-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 18 Frd GpC (TUEMBSK5-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 19 Frd GpD (TUEMBSK5-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        A2 Pure Maths (A23MPMT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AS Maths (Clsd) (AS3MMAT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy for Work L1 (BS1MNFW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L1 GpA (BS1MPNU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L1 GpB (BS1MPNU1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L1 GpC (BS1MPNU1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L1 Eve (BS1MPNU1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Pre GCSE Maths GpA (BS2MPGM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L2 GpA (BS2MPNU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L2 GpB (BS2MPNU1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy L2 Eve (BS2MPNU1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Financial Maths Entry 3 (BSEMFMT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Financial Maths Entry 3 Eve (BSEMFMT1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy for Work E3 (BSEMNFW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy & ICT (BSEMNIT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E3 to Level 1 (BSEMNUT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E3 GpA (BSEMPNU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E3 GpB (BSEMPNU1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E3 Eve (BSEMPNU1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Saturday School Maths (BSEMPNU1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E2 GpA (BSFMPNU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E2 Eve (BSFMPNU1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy E1 (BSGMPNU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Numeracy PreEntry (BSHMPNM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        GCSE Maths (GC2MMTH1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        GCSE Maths Eve GpA (GC2MMTH1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 9 Wds GpA (TUEMBSK3-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 10 Wds GpB (TUEMBSK3-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 11 Wds GpC (TUEMBSK3-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Childcare L1 (BS1MCCR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Fresh Start for Women L1 (BS1MFRS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Childcare E3 (BSEMCCR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Computing E3 (Clsd) (BSEMCMP1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Construction E3 (Clsd) (BSEMCON1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 Full Time GpA (BSEMENF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E3 Full Time GpB (BSEMENF1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Health & Care E3 (BSEMHCR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Hair & Beauty E3 (BSEMHRB1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult Maths (BWF) (BSEMNUF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult Numeracy (St Anns) (BSEMNUN1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult Numeracy (WGLC) Eve (BSEMNUW1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E2 Full Time (BSFMENF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English E1 Full Time (BSGMENF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English L1 (BWF) (CR1MADF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English (WGLC) Level 1 Evening (CR1MENW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English (BWF) Day (CREMADF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English RR (WOD) Day (CREMAED1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English (GCWO) Day (CREMENG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English (JAN) Day (CREMENJ1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Adult English (WGLC) Day (CREMENW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 1 Mndy GpA (TUEMBSK1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 2 Mndy GpB (TUEMBSK1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 3 Mndy GpC (TUEMBSK1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 4 Mndy GpD (TUEMBSK1-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 12 Thr GpA (TUEMBSK4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 13 Thr GpB (TUEMBSK4-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 14 Thr GpC (TUEMBSK4-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Tutorial for BSK 15 Thr GpD (TUEMBSK4-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Transitions Stage 1 (PreEntry Lit) (CL1MTRN1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Transitions Stage 2 (CL1MTRN2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access To FE 1 (PreEntry Lit) (CLEMAFE1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access To FE 2 (CLEMAFE2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Life Skills Entry 2 (CLFMLSK1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT for Work- NONC Progression Entry (CREMCTW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Gardening- NONC Progression Entry (CREMGAR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Catering and Hospitality (CREMHOS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Ready Steady Work (CREMRSW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Woodwork- NONC Progression Entry (CREMWDW1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Skills for Working Life Entry (CREMWRF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD Art (K4EMART1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD Basic Skills (K4EMBSK1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD Cookery (K4EMCKR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD Drama (K4EMDRM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD ICT (K4EMICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC SLDD Music (K4EMMUS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Art Taster (VOEMART1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Communication (VOEMCOM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dance Taster (VOEMDNC1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Drama (VOEMDRM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Taster (VOEMICT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Music (VOEMMUS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Sensory Movement (VOEMSMV1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        SportTaster (VOEMSPR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Team Enterprise (VOEMTME1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Yoga Taster (VOEMYGA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry Lit 2A (ESFMLIT1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2A GpA (ESFMSLA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2A GpB (ESFMSLA1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2A GpC (ESFMSLA1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2A GpD (ESFMSLA1-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2A Eve (ESFMSLA1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2B GpA (ESFMSLB1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2B GpB (ESFMSLB1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2B GpC (ESFMSLB1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2B Eve (ESFMSLB1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 2B Twilight (ESFMSLB2-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpA (ESGMSLB1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpB (ESGMSLB1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpC (ESGMSLB1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpD (ESGMSLB1-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpE (ESGMSLB1-8DA11E)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpF (ESGMSLB1-8DA11F)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B GpG (ESGMSLB1-8DA11G)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B Eve GpA (ESGMSLB1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B Eve GpB (ESGMSLB1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 1B Twilight (ESGMSLB2-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP Prep L1 Day (ES1MAPP1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP Prep L1 Eve (ES1MAPP1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL L1 Day (ES1MSLF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL L1 Eve Mnd & Wnd (ES1MSLF1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL L1 Eve Tu & Wnd (ES1MSLF1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL L1 Weekend (ES1MSLF1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP L2 Eve (ES2MEAG1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP L2 Business (ES2MEBU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP L2 Humanities (ES2MEHU1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP Prep E3 Day (ESEMAPP1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL EAP Prep E3 Eve (ESEMAPP1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A GpA (ESEMSLA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A GpB (ESEMSLA1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A GpC (ESEMSLA1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A GpD (ESEMSLA1-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A Eve GpA (ESEMSLA1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3A Eve GpB (ESEMSLA1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B GpA (ESEMSLB1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B GpB (ESEMSLB1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B GpC (ESEMSLB1-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B GpD (ESEMSLB1-8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B Eve GpA (ESEMSLB1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3B Eve GpB (ESEMSLB1-8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Entry 3 Weekend (ESEMSLB1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 Level 1 Generic GpA (ES1MYNG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E2 Generic GpB (ES1MYNG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E3A Generic (ESEMYNG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E3 Business (ESEMYNG2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E3 C&H (ESEMYNG3-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E3 D (ESEMYNG4-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E2B (ESFMYNG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E2A Low Literacy (ESFMYNG2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E2C (ESFMYNG2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E2D (ESFMYNG2-8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E1A Low Literacy GpA (ESGMYNG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E1B Low Literacy GpB (ESGMYNG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E1C (ESGMYNG2-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL 16-18 E1D (ESGMYNG2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC A2E ESOL Year 11 GpA (K4EMESL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC A2E ESOL Year 11 GpB (K4EMESL1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E3 Generic GpA (ESEMADG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E3 Generic GpB (ESEMADG1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E3 Bus (ESEMBTB1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E3 C&H GpA (ESEMCHA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E3 C&H GpB (Clsd) (ESEMCHA1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E2A (ESFMFNA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Foundation Adult E2B (ESFMFNA1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL WGLC L1 (ES1MSLW1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BWF E3 (ESEMSLF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Mitalee E3 (ESEMSLM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Dev Hill E2B (ESFMSLD1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BWF E2 (ESFMSLF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Salvation Army E2 (ESFMSLL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Mitalee E2 (ESFMSLM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Caris E2 (ESFMSLR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL WGLC E2 (ESFMSLW1-8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Campsbourne E1A (ESGMSLC1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Dev Hill E1A (ESGMSLD1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BWF E1A (ESGMSLF1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL BWF E1B (ESGMSLF1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Gladesmore E1B (ESGMSLG1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Salvation Army E1 (ESGMSLL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Mitalee E1A (ESGMSLM1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Nth Haringey E1A (ESGMSLN1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Nth Haringey E1B (ESGMSLN1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Caris E1 (ESGMSLR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Sth Haringey E1A (ESGMSLS1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Access to Teaching OCN (AC3MTCH1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Prepare to Teach in Lifelong Sec Autumn (AW3MPLS1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Prepare to Teach in Lifelong Sec Spring (AW3MPLS1-8DBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CELTA Autumn (CR4MCLT1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CELTA Spring (CR4MCLT1-8DBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Teaching in Life Long Sector GpA (CR4MTCH1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Teaching in Life Long Sector GpB (CR4MTCH1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Cert in Teaching in Life Long Sector Sat (CR4MTCH1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Add Dip in Teaching English (ESOL) (DP4MDPE1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip Teaching in Life Long Sector Grp A (DP4MTCH1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip Teaching in Life Long Sector Grp B (DP4MTCH1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Dip Teaching in Life Long Sector Sat (DP4MTCH1-8WA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Add Dip in Teaching English (Literacy) (DP4SDPL1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Flash (VO2MFLSF - )
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CompTIA A + Essentials Eve Autumn (VO2MCTAF 8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CompTIA A + 220-602 Eve Autumn GpBllname (VO2MCTAF 8EA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CISCO CCNA Eve (VO3MCIAF 8EA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        CISCO CCNA 2 Eve GpB (VO3MCIAF 8EA22B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Equiping for Choice ESOL Citizenship
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Motivational Dialogue
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Hairdressing PT (NV3MHAR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog TG GpA (BSEMEMPJ 8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog TC GpB (BSEMEMPJ 8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Epicentre GpC (BSEMEMPJ 8DA11C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog TC GpD (BSEMEMPJ 8DA11D)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Epicentre GpE (BSEMEMPJ 8DA11E)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Enfield GpF (BSEMEMPJ 8DA11F)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Stifford GpG (BSEMEMPJ 8DA11G)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Frizlands GpH (BSEMEMPJ 8DA11H)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Stifford GpJ (BSEMEMPJ 8DA11J)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Jagonari GpK (BSEMEMPJ 8DA11K)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Employablity Skills Prog Jagonari GpM (BSEMEMPJ 8DA11M)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Dental Nursing GpA (NV3MDRS7-GpA
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ 3 in Dental Nursing GpB (NV3MDRS7-GpB)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Business Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Care and Health Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Trade Union Studies Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Study Skills Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Science Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Maths Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Language and Humanities Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Initial Teacher Education Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ICT Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Hair, Beauty and Recreation Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        ESOL Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        English Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Creative Studies Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Construction and Housing Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Computing Good Practice
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        BTEC FD in Applied Science GpB (FD2MAPS1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Anti bullying
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert in Science for A2E GpA (K4EMSCA1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Cert in Science for A2E GpB (K4EMSCA1-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Progress
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Electrical Installation FT L2 Yr1 GpC (CR2MENT6-8DA21C)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        AAT 3 in Accounting Full Time GpB (NV3MACC2-8DA11B)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Merger of CONEL and Enfield
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        YPC Engagement in Ceramics Atmn (K4EMENM1-8DAS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        NVQ in Barbering Yr1 WBL GpA (NV2MBARW-8DA21A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 2 Certificate for Teaching Assistants (---)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 3 Diploma in Pre-School Practice (DP3MPSPF-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Level 3 Diploma in Home Based Childcare (UN3MHBC7-8WBS1A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Intro to Children Care Entry 3 (BSEMCDCR1-8DA11A)
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Reality bites
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Healthy Eating
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        testing new course loads
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        Health and Social Care Diploma taster course
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        test restore
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+        test restore copy 1
+            Next execution: Tuesday, 3 March 2009, 11:00 PM
+Backup tasks finished.
+Running auth crons if required...
+Cron script completed correctly
+Execution took 41.137674 seconds

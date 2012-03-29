@@ -1,0 +1,306 @@
+
+<HTML> 
+  <HEAD>
+<TITLE>Supermarket: Rounding prices</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i>d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+//-->
+</SCRIPT>
+<STYLE TYPE="text/css"></STYLE>
+<LINK REL="stylesheet" HREF="../../../intro/number.css" TYPE="text/css">
+<script language="JavaScript" src="scripts/behActions.js"></script>
+<script language="JavaScript" src="scripts/behCourseBuilder.js"></script>
+<script language="JavaScript" src="scripts/interactionClass.js"></script>
+<script language="JavaScript" src="scripts/elemTextClass.js"></script>
+<link rel="stylesheet" href="../sound.css" type="text/css">
+<link rel="stylesheet" href="../sound.css" type="text/css">
+</HEAD> 
+<BODY BACKGROUND="../../images/backgrd1.gif" onLoad="MM_initInteractions()">
+<TABLE WIDTH="500" ALIGN="center">
+  <TR> 
+    <TD width="243"> <img src="../images/supermc.gif" width="169" height="28"alt="Supermarket"></TD>
+    <TD ALIGN="RIGHT" width="181"> 
+      <TABLE WIDTH="161">
+        <TR> 
+          <TD HEIGHT="29" WIDTH="59%"><A HREF="../../../intro/frontp2.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image7','','../../images/homeb.gif',1)"><IMG
+					 NAME="Image7" BORDER="0" SRC="../../images/home.gif" width="56" height="15" alt="home"></A></TD>
+          <TD HEIGHT="29" WIDTH="41%"><A HREF="../../../intro/index2.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image8','','../../images/indexb.gif',1)"><IMG
+					 NAME="Image8" BORDER="0" SRC="../../images/index.gif" WIDTH="53"
+				HEIGHT="16" alt="index"></A></TD>
+        </TR>
+      </TABLE>
+    </TD>
+    <TD width="60"> 
+      <div align="right"><a href="javascript:void(window.open('revision.htm', '','width=600,height=500, scrolling=yes, scrollbars=yes, screenX=1,screenY=1,top=1,left=80'))"><img src="../images/cartp.gif" width="44" height="44" border="0" alt="revision"></a></div>
+    </TD>
+  </TR>
+  <TR> 
+    <TD COLSPAN="2"> 
+      <P><font face="Arial, Helvetica, sans-serif" size="4" color="#990099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020713678120','audio/page7_1.mp3')" class="sound"> 
+        Exercise 7 (cont). Rounding prices<img src="../images/pencil.gif" width="41" height="48" alt="pencil"></font><font face="Arial, Helvetica, sans-serif"> 
+        </font></P>
+      <P><font face="Arial, Helvetica, sans-serif" size="4" color="#990099">Question 
+        2</font><font face="Arial, Helvetica, sans-serif"><br>
+        </font></P>
+      <form name="form2" method="post" action="">
+        <p><font face="Arial, Helvetica, sans-serif">Name:</font> 
+          <input type="text" name="textfield" size="40">
+        </p>
+      </form>
+      <p><font face="Arial, Helvetica, sans-serif"> Date:</font>&nbsp;&nbsp; 
+        <input type="text" name="textfield2">
+      </p>
+      <P><font face="Arial, Helvetica, sans-serif"> Round up or down the cost 
+        of the following items: </font></P>
+      <P><img src="images/ex7_2.gif" width="290" height="206" alt="&pound;1.45 for parsnips; &pound;0.99 for crisps; &pound;2.05 for fish fingers"></P>
+      <interaction name="Text_Singleline01" object="G01" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G01Layer"> <span name="G01question"><font face="Arial, Helvetica, sans-serif"><b>1. 
+        &nbsp; </b>&pound;1.45 rounds down to</font><br>
+        </span> 
+        <form name="G01elem" onSubmit="return false">
+          <input name="G01elemInp" type="text" onBlur="G01.e['elem'].update()" onFocus="G01.e['elem'].focus()" value="">
+        </form>
+        <form name="G01controls">
+          <input name="G01judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G01')">
+          <input name="G01reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G01','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG01() {
+    G01 = new MM_interaction('G01',0,0,0,0,0,0,0,'','','f','',0);
+    G01.add('text','elem','');
+    G01.add('textComp','elem','Response1','25-32-###-£la1ks.jf0da0AS',1,0,0,1);
+    G01.add('textComp','elem','Response2','26-32-###-£sjf1daA',1,0,0,1);
+    G01.add('textComp','elem','Response3','27-32-###-1ASDl.adka037aU0kd09',1,0,0,1);
+    G01.init();
+    G01.am('segm','Segment: Check Time_',1,1);
+    G01.am('cond','Time At Limit_','G01.timeAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+    G01.am('segm','Segment: Correctness_',1,0);
+    G01.am('cond','Correct_01','G01.correct == true',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G01.am('end');
+    G01.am('cond','Incorrect_01','G01.correct == false',0);
+    G01.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G01.am('end');
+    G01.am('cond','Unknown Response_','G01.knownResponse == false',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G01.am('end');
+    G01.am('segm','Segment: Check Tries_',1,1);
+    G01.am('cond','Tries At Limit_','G01.triesAtLimit == true',0);
+    G01.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G01.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G01.setDisabled(true);\')','sp');
+    G01.am('end');
+  }
+  if (window.newG01 == null) window.newG01 = newG01;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG01();';
+//-->
+</script>
+      <cbi-select object="G01"></interaction> <interaction name="Text_Singleline02" object="G02" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G02Layer"> <span name="G02question"><font face="Arial, Helvetica, sans-serif" size="4" color="#990099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020713712170','audio/page7_2.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif"><b>2. &nbsp; </b>&pound;0.99 
+        rounds up to</font><br>
+        </span> 
+        <form name="G02elem" onSubmit="return false">
+          <input name="G02elemInp" type="text" onBlur="G02.e['elem'].update()" onFocus="G02.e['elem'].focus()" value="">
+        </form>
+        <form name="G02controls">
+          <input name="G02judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G02')">
+          <input name="G02reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G02','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG02() {
+    G02 = new MM_interaction('G02',0,0,0,0,0,0,0,'','','f','',0);
+    G02.add('text','elem','');
+    G02.add('textComp','elem','Response1','25-32-###-£la1ks.jf0da0AS',1,0,0,1);
+    G02.add('textComp','elem','Response2','26-32-###-£sjf1daA',1,0,0,1);
+    G02.add('textComp','elem','Response3','27-32-###-1ASDl.adka037aU0kd09',1,0,0,1);
+    G02.init();
+    G02.am('segm','Segment: Check Time_',1,1);
+    G02.am('cond','Time At Limit_','G02.timeAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+    G02.am('segm','Segment: Correctness_',1,0);
+    G02.am('cond','Correct_01','G02.correct == true',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G02.am('end');
+    G02.am('cond','Incorrect_01','G02.correct == false',0);
+    G02.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G02.am('end');
+    G02.am('cond','Unknown Response_','G02.knownResponse == false',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G02.am('end');
+    G02.am('segm','Segment: Check Tries_',1,1);
+    G02.am('cond','Tries At Limit_','G02.triesAtLimit == true',0);
+    G02.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G02.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G02.setDisabled(true);\')','sp');
+    G02.am('end');
+  }
+  if (window.newG02 == null) window.newG02 = newG02;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG02();';
+//-->
+</script>
+      <cbi-select object="G02"></interaction> <interaction name="Text_Singleline03" object="G03" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G03Layer"> <span name="G03question"><font face="Arial, Helvetica, sans-serif" size="4" color="#990099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020713764240','audio/page7_3.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif"><b>3. &nbsp; </b>&pound;2.05 
+        rounds down to</font><br>
+        </span> 
+        <form name="G03elem" onSubmit="return false">
+          <input name="G03elemInp" type="text" onBlur="G03.e['elem'].update()" onFocus="G03.e['elem'].focus()" value="">
+        </form>
+        <form name="G03controls">
+          <input name="G03judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G03')">
+          <input name="G03reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G03','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG03() {
+    G03 = new MM_interaction('G03',0,0,0,0,0,0,0,'','','f','',0);
+    G03.add('text','elem','');
+    G03.add('textComp','elem','Response1','25-32-###-£la2ks.jf0da0AS',1,0,0,1);
+    G03.add('textComp','elem','Response2','26-32-###-2sjf.daA0SDl0adk',1,0,0,1);
+    G03.add('textComp','elem','Response3','27-32-###-£ASDl2adka',1,0,0,1);
+    G03.init();
+    G03.am('segm','Segment: Check Time_',1,1);
+    G03.am('cond','Time At Limit_','G03.timeAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+    G03.am('segm','Segment: Correctness_',1,0);
+    G03.am('cond','Correct_01','G03.correct == true',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G03.am('end');
+    G03.am('cond','Incorrect_01','G03.correct == false',0);
+    G03.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G03.am('end');
+    G03.am('cond','Unknown Response_','G03.knownResponse == false',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G03.am('end');
+    G03.am('segm','Segment: Check Tries_',1,1);
+    G03.am('cond','Tries At Limit_','G03.triesAtLimit == true',0);
+    G03.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G03.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G03.setDisabled(true);\')','sp');
+    G03.am('end');
+  }
+  if (window.newG03 == null) window.newG03 = newG03;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG03();';
+//-->
+</script>
+      <cbi-select object="G03"></interaction> <interaction name="Text_Singleline04" object="G04" template="050_Text Entry/010_Text_Singleline_03.agt" includesrc="interactionClass.js,elemTextClass.js"> 
+      <div name="G04Layer"> <span name="G04question"><font face="Arial, Helvetica, sans-serif" size="4" color="#990099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020713797250','audio/page7_4.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif"><b>4.</b> &nbsp;The total 
+        estimated cost of the three items is (add your three answers)</font><br>
+        </span> 
+        <form name="G04elem" onSubmit="return false">
+          <input name="G04elemInp" type="text" onBlur="G04.e['elem'].update()" onFocus="G04.e['elem'].focus()" value="">
+        </form>
+        <form name="G04controls">
+          <input name="G04judge" type="BUTTON" value="Enter" onClick="MM_judgeInt('G04')">
+          <input name="G04reset" type="BUTTON" value="Try again" onClick="MM_resetInt('G04','reset')">
+        </form>
+      </div>
+      <script language="JavaScript">
+<!--
+  // Copyright 1998,1999 Macromedia, Inc. All rights reserved.
+  function newG04() {
+    G04 = new MM_interaction('G04',0,0,0,0,0,0,0,'','','f','',0);
+    G04.add('text','elem','');
+    G04.add('textComp','elem','Response1','25-32-###-£la4ks.jf0da0AS',1,0,0,1);
+    G04.add('textComp','elem','Response2','26-32-###-£sjf4daA',1,0,0,1);
+    G04.add('textComp','elem','Response3','27-32-###-4ASDl.adka037aU0kd09',1,0,0,1);
+    G04.init();
+    G04.am('segm','Segment: Check Time_',1,1);
+    G04.am('cond','Time At Limit_','G04.timeAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of time\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+    G04.am('segm','Segment: Correctness_',1,0);
+    G04.am('cond','Correct_01','G04.correct == true',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/correct.htm\',\'Correct\',\'width=200,height=130\')','');
+    G04.am('end');
+    G04.am('cond','Incorrect_01','G04.correct == false',0);
+    G04.am('actn','Open Browser Window','MM_openBrWindow(\'../images/incorrect.htm\',\'Incorrect\',\'width=200,height=130\')','');
+    G04.am('end');
+    G04.am('cond','Unknown Response_','G04.knownResponse == false',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'Try again\')','pm');
+    G04.am('end');
+    G04.am('segm','Segment: Check Tries_',1,1);
+    G04.am('cond','Tries At Limit_','G04.triesAtLimit == true',0);
+    G04.am('actn','Popup Message','MM_popupMsg(\'You are out of tries\')','pm');
+    G04.am('actn','Set Interaction Properties: Disable Interaction','MM_setIntProps(\'G04.setDisabled(true);\')','sp');
+    G04.am('end');
+  }
+  if (window.newG04 == null) window.newG04 = newG04;
+  if (!window.MM_initIntFns) window.MM_initIntFns = ''; window.MM_initIntFns += 'newG04();';
+//-->
+</script>
+      <cbi-select object="G04"></interaction> 
+      <p><font face="Arial, Helvetica, sans-serif" size="4" color="#990099"><img src="../../images/sound.gif" width="27" height="27" alt="audio button" onMouseDown="MM_controlSound('play','document.CS1020713641980','../print.mp3')" class="sound"> 
+        </font><font face="Arial, Helvetica, sans-serif">Print this page and place 
+        it in your folder.</font></p>
+      <TABLE WIDTH="110">
+        <TR> 
+          <TD><A HREF="page6.htm"
+					 ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image13','','../../images/backb.gif',1)"><IMG
+					 NAME="Image13" BORDER="0" SRC="../../images/back.gif" WIDTH="43" HEIGHT="15" alt="back"></A></TD>
+          <TD><A HREF="page8.htm" ONMOUSEOUT="MM_swapImgRestore()"
+					 ONMOUSEOVER="MM_swapImage('Image14','','../../images/nextb.gif',1)"><IMG
+					 NAME="Image14" BORDER="0" SRC="../../images/next.gif" WIDTH="42" HEIGHT="14" alt="next"></A></TD>
+        </TR>
+      </TABLE>
+      <p align="center"> <font size="2" face="Arial, Helvetica, sans-serif"><a href="../superm1/index.htm">Weighing 
+        fruit &amp; veg</a> | <a href="../superm2/index.htm">Digital scales</a> 
+        | <a href="../superm3/index.htm">Date stamp</a> | <a href="../superm4/index.htm">Sell-by 
+        date</a> | <a href="../superm5/index.htm">Sizes of medicine</a> | <a href="../superm6/index.htm">Volume 
+        of liquids</a> | <a href="index.htm">Rounding prices</a> | <a href="../superm8/index.htm">Paying 
+        bill at checkout</a></font></p>
+    </TD>
+    <TD width="60">&nbsp;</TD>
+  </TR>
+</TABLE>
+<EMBED NAME='CS1020713641980' SRC='../print.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1020713678120' SRC='audio/page7_1.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1020713712170' SRC='audio/page7_2.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1020713764240' SRC='audio/page7_3.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> <EMBED NAME='CS1020713797250' SRC='audio/page7_4.mp3' LOOP=false 
+AUTOSTART=false MASTERSOUND HIDDEN=true WIDTH=0 HEIGHT=0>
+</EMBED> 
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<?php
+	// Paul Holden 17th July, 2007
+	// this file contains the block configuration code
+	
+	include('block_translate_defs.php');
+
+	$block_langs = (isset($this->config->langs) ? $this->config->langs : array());
+
+	echo(sprintf('<p>%s</p>', get_string('config_message', 'block_translate')));
+
+	$table = new Object();
+	$table->head = array('&nbsp;', get_string('language'));
+	$table->size = array('*', '80%');
+	$table->width = 200;
+
+	foreach ($langs as $lang) {
+		$check = "<input type=\"checkbox\" name=\"langs[]\" id=\"$lang\" value=\"$lang\" " . (in_array($lang, $block_langs) ? 'checked' : '') . " />";
+		$label = "<label for=\"$lang\">" . str_replace($short, $long, $lang) . "</label>";
+		$table->data[] = array($check, $label);
+	}
+	
+	print_table($table);
+
+?>
+<p align="center"><input type="submit" value="<?php print_string('savechanges') ?>" /></td></p>

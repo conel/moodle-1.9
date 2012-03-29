@@ -1,0 +1,163 @@
+<?php
+
+	$instanceid = optional_param('instanceid', 0, PARAM_INT);
+	
+	// if some values are blank we want to set defaults here.
+	$this->config->transition = (isset($this->config->transition)) ? $this->config->transition : 'fade';
+	$this->config->display_time = (isset($this->config->display_time)) ? $this->config->display_time : 5000;
+	$this->config->transition_speed = (isset($this->config->transition_speed)) ? $this->config->transition_speed : 1000;
+	$this->config->back_fwd = (isset($this->config->back_fwd)) ? $this->config->back_fwd : false;
+	$this->config->play_button = (isset($this->config->play_button)) ? $this->config->play_button : false;
+	
+	// Get all existing ads
+	$query = "SELECT * FROM mdl_block_ads WHERE instanceid = $instanceid ORDER BY position ASC";
+	$adverts = array();
+	if ($ads = get_records_sql($query)) {
+		$i = 0;
+		foreach ($ads as $ad) {
+			$adverts[$i]['id'] = $ad->id;
+			$adverts[$i]['position'] = $ad->position;
+			$adverts[$i]['image'] = $ad->image;
+			$adverts[$i]['link'] = $ad->link;
+			$adverts[$i]['title'] = $ad->title;
+			$i++;
+		}
+	}
+?>
+<script type="text/javascript" src="<?php echo $CFG->wwwroot; ?>/blocks/ads/js/jquery-ui-1.7.1.custom.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function(){ 
+	jQuery(function() {
+		jQuery("#advert_previews ul").sortable({ opacity: 0.6, cursor: 'move', update: function() {
+			var order = jQuery(this).sortable("serialize") + '&action=updateorder';
+			jQuery.post("<?php echo $CFG->wwwroot; ?>/blocks/ads/actions.php", order, function(theResponse){
+				jQuery("#order_message").html(theResponse).delay(1500).fadeOut('slow');
+			});
+		}
+		});
+	});
+});
+</script>
+<h2>Manage Ads</h2>
+<h5 style="text-transform:none;">Size: 235 width x 214 height</h5>
+<div id="advert_previews">
+<?php 
+	if (count($adverts) > 0) {
+	echo '<ul>';
+	foreach ($adverts as $ad) {
+		echo '<li id="recordsArray_'.$ad['id'].'">
+			<!--<p class="number">'.$ad['position'].'</p>-->
+			<img src="'.$CFG->wwwroot.'/file.php/1/'.$ad['image'].'" alt="" width="140" height="127" title="'.$ad['title'].'" />
+			<br /><a href="'.$ad['link'].'" target="_blank" class="ads_test_link">Test Link</a>
+			<p>[ <a href="#" class="ad_actions" onclick="return openpopup(\'/blocks/ads/manage_ad.php?action=edit&amp;id='.$ad['id'].'\',\'test\',\'menubar=0,location=0,scrollbars,resizable,width=700,height=400\',0);">Edit</a>
+			| <a href="#" class="ad_actions" onclick="return openpopup(\'/blocks/ads/manage_ad.php?action=delete&amp;id='.$ad['id'].'\',\'test\',\'menubar=0,location=0,scrollbars,resizable,width=700,height=400\',0);">Delete</a> ]</p>
+		</li>';
+	}
+	echo '</ul>
+	<br class="clear_both" />
+	<div id="order_message"><p><em>Drag to re-order</em></p></div>';
+
+	} else {
+		echo '<br />';
+	}
+	?>
+	<input onclick="return openpopup('/blocks/ads/manage_ad.php?instanceid=<?php echo $instanceid; ?>','test','menubar=0,location=0,scrollbars,resizable,width=700,height=400',0);" name="new" value="Add Advert" type="button" />
+</div>
+<br />
+
+<table cellpadding="9" cellspacing="0">
+  <tr>
+	<td colspan="2"><p><b>Slideshow Settings</b></p></td>
+  </tr>
+  <tr valign="top">
+	<td>Transition:</td>
+	<td>
+	<select name="transition">
+		<option value="random"<?php if ($this->config->transition == 'random') { echo ' selected="selected"';} ?>>random</option>
+		<option value="none"<?php if ($this->config->transition == 'none') { echo ' selected="selected"';} ?>>none</option>
+		<option value="fade"<?php if ($this->config->transition == 'fade') { echo ' selected="selected"';} ?>>fade</option>
+		<optgroup label="vertical stripes">
+			<option value="vert.random.fade"<?php if ($this->config->transition == 'vert.random.fade') { echo ' selected="selected"';} ?>>random fade</option>
+			<option value="vert.tl"<?php if ($this->config->transition == 'vert.tl') { echo ' selected="selected"';} ?>>top left</option>
+			<option value="vert.tr"<?php if ($this->config->transition == 'vert.tr') { echo ' selected="selected"';} ?>>top right</option>
+			<option value="vert.bl"<?php if ($this->config->transition == 'vert.bl') { echo ' selected="selected"';} ?>>bottom left</option>
+			<option value="vert.br"<?php if ($this->config->transition == 'vert.br') { echo ' selected="selected"';} ?>>bottom right</option>	
+			<option value="fade.left"<?php if ($this->config->transition == 'fade.left') { echo ' selected="selected"';} ?>>left fade</option>
+			<option value="fade.right"<?php if ($this->config->transition == 'fade.right') { echo ' selected="selected"';} ?>>right fade</option>
+			<option value="alt.left"<?php if ($this->config->transition == 'alt.left') { echo ' selected="selected"';} ?>>left alternating</option>
+			<option value="alt.right"<?php if ($this->config->transition == 'alt.right') { echo ' selected="selected"';} ?>>right alternating</option>  
+			<option value="blinds.left"<?php if ($this->config->transition == 'blinds.left') { echo ' selected="selected"';} ?>>left blinds</option>
+			<option value="blinds.right"<?php if ($this->config->transition == 'blinds.right') { echo ' selected="selected"';} ?>>right blinds</option>
+		</optgroup>
+		<optgroup label="horizontal stripes">
+			<option value="horz.random.fade"<?php if ($this->config->transition == 'horz.random.fade') { echo ' selected="selected"';} ?>>random fade</option>
+			<option value="horz.tl"<?php if ($this->config->transition == 'horz.tl') { echo ' selected="selected"';} ?>>top left</option>
+			<option value="horz.tr"<?php if ($this->config->transition == 'horz.tr') { echo ' selected="selected"';} ?>>top right</option>
+			<option value="horz.bl"<?php if ($this->config->transition == 'horz.bl') { echo ' selected="selected"';} ?>>bottom left</option>	
+			<option value="horz.br"<?php if ($this->config->transition == 'horz.br') { echo ' selected="selected"';} ?>>bottom right</option>	
+			<option value="fade.top"<?php if ($this->config->transition == 'fade.top') { echo ' selected="selected"';} ?>>top fade</option> 
+			<option value="fade.bottom"<?php if ($this->config->transition == 'fade.bottom') { echo ' selected="selected"';} ?>>bottom fade</option>
+			<option value="alt.top"<?php if ($this->config->transition == 'alt.top') { echo ' selected="selected"';} ?>>top alternating</option>
+			<option value="alt.bottom"<?php if ($this->config->transition == 'alt.bottom') { echo ' selected="selected"';} ?>>bottom alternating</option>
+			<option value="blinds.top"<?php if ($this->config->transition == 'blinds.top') { echo ' selected="selected"';} ?>>top blinds</option>
+			<option value="blinds.bottom"<?php if ($this->config->transition == 'blinds.bottom') { echo ' selected="selected"';} ?>>bottom blinds</option>
+		</optgroup>
+		<optgroup label="blocks">
+			<option value="diag.fade"<?php if ($this->config->transition == 'diag.fade') { echo ' selected="selected"';} ?>>diagional fade</option> 
+			<option value="diag.exp"<?php if ($this->config->transition == 'diag.exp') { echo ' selected="selected"';} ?>>diagional expand</option> 
+			<option value="rev.diag.fade"<?php if ($this->config->transition == 'rev.diag.fade') { echo ' selected="selected"';} ?>>reverse diagional fade</option> 
+			<option value="rev.diag.exp"<?php if ($this->config->transition == 'rev.diag.exp') { echo ' selected="selected"';} ?>>reverse diagional expand</option> 
+			<option value="block.fade"<?php if ($this->config->transition == 'block.fade') { echo ' selected="selected"';} ?>>random fade</option> 
+			<option value="block.exp"<?php if ($this->config->transition == 'block.exp') { echo ' selected="selected"';} ?>>random expand</option>	
+			<option value="block.drop"<?php if ($this->config->transition == 'block.drop') { echo ' selected="selected"';} ?>>random drop</option>
+			<option value="spiral.in"<?php if ($this->config->transition == 'spiral.in') { echo ' selected="selected"';} ?>>spiral in</option>
+			<option value="spiral.out"<?php if ($this->config->transition == 'spiral.out') { echo ' selected="selected"';} ?>>spiral out</option> 
+			<option value="block.top.zz"<?php if ($this->config->transition == 'block.top.zz') { echo ' selected="selected"';} ?>>top zig zag</option>
+			<option value="block.bottom.zz"<?php if ($this->config->transition == 'block.bottom.zz') { echo ' selected="selected"';} ?>>bottom zig zag</option>
+			<option value="block.left.zz"<?php if ($this->config->transition == 'block.left.zz') { echo ' selected="selected"';} ?>>left zig zag</option>
+			<option value="block.right.zz"<?php if ($this->config->transition == 'block.right.zz') { echo ' selected="selected"';} ?>>right zig zag</option>
+			<option value="block.top"<?php if ($this->config->transition == 'block.top') { echo ' selected="selected"';} ?>>top expand</option>
+			<option value="block.bottom"<?php if ($this->config->transition == 'block.bottom') { echo ' selected="selected"';} ?>>bottom expand</option>
+			<option value="block.left"<?php if ($this->config->transition == 'block.left') { echo ' selected="selected"';} ?>>left expand</option>
+			<option value="block.right"<?php if ($this->config->transition == 'block.right') { echo ' selected="selected"';} ?>>right expand</option>
+		</optgroup>                        
+	</select>
+</td>
+  </tr>
+  <tr valign="top">
+	<td>Display Ad For:</td>
+	<td>
+		<input type="text" name="display_time" value="<?php if (isset($this->config->display_time)) { echo $this->config->display_time; } ?>" /> (milliseconds) <em>1 second = 1000 milliseconds</em>
+	</td>
+  </tr>
+   <tr valign="top">
+	<td>Transition Speed:</td>
+	<td>
+		<input type="text" name="transition_speed" value="<?php if (isset($this->config->transition_speed)) { echo $this->config->transition_speed; } ?>" /> (milliseconds)
+	</td>
+  </tr>
+  <tr valign="top">
+	<td>Back/Fwd Buttons:</td>
+	<td>
+	<select name="back_fwd">
+		<option value="false"<?php if ($this->config->back_fwd == 'false') { echo ' selected="selected"';} ?>>Hide</option>	
+		<option value="true"<?php if ($this->config->back_fwd == 'true') { echo ' selected="selected"';} ?>>Show</option>
+	</select>
+	</td>
+  </tr>
+  <tr valign="top">
+	<td>Play Button:</td>
+	<td>
+	<select name="play_button">
+		<option value="false"<?php if ($this->config->play_button == 'false') { echo ' selected="selected"';} ?>>Hide</option>
+		<option value="true"<?php if ($this->config->play_button == 'true') { echo ' selected="selected"';} ?>>Show</option>		
+	</select>
+	</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="submit" value="<?php print_string('savechanges') ?>" />
+    </td>
+  </tr>
+</table>
+<?php //use_html_editor(); ?>

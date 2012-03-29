@@ -1,0 +1,318 @@
+/********************************************************
+  
+styles_color.css
+
+  * Sets non-default colors in one place.
+  * Sets images.
+    
+********************************************************/
+
+/* Core */
+body {
+  color:#464646;
+}
+h1, h2, h3, h4, h5, h6,
+a:link, a:visited, a:active,
+.tabtree ul li ul li a span {
+  color:#464646;
+}
+.content a {
+  text-decoration:underline !important;
+}
+.admintree a {
+  text-decoration:none !important;
+}
+a:hover,
+.tabtree ul li ul li a span:hover,
+.navbar a:link, .navbar a:visited, .navbar,
+.forumheaderlist .lastpost a:link,
+.forumheaderlist .lastpost a:visited /* Moodle Bug */ {
+  color:#009EDB;
+}
+.sideblock .date,
+.sideblock .date a:link,
+.sideblock .date a:visited,
+.forupost .author {
+  color: #a7a8aa;
+}
+
+.generalbox {
+  border-color: #fff;
+}
+#intro.generalbox,
+#course-user .section,
+#course-reset .generalbox .generalbox,
+#blog-preferences .generalbox,
+#course-recent .generalbox,
+.errorbox,
+.settingsform fieldset {
+  background: #f5f5f5;
+  border-color: #ddd;
+  border-style: dashed;
+}
+#course-user .section {
+  margin: 10px auto;
+}
+
+/* Breadcrumb */
+.navbar {
+  border-color: #ddd;
+  background: #f5f5f5;
+}
+
+/* User Pictures */
+img.userpicture,
+img.grouppicture,
+#message-index img.userpicture {
+  background:url(pix/shadow_35.png) no-repeat bottom right !important;
+  padding:0 4px 4px 0;
+}
+.sideblock img.userpicture {
+  background:url(pix/shadow_16.png) no-repeat bottom right !important;
+  padding:0 2px 2px 0;
+}
+.userinfobox img.userpicture,
+#message-history img.userpicture,
+#message-user img.userpicture {
+  background:url(pix/shadow_100.png) no-repeat bottom right !important;
+  padding:0 7px 7px 0;
+}
+
+/* Sideblocks */
+.sideblock .title h2 {
+  background: url(bg/star.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+  color: #929a9e;
+}
+.star,
+h2.headingblock,
+.block_site_main_menu .title h2 {
+  background: url(bg/star.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_blog_menu .title h2 {
+  background: url(bg/tag_edit.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_blog_tags .title h2 {
+  background: url(bg/tag.gif) no-repeat bottom left;
+  padding:0 0 6px 33px;
+}
+.block_news_items .title h2 {
+  background: url(bg/news.gif) no-repeat left;
+  padding: 0 0 12px 33px;
+}
+.block_recent_activity .title h2,
+.block_glossary_random .title h2 {
+  background: url(bg/titel.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_online_users .title h2,
+.block_participants .title h2 {
+  background: url(bg/users.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_calendar_month .title h2,
+.block_calendar_upcoming .title h2 {
+  background: url(bg/calendar.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_login .title h2 {
+  background: url(bg/keys.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_course_list .title h2 {
+  background: url(bg/pencil.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_activity_modules .title h2 {
+  background: url(bg/activities.gif) no-repeat bottom left;
+  padding: 0 0 6px 33px;
+}
+.block_messages .title h2 {
+  background: url(bg/message.gif) no-repeat left;
+  padding: 0 0 12px 33px;
+}
+.block_admin_tree .title h2 {
+  background: url(bg/blank.gif) no-repeat bottom left;
+  padding: 0 0 6px 3px;
+}
+.block_search_forums .title h2,
+.block_search .title h2 {
+  background: url(bg/search.gif) no-repeat left;
+  padding: 0 0 12px 33px;
+}
+.block_rss_client .title h2 {
+  background: url(bg/rss.gif) no-repeat left;
+  padding: 0 0 12px 33px;
+}
+
+/* Calendar */
+#calendar .maincalendar,
+#calendar .sidecalendar,
+#calendar .today,
+.minicalendar .today {
+  border-color: #DDDDDD;
+}
+table.minicalendar,
+#calendar .maincalendar table.calendarmonth th {
+  border-color: #DDDDDD;
+}
+#calendar .maincalendar .eventlist .event {
+  border-color:#DDDDDD;
+}
+#calendar .maincalendar .eventlist .event .topic,
+#calendar .maincalendar .eventlist .event .picture,
+#calendar .maincalendar .eventlist .event .side {
+  background-color:#EEEEEE;
+}
+#calendar .maincalendar table.calendarmonth ul.events-underway {
+  color:#999999;
+}
+#calendar .sidecalendar .minicalendarblock div,
+#calendar .maincalendar .controls {
+  border: 1px dashed #ddd;
+  background: #eee;
+}
+
+/*Accessibility: increase contrast, darker link/weekend colors, lighter event backgrounds. */
+.minicalendar a,
+.calendarmonth a {
+  color:#000077;
+}
+#calendar .event_course,
+.minicalendar .event_course,
+.block_calendar_month .event_course {
+  border-color:#FFD3BD !important; /* #EEC2AC */
+  background-color:#FFD3BD;
+}
+#calendar .event_group,
+.minicalendar .event_group,
+.block_calendar_month .event_group {
+  border-color:#FEE7AE !important; /* #EDD69D */
+  background-color:#FEE7AE;
+}
+#calendar .event_user,
+.minicalendar .event_user,
+.block_calendar_month .event_user {
+  border-color:#DCE7EC !important; /* #CBD6DB */
+  background-color:#DCE7EC;
+}
+#calendar .duration_global,
+.minicalendar .duration_global {
+  border-top-color:#66D14D !important;
+  border-bottom-color:#66D14D !important;
+}
+#calendar .duration_course,
+.minicalendar .duration_course {
+  border-top-color:#FF9966 !important;
+  border-bottom-color:#FF9966 !important;
+}
+#calendar .duration_group,
+.minicalendar .duration_group {
+  border-top-color:#FBBB23 !important;
+  border-bottom-color:#FBBB23 !important;
+}
+/*
+.minicalendar td {
+   border-top-color:#FBBB23 !important;
+   border-bottom-color:#FBBB23 !important;
+}
+*/
+#calendar .weekend,
+.minicalendar .weekend {
+  color:#929692;
+}
+.block_send_sms .title h2 {
+  background: url(bg/send_sms.gif) no-repeat bottom left;
+  padding: 0 0 6px 30px;
+}
+.cal_popup_fg {
+  background-color:#FFFFFF;
+}
+.cal_popup_bg {
+  border-color:#000000;
+  background-color:#FFFFFF;
+}
+#calendar .maincalendar .filters table,
+#calendar .sidecalendar .filters table,
+.block_calendar_month .filters table {
+  background-color: #EEEEEE;
+}
+#calendar .duration_global, .minicalendar .duration_global {
+	border:0 !important;
+}
+#calendar .duration_global, #calendar .duration_course, #calendar .duration_group, #calendar .duration_user, .minicalendar .duration_global, .minicalendar .duration_course, .minicalendar .duration_group, .minicalendar .duration_user {
+	border-left:1px dotted #313031 !important;
+	border-top:1px dotted #313031 !important;
+	_border-left:1px solid #878987 !important;
+	_border-top:1px solid #878987 !important;
+	border-right:0 !important;
+	border-bottom:0 !important;
+}
+table.minicalendar td, table.minicalendar th {
+	border-left:1px dotted #313031 !important;
+	border-top:1px dotted #313031 !important;
+	_border-left:1px solid #878987 !important;
+	_border-top:1px solid #878987 !important;
+}
+table.minicalendar {
+    border-bottom:1px dotted #313031 !important;
+	border-right:1px dotted #313031 !important;
+	_border-bottom:1px solid #878987 !important;
+	_border-right:1px solid #878987 !important;
+	margin:0 !important;
+	padding:0 !important;
+}
+table.minicalendar td.today {
+	background-color:#DFE6EC;
+}
+/* Glossary */
+.entryboxheader {
+  border-color: #BBBBBB;
+}
+.entrybox {
+  border-color: #BBBBBB;
+}
+.glossarypost {
+  border-color: #DDDDDD;
+}
+.glossarypost .entryheader,
+.glossarypost .entryapproval,
+.glossarypost .picture,
+.glossarypost .entryattachment,
+.glossarypost .left {
+  background-color: #F0F0F0;
+}
+.glossarycomment {
+  border-color: #DDDDDD;
+}
+.glossarycomment .entryheader,
+.glossarycomment .picture,
+.glossarycomment .left {
+  background-color: #F0F0F0;
+
+}
+#mod-glossary-report .generalbox .teacher {
+  background: #F0F0F0;
+}
+.glossarycategoryheader {
+  background-color: #dddddd;
+}
+.glossaryformatheader {
+  background-color: #dddddd;
+}
+#calendar .event_global,
+.minicalendar .event_global,
+.block_calendar_month .event_global {
+  /*border-color:#D6F8CD !important;*/ /* #C5E7BC */
+  	border-left:1px dotted #313031 !important;
+	border-top:1px dotted #313031 !important;
+	border-right:1px dotted transparent !important;
+	border-bottom:1px dotted transparent !important;
+	_border-left:1px solid #878987 !important;
+	_border-top:1px solid #878987 !important;
+	_border-right:1px solid #fff !important;
+	_border-bottom:1px solid #fff !important;
+	background:transparent url(pix/bg_calendar_event.gif) no-repeat center center !important;
+}

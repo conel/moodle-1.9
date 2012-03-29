@@ -1,0 +1,2 @@
+<div class="notifyproblem" style="text-align:center">Warning: Could not find any of these web server variables: $REQUEST_URI, $PHP_SELF, $SCRIPT_NAME or $URL</div>
+<div style="color:red;"><h2>Errors</h2><ul><li>No PDF exports in the queue</li></ul></div>

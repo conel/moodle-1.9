@@ -1,0 +1,9 @@
+/DictionaryLoader.php////*///
+/FieldInfo.php////*///
+/SegmentInfo.php////*///
+/SegmentInfoPriorityQueue.php////*///
+/SegmentMerger.php////*///
+/SegmentWriter.php////*///
+/Term.php////*///
+/TermInfo.php////*///
+/Writer.php////*///

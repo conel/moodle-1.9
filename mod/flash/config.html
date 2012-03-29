@@ -1,0 +1,75 @@
+<?php
+    require_once($CFG->dirroot.'/mod/flash/swfphp/swf.php');
+    require_once($CFG->dirroot.'/mod/flash/server/logger.php');
+    $logger=new MoodleLogger();
+    function flash_movie_info_restore($moviename)
+    {
+        //we don't get this info from the backup data but read info from the movies themselves
+        global $CFG;
+        $flash = new SWF("$CFG->dirroot/mod/flash/movies/$moviename/$moviename.swf"); 
+        if(!$flash->is_valid()){ 
+            echo "<strong>Can't open file $CFG->dirroot/mod/flash/movies/$moviename/$moviename.swf</strong> You need to install this for activities based on it to work and you must then go to the update page for the activity to update db records.<br />";
+        } else
+        {
+            $todb=new object();
+            $dimensions=$flash->getMovieSize(); 
+            $bgcolor=$flash->getBackgroundColor();
+            $todb->bgcolor=$bgcolor['hex'];
+            $todb->version=$flash->getVersion();
+            $todb->width=$dimensions['width'];
+            $todb->height=$dimensions['height'];
+            $todb->framerate= $flash->getFrameRate(); 
+            $todb->moviename= $moviename; 
+            $todb->timemodified = time();
+            if ($oldrec=get_record('flash_movies', 'moviename', $moviename))
+            {
+                $todb->id=$oldrec->id;
+                if (!update_record('flash_movies',$todb))
+                {
+                    error('Error updating movie record.');
+                }
+            }else
+            {
+                insert_record('flash_movies',$todb);
+            }
+        }
+    }
+$action=optional_param('action');
+if ($action=='updatedb') {
+    if (!$flashs=get_records_sql("SELECT DISTINCT moviename, moviename FROM `{$CFG->prefix}flash`;")){
+        echo "No Flash activities found.";
+    } else
+    {
+        echo 'Updating flash_movies records';
+        echo '<ul>';
+        foreach ($flashs as $flashmoviename)
+        {
+            echo "<li>Updating {$flashmoviename->moviename}";
+            flash_movie_info_restore($flashmoviename->moviename);
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
+} elseif ($action=='clearevlogs') {
+    $logger->clear_event_log();
+}
+echo '<p style="text-align:center;"><a href="module.php?module=flash&action=updatedb">Update flash_movies records</a> || <a href="module.php?module=flash&action=clearevlogs">Clear event log</a> | <a href="module.php?module=flash">Refresh event log display</a>';
+helpbutton ('moduleadmin', $title='Module Admin Commands', $module='flash');
+echo '</p>';
+echo '<div style="text-align:center;">';
+?>
+<form method="post" action="module.php" name="form">
+<input type="hidden" name="sesskey" value="<?php echo $USER->sesskey ?>">
+debug mode:
+    <?php 
+        $options[0] = 'Logging off';
+        $options[FLASH_LOG_ERROR] = 'Log Errors';
+        $options[FLASH_LOG_EVENT] = 'Log Events';
+        $options[FLASH_LOG_ALL] = 'Log All';
+        choose_from_menu ($options, "flash_debug", $CFG->flash_debug, "", "", ""); ?>
+       <input type="submit" value="<?php print_string("savechanges") ?>" />
+</form><br />
+<?php
+$logger->display_event_log();
+?>
+</div>

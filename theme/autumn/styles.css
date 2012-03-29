@@ -1,0 +1,401 @@
+/******************************************************************
+
+	Theme Name: Autumn
+	Theme URL: http://newschoollearning.com/themes/autumn/
+	Description: Autumn is a 3-column fluid-width theme for Moodle.
+	Author: Patrick Malley
+	Author URI: http://newschoollearning.com
+	Version: 20080615
+		
+	Note: Customize, edit, poke, prod, and adapt to your needs. 
+	Please leave credit where credit is due so that others may
+	find the source for your site and adapt a suitable version for their
+	own website.
+
+*******************************************************************/
+
+body {
+  background: #141 url(pix/bg.gif) repeat fixed;
+}
+
+body, table, td, th, li {
+  font-family: Verdana, Tahoma, Arial, Serif;
+  font-size:0.95em;
+  line-height:1.4;
+  color:#333;
+}
+
+#page {
+  background-color: #fff;
+  margin: 30px;
+  padding: 8px;
+}
+
+a:link,
+a:visited {
+  color: #b96d00;
+}
+
+a.dimmed:link,
+a.dimmed:visited {
+  color: #9b9b9b;
+}
+
+a:hover,
+a:active {
+  color: #b96d00;
+}
+
+
+h2 {
+  font-family: Georgia, Verdana, Arial, Serif;
+}
+
+.sideblock h2 {
+	font-size:1.2em;
+}
+
+.sideblock h2 a {
+	color:#333;
+}
+
+.generalbox {
+	border-width: 1px 0 1px 0;
+  border-color: #e1d2bd;
+  border-style: solid;
+  background: url(pix/autumn_gradient.png) repeat-x top;
+}
+
+.sitetopic	{
+  border:none;
+  background: none;
+}
+
+#header {
+  height: 112px;
+}
+
+#header-home {
+  height: 265px;
+}
+
+#header-home .headerimg2 {
+  height: 112px;
+  margin-bottom: 2px
+}
+
+#header-home .headerimg2,
+#header {
+  background: #2d2d2d url(pix/topbg.gif) repeat-x top left;
+}
+
+#header-home .headerimg1 {
+  height: 149px;
+  margin-bottom: 2px;
+  background: url(pix/fall_leaves.jpg) repeat-x bottom left;
+}
+
+.headerbottom {
+  height: 10px;
+  background: url(pix/border1.gif) repeat-x top left;
+}
+
+.headermain, h1.headermain, .headermenu a:link, .headermain a:visited {
+  color: #9F9030;
+}
+
+.navbar {
+  background: #9c7712 url(pix/menubg.gif) repeat-x top;
+}
+
+h1.headermain {
+  margin: 55px 0px 0px 30px;
+  font-weight: normal;
+  font-family: Georgia, Verdana, Arial, Serif;
+}
+
+#header-home .headermenu {
+  margin: 4px;
+}
+
+#header .headermenu {
+  margin: 4px;
+}
+
+#header-home .logininfo {
+  margin-bottom: 4px;
+}
+
+.headermenu {
+  color: #888888;
+}
+
+.breadcrumb li a:link,
+.breadcrumb a:visited,
+.breadcrumb li  {
+  color: #ffffff;
+}
+
+.breadcrumb .sep {
+  padding: 0 6px;
+  color: #fff;
+}
+
+.sideblock .content {
+  border: none;
+  background: none;
+}
+
+.sideblock .header {
+  background: url(pix/db2.gif) no-repeat left;
+  border:none;
+  padding: 0
+}
+
+.sideblock .header .title {
+  padding-left:20px;
+  padding-top: 1px
+}
+
+.block_adminblock .header {
+  font-family:Georgia, Verdana, Arial, Serif;
+  padding: 0 0 5px 20px;
+  font-size:1.1em;
+ }
+
+.sideblock {
+  border-top: solid 1px #E1D2BD;
+  border-bottom: solid 1px #E1D2BD;
+  background: url(pix/autumn_gradient.png) repeat-x top;
+}
+
+h2.headingblock {
+  border: none;
+}
+
+#course-view .weekscss .current,
+#course-view .current td.side {
+  background: #a67e1c;
+}
+
+.forumheaderlist,
+.generaltable th,
+.generalbox th,
+#course-index th,
+.logtable th,
+.generaltableheader th,
+th.header,
+#adminsettings fieldset  {
+  background: url(pix/autumn_gradient.png) repeat-x top;
+  border-top-color: #e1d2bd;
+}
+
+.forumpost .starter {
+  border-bottom: none;
+  border-top:1px solid #e1d2bd;
+  background: url(pix/autumn_gradient_lg.png) repeat-x top;
+}
+
+th.header {
+	font-size: 0.8em;
+	border-left:1px solid #fff;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+
+.admin .generalbox {
+	background-color:#fff;
+}
+
+.forumpost .starter,
+.forumpost .content {
+  border-left: 1px solid #e1d2bd;
+  border-right: 1px solid #e1d2bd;
+}
+
+.forumpost .content {
+  border-bottom: 1px solid #e1d2bd;
+	font-size:0.9em;
+  line-height: 1.2em;
+}
+
+.cell {
+	background: none !important;
+}
+
+.r1 {
+	background-color:#efe8dd !important;
+}
+
+.sideblock .r0,
+.sideblock .r1 {
+	background: none !important;
+}
+
+.forumpost .left {
+  background: none;
+}
+
+.forumpost {
+  border: none;
+}
+
+.forumpost .commands,
+.forumpost .link,
+.forumpost .footer {
+  font-size: 0.9em;
+}
+
+#mod-forum-search .box {
+	width:80%;
+}
+
+.addbloglink a {
+	  border-color: #e1d3be;
+	  background: #ecddc7;
+	  border:1px solid;
+	  padding:3px;
+}
+
+.addbloglink a:hover {
+	  background: #a29889;
+	  text-decoration: none;
+	  color:#fff;
+	  border:1px solid #ecddc7;
+}
+
+.forumpost .author {
+	color: #555555;
+}
+
+#footer {
+  background: #fff url(pix/border2.gif) repeat-x top;
+}
+
+#footer .logininfo {
+  float: right;
+  margin-top: 3px;
+}
+
+.homelink,
+.sitelink {
+  margin: 1em 0;
+  clear: both;
+}
+
+.credits {
+  text-align: center;
+  margin-top: -1.5em;
+}
+
+.credits a {
+	  color: #55564d;
+	  width: 100%;
+	  display: block;
+}
+
+.credits a:hover {
+  color: #b96d00;
+  text-decoration: none;
+}
+
+#footer .helplink {
+  float: left;
+   margin-top:3px;
+}
+
+blockquote {
+    margin:1em;
+    padding:0 0 0 40px;  
+    color:#666;
+    background:url(pix/blockquote.gif) no-repeat left top;
+}
+
+fieldset {
+  border: #DDD solid 1px;
+  font-size: 0.95em;
+  margin-top:0;
+  padding:6px;
+}
+
+legend{
+  border: #DDD solid 1px;
+  background:url(pix/autumn_gradient.png ) repeat-x top;  
+  padding: 1px 10px;
+	font: bold Georgia, Verdana, Arial, serif;
+}
+
+.profileeditor,
+.logselectform {
+	text-align: center;
+}
+
+.singlebutton {
+	padding:4px;
+}
+
+.backup .generalbox {
+	text-align: center;
+}
+
+table.files {
+  border-bottom: 1px solid #e1d2bd;
+}
+
+.boxaligncenter {
+	text-align: center !important;
+}
+
+.errorbox a {
+	color:#fff;
+}
+
+button#searchform_button {
+	margin:0;
+}
+
+#message-history #page,
+#message-user #page,
+body#message-user,
+body#message-history,
+body#message-messages,
+body#message-index,
+body#message-send,
+#message-index #page,
+body#course-info,
+#course-info #page,
+#help #page,
+body#help,
+body#mod-resource-view,
+#mod-resource-view #page,
+#mod-glossary-showentry #page,
+#course-group #page,
+body#course-group,
+body#question-preview,
+#question-preview #page,
+body#mod-quiz-comment,
+#mod-quiz-comment #page,
+#mod-quiz-comment #footer {
+  margin: 0 !important;
+  background:#fff !important;
+}
+
+.glossarycontrol .helplink,
+.message .helplink,
+.loginpanel .helplink {
+	float:none;
+}
+
+.message .credits,
+#mod-resource-view .credits,
+#help .credits{
+	display:none;
+}
+
+#mod-resource-view .generalbox table.files{
+	margin:auto;
+	}
+
+textarea {
+width:100%
+}

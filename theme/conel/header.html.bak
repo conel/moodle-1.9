@@ -1,0 +1,110 @@
+<?php
+
+	// nkowald - 2009-09-01 - Custom background colours for each course. Uses parent bgcolour if individual category colour not set.
+    $pg_id = ((isset($_GET['id'])) && ($_GET['id'] != '') && is_numeric($_GET['id'])) ? $_GET['id'] : '';
+	$background_colour = '';
+	
+	if ($pg_id != '') {
+		$query = 'SELECT cat_colour FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $pg_id;
+		$result_bgc = get_record_sql($query);
+		
+		$background_colour = ($result_bgc) ? $result_bgc->cat_colour : '';
+		
+		// no bg colour set - look a path up until bgcolour found
+		if ($background_colour == '') {
+		
+			// check if we're in course view, if so find category course is under
+			if ( (strpos($_SERVER['SCRIPT_NAME'],'/course/view.php')) !== FALSE ) {
+				$query = 'SELECT category FROM ' . $CFG->prefix . 'course WHERE id=' . $pg_id;
+				$category_id = get_record_sql($query);
+				$pg_id = ($category_id) ? $category_id->category : $pg_id;
+			}
+			
+			$query = 'SELECT path FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $pg_id;
+			$result_path = get_record_sql($query);
+			if ($result_path) {
+				$path = substr($result_path->path,1); // remove first '/' for count
+				$paths = explode('/',$path);
+				
+				// Reverse array to get colour from parent of page (if exists)
+				$paths = array_reverse($paths);
+				
+				foreach ($paths as $path_id) {
+					$query = 'SELECT cat_colour FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $path_id;
+					$result_bgc = get_record_sql($query);
+					$colour = ($result_bgc) ? $result_bgc->cat_colour : '';
+					
+					if ($colour != '') {
+						$background_colour = $colour;
+						break;
+					}
+				}
+			}
+		}
+		
+	} else {
+		$background_colour = '';
+	}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html<?php echo $direction ?>>
+<head>
+    <?php echo $meta ?>
+    <meta name="keywords" content="moodle, <?php echo $title ?> " />
+    <title><?php echo $title ?></title>
+    <link rel="shortcut icon" href="<?php echo $CFG->themewww .'/'. current_theme() ?>/favicon.ico" />
+	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="<?php echo $CFG->themewww .'/'. current_theme() ?>/styles_ie6.css" /><![endif]-->
+	<?php 
+		if ($background_colour != '') { 
+	?>
+	<style type="text/css">
+		.sideblock .header {
+			background-color:<?php echo $background_colour;?> !important;
+		}
+		.sideblock .header .title {
+			background-color:<?php echo $background_colour;?> !important;
+		}
+	</style>
+	<?php } ?>
+    <?php include("$CFG->javascript"); ?>
+	<script type="text/javascript" src="<?php echo $CFG->themewww .'/'. current_theme() ?>/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="<?php echo $CFG->themewww .'/'. current_theme() ?>/functions.js"></script>
+	<link title="access_stylesheet" rel="stylesheet" href="<?php if($CFG->wwwroot != $CFG->httpswwwroot) {echo $CFG->httpswwwroot;} else {echo $CFG->wwwroot;} ?>/blocks/accessibility/userstyles.php" type="text/css" />
+</head>
+
+<body<?php
+    echo " $bodytags";
+    if ($focus) {
+        echo " onload=\"setfocus()\"";
+    }
+?>>
+<div id="page">
+<div id="shrinkwrapper">
+
+<?php //Accessibility: 'headermain' is now H1, see theme/standard/styles_layout.css: .headermain
+      if ($home) {  // This is what gets printed on the home page only
+		$random_num = rand(1,4);
+?>
+    <div id="header-home" class="clearfix">
+        <h1 class="headermain"><?php echo $heading ?></h1>
+        <div id="header_holder"><a href="/VLE/"><img src="<?php echo $CFG->themewww .'/'. current_theme() ?>/pix/banner<?php echo $random_num; ?>.jpg" alt="College of North East London - E-Zone" width="350" height="80" /></a></div>
+    </div>
+<?php } else if ($heading) {  // This is what gets printed on any other page with a heading
+	// nkowald - 2008-08-25 - Removed login box from header
+	echo '<div class="headermenu_pages">'.$menu.'</div>';
+?>
+    <div id="header" class="clearfix">
+        <h1 class="headermain"><?php echo $heading ?></h1>
+    </div>
+<?php } ?>
+<?php //Accessibility: breadcrumb trail/navbar now a DIV, not a table.
+      if ($navigation) { // This is the navigation bar with breadcrumbs  ?>
+    <div class="navbar clearfix">
+        <div class="breadcrumb"><?php print_navigation($navigation); ?></div>
+        <div class="navbutton"><?php echo $button; ?></div>
+    </div>
+<?php } else if ($heading) { // If no navigation, but a heading, then print a line
+?>
+<?php } ?>
+    <!-- END OF HEADER -->
+    <div id="content">
