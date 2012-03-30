@@ -36,7 +36,7 @@
 
         $time_now = time();
         // If timestamp is today and half hour not completed: don't show
-        if ($time_now - $timestamp <= 86400 && $end_timestamp > $time_now) {
+        if ($time_now - $timestamp <= 86400 && $end_timestamp > ($time_now + 1800)) {
             break;
         }
 		$graph->x_data[] = date('H:i', $timestamp + 1800);
