@@ -31,7 +31,7 @@ There's a Word and Excel document. Also a text file so changes are searchable in
 
 ## Scheduled Tasks
 Nine scheduled tasks have been set up:  
-* Moodle BKSB Sync (disabled)
+
 * Moodle LDAP Import
 * Moodle Enrolments Sync
 * Moodle DB Backup
@@ -39,3 +39,4 @@ Nine scheduled tasks have been set up:
 * Subject Targets 2 - Subject Import
 * Subject Targets 3 - Complete Update
 * Expunge Windows Temp
+* Moodle BKSB Sync [disabled]
