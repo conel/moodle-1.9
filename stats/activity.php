@@ -23,7 +23,7 @@
     print_header($title, $title, $navigation, '', '', true, '&nbsp;');
 
 ?>
-<style>
+<style type="text/css">
 /* Activity Stats */
 table.day_activity {
 	text-transform:capitalize;
@@ -87,17 +87,6 @@ div.line {
 	background-color:#464646;
 }
 </style>
-<script type="text/javascript">
-jQuery.noConflict();
-
-jQuery(document).ready(function(){
-	jQuery('a.view_usage').click(function(event) {
-		 event.preventDefault();
-		 var number = jQuery(this).attr('title');
-		 var to_show = jQuery('#table_' + number).slideToggle();
-	});
-});
-</script>
 <div id="content">
     <table id="layout-table" summary="layout">
         <tbody>
@@ -114,10 +103,6 @@ jQuery(document).ready(function(){
 
                         <h3>Courses</h3>
                         <ul>
-                        <!--
-                            <li>Most Active Courses</li>
-                            <li>Least Active Courses</li>
-                            -->
                             <li><a href="reports.php">Last Updated Courses</a></li>
                         </ul>
 						
@@ -125,13 +110,6 @@ jQuery(document).ready(function(){
 						<ul>
 							<li><a href="wincache.php">WinCache</a></li>
 						</ul>
-                        <!--
-                        <h3>Teachers</h3>
-                        <ul>
-                            <li>Most Active Teachers</li>
-                            <li>Least Active Teachers</li>
-                        </ul>
-                        -->
                     </div>
 
                 </td>
@@ -168,13 +146,11 @@ jQuery(document).ready(function(){
 				echo '<h4>Online Users</h4>';
 				$now = time();
 				$five_mins_ago = strtotime('-5 minutes', $now);
-				$query = sprintf("SELECT COUNT(DISTINCT userid) FROM mdl_log WHERE time > %d", $five_mins_ago);
-				$online_users = count_records_sql($query);
-				$online_users = number_format($online_users);
+				$query = sprintf("SELECT COUNT(DISTINCT userid) FROM ".$CFG->prefix."log WHERE time > %d", $five_mins_ago);
+				$online_users = number_format(count_records_sql($query));
 				echo "<p><img src=\"".$CFG->wwwroot."/theme/standard/pix/t/go.gif\" alt=\"Online\" width=\"11\" height=\"11\" />&nbsp; <b>$online_users users online now</b> (users with activity in the past 5 minutes).</p>";
-				$query = "SELECT COUNT(id) FROM mdl_user WHERE auth != 'nologin'";
-				$active = count_records_sql($query);
-				$active = number_format($active);
+				$query = "SELECT COUNT(id) FROM ".$CFG->prefix."user WHERE auth != 'nologin'";
+				$active = number_format(count_records_sql($query));
 				echo "<p>$active active Moodle users.</p>";
 				echo '<br />';
 				
@@ -182,15 +158,14 @@ jQuery(document).ready(function(){
 				echo 'Past Week: ' . $selectbox;
 				echo '</form></div>';
 				
-				//echo '<p><a href="activity.php?ts='.$yesterday.'">Yesterday</a></p>';
 				echo '<h4>Usage that most affects performance</h4>';
 				echo '<div class="graph"><img src="'.$CFG->wwwroot.'/stats/activitygraph.php?ts='.$timestamp.'" alt="Graph" width="750" height="400" /></div>';
 
 				echo '<h4>User Logins</h4>';
 				$end_today = strtotime('+8 hours', $timestamp);
-				$query = sprintf("SELECT COUNT(DISTINCT userid) as no_logins  FROM mdl_log WHERE time > %d AND time < %d and module = 'user' and action ='login'", 
-				$timestamp,
-				$end_today
+				$query = sprintf("SELECT COUNT(DISTINCT userid) as no_logins  FROM ".$CFG->prefix."log WHERE time > %d AND time < %d and module = 'user' and action ='login'", 
+				    $timestamp,
+				    $end_today
 				);
 				if ($user_logins = get_records_sql($query)) {
 					foreach($user_logins as $login) {
@@ -209,9 +184,9 @@ jQuery(document).ready(function(){
 				
 				$ts_last_week = strtotime('-1 week', $timestamp);
 				$ts_last_week_end = strtotime('+8 hours', $ts_last_week);
-				$query = sprintf("SELECT COUNT(DISTINCT userid) as no_logins  FROM mdl_log WHERE time > %d AND time < %d and module = 'user' and action ='login'", 
-				$ts_last_week,
-				$ts_last_week_end
+				$query = sprintf("SELECT COUNT(DISTINCT userid) as no_logins FROM ".$CFG->prefix."log WHERE time > %d AND time < %d AND module = 'user' AND action ='login'", 
+                    $ts_last_week,
+                    $ts_last_week_end
 				);
 				if ($user_logins = get_records_sql($query)) {
 					foreach($user_logins as $login) {
