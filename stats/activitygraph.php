@@ -28,9 +28,11 @@
 	
 	for ($i=0; $i <= 16; $i++) {
 
-		$time = date('H:i', $timestamp);
-		$graph->x_data[] = $time;
 		$end_timestamp = strtotime('+30 minutes', $timestamp);
+
+
+		$graph->x_data[] = date('H:i', $timestamp);
+
 		// Get number of distinct user logins for this time period
 		$query = sprintf("SELECT COUNT(DISTINCT userid) as no_logins  FROM mdl_log WHERE time > %d AND time < %d and module = 'user' and action ='login'", 
 			$timestamp,
@@ -91,6 +93,19 @@
 		$graph->y_data['quiz'][] = $quiz_stats;
 		$graph->y_data['feedback'][] = $feedback_stats;
 		
+        /*
+        echo date('d m - Y H:i:s', $timestamp);
+        echo '<pre>';
+        var_dump($graph->y_data);
+        echo '</pre>';
+         */
+
+        // If timestamp is today and half hour not completed: don't show
+        $time_now = time();
+        if ($time_now - $timestamp <= 86400 && $end_timestamp > $time_now) {
+            break;
+        }
+
 		$timestamp = $end_timestamp;
 	}
 	/*
