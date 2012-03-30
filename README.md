@@ -30,7 +30,7 @@ These changes to the core code are documented in the [#changes](/conel/moodle-1.
 There's a Word and Excel document. Also a text file so changes are searchable in GitHub.  
 
 ## Scheduled Tasks
-Nine scheduled tasks have been set up:
+Nine scheduled tasks have been set up:  
 * Moodle BKSB Sync (disabled)
 * Moodle LDAP Import
 * Moodle Enrolments Sync
@@ -39,4 +39,3 @@ Nine scheduled tasks have been set up:
 * Subject Targets 2 - Subject Import
 * Subject Targets 3 - Complete Update
 * Expunge Windows Temp
-
