@@ -2,10 +2,9 @@
 
     require_once('../config.php');
     require_once("../course/lib.php");
+    require_login(); 
 
 	$ts = optional_param('ts', 0, PARAM_INT);
-
-    require_login(); 
 
     $sitecontext = get_context_instance(CONTEXT_SYSTEM);
     if (has_capability('mod/data:viewsitestats',$sitecontext) || has_capability('moodle/site:doanything',$sitecontext)) {  // are we god ?
@@ -22,7 +21,6 @@
     $navigation = build_navigation($navlinks);
 
     print_header($title, $title, $navigation, '', '', true, '&nbsp;');
-
 
 ?>
 <style>
@@ -224,67 +222,7 @@ jQuery(document).ready(function(){
 				}
 				echo "<p>$no_logins unique logins on this day, ".date('l', $timestamp)." last week.</p>";
 				
-				echo "<br />";
-				echo '<h2>Usage Overviews</h2>';
-				echo '<p>This queries \'mdl_log\' and retrieves usage stats in five minute intervals to give a general overview of site usage.</p><br />';
-				
-				$father_timestamp = $timestamp;
-				
-				while($start_hour < $end_hour) {
-					$hour = sprintf('%02d', $start_hour);
-					// Only show current hours
-					$current_hour = date('H');
-					
-					// Only show current hour if today or 9-5 if past date
-					if ($hour <= $current_hour || time() - $father_timestamp > 86400) {
-						echo "<h3>$hour:00</h3>";
-						echo '<a href="#" class="view_usage" title="'.$hour.'">View usage</a><br class="clear_both" />';
-						// Get unixtimestamp for this time
-						$timestamp_end_hour = strtotime('+1 hour', $timestamp);
-						
-						// Get distinct modules from this hour
-						$query = sprintf("SELECT DISTINCT module FROM mdl_log WHERE time > %d and time < %d ORDER BY module ASC",
-							$timestamp,
-							$timestamp_end_hour);
-						if ($modules = get_records_sql($query)) {
-							$mods = array();
-							foreach($modules as $module) {
-								$mods[] = $module->module;
-							}
-						}
-						
-						// We need to check logs 11 times adding five minutes each time
-						echo "<table class=\"day_activity\" id=\"table_$hour\">";
-						for ($i=0; $i<=11; $i++) {
-							$start_ts = $timestamp;
-							$end_ts = strtotime('+5 minutes', $start_ts);
-							// query here
-							$query = sprintf("SELECT module, COUNT(module) AS number FROM mdl_log WHERE time > %d and time < %d GROUP BY module ORDER BY module ASC",
-							$start_ts,
-							$end_ts);
-							$results = '';
-							if ($stats = get_records_sql($query)) {
-								$results .= '<table class="activity_stats">';
-								foreach($stats as $stat) {
-									$results .= "<tr><td>" . $stat->module . "</td><td><div class=\"line\" style=\"width:" . $stat->number . "px;\"></div></td></tr>";
-								}
-								$results .= '</table>';
-							}
-							
-							$timestamp = $end_ts;
-							$time = date('H:i', $start_ts);
-							echo "<tr>";
-							echo "<td valign=\"top\" width=\"55\" style=\"text-align:center;\"><h4>$time</h4></td>";
-							echo "<td>$results</td>";
-							echo "</tr>";
-						}
-						echo "</table>";
-						$start_hour++;
-					} else {
-						break;
-					}
-				}
-				echo '<hr /></div>';
+				echo '</div>';
 ?>
                 </td>
                 <td id="right-column"></td>
