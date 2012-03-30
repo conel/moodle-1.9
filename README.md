@@ -1,17 +1,23 @@
 # Moodle 1.9
 
 ## Environment
-* Virtual Server 
-    * Windows Server 2008 Standard (SP2) (64-bit)
-    * (4x) 2.4 GHz Intel Processors
-    * 8 GB RAM
-* PHP 5.2.1 - non thread safe
-    * IIS7 (PHP via FastCGI)
+* Virtual Servers
+    * moodle-web
+        * Windows Server 2008 Standard (SP2) (64-bit)
+        * (4x) 2.4 GHz Intel Processors
+        * 8 GB RAM
+        * IIS7
+    * moodle-sql
+        * Windows Server 2008 Standard (SP2) (64-bit)
+        * (4x) 2.4 GHz Intel Processors
+        * 4 GB RAM
+* PHP 5.2.1
+    * Non thread safe
+    * PHP via FastCGI
     * Wincache PHP extension
-* MySQL 
-    * Separate server: moodle-sql
-    * MySQL version 5.1.3.6
+* MySQL 5.1.3.6
     * InnoDB table engines used
+    * Logs: slow queries (queries running for > 5 seconds)
 
 ## Changes
 We've made a LOT of changes to the core code in our Moodle 1.9.  
@@ -24,7 +30,7 @@ These changes to the core code are documented in the [#changes](/conel/moodle-1.
 There's a Word and Excel document. Also a text file so changes are searchable in GitHub.  
 
 ## Scheduled Tasks
-Nine scheduled tasks have been set up.  
+Nine scheduled tasks have been set up:
 * Moodle BKSB Sync (disabled)
 * Moodle LDAP Import
 * Moodle Enrolments Sync
