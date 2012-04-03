@@ -38,9 +38,9 @@
             $this->start_timer();
 
             $this->academic_year = $this->resolve_year();
-	    $this->academic_year_4digit = $this->getAcYear4Digit();
+	        $this->academic_year_4digit = $this->getAcYear4Digit();
 			
-	    $this->current_term_no = $this->getCurrentTermNo();
+	        $this->current_term_no = $this->getCurrentTermNo();
 
             $this->marks_key['/'] = 'Present';
             $this->marks_key['O'] = 'Absent';
@@ -91,12 +91,6 @@
 		
         public function getAcYear4Digit() {
             // Get four digit academic year code - 
-            // nkowald - 2012-01-03 - Can't do it like this
-            /*
-            $cur_year = date('y');
-            $next_year = sprintf('%2d', ($cur_year + 1));
-            $ac_year = $cur_year . $next_year;
-            */
             $now = time();
             $query = "SELECT ac_year_code FROM mdl_terms WHERE term_start_date < $now and term_end_date > $now";
             if ($ac_years = get_records_sql($query)) {
@@ -105,12 +99,16 @@
                 }
                 return $ac_year;
             } else {
-                $error = "No academic year exists in 'mdl_terms' for the current time period";
-                if (!in_array($error, $this->errors)) {
-                    $this->errors[] = $error;
-                }
-                return false;
+                // This covers inbetween term periods
+                return $this->resolve_year_4digit();
             }
+        }
+         
+        public function resolve_year_4digit() {
+            $academicYearStart = strftime("%y",strtotime("-8 months",time()));
+		    $academicYearEnd = strftime("%y",strtotime("+4 months",time()));
+            $year = $academicYearStart . $academicYearEnd;
+	        return $year;
         }
 
         /**
