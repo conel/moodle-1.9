@@ -48,7 +48,7 @@
             $this->valid_stat_types = array('all', 'views', 'adds', 'updates', 'uploads', 'deletes'); // valid stat types
 
 			// Set valid curric ids here so all comes from this one place
-			$this->valid_curric_ids = "3,4,16,22,24,29,30,31,33,39,40,41,42,43,44,45,46,49,50,51,54,55,59,61,63,66,67,68,69,122,124,205,263,274,306,334,335,385,386,389,393,394,398,398,399,400,401,402,554,555,562";
+			$this->valid_curric_ids = "3,4,16,22,24,29,30,31,33,39,40,41,42,43,44,45,46,47,48,49,50,51,54,55,59,61,63,66,67,68,69,122,124,205,263,274,306,334,335,385,386,389,393,394,398,398,399,400,401,402,554,555,562";
 			
             // Check table exists
             $this->checkStatsTableExists();
