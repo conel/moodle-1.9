@@ -687,17 +687,7 @@
 
         echo '<hr />';
 
-        $has_feedback = FALSE;
-
-        // work out if this course has any feedback against it
-        if ($and_clause == '') {
-           $has_feedback = $ff->feedbackHasResponses();
-        } else {
-			if ($completed_count > 0) {
-				$has_feedback = TRUE;
-			}
-        }
-        if ($has_feedback) {
+        if ($completed_count > 0) {
 
             foreach($items as $item) {
 
