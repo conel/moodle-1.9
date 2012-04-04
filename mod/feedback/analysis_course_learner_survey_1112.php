@@ -41,7 +41,7 @@
 		require_once('FeedbackFilters.class.php');
 
 		// set academic year of this survey
-		$this_ac_year = 1112;
+		$this_ac_year = '1112';
 		$ff = new FeedbackFilters($feedback, $this_ac_year);
 
 		// each survey requires a unique sess key

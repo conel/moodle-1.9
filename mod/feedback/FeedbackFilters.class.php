@@ -204,28 +204,28 @@ class FeedbackFilters {
     public function getCoursesWithSurveyAnswers($course_search='') {
 
 		$query = "SELECT DISTINCT c.id, c.shortname, c.category";
+		if ($this->_past_year_survey === true) {
+			$query .= ", cia.year_".$this->ac_year_4digits;
+		}	
+		$query .= " FROM ".$this->CFG->prefix."course c, 
+		".$this->CFG->prefix."feedback_value fv, 
+		".$this->CFG->prefix."feedback_item fi";
+		if ($this->_past_year_survey === true) {
+			$query .= ", ".$this->CFG->prefix."course_idnumber_archive cia";
+		}
+		$query .= " WHERE c.id = fv.course_id AND fi.id = fv.item";
+		if ($this->_past_year_survey === true) {
+			$query .= " AND c.id = cia.course_id";
+		}
+		$query .= " AND fi.feedback = ".$this->feedback->id;
+		if ($course_search != '') {
+			$query .= " AND (c.shortname LIKE '%$course_search%' OR 
+			c.fullname LIKE '%$course_search%'";
 			if ($this->_past_year_survey === true) {
-				$query .= ", cia.year_".$this->ac_year_4digits;
-			}	
-			$query .= " FROM ".$this->CFG->prefix."course c, 
-            ".$this->CFG->prefix."feedback_value fv, 
-			".$this->CFG->prefix."feedback_item fi";
-			if ($this->_past_year_survey === true) {
-				$query .= ", ".$this->CFG->prefix."course_idnumber_archive cia";
+				$query .= " OR cia.year_".$this->ac_year_4digits." LIKE '%$course_search%')";
 			}
-			$query .= " WHERE c.id = fv.course_id AND fi.id = fv.item";
-			if ($this->_past_year_survey === true) {
-				$query .= " AND c.id = cia.course_id";
-			}
-            $query .= " AND fi.feedback = ".$this->feedback->id;
-            if ($course_search != '') {
-                $query .= " AND (c.shortname LIKE '%$course_search%' OR 
-				c.fullname LIKE '%$course_search%'";
-				if ($this->_past_year_survey === true) {
-					$query .= " OR cia.year_".$this->ac_year_4digits." LIKE '%$course_search%')";
-				}
-            }
-            $query .= " ORDER BY c.shortname";
+		}
+		$query .= " ORDER BY c.shortname";
 
         $courses = get_records_sql($query);
         return $courses;
