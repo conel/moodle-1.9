@@ -7,6 +7,7 @@ class FeedbackFilters {
     public $ac_year_4digits;
     private $_debug;
 	private $_past_year_survey;
+	public $call_count;
 
     public function __construct(stdClass $feedback_obj, $ac_year) {
 
@@ -19,6 +20,7 @@ class FeedbackFilters {
 		$this->_past_year_survey = $this->isOldSurvey();
         $this->errors = array();
         $this->_debug = true;
+		$this->call_count = 0;
 
     }
 
@@ -41,8 +43,7 @@ class FeedbackFilters {
     // Get course ids that have the feedback block on them
     private function getCourseIDsWithFeedbackBlock() {
 
-        $query = 
-        "SELECT DISTINCT pageid 
+        $query = "SELECT DISTINCT pageid 
             FROM ".$this->CFG->prefix."block_instance 
             WHERE blockid = 37 
             AND visible = 1 
@@ -61,8 +62,8 @@ class FeedbackFilters {
     // Get course ids from submitted feedback values
     private function getCourseIDsWithAnswers() {
 
-        $query = sprintf(
-        'SELECT DISTINCT course_id 
+		$query = sprintf(
+			'SELECT DISTINCT course_id 
             FROM '.$this->CFG->prefix.'feedback_value 
             WHERE course_id <> 0 
             AND item IN 
@@ -88,15 +89,15 @@ class FeedbackFilters {
 
     public function getCoursesWithNoFeedback() {
 
-        $have_feedback_block = $this->getCourseIDsWithFeedbackBlock();
-        $have_feedback = $this->getCourseIDsWithAnswers();
-        $unanswered = array_diff($have_feedback_block, $have_feedback);
+        $cids_have_block	= $this->getCourseIDsWithFeedbackBlock();
+        $cids_have_answered = $this->getCourseIDsWithAnswers();
+        $unanswered = array_diff($cids_have_block, $cids_have_answered);
 
         // Get course ids and names to display to user
         $not_submitted = implode(',', $unanswered);
 
         $query = sprintf(
-        'SELECT id, fullname, shortname, idnumber 
+        'SELECT id, fullname 
             FROM mdl_course 
             WHERE id IN (%s)',
             $not_submitted 
@@ -105,8 +106,7 @@ class FeedbackFilters {
         if ($unanswered_courses = get_records_sql($query)) {
             foreach($unanswered_courses as $c) {
                 if ($c->id == 1) continue;
-                $id = ($c->idnumber != '') ? $c->idnumber : $c->shortname;
-                $no_feedback[] = '<a href="'.$this->CFG->wwwroot.'/course/view.php?id='.$c->id.'">'.$c->id.' - '.$c->fullname.'</a>';
+                $no_feedback[] = '<a href="'.$this->CFG->wwwroot.'/course/view.php?id='.$c->id.'">'.$c->fullname.'</a>';
             }
         }
         return $no_feedback;
@@ -115,9 +115,7 @@ class FeedbackFilters {
 
     public function getFeedbackItems() {
         return get_records_select(
-            'feedback_item', 
-            'feedback = '. $this->feedback->id .' AND hasvalue = 1', 
-            'position'
+            'feedback_item', 'feedback = '. $this->feedback->id .' AND hasvalue = 1', 'position'
         );
     }
 
@@ -130,19 +128,19 @@ class FeedbackFilters {
 
         $avgvalue = ($this->CFG->dbtype != 'postgres7') ? 'avg(value)' : 'avg(cast (value as integer))';
 		$query = sprintf(
-			"SELECT fv.course_id, c.shortname, %s as avgvalue  
+		   "SELECT fv.course_id, c.shortname, %s as avgvalue  
             FROM ".$this->CFG->prefix."feedback_value fv, 
                 ".$this->CFG->prefix."course c, 
                 ". $this->CFG->prefix."feedback_item fi 
-                  WHERE fv.course_id = c.id 
-                  AND fi.id = fv.item 
+                  WHERE fv.item = %d 
                   AND fi.typ = '%s' 
-                  AND fv.item = %d 
+                  AND fv.course_id = c.id 
+                  AND fi.id = fv.item 
                   GROUP BY course_id, shortname 
                   ORDER BY avgvalue DESC", 
             $avgvalue, 
-            $question_type,
-            $question_id
+            $question_id,
+            $question_type
         );
 
         if ($courses = get_records_sql($query)) {
@@ -155,11 +153,12 @@ class FeedbackFilters {
     }
 
     public function getDirectoratesMenu() {
-        $query = "SELECT id, name 
+		$query = 
+		   "SELECT id, name 
             FROM ".$this->CFG->prefix."course_categories 
             WHERE parent = 0 
-            AND name LIKE '%Directorate%' 
-            ORDER BY sortorder ASC";
+            AND name LIKE 'Directorate%' 
+            ORDER BY name ASC";
 
         if ($directorates = get_records_sql_menu($query)) {
             return $directorates;
@@ -172,8 +171,8 @@ class FeedbackFilters {
     public function getSchoolsMenu() {
         $query = "SELECT id, name 
             FROM ".$this->CFG->prefix."course_categories 
-            WHERE name LIKE '%School of%' 
-            ORDER BY sortorder ASC";
+            WHERE name LIKE 'School of %' 
+            ORDER BY name ASC";
 
         if ($schools = get_records_sql_menu($query)) {
             return $schools;
@@ -184,7 +183,7 @@ class FeedbackFilters {
     }
 
     public function getCurriculumMenu() {
-        $curric_ids = "3, 4, 16, 22, 24, 29, 30, 31, 33, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 59, 61, 63, 117, 118, 119, 120, 121, 122, 123, 124, 125, 205, 263, 306, 333, 334, 335, 385, 386, 393, 394, 398, 399, 400, 401, 402, 562";
+        $curric_ids = "3,4,16,22,24,29,30,31,33,39,40,41,42,43,44,45,46,47,48,49,50,51,59,61,63,117,118,119,120,121,122,123,124,125,205,263,306,333,334,335,385,386,393,394,398,399,400,401,402,562";
 
         $query = sprintf(
             "SELECT id, name FROM ".$this->CFG->prefix."course_categories
@@ -213,11 +212,11 @@ class FeedbackFilters {
 		if ($this->_past_year_survey === true) {
 			$query .= ", ".$this->CFG->prefix."course_idnumber_archive cia";
 		}
-		$query .= " WHERE c.id = fv.course_id AND fi.id = fv.item";
+		$query .= " WHERE fi.feedback = ".$this->feedback->id;
+		$query .= " AND fi.id = fv.item AND c.id = fv.course_id ";
 		if ($this->_past_year_survey === true) {
 			$query .= " AND c.id = cia.course_id";
 		}
-		$query .= " AND fi.feedback = ".$this->feedback->id;
 		if ($course_search != '') {
 			$query .= " AND (c.shortname LIKE '%$course_search%' OR 
 			c.fullname LIKE '%$course_search%'";
@@ -243,8 +242,8 @@ class FeedbackFilters {
 			if ($this->_past_year_survey === true) {
 				$query .= ", ".$this->CFG->prefix."course_idnumber_archive cia";
 			}
-			$query .= " WHERE c.id = fv.course_id AND fi.id = fv.item";
-            $query .= " AND fi.feedback = ".$this->feedback->id;
+            $query .= " WHERE fi.feedback = ".$this->feedback->id;
+			$query .= " AND c.id = fv.course_id AND fi.id = fv.item";
 			if ($this->_past_year_survey === true) {
 				$query .= " AND c.id = cia.course_id";
 			}
@@ -255,23 +254,6 @@ class FeedbackFilters {
 
         $courses = get_records_sql($query);
         return $courses;
-    }
-
-    private function getPathIDsForCategory($category_id='') {
-        if (!is_numeric($category_id)) {
-            $this->errors[] = 'Category not a number ' . $category_id;
-            return false;
-        }
-        $query = sprintf(
-            "SELECT path 
-            FROM ".$this->CFG->prefix."course_categories 
-            WHERE id = %d", 
-            $category_id
-        );
-
-        $path = get_record_sql($query);
-        $path_ids = explode('/', $path->path);
-        return $path_ids;
     }
 
     public function getCoursesFromIDs(array $courses) {
@@ -292,6 +274,23 @@ class FeedbackFilters {
         return $found;
     }
 
+    private function getPathIDsForCategory($category_id='') {
+		if (!is_numeric($category_id)) {
+            $this->errors[] = 'Category not a number ' . $category_id;
+            return false;
+        }
+        $query = sprintf(
+            "SELECT path 
+            FROM ".$this->CFG->prefix."course_categories 
+            WHERE id = %d", 
+            $category_id
+        );
+
+        $path = get_record_sql($query);
+        $path_ids = explode('/', $path->path);
+        return $path_ids;
+    }
+
     public function getCoursesForFilter($filter_id, $course_search='') {
 
         $courses_with_answers = $this->getCoursesWithSurveyAnswers($course_search);
@@ -300,14 +299,21 @@ class FeedbackFilters {
             $this->errors[] = 'No courses have answers';
             return false;
         }
+		
+		$found_ids = array();
+        $path_ids = $this->getPathIDsForCategory($filter_id);
+		foreach($path_ids as $path) {
+			$new_ids = explode('/', $path->path);
+			$found_ids = array_merge($found_ids, $new_ids);
+		}
+		$found_ids = array_unique($found_ids);
 
-        $found_courses = array();
-        foreach ($courses_with_answers as $course) {
-            $path_ids = $this->getPathIDsForCategory($course->category);
-            if (in_array($filter_id, $path_ids)) {
-				$found_courses[] = $course;
-            }
-        }
+		$found_courses = array();
+		foreach ($courses_with_answers as $c) {
+			if (in_array($c->category, $found_ids)) {
+				$found_courses[] = $c;
+			}
+		}
 
         $courses = $this->getCoursesFromIDs($found_courses);
         return $courses;
@@ -358,7 +364,7 @@ class FeedbackFilters {
             FROM mdl_feedback_item 
             WHERE feedback = %d 
             AND hasvalue = 1 
-            ORDER BY position", 
+            ORDER BY position ASC", 
             $this->feedback->id
         );
 
@@ -370,26 +376,6 @@ class FeedbackFilters {
         }
     }
 
-    public function feedbackHasResponses() {
-        $questions = $this->getFeedbackQuestions();
-        $qids = array();
-        foreach ($questions as $q) {
-            $qids[] = $q->id;
-        }
-        // put ids into a comma separated string for IN query
-        $qids_cs = implode(',', $qids);
-
-        $query = sprintf(
-            "SELECT id FROM ".$this->CFG->prefix."feedback_value 
-            WHERE item IN (%s)", $qids_cs
-        );
-
-        if (get_records_sql($query) === false) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     public function getFilterIDsAndValues() {
 
@@ -454,6 +440,8 @@ class FeedbackFilters {
         }
 
         $this->errors[] = array(); // reset
+
+		echo '<h1>This func been called ' . $this->call_count .' times</h1>';
 
     }
 
