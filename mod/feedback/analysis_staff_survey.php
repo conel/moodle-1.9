@@ -1503,7 +1503,7 @@
 			$sql = "SELECT * FROM ".$CFG->prefix."feedback_value WHERE 1=1 $where_clause";
 			$has_feedback = FALSE;
 			if ($results = get_records_sql($sql)) {
-				if (count($has_feedback) > 0) {
+				if (count($results) > 0) {
 					$has_feedback = TRUE;
 				}
 			}

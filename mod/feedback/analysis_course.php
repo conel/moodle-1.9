@@ -40,21 +40,24 @@
     $query_string = $_SERVER['QUERY_STRING'];
 
     if ($id == 41205) {
-        header('Location: analysis_course_learner_survey.php?'.$query_string.'');
+        header('Location: analysis_course_learner_survey.php?'.$query_string);
 		exit;
     } else if ($id == 57969) {
-		header('Location: analysis_course_exit_survey.php?'.$query_string.'');
+		header('Location: analysis_course_exit_survey.php?'.$query_string);
 		exit;
 	} else if ($id == 71228) {
-		header('Location: analysis_course_learner_survey_1011.php?'.$query_string.'');
+		header('Location: analysis_course_learner_survey_1011.php?'.$query_string);
 		exit;
 	} else if ($id == 71229) {
-		header('Location: analysis_course_exit_survey_1011.php?'.$query_string.'');
+		header('Location: analysis_course_exit_survey_1011.php?'.$query_string);
 		exit;
 	} else if ($id == 197341) {
-		header('Location: analysis_course_learner_survey_1112.php?'.$query_string.'');
+		header('Location: analysis_course_learner_survey_1112.php?'.$query_string);
 		exit;
-	}
+    } else if ($id == 216601) {
+        header('Location: analysis_course_teaching_and_learner_survey_1112.php?'.$query_string);
+        exit;
+    }
 	
     $coursefilter = optional_param('coursefilter', '0', PARAM_INT);
     $courseitemfilter = optional_param('courseitemfilter', '0', PARAM_INT);
@@ -238,7 +241,7 @@
         $sql = "SELECT * FROM ".$CFG->prefix."feedback_value WHERE 1=1 $where_clause";
         $has_feedback = FALSE;
         if ($results = get_records_sql($sql)) {
-            if (count($has_feedback) > 0) {
+            if (count($results) > 0) {
                 $has_feedback = TRUE;
             }
         }
