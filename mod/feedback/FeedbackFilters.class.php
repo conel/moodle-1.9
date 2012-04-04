@@ -5,22 +5,24 @@ class FeedbackFilters {
     public $feedback;
     public $errors;
     public $ac_year_4digits;
+	public $CFG;
     private $_debug;
 	private $_past_year_survey;
-	public $call_count;
+	private $_call_count;
 
     public function __construct(stdClass $feedback_obj, $ac_year) {
 
         require_once('../../config.php');
+		global $CFG;
 
-        global $CFG;
+        $this->_debug = true;
+        $this->errors = array();
+
         $this->CFG = $CFG;
         $this->feedback = $feedback_obj;
         $this->ac_year_4digits = $ac_year;
 		$this->_past_year_survey = $this->isOldSurvey();
-        $this->errors = array();
-        $this->_debug = true;
-		$this->call_count = 0;
+		$this->_call_count = 0;
 
     }
 
@@ -65,8 +67,7 @@ class FeedbackFilters {
 		$query = sprintf(
 			'SELECT DISTINCT course_id 
             FROM '.$this->CFG->prefix.'feedback_value 
-            WHERE course_id <> 0 
-            AND item IN 
+            WHERE item IN 
             (
                 SELECT id 
                 FROM mdl_feedback_item 
@@ -77,12 +78,13 @@ class FeedbackFilters {
             $this->feedback->id
         );
 
+        $feedback_values = get_records_sql($query);
         $cids_with_answers = array();
-        if ($feedback_values = get_records_sql($query)) {
-            foreach($feedback_values as $value) {
-                $cids_with_answers[] = $value->course_id;
-            }
-        }
+
+		foreach($feedback_values as $value) {
+			if ($value->course_id == 0) continue;
+			$cids_with_answers[] = $value->course_id;
+		}
         return $cids_with_answers;
 
     }
@@ -200,6 +202,7 @@ class FeedbackFilters {
     }
 
 
+	// TODO: Rename getCoursesWithAnswers
     public function getCoursesWithSurveyAnswers($course_search='') {
 
 		$query = "SELECT DISTINCT c.id, c.shortname, c.category";
@@ -256,42 +259,69 @@ class FeedbackFilters {
         return $courses;
     }
 
+	private function getOldIDNumbers(array $courses) {
+		$prop_name = 'year_' . $this->ac_year_4digits;
+		$course_ids = array();
+		foreach ($courses as $c) {
+			$course_ids[] = $c->id;	
+		}
+		$course_ids_csv = implode(',', $course_ids);
+
+		// Put all the given years idnumbers into an array
+		$query = sprintf(
+			"SELECT course_id, %s as name 
+			FROM %scourse_idnumber_archive
+			WHERE course_id IN (%s)",
+			$prop_name,
+			$this->CFG->prefix,
+			$course_ids_csv
+		);
+		$old_id_numbers = get_records_sql($query);
+		return $old_id_numbers;
+	}
+
+	// TODO: rename getCoursesForDropdowns
     public function getCoursesFromIDs(array $courses) {
 
         $found = array();
-		$this_ac_year = $this->getACYear4Digits();
 
+		if ($this->_past_year_survey === true) {
+			$old_id_numbers = $this->getOldIDNumbers($courses);	
+		}
         foreach ($courses as $cid) {
 			$found[$cid->id] = $cid->shortname;
 			if ($this->_past_year_survey === true) {
-				if ($course_found = get_record('course_idnumber_archive', 'course_id', $cid->id)) {
-					$prop_name = 'year_' . $this->ac_year_4digits;
-					$name = $course_found->$prop_name;
-					$found[$cid->id] = $name;
-				}
+				$name = $old_id_numbers[$cid->id]->name;
+				$found[$cid->id] = ($name !== NULL) ? $name : '[*' . $cid->shortname . '*]';
 			}
         }
         return $found;
     }
 
-    private function getPathIDsForCategory($category_id='') {
-		if (!is_numeric($category_id)) {
+
+    private function getSubcategories($category_id='') {
+        if (!is_numeric($category_id)) {
             $this->errors[] = 'Category not a number ' . $category_id;
             return false;
         }
-        $query = sprintf(
-            "SELECT path 
-            FROM ".$this->CFG->prefix."course_categories 
-            WHERE id = %d", 
+		$query = sprintf(
+			"SELECT path FROM ".$this->CFG->prefix."course_categories WHERE path REGEXP('(/%d){1}(/)?')", 
             $category_id
         );
 
-        $path = get_record_sql($query);
-        $path_ids = explode('/', $path->path);
-        return $path_ids;
+        $paths = get_records_sql($query);
+
+		$subcategories = array();
+		foreach($paths as $path) {
+			$new_cats = explode('/', $path->path);
+			$subcategories = array_merge($subcategories, $new_cats);
+		}
+		$subcategories = array_unique($subcategories);
+
+        return $subcategories;
     }
 
-    public function getCoursesForFilter($filter_id, $course_search='') {
+    public function getCoursesForFilter($category_id, $course_search='') {
 
         $courses_with_answers = $this->getCoursesWithSurveyAnswers($course_search);
 
@@ -300,17 +330,11 @@ class FeedbackFilters {
             return false;
         }
 		
-		$found_ids = array();
-        $path_ids = $this->getPathIDsForCategory($filter_id);
-		foreach($path_ids as $path) {
-			$new_ids = explode('/', $path->path);
-			$found_ids = array_merge($found_ids, $new_ids);
-		}
-		$found_ids = array_unique($found_ids);
+        $subcategories = $this->getSubcategories($category_id);
 
 		$found_courses = array();
 		foreach ($courses_with_answers as $c) {
-			if (in_array($c->category, $found_ids)) {
+			if (in_array($c->category, $subcategories)) {
 				$found_courses[] = $c;
 			}
 		}
@@ -441,9 +465,10 @@ class FeedbackFilters {
 
         $this->errors[] = array(); // reset
 
-		echo '<h1>This func been called ' . $this->call_count .' times</h1>';
+		//echo '<h1>This func been called '. $this->_call_count .' times</h1>';
 
     }
 
 }
+
 ?>
