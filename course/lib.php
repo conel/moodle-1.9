@@ -3398,8 +3398,12 @@ function update_course($data) {
 function update_course_id_archive($course_obj) {
 
 	// create year column from this year's date
-	$current_year = date('y');
-	$current_year_col = 'year_' . $current_year . ($current_year + 1);
+	//$current_year = date('y');
+	//$current_year_col = 'year_' . $current_year . ($current_year + 1);
+	// nkowald - 2012-04-02 - WRONG! Academic years do not work like this - tut, tut
+	$academicYearStart = strftime("%y",strtotime("-8 months",time()));
+    $academicYearEnd = strftime("%y",strtotime("+4 months",time()));
+    $current_year_col = 'year_' . $academicYearStart . $academicYearEnd;
 
 	// Get record for this course
 	if ($course_record = get_record('course_idnumber_archive', 'course_id', $course_obj->id)) {
