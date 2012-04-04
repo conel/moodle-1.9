@@ -123,32 +123,32 @@ class FeedbackFilters {
 
     public function getCourseAvgForQuestion($question_id='', $question_type='') {
 
-        if ($question_id == '' || !is_numeric($question_id) || $question_type != '') {
+        if ($question_id == '' || !is_numeric($question_id) || $question_type == '') {
             $this->errors[] = 'Invalid params given to getCourseAvgForQuestion';
             return false;
         }
 
         $avgvalue = ($this->CFG->dbtype != 'postgres7') ? 'avg(value)' : 'avg(cast (value as integer))';
-        $query = sprintf("
-            SELECT fv.course_id, c.shortname, %s as avgvalue  
+		$query = sprintf(
+			"SELECT fv.course_id, c.shortname, %s as avgvalue  
             FROM ".$this->CFG->prefix."feedback_value fv, 
                 ".$this->CFG->prefix."course c, 
                 ". $this->CFG->prefix."feedback_item fi 
                   WHERE fv.course_id = c.id 
                   AND fi.id = fv.item 
                   AND fi.typ = '%s' 
-                  AND fv.item = '%d' 
+                  AND fv.item = %d 
                   GROUP BY course_id, shortname 
                   ORDER BY avgvalue DESC", 
             $avgvalue, 
-            $courseitemfiltertyp,
-            $courseitemfilter
+            $question_type,
+            $question_id
         );
 
         if ($courses = get_records_sql($query)) {
             return $courses;
         } else {
-            $this->errors[] = 'No course averages found for this question (id: ' . $question_id . ', type: ' . $question_type;
+            $this->errors[] = 'No course averages found for this question (id: ' . $question_id . ', type: ' . $question_type. ')';
             return false;
         }
 
