@@ -202,8 +202,7 @@ class FeedbackFilters {
     }
 
 
-	// TODO: Rename getCoursesWithAnswers
-    public function getCoursesWithSurveyAnswers($course_search='') {
+    public function getCoursesWithAnswers($course_search='') {
 
 		$query = "SELECT DISTINCT c.id, c.shortname, c.category";
 		if ($this->_past_year_survey === true) {
@@ -280,14 +279,12 @@ class FeedbackFilters {
 		return $old_id_numbers;
 	}
 
-	// TODO: rename getCoursesForDropdowns
-    public function getCoursesFromIDs(array $courses) {
-
-        $found = array();
+    public function formatCoursesForDropdown(array $courses) {
 
 		if ($this->_past_year_survey === true) {
 			$old_id_numbers = $this->getOldIDNumbers($courses);	
 		}
+        $found = array();
         foreach ($courses as $cid) {
 			$found[$cid->id] = $cid->shortname;
 			if ($this->_past_year_survey === true) {
@@ -299,7 +296,7 @@ class FeedbackFilters {
     }
 
 
-    private function getSubcategories($category_id='') {
+    public function getSubcategories($category_id='') {
         if (!is_numeric($category_id)) {
             $this->errors[] = 'Category not a number ' . $category_id;
             return false;
@@ -321,9 +318,9 @@ class FeedbackFilters {
         return $subcategories;
     }
 
-    public function getCoursesForFilter($category_id, $course_search='') {
+    public function getCoursesInCategory($category_id, $course_search='') {
 
-        $courses_with_answers = $this->getCoursesWithSurveyAnswers($course_search);
+        $courses_with_answers = $this->getCoursesWithAnswers($course_search);
 
         if ($courses_with_answers === false) {
             $this->errors[] = 'No courses have answers';
@@ -339,12 +336,12 @@ class FeedbackFilters {
 			}
 		}
 
-        $courses = $this->getCoursesFromIDs($found_courses);
+        $courses = $this->formatCoursesForDropdown($found_courses);
         return $courses;
 
     }
 
-    public function getCoursesForLevelFilter($level_key) {
+    public function getCoursesInLevel($level_key) {
 
         $level_courses = $this->getCoursesForLevel($level_key);
 
@@ -353,12 +350,12 @@ class FeedbackFilters {
             return false;
         }
 
-        $courses = $this->getCoursesFromIDs($level_courses);
+        $courses = $this->formatCoursesForDropdown($level_courses);
         return $courses;
 
     }
 
-	public function getCSVIDsFromCourse(array $courses) {
+	public function getCourseIDsAsCSV($courses) {
 		if (count($courses) == 0) {
 			return false;
 		}
@@ -382,7 +379,7 @@ class FeedbackFilters {
         }
     }
 
-    private function getFeedbackQuestions() {
+    private function getQuestions() {
         $query = sprintf(
             "SELECT id, name 
             FROM mdl_feedback_item 
@@ -401,19 +398,19 @@ class FeedbackFilters {
     }
 
 
-    public function getFilterIDsAndValues() {
+    public function getFilterIDs() {
 
         $filter_qs = array(
             'site_id'       => 'Which site do you study at?',
             'gender_id'     => 'Gender',
             'age_id'        => 'Age',
-            'enthnic_id'    => 'How would you describe your ethnic origin?',
+            'ethnic_id'     => 'How would you describe your ethnic origin?',
             'attendance_id' => 'Attendance',
             'dld_id'        => 'Do you have a Learning Difficulty?',
             'dldb_id'       => 'Do you have a Disability?'
         );
 
-        $questions = $this->getFeedbackQuestions();
+        $questions = $this->getQuestions();
 
         $mappings = array();
         if ($questions !== false) {
@@ -464,8 +461,6 @@ class FeedbackFilters {
         }
 
         $this->errors[] = array(); // reset
-
-		//echo '<h1>This func been called '. $this->_call_count .' times</h1>';
 
     }
 

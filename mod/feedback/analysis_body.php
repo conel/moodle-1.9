@@ -27,11 +27,11 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1 && (isset($_SERVER['HTTP_REFERE
    $filter_choice              = optional_param('filter_choice', 'filter_course', PARAM_RAW);
    $filter_gender              = optional_param('filter_gender', '', PARAM_INT);
    $filter_age                 = optional_param('filter_age', '', PARAM_INT);
-   $filter_ethnicity           = optional_param('filter_ethnicity','', PARAM_RAW);
-   $filter_attendance          = optional_param('filter_attendance','', PARAM_RAW);
-   $filter_learning_difficulty = optional_param('filter_learning_difficulty','', PARAM_RAW);
-   $filter_learning_disability = optional_param('filter_learning_disability','', PARAM_RAW);
-   $filter_site				   = optional_param('site','', PARAM_RAW);
+   $filter_ethnicity           = optional_param('filter_ethnicity', '', PARAM_RAW);
+   $filter_attendance          = optional_param('filter_attendance', '', PARAM_RAW);
+   $filter_learning_difficulty = optional_param('filter_learning_difficulty', '', PARAM_RAW);
+   $filter_learning_disability = optional_param('filter_learning_disability', '', PARAM_RAW);
+   $filter_site				   = optional_param('site', '', PARAM_RAW);
 
 	if (($searchcourse OR $courseitemfilter OR $coursefilter) AND !confirm_sesskey()) {
 		print_error('invalidsesskey');
@@ -374,23 +374,23 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1 && (isset($_SERVER['HTTP_REFERE
         <input type="radio" name="filter_attendance" value="1" '.$filter_attend_ft.' id="filter_attendance_full_time" onClick="this.form.submit()" /><label for="filter_attendance_full_time">Full Time</label>
         <input type="radio" name="filter_attendance" value="2" '.$filter_attend_pt.' id="filter_attendance_part_time" onClick="this.form.submit()" /><label for="filter_attendance_part_time">Part Time Day</label></td></tr>';
 
-            $filter_enthnic     = $ff->getSelected($filter_ethnicity, '', 'select');
-            $filter_enthnic_1   = $ff->getSelected($filter_ethnicity, 1, 'select');
-            $filter_enthnic_2   = $ff->getSelected($filter_ethnicity, 2, 'select');
-            $filter_enthnic_3   = $ff->getSelected($filter_ethnicity, 3, 'select');
-            $filter_enthnic_4   = $ff->getSelected($filter_ethnicity, 4, 'select');
-            $filter_enthnic_5   = $ff->getSelected($filter_ethnicity, 5, 'select');
-            $filter_enthnic_6   = $ff->getSelected($filter_ethnicity, 6, 'select');
-            $filter_enthnic_7   = $ff->getSelected($filter_ethnicity, 7, 'select');
-            $filter_enthnic_8   = $ff->getSelected($filter_ethnicity, 8, 'select');
-            $filter_enthnic_9   = $ff->getSelected($filter_ethnicity, 9, 'select');
-            $filter_enthnic_10  = $ff->getSelected($filter_ethnicity, 10, 'select');
-            $filter_enthnic_11  = $ff->getSelected($filter_ethnicity, 11, 'select');
-            $filter_enthnic_12  = $ff->getSelected($filter_ethnicity, 12, 'select');
-            $filter_enthnic_13  = $ff->getSelected($filter_ethnicity, 13, 'select');
-            $filter_enthnic_14  = $ff->getSelected($filter_ethnicity, 14, 'select');
-            $filter_enthnic_15  = $ff->getSelected($filter_ethnicity, 15, 'select');
-            $filter_enthnic_16  = $ff->getSelected($filter_ethnicity, 16, 'select');
+            $filter_ethnic     = $ff->getSelected($filter_ethnicity, '', 'select');
+            $filter_ethnic_1   = $ff->getSelected($filter_ethnicity, '1', 'select');
+            $filter_ethnic_2   = $ff->getSelected($filter_ethnicity, '2', 'select');
+            $filter_ethnic_3   = $ff->getSelected($filter_ethnicity, '3', 'select');
+            $filter_ethnic_4   = $ff->getSelected($filter_ethnicity, '4', 'select');
+            $filter_ethnic_5   = $ff->getSelected($filter_ethnicity, '5', 'select');
+            $filter_ethnic_6   = $ff->getSelected($filter_ethnicity, '6', 'select');
+            $filter_ethnic_7   = $ff->getSelected($filter_ethnicity, '7', 'select');
+            $filter_ethnic_8   = $ff->getSelected($filter_ethnicity, '8', 'select');
+            $filter_ethnic_9   = $ff->getSelected($filter_ethnicity, '9', 'select');
+            $filter_ethnic_10  = $ff->getSelected($filter_ethnicity, '10', 'select');
+            $filter_ethnic_11  = $ff->getSelected($filter_ethnicity, '11', 'select');
+            $filter_ethnic_12  = $ff->getSelected($filter_ethnicity, '12', 'select');
+            $filter_ethnic_13  = $ff->getSelected($filter_ethnicity, '13', 'select');
+            $filter_ethnic_14  = $ff->getSelected($filter_ethnicity, '14', 'select');
+            $filter_ethnic_15  = $ff->getSelected($filter_ethnicity, '15', 'select');
+            $filter_ethnic_16  = $ff->getSelected($filter_ethnicity, '16', 'select');
 
         echo '<tr><td>Ethnic Origin:</td>
         <td>
@@ -472,7 +472,7 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1 && (isset($_SERVER['HTTP_REFERE
             $completed_ids_to_search = $uba = $ff->getUsersByQandA($age_id, $filter_age);
         }
         // Ethnicity
-        if (($filter_ethnicity != '' && $ethnic_id != '')) {
+        if (($filter_ethnicity != 0 && $ethnic_id != '')) {
             $completed_ids_to_search = $ube = $ff->getUsersByQandA($ethnic_id, $filter_ethnicity);
         }
         // Attendance
@@ -659,7 +659,9 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1 && (isset($_SERVER['HTTP_REFERE
 
         echo '<hr />';
 
-        if ($courses_found === true) {
+		if ($and_clause != '' && $completed_count == 0) { $no_feedback_error = $no_courses_error; }
+
+        if ($courses_found === true && $completed_count > 0) {
 
 			$itemnr = 0;
             foreach($items as $item) {
