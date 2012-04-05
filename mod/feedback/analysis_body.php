@@ -21,7 +21,7 @@ if (isset($_GET['reset']) && $_GET['reset'] == 1 && (isset($_SERVER['HTTP_REFERE
    $courseid                   = optional_param('courseid', 0, PARAM_INT);
    $search_directorates        = optional_param('directorates', 0, PARAM_INT);
    $search_schools             = optional_param('schools', 0, PARAM_INT);
-   $search_levels              = optional_param('levels', '', PARAM_RAW);
+   $search_levels              = optional_param('levels', '0', PARAM_RAW);
    $search_curriculum_areas    = optional_param('curriculum_areas', '', PARAM_RAW);
    $search_subcat              = optional_param('subcategory', '', PARAM_RAW);
    $filter_choice              = optional_param('filter_choice', 'filter_course', PARAM_RAW);
