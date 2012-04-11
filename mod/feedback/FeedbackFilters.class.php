@@ -401,13 +401,13 @@ class FeedbackFilters {
     public function getFilterIDs() {
 
         $filter_qs = array(
-            'site_id'       => 'Which site do you study at?',
-            'gender_id'     => 'Gender',
-            'age_id'        => 'Age',
-            'ethnic_id'     => 'How would you describe your ethnic origin?',
+            'site_id' => 'Which site do you study at?',
+            'gender_id' => 'Gender',
+            'age_id' => 'Age',
+            'ethnic_id' => 'How would you describe your ethnic origin?',
             'attendance_id' => 'Attendance',
-            'dld_id'        => 'Do you have a Learning Difficulty?',
-            'dldb_id'       => 'Do you have a Disability?'
+            'dld_id' => 'Do you have a Learning Difficulty?',
+            'dldb_id' => 'Do you have a Disability?'
         );
 
         $questions = $this->getQuestions();
