@@ -154,7 +154,27 @@
         });
     });
 </script>    
-
+<h2 class="headingblock header">Charging for Printing</h2>
+<p>Charging for printing will start from Monday the 16th of April. Every learner will be given a free balance of &pound;10.00 per term for printing. Learners can top up at any time using one of the PCounter stations located outside the LRC at Tottenham and Enfield, and at Tottenham Green centre Reception corridor.</p>
+<p>Any available free credit will be deducted first. When the free credit is finished, deductions will be made against any top ups that have been applied.</p>
+<p><b>Print/Copy charges are as follows:</b></p>
+<table style="color:#000;">
+	<tr>
+		<td>Black and white A4</td><td>5p</td>
+	</tr>
+	<tr>
+		<td>Colour A4</td><td>25p</td>
+	</tr>
+	<tr>
+		<td>Black and white A3</td><td>10p</td>
+	</tr>
+	<tr>
+		<td>Colour A3</td><td>50p</td>
+	</tr>
+	<tr>
+		<td colspan="2">Double sided is double the cost above.</td>
+</tr>
+</table>
 <h2 class="headingblock header">News</h2>
 
 <div class="container">
