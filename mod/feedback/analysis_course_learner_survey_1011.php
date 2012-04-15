@@ -11,8 +11,8 @@
 *
 ***/
 
-   require_once("../../config.php");
-   require_once("lib.php");
+   require("../../config.php");
+   require("lib.php");
 
    $id = required_param('id', PARAM_INT);  //the POST dominated the GET
    if ($id) {
@@ -39,20 +39,20 @@
     * If you're adding the same filters on new surveys
     * these are the only settings you'll need to change
    */
-		require_once('FeedbackFilters.class.php');
+	require('FeedbackFilters.class.php');
 
-		// set academic year of this survey
-		$this_ac_year = '1011';
-		$ff = new FeedbackFilters($feedback, $this_ac_year);
+	// set academic year of this survey
+	$this_ac_year = '1011';
+	$ff = new FeedbackFilters($feedback, $this_ac_year);
 
-		// each survey requires a unique sess key
-		$uniq_sess_name = 'cls1011'; 
+	// each survey requires a unique sess key
+	$uniq_sess_name = 'cls1011'; 
 
-		// does the survey have the site filter?
-		$has_site = false;
+	// does the survey have the site filter?
+	$has_site = false;
 
    /* ---------------------------------------------- */
 
-	require_once('analysis_body.php');
+    require('analysis_body.php');
 
 ?>
