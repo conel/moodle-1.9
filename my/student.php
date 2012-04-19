@@ -175,6 +175,7 @@
 		<td colspan="2">Double sided is double the cost above.</td>
 </tr>
 </table>
+
 <h2 class="headingblock header">News</h2>
 
 <div class="container">
