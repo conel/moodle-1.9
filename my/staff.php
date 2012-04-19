@@ -120,29 +120,27 @@
     });
 </script>    
 
-<h2 class="headingblock header">Charging for Printing</h2>
-<p>Charging for printing will start from Monday the 16th of April. Every learner will be given a free balance of &pound;10.00 per term for printing. Learners can top up at any time using one of the PCounter stations located outside the LRC at Tottenham and Enfield, and at Tottenham Green centre Reception corridor.</p>
-<p>Any available free credit will be deducted first. When the free credit is finished, deductions will be made against any top ups that have been applied.</p>
-<p><b>Print/Copy charges are as follows:</b></p>
-<table style="color:#000;">
-	<tr>
-		<td>Black and white A4</td><td>5p</td>
-	</tr>
-	<tr>
-		<td>Colour A4</td><td>25p</td>
-	</tr>
-	<tr>
-		<td>Black and white A3</td><td>10p</td>
-	</tr>
-	<tr>
-		<td>Colour A3</td><td>50p</td>
-	</tr>
-	<tr>
-		<td colspan="2">Double sided is double the cost above.</td>
-</tr>
-</table>
+<h2 class="headingblock header">Password Reset Software</h2>
+<p>ICT services have made it possible for teaching staff to reset student passwords. Software will be installed on the teacher's PC in classrooms over the next two weeks to enable staff to do this. Students can also now have their passwords reset in one of the following areas:</p>
+<ul>
+	<li>Reception desks at Enfield and Tottenham Centres</li>
+	<li>All library areas</li>
+	<li>E-learning team</li>
+	<li>Teaching PCs in IT suites</li>
+</ul>
 
-<p>All teaching staff are reminded to inform learners to top up their credit if they cannot print because they have run out of credit.</p>
+<p>To access the password reset software:</p>
+<ol>
+	<li>Click on this icon on the password control icon on which is your desktop (see below)<br />
+	<img src="https://vle.conel.ac.uk/file.php/1/News_photos/password-control.png" alt="Password Control" width="91" height="99" />
+	</li>
+	<li>Login with your network account</li>
+	<li>Click ok to the information box</li>
+	<li>Enter student number and a new password to reset their password</li>
+</ol>
+
+<p>Please note this facility is for student password resets only. If a staff member needs to reset their own password they will still have to do this through ICT Services.</p>
+<p>If you have any queries regarding this please contact ICT Services on extension 3599.</p>
 
 <h2 class="headingblock header">News</h2>
 
