@@ -141,6 +141,7 @@
 		<td colspan="2">Double sided is double the cost above.</td>
 </tr>
 </table>
+
 <p>All teaching staff are reminded to inform learners to top up their credit if they cannot print because they have run out of credit.</p>
 
 <h2 class="headingblock header">News</h2>
