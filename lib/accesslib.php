@@ -940,6 +940,15 @@ function has_capability_in_accessdata($capability, $context, $accessdata, $doany
 			}
 			break;
 		
+		// Students can't view forum even though they have the capability
+		case 'mod/forum:viewdiscussion':
+
+			// Student
+			if (isset($USER->access['rdef']['/1:5']['mod/forum:viewdiscussion']) && $USER->access['rdef']['/1:5']['mod/forum:viewdiscussion'] == 1) {
+				$can = 1;
+			}
+			break;
+
 		case 'moodle/user:editownprofile':
 			// If Teacher role
 			if (isset($USER->access['rdef']['/1:3']['moodle/user:editownprofile']) && $USER->access['rdef']['/1:3']['moodle/user:editownprofile'] == '1') {
@@ -1004,6 +1013,7 @@ function has_capability_in_accessdata($capability, $context, $accessdata, $doany
 			}
 			
 		break;
+
 
 	} // switch
 	

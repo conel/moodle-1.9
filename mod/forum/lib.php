@@ -4543,6 +4543,7 @@ function forum_user_can_view_post($post, $course, $cm, $forum, $discussion, $use
         return false;
     }
 
+
 // If it's a grouped discussion, make sure the user is a member
     if ($discussion->groupid > 0) {
         $groupmode = groups_get_activity_groupmode($cm);
