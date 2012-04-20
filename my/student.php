@@ -154,16 +154,6 @@
         });
     });
 </script>    
-<h2 class="headingblock header">Password Reset Software</h2>
-<p>To make it easier for you, teachers now have the ability to reset your password. Passwords can also be reset in the following areas:</p>
-<ul>
-	<li>Reception desks at Enfield and Tottenham Centres</li>
-	<li>All library areas</li>
-	<li>E-learning team</li>
-	<li>Teaching PCs in IT suites</li>
-</ul>
-
-<p>If you have any IT related issues regarding you network account please contact ICT services.</p>
 
 <h2 class="headingblock header">News</h2>
 
