@@ -369,8 +369,8 @@ if($search) {
                         <a href="'.$previewhref.'" id="jwplayer_link" title="Preview Video"><span>Click to preview video</span></a>
                         <div class="jwbox_hidden">
                             <div class="jwbox_content">
-                                <object width="320" height="240" type="application/x-shockwave-flash" id="ply" name="ply" data="https://clg.conel.ac.uk/VLE/mod/resource/type/mrcutejr/jwplayer/player.swf">
-								<param name="movie" value="https://clg.conel.ac.uk/VLE/mod/resource/type/mrcutejr/jwplayer/player.swf" />
+                                <object width="320" height="240" type="application/x-shockwave-flash" id="ply" name="ply" data="'.$CFG->wwwroot.'/mod/resource/type/mrcutejr/jwplayer/player.swf">
+								<param name="movie" value="'.$CFG->wwwroot.'/mod/resource/type/mrcutejr/jwplayer/player.swf" />
                                 <param name="allowfullscreen" value="true"/>
                                 <param name="allowscriptaccess" value="always"/>
                                 <param name="flashvars" value="file='.$previewhref.'"/></object>
@@ -384,8 +384,8 @@ if($search) {
                         <a href="'.$previewhref.'" id="jwplayer_audio_link" title="Preview Song"><span>Click to preview song</span></a>
                         <div class="jwbox_hidden">
                             <div class="jwbox_content">
-                                <object width="320" height="65" type="application/x-shockwave-flash" id="ply" name="ply" data="https://clg.conel.ac.uk/VLE/mod/resource/type/mrcutejr/jwplayer/player.swf">
-								<param name="movie" value="https://clg.conel.ac.uk/VLE/mod/resource/type/mrcutejr/jwplayer/player.swf" />
+                                <object width="320" height="65" type="application/x-shockwave-flash" id="ply" name="ply" data="'.$CFG->wwwroot.'/mod/resource/type/mrcutejr/jwplayer/player.swf">
+								<param name="movie" value="'.$CFG->wwwroot.'/mod/resource/type/mrcutejr/jwplayer/player.swf" />
                                 <param name="allowfullscreen" value="true"/>
                                 <param name="allowscriptaccess" value="always"/>
                                 <param name="flashvars" value="file='.$previewhref.'"/></object>
