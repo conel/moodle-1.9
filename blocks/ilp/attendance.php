@@ -136,7 +136,9 @@ jQuery(document).ready(function(){
         echo '</table>';
         echo '</div>';
 
-$no_terms = 2;
+//$no_terms = 3;
+// nkowald - This value retrieved from the current term number
+$no_terms = $attpunc->getCurrentTermNo();
 for ($i=1; $i <= $no_terms; $i++) {
     
     if ($att_punct = $attpunc->getAttendancePunctuality($user->idnumber, $i)) {
