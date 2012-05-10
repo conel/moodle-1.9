@@ -57,6 +57,9 @@
     } else if ($id == 216601) {
         header('Location: analysis_course_teaching_and_learner_survey_1112.php?'.$query_string);
         exit;
+    } else if ($id == 218909) {
+        header('Location: analysis_course_exit_survey_1112.php?'.$query_string);
+        exit;
     }
 	
     $coursefilter = optional_param('coursefilter', '0', PARAM_INT);
