@@ -4809,7 +4809,7 @@ a.locked {
 	display:none;
 }
 a.percentage_link {
-	text-decoration:none;
+	font-size:0.9em;
 }
 a.percentage_link:hover {
 	text-decoration:underline;
