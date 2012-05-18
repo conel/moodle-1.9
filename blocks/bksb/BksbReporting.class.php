@@ -19,10 +19,11 @@
         private $password;
         private $selected_db;
 
-        public  $errors;
-        public  $con;
-        public  $connection;
-        public  $ass_cats;
+        public $errors;
+        public $con;
+        public $connection;
+        public $ass_cats;
+		public $ass_types;
 
         public function __construct() {
 
@@ -51,6 +52,19 @@
                 'ICT Results Publisher', 
                 'ICT Results Internet'
             );
+
+			$this->ass_types = array(
+                1 => 'Literacy E2',
+                2 => 'Literacy E3',
+                3 => 'Literacy L1',
+                4 => 'Literacy L2',
+                5 => 'Literacy L3',
+                6 => 'Numeracy E2',
+                7 => 'Numeracy E3',
+                8 => 'Numeracy L1',
+                9 => 'Numeracy L2',
+                10 => 'Numeracy L3'
+			);
 
         }
 
@@ -85,42 +99,49 @@
 		}
 		*/
 		
+		// Legacy function
+		public function getAssTypeFromNo($no) {
+			if (isset($this->ass_types[$no])) {
+				return $this->ass_types[$no];
+			} else {
+				return false;
+			}
+		}
 		
         public function getAllResults($user_id='') {
 
-            if ($user_id != '') {
-                $details = array();
-				
-				// nkowald - 2012-01-03 - If username contain's single quote, escape it
-				$user_id = str_replace("'", "''", $user_id);
+            if ($user_id == '') {
+				return false;
+			}
+			$details = array();
+			
+			// nkowald - 2012-01-03 - If username contain's single quote, escape it
+			$user_id = str_replace("'", "''", $user_id);
 
-                $query = "SELECT Result FROM dbo.bksb_IAResults WHERE UserName = '$user_id' ORDER BY DateCompleted DESC";
-                if ($result = $this->connection->execute($query)) {
-                    while (!$result->EOF) {
-                        $details[$user_id][] = $result->fields['Result']->value;
-                        $result->MoveNext(); //move on to the next record
-                    }
-                }
-                $query = "SELECT WordProcessing, Spreadsheets, Databases, DesktopPublishing, Presentation, Email, General, Internet FROM dbo.bksb_ICTIAResults WHERE UserName = '$user_id' ORDER BY session_id DESC";
-                if ($result = $this->connection->execute($query)) {
-                    while (!$result->EOF) {
-                        $details[$user_id][] = 'WordProcessing ' . $result->fields['WordProcessing']->value;
-                        $details[$user_id][] = 'Spreadsheets ' . $result->fields['Spreadsheets']->value;
-                        $details[$user_id][] = 'Databases ' . $result->fields['Databases']->value;
-                        $details[$user_id][] = 'DesktopPublishing ' . $result->fields['DesktopPublishing']->value;
-                        $details[$user_id][] = 'Presentation ' . $result->fields['Presentation']->value;
-                        $details[$user_id][] = 'Email ' . $result->fields['Email']->value;
-                        $details[$user_id][] = 'General ' . $result->fields['General']->value;
-                        $details[$user_id][] = 'Internet ' .$result->fields['Internet']->value;
-                        $result->MoveNext(); //move on to the next record
-                    }
-                }
-                //$result->Close();
+			$query = "SELECT Result FROM dbo.bksb_IAResults WHERE UserName = '$user_id' ORDER BY DateCompleted DESC";
+			if ($result = $this->connection->execute($query)) {
+				while (!$result->EOF) {
+					$details[$user_id][] = $result->fields['Result']->value;
+					$result->MoveNext(); //move on to the next record
+				}
+			}
+			$query = "SELECT WordProcessing, Spreadsheets, Databases, DesktopPublishing, Presentation, Email, General, Internet FROM dbo.bksb_ICTIAResults WHERE UserName = '$user_id' ORDER BY session_id DESC";
+			if ($result = $this->connection->execute($query)) {
+				while (!$result->EOF) {
+					$details[$user_id][] = 'WordProcessing ' . $result->fields['WordProcessing']->value;
+					$details[$user_id][] = 'Spreadsheets ' . $result->fields['Spreadsheets']->value;
+					$details[$user_id][] = 'Databases ' . $result->fields['Databases']->value;
+					$details[$user_id][] = 'DesktopPublishing ' . $result->fields['DesktopPublishing']->value;
+					$details[$user_id][] = 'Presentation ' . $result->fields['Presentation']->value;
+					$details[$user_id][] = 'Email ' . $result->fields['Email']->value;
+					$details[$user_id][] = 'General ' . $result->fields['General']->value;
+					$details[$user_id][] = 'Internet ' .$result->fields['Internet']->value;
+					$result->MoveNext(); //move on to the next record
+				}
+			}
+			//$result->Close();
 
-                return $details;
-            } else {
-                return false;
-            }
+			return $details;
         }
 
         public function getResults($user_id) {
@@ -249,56 +270,55 @@
 
         public function getDiagnosticOverview($user_id='', $assessment_no='') {
 
-            if (is_numeric($assessment_no) && is_numeric($user_id)) {
-                $assessment = $this->getAssTypeFromNo($assessment_no);
-                $query = "SELECT curric_ref, TrackingComment FROM dbo.vw_student_curric_bestScoreAndComment WHERE Assessment = '$assessment' AND userName = '$user_id'";
+            if (!is_numeric($assessment_no) || !is_numeric($user_id)) {
+				return false;
+			}
+			$assessment = $this->ass_types[$assessment_no];
+			$query = "SELECT curric_ref, TrackingComment FROM dbo.vw_student_curric_bestScoreAndComment WHERE Assessment = '$assessment' AND userName = '$user_id'";
 
-                if ($result = $this->connection->execute($query)) {
-                    $overview = array();
-                    $curric_refs = array();
-                    while (!$result->EOF) {
-                        $overview[$result->fields['curric_ref']->value] = ($result->fields['TrackingComment']->value == NULL) ? 'Tick' : $result->fields['TrackingComment']->value;
-                        $curric_refs[] = $result->fields['curric_ref']->value;
-                        $result->MoveNext(); //move on to the next record
-                    }
+			if ($result = $this->connection->execute($query)) {
+				$overview = array();
+				$curric_refs = array();
+				while (!$result->EOF) {
+					$overview[$result->fields['curric_ref']->value] = ($result->fields['TrackingComment']->value == NULL) ? 'Tick' : $result->fields['TrackingComment']->value;
+					$curric_refs[] = $result->fields['curric_ref']->value;
+					$result->MoveNext(); //move on to the next record
+				}
 
-                    // convert curric refs into CSV
-                    $refs_csv = implode("','",$curric_refs);
-                    $refs_csv = "'" . $refs_csv . "'";
-                    // Get correct order for all curric_refs
-                    $ordered_results = array();
-                    $query = "SELECT curric_ref, Title, report_pos FROM dbo.bksb_CurricCodes WHERE curric_ref IN ($refs_csv) ORDER BY report_pos ASC";
-                    if ($result = $this->connection->execute($query)) {
-                        while (!$result->EOF) {
-                            // curriculum reference
-                            $ref = $result->fields['curric_ref']->value;
-                            // result - retrieved from first query
-                            $grade = $overview[$ref];
+				// convert curric refs into CSV
+				$refs_csv = implode("','",$curric_refs);
+				$refs_csv = "'" . $refs_csv . "'";
+				// Get correct order for all curric_refs
+				$ordered_results = array();
+				$query = "SELECT curric_ref, Title, report_pos FROM dbo.bksb_CurricCodes WHERE curric_ref IN ($refs_csv) ORDER BY report_pos ASC";
+				if ($result = $this->connection->execute($query)) {
+					while (!$result->EOF) {
+						// curriculum reference
+						$ref = $result->fields['curric_ref']->value;
+						// result - retrieved from first query
+						$grade = $overview[$ref];
 
-                            $ordered_results[] = array(
-                                'curric_ref' => $ref,
-                                'title' => $result->fields['Title']->value,
-                                'result' => $grade
-                            );
-                            $result->MoveNext(); //move on to the next record
-                        }
-                    }
-                    if (count($ordered_results) > 0) {
-                        return $ordered_results;
-                    } else {
-                        return false;
-                    }
-                }
-                $result->Close();
-            } else {
-                return false;
-            }
+						$ordered_results[] = array(
+							'curric_ref' => $ref,
+							'title' => $result->fields['Title']->value,
+							'result' => $grade
+						);
+						$result->MoveNext(); //move on to the next record
+					}
+				}
+				if (count($ordered_results) > 0) {
+					return $ordered_results;
+				} else {
+					return false;
+				}
+			}
+			$result->Close();
         }
 
          public function getDiagnosticResults($user_id='', $assessment_no='') {
 
             if (is_numeric($assessment_no) && is_numeric($user_id)) {
-                $assessment = $this->getAssTypeFromNo($assessment_no);
+                $assessment = $this->ass_types[$assessment_no];
                 $query = "SELECT curric_ref, TrackingComment FROM dbo.vw_student_curric_bestScoreAndComment WHERE Assessment = '$assessment' AND userName = '$user_id'";
 
                 if ($result = $this->connection->execute($query)) {
@@ -368,62 +388,6 @@
             }
         }
 
-        public function getAssTypeFromNo($assessment_no='') {
-
-            // Assessment numbers map to assessment types
-            if (is_numeric($assessment_no) && $assessment_no != '') {
-                switch($assessment_no) {
-                    case 1:
-                        $type = 'Literacy E2';
-                        break;
-
-                    case 2:
-                        $type = 'Literacy E3';
-                        break;
-
-                    case 3:
-                        $type = 'Literacy L1';
-                        break;
-
-                    case 4:
-                        $type = 'Literacy L2';
-                        break;
-
-                    case 5:
-                        $type = 'Literacy L3';
-                        break;
-
-                    case 6:
-                        $type = 'Numeracy E2';
-                        break;
-
-                    case 7:
-                        $type = 'Numeracy E3';
-                        break;
-
-                    case 8:
-                        $type = 'Numeracy L1';
-                        break;
-
-                    case 9:
-                        $type = 'Numeracy L2';
-                        break;
-
-                    case 10:
-                        $type = 'Numeracy L3';
-                        break;
-
-                    default:
-                        return false;
-                }
-
-                return $type;
-
-            } else {
-                return false;
-            }
-
-        }
 
         public function getNoQuestions($assessment_no='') {
 
@@ -711,7 +675,6 @@
 			
 			if ($username != '') {
 
-				
 				// bksb_Users check
 				$query1 = "SELECT userName FROM dbo.bksb_Users WHERE userName = '$username'";
 				if ($result1 = $this->connection->execute($query1)) {

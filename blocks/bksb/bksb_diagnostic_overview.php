@@ -91,11 +91,11 @@
 
     if ($userid != 0) {
 
-        $query = "SELECT * FROM mdl_user m where id = $userid";
+        $query = sprintf("SELECT firstname, lastname, idnumber FROM ".$CFG->prefix."user where id = %d", $userid);
         if ($ausers = get_records_sql($query)) {
             foreach ($ausers as $auser) {
                 $picture = $CFG->wwwroot . "/user/pix.php/".$userid."/f1.jpg";
-                $fullname = fullname($auser);
+                $fullname = $auser->firstname . ' ' . $auser->lastname;
                 $conel_id = $auser->idnumber;
             }
         }
@@ -107,32 +107,18 @@
         echo '</div>';
 
         //$baseurl = $CFG->wwwroot.'/blocks/bksb/bksb_diagnostic_overview.php?courseid='.$courseid;
-        $assessment_types = array(
-			1 => 'Literacy E2',
-			2 => 'Literacy E3',
-			3 => 'Literacy L1',
-			4 => 'Literacy L2',
-			5 => 'Literacy L3',
-			6 => 'Numeracy E2',
-			7 => 'Numeracy E3',
-			8 => 'Numeracy L1',
-			9 => 'Numeracy L2',
-			10 => 'Numeracy L3'
-        );
-
         require_once($CFG->libdir.'/tablelib.php');
 		$results_found = false;
-        foreach ($assessment_types as $key => $value) {
+        foreach ($bksb->ass_types as $key => $value) {
 
-            $ass_type = $bksb->getAssTypeFromNo($key);
-            $bksb_results = $bksb->getDiagnosticResults($conel_id, $key);
+            $ass_type = $value;
+			$bksb_results = $bksb->getDiagnosticResults($conel_id, $key);
 		
             // Check if bksb_results are blank
             $results = true;
             if (!in_array('X', $bksb_results) && !in_array('P', $bksb_results)) {
                $results = false; 
             } else {
-                $results = true;
 				$results_found = true;
             }
 
@@ -185,7 +171,7 @@
 				
 				$bksb_session_no = $bksb->getBksbSessionNo($conel_id, $key);
 				$bksb_results_url = 'http://bksb/bksb_Reporting/Reports/DiagReport.aspx?session='.$bksb_session_no;	
-				$bksb_results[] = '<a href="'.$bksb_results_url.'" class="percentage_link" title="Go to BKSB results page" target="_blank">'.$percentage.'%</a>';
+				$bksb_results[] = $percentage.'%<br /><a href="'.$bksb_results_url.'" class="percentage_link" title="Go to BKSB results page" target="_blank">View on BKSB</a>';
 				
                 $table->add_data($bksb_results);
 
@@ -243,20 +229,6 @@
             $currentgroup  = NULL;
         }
 
-        $assessment_types = array(
-                1 => 'Literacy E2',
-                2 => 'Literacy E3',
-                3 => 'Literacy L1',
-                4 => 'Literacy L2',
-                5 => 'Literacy L3',
-                6 => 'Numeracy E2',
-                7 => 'Numeracy E3',
-                8 => 'Numeracy L1',
-                9 => 'Numeracy L2',
-                10 => 'Numeracy L3'
-        );
-
-		
         $get_url = $CFG->wwwroot . '/blocks/bksb/bksb_diagnostic_overview.php';
 		
         echo '
@@ -267,7 +239,7 @@
             <select name="assessment" onchange="this.form.submit()">
                 <option value="">-- Select Assessment Type --</option>';
 
-        foreach ($assessment_types as $key => $value) {
+        foreach ($bksb->ass_types as $key => $value) {
             if ($key == $assessment) {
                 echo '<option value="'.$key.'" selected="selected">'.$value.'</option>';
             } else {
