@@ -151,23 +151,12 @@ $html .= '<div id="bksb_diag_results">';
 $html .= '<h4>Diagnostic Overviews</h4>';
 
 //$baseurl = $CFG->wwwroot.'/blocks/bksb/bksb_diagnostic_overview.php?courseid='.$courseid;
-$assessment_types = array(
-		1 => 'Literacy E2',
-		2 => 'Literacy E3',
-		3 => 'Literacy L1',
-		4 => 'Literacy L2',
-		5 => 'Literacy L3',
-		6 => 'Numeracy E2',
-		7 => 'Numeracy E3',
-		8 => 'Numeracy L1',
-		9 => 'Numeracy L2',
-		10 => 'Numeracy L3'
-);
+$assessment_types = $bksb->ass_types;
 
 $results_found = false;
 foreach ($assessment_types as $key => $value) {
 
-	$ass_type = $bksb->getAssTypeFromNo($key);
+	$ass_type = $bksb->ass_types[$key];
 	$bksb_results = $bksb->getDiagnosticResults($conel_id, $key);
 
 	// Check if bksb_results are blank
