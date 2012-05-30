@@ -1014,6 +1014,13 @@ function has_capability_in_accessdata($capability, $context, $accessdata, $doany
 			
 		break;
 
+		case 'mod/choice:choose':
+			// Teacher
+			if (isset($USER->access['rdef']['/1:3']['mod/choice:choose']) && $USER->access['rdef']['/1:3']['mod/choice:choose'] == '1') {
+				$can = 1;
+			}
+			break;
+
 
 	} // switch
 	

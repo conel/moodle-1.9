@@ -37,10 +37,16 @@
             // is this the currently active unit
             $current = (bool)($course_id == $othercourse->id);
             ?>
-            <td class="<?php echo ($current) ? 'highlight' : 'cell'; ?>">
+			<!--<td class="<?php echo ($current) ? 'highlight' : 'cell'; ?>">-->
+            <td class="<?php echo ($current) ? 'cell' : 'cell'; ?>">
                 <?php
-                if ($current) {
+				if ($current) { ?>
+                    <a href="<?php echo $CFG->wwwroot; ?>/blocks/assmgr/actions/edit_portfolio.php?course_id=<?php echo $othercourse->id; ?>&amp;candidate_id=<?php echo $candidate_id; ?>#submittedevidence">
+				<?php
                     echo limit_length($othercourse->shortname, 50, $othercourse->fullname);
+				?>
+					</a>
+				<?php
                 } else { ?>
                     <a href="<?php echo $CFG->wwwroot; ?>/blocks/assmgr/actions/edit_portfolio.php?course_id=<?php echo $othercourse->id; ?>&amp;candidate_id=<?php echo $candidate_id; ?>#submittedevidence">
                         <?php echo limit_length($othercourse->shortname, 50, $othercourse->fullname); ?>
