@@ -4,7 +4,7 @@
 	$background_colour = '';
 	
 	if ($page_id != '') {
-		$query = 'SELECT cat_colour FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $page_id . ' AND cat_colour <> "#"';
+		$query = sprintf('SELECT cat_colour FROM '. $CFG->prefix . 'course_categories WHERE id=%d AND cat_colour <> "#"', $page_id);
 		$result_bgc = get_record_sql($query);
 		
 		$background_colour = ($result_bgc) ? $result_bgc->cat_colour : '';
@@ -14,15 +14,15 @@
 		
 			// check if we're in course view, if so find category course is under
 			if ( (strpos($_SERVER['SCRIPT_NAME'],'/course/view.php')) !== FALSE ) {
-				$query = 'SELECT category FROM ' . $CFG->prefix . 'course WHERE id=' . $page_id;
+				$query = sprintf('SELECT category FROM ' . $CFG->prefix . 'course WHERE id=%d', $page_id);
 				$category_id = get_record_sql($query);
 				$page_id = ($category_id) ? $category_id->category : $page_id;
 			}
 			
-			$query = 'SELECT path FROM ' . $CFG->prefix . 'course_categories WHERE id=' . $page_id;
+			$query = sprintf('SELECT path FROM ' . $CFG->prefix . 'course_categories WHERE id=%d', $page_id);
 			$result_path = get_record_sql($query);
 			if ($result_path) {
-				$path = substr($result_path->path,1); // remove first '/' for count
+				$path = substr($result_path->path, 1); // remove first '/' for count
 				$paths = explode('/',$path);
 				
 				// Reverse array to get colour from parent of page (if exists)
