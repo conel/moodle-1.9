@@ -95,7 +95,6 @@
 					echo "Update failed for user $key";
 				}
 			}
-			
 		}
 		*/
 		
