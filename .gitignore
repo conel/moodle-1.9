@@ -1,5 +1,6 @@
+config.php
 mod/object/repository/*
 blocks/lpr/print/*
 blocks/lpr/actions/dompdf/lib/fonts/log.htm
-
+php_errors.log
 !.gitignore

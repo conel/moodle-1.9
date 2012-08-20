@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $CFG->wwwroot; ?>/lib/yui/container/assets/container.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $CFG->wwwroot; ?>/lib/yui/calendar/assets/calendar.css" />
-<?php 
+<?php
 require('access_context.php');
 require_once($CFG->dirroot . '/blocks/ilp/AttendancePunctuality.class.php');
 $attpunc = new AttendancePunctuality();
@@ -145,7 +145,7 @@ $print_to_pdf = '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/export.php?learne
 		<td style="vertical-align:top; border:1px solid #fff;" class="label">
 			<div id="your_progress">
 			<h2>Your Progress:</h2>
-<?php 	
+<?php 
 			display_ilp_your_progress($id, $courseid);
 			if($CFG->ilpconcern_report4 == 1 && (has_capability('mod/ilpconcern:addreport4', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport4', $context)))) {
 				echo '<form method="post" action="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;action=updateconcern&amp;status=3">';
@@ -182,7 +182,6 @@ if($config->ilp_show_student_info == 1) {
 }
 */
 
-/*
 if ($config->ilp_show_targets == 1) {
     echo '<div class="generalbox" id="ilp-target-overview">';
 
@@ -203,10 +202,8 @@ if ($config->ilp_show_targets == 1) {
     display_ilptarget ($id, $courseid, TRUE, TRUE, TRUE, 'DESC', 3,-1, FALSE, FALSE, FALSE, TRUE);
     echo '</div>';
 }
-*/
 
 if ($config->ilp_show_concerns == 1) {
-	
 	/*
     $i = 1;
     while ($i <= 4){
@@ -221,14 +218,11 @@ if ($config->ilp_show_concerns == 1) {
 	
 	// Tutor Reviews
 	$i = 1;
-	
-	
 	if(eval('return $CFG->ilpconcern_report'.$i.';') == 1) {
 
         // nkowald - 2011-08-10 - Adding four new links to this section
 		
 		echo '<div class="generalbox" id="ilp-concerns-overview" style="margin-bottom:0 !important;">';
-		
 		if($CFG->ilpconcern_report1 == 1 && (has_capability('mod/ilpconcern:addreport1', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport1', $context)))) {
 			echo '<div class="add_button">';
 			if ($courseid != 1) {
@@ -242,7 +236,6 @@ if ($config->ilp_show_concerns == 1) {
 		}
 
 		display_ilpconcern ($id,$courseid,$i, FALSE);
-		
         echo '<ul>';
 		if ($courseid != 1) {
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;status=1">Good performance records</a></li>';
@@ -254,21 +247,11 @@ if ($config->ilp_show_concerns == 1) {
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$user->id.'&amp;status=3">Student progress</a></li>';
 		}
         echo '</ul>';
-
         echo '<br class="clear_both" />';
-		echo '</div>';
-		echo '<br />';
-		
-		//echo "<div class='generalbox'>";
-		echo "<div>";
-		display_ilpconcern($id, $courseid, 1, true, false, false, 'ASC', 1, false);
-		//echo '</div>';
-		
-		echo '<br />';
+		echo '</div><br />';
 	}
-} 
-
-
+	
+}
 if ($config->ilp_show_lprs == 1) {
 
 	// include the permissions check
@@ -281,24 +264,19 @@ if ($config->ilp_show_lprs == 1) {
             // nkowald - 2011-08-04 - Changed to new.php
 			//echo '<form method="post" action="'.$CFG->wwwroot.'/blocks/lpr/actions/create.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'">
 			echo '<form method="post" action="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'">
-			<div><input type="submit" value="Add Target" name="submit" /></div></form>';
+			<div><input type="submit" value="Add Subject Target" name="submit" /></div></form>';
 			echo '</div>';
 		}
 	
 		display_ilp_lprs($id, $courseid, FALSE);
-		
-		/*
 		echo '&nbsp&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">';
 		if ($courseid != 1) {
-			echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?course_id='.$courseid.'&amp;learner_id='.$user->id.'&amp;ilp=1">Archived targets</a></span>';
+			echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?course_id='.$courseid.'&amp;learner_id='.$user->id.'&amp;ilp=1">Archived subject targets</a></span>';
 		} else {			
-			echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?learner_id='.$user->id.'&amp;ilp=1">Archived targets</a></span>';
+			echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?learner_id='.$user->id.'&amp;ilp=1">Archived subject targets</a></span>';
 		}
-		*/
-		
-	echo '</div>';
 	
-	display_ilp_lprs($id, $courseid, TRUE, FALSE, TRUE, 'DESC', 10);
+	echo '</div>';
 }
 echo '</div>';
 ?>

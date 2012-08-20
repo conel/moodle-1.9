@@ -558,7 +558,7 @@
 			
 		}
 		
-		// nkowald - 2011-10-13 - Adding list modules function here (called from inside subject targets)
+		// nkowald - 2011-10-13 - Adding list modules function here (called from inside targets)
 		public function getModules($ebs_learner_id) {
 
             /*

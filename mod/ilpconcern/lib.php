@@ -117,7 +117,7 @@ class ilpconcern_updateconcern_form extends moodleform {
         }
 		
         $mform->addElement('format', 'format', get_string('format'));
-		
+
 		$mform->addElement('date_selector', 'deadline', get_string('deadline', 'ilpconcern'));
 
 		if($concernspost > 0 && $report){
@@ -125,7 +125,7 @@ class ilpconcern_updateconcern_form extends moodleform {
 		}else{
 			$mform->setDefault('deadline', time());
 		}
-				
+
 		$this->add_action_buttons($cancel = true, $submitlabel=get_string('savechanges'));
 	}
 			
@@ -315,7 +315,7 @@ class ilpconcern_updatecomment_form extends moodleform {
         $concernview = get_string('concernviewlink','ilpconcern');
         $commenturl = $CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'&amp;concernspost='.$concernspost;           
     
-        if (!$report = get_record('ilpconcern_comments', 'concernspost', $concernspost, 'id', $commentid)) {
+        if (! $report = get_record('ilpconcern_comments', 'concernspost', $concernspost, 'id', $commentid)) {
             $report = new Object; 
 			$report->concernspost = $concernspost;
 			$report->userid = $USER->id;
@@ -328,8 +328,7 @@ class ilpconcern_updatecomment_form extends moodleform {
         
             $message = '<p>'.$newcomment;                
 
-        }else{
-            
+        }else{            
             $report->userid  = $USER->id;
 			$report->comment = $data->comment;
 			$report->format  = $data->format;
@@ -370,6 +369,167 @@ function ilpconcern_update_comment_menu($commentid,$context) {
 	
 	if((($age < $CFG->maxeditingtime) && $ownpost) || has_capability('moodle/site:doanything', $context)) {
 			$output .= '<a title="'.get_string('edit').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'commentid='.$report->id.'&amp;concernspost='.$report->concernspost.'&amp;action=updatecomment"><img src="'.$CFG->pixpath.'/t/edit.gif" alt="'.get_string('edit').'" /> '.get_string('edit').'</a> | <a title="'.get_string('delete').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'commentid='.$report->id.'&amp;concernspost='.$report->concernspost.'&amp;action=delete"><img src="'.$CFG->pixpath.'/t/delete.gif" alt="'.get_string('delete').'" /> '.get_string('delete').'</a>';
+	}
+	
+	return $output;
+}
+
+/**
+ * Creates the form to update/add comments
+ */
+ 
+class lpr_updatecomment_form extends moodleform {
+
+    function definition() {
+		
+        global $USER, $CFG;     
+  
+        require_once("$CFG->dirroot/blocks/ilp/block_ilp_lib.php");
+        
+        $mform    =& $this->_form;
+
+        $lprid = $this->_customdata['lprid'];
+        $courseid = $this->_customdata['courseid'];
+        $userid = $this->_customdata['userid']; 
+		$commentid = $this->_customdata['commentid'];
+
+        //$id = $this->_customdata['id']; 
+                
+        $user = get_record('user','id',$userid);
+
+        if($commentid > 0){
+            //$report = get_record('ilpconcern_comments', 'concernspost', $concernspost, 'id', $commentid);
+            $report = get_record('block_lpr_comments', 'lprid', $lprid, 'id', $commentid);
+        }
+        
+        if($user->id == $USER->id){
+            $mform->addElement('header', 'title', get_string('mycomment', 'ilpconcern'));
+        }else{
+            $mform->addElement('header', 'title', get_string('commentfor', 'ilpconcern', fullname($user)));
+        }
+        
+        $mform->addElement('hidden', 'userid', $userid);
+		$mform->addElement('hidden', 'lprid', $lprid);
+		
+        if($courseid > 1){
+            $mform->addElement('hidden', 'courseid', $courseid);
+        }
+        
+        //if($id > 0){
+        //    $mform->addElement('hidden', 'id', $id);
+        //}
+        
+        if($commentid > 0 && $report){
+            $mform->addElement('hidden', 'commentid', $commentid);
+        }
+		        
+        $mform->addElement('htmleditor', 'comment', get_string('comment', 'ilpconcern'));
+        $mform->setType('comment', PARAM_RAW);
+        $mform->addRule('comment', null, 'required', null, 'client');
+        $mform->setHelpButton('comment', array('writing', 'richtext'), false, 'editorhelpbutton');
+        
+        if($commentid > 0 && $report){
+            $mform->setDefault('comment', $report->comment);
+        }
+        
+        $mform->addElement('format', 'format', get_string('format'));
+                       
+        $this->add_action_buttons($cancel = true, $submitlabel=get_string('savechanges'));
+    }
+            
+    function process_data($data) {
+        
+        global $USER,$CFG;
+        require_once("$CFG->dirroot/message/lib.php");
+        
+        $courseid = $this->_customdata['courseid'];
+        $userid = $this->_customdata['userid']; 
+        $lprid = $this->_customdata['lprid']; 
+        $commentid = $this->_customdata['commentid']; 
+
+        //$id = $this->_customdata['id']; 
+                
+        //Sets message details for comments
+        $messagefrom = get_record('user', 'id', $USER->id);
+        $messageto = get_record('user', 'id', $userid);
+        
+        $newcomment = get_string('newcomment','ilpconcern');
+        $updatedcomment = get_string('updatedcomment','ilpconcern');
+        $concernview = get_string('concernviewlink','ilpconcern');
+        
+        //$commenturl = $CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'&amp;concernspost='.$concernspost;           
+        $commenturl = $CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'&amp;lprid='.$lprid;             
+        
+        //if (!$report = get_record('ilpconcern_comments', 'concernspost', $concernspost, 'id', $commentid)) {
+        if (! $report = get_record('block_lpr_comments', 'lprid', $lprid, 'id', $commentid)) {
+            
+            $report = new Object; 
+			//$report->concernspost = $concernspost;
+			$report->lprid = $lprid;
+			$report->userid = $USER->id;
+			$report->created  = time();
+			$report->modified = time();
+			$report->comment = $data->comment;
+			$report->format = $data->format;  
+			$report->format = $data->format;  
+			$report->setbyuserid = $USER->id;  
+			$report->setforuserid = $userid;  
+                
+            //$commentinstance = insert_record('ilpconcern_comments', $report, true);
+            $commentinstance = insert_record('block_lpr_comments', $report, true);
+        
+            $message = '<p>'.$newcomment;                
+
+        }else{
+         
+            $report->userid  = $USER->id;
+			$report->comment = $data->comment;
+			$report->format  = $data->format;
+			$report->modified = time();
+			$report->format = $data->format;  
+			$report->setbyuserid = $USER->id;  
+			$report->setforuserid = $userid;  
+			        
+            //$commentinstance = update_record('ilpconcern_comments', $report);
+            $commentinstance = update_record('block_lpr_comments', $report);
+                
+            $message = '<p>'.$updatedcomment;                
+        }
+        
+        /*  what is this??
+        if($CFG->ilpconcern_send_comment_message == 1){
+            $message .= '<br /><a href="'.$commenturl.'">'.$concernview.'</a></p>'.$comment;
+            message_post_message($messagefrom, $messageto, $message, FORMAT_HTML, 'direct');
+        } 
+        */  
+      }
+}
+
+function lpr_update_comment_menu($commentid,$context) {
+
+	global $USER, $CFG;
+	
+    $id = optional_param('id', 0, PARAM_INT); // Course Module ID, or
+	$userid = optional_param('userid', 0, PARAM_INT); //User we wish to view
+    $courseid = optional_param('courseid', 0, PARAM_INT); //Course
+	
+	//$report = get_record('ilpconcern_comments', 'id', $commentid);
+	$report = get_record('block_lpr_comments', 'id', $commentid);
+	
+	if ($userid > 0){
+		$user = get_record('user', 'id', $userid);
+	}elseif ($id > 0){
+		$user = get_record('user', 'id', $id);
+	}else{
+		$user = $USER;
+	}
+	
+	$age = time() - $report->created;
+    $ownpost = ($USER->id == $report->userid);
+	$output = '';
+	
+	if((($age < $CFG->maxeditingtime) && $ownpost) || has_capability('moodle/site:doanything', $context)) {
+			$output .= '<a title="'.get_string('edit').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'commentid='.$report->id.'&amp;userid='.$user->id.'&amp;lprid='.$report->lprid.'&amp;action=updatecomment"><img src="'.$CFG->pixpath.'/t/edit.gif" alt="'.get_string('edit').'" /> '.get_string('edit').'</a> | <a title="'.get_string('delete').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'commentid='.$report->id.'&amp;userid='.$user->id.'&amp;lprid='.$report->lprid.'&amp;action=delete"><img src="'.$CFG->pixpath.'/t/delete.gif" alt="'.get_string('delete').'" /> '.get_string('delete').'</a>';
 	}
 	
 	return $output;

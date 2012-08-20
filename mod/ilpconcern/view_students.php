@@ -374,12 +374,14 @@
 			//$target_complete =	$lpr_db->count_targets(array("$auser->id"=>$auser->id),TARGETS_COMPLETE, NULL, NULL, $ts_year_start, $ts_year_end);
             //$targets	= ($target_set == 0) ? 'No' : "{$target_complete}/{$target_set}";
             
+            /*
             $targets = $lpr_db->get_target_totals($auser->id, $ts_year_start, $ts_year_end);
             
             $target_class = ($targets == 'No') ? ' class="no_link"' : '';
            
             $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilptarget/target_view.php?courseid='.$courseid.'&amp;userid='.$auser->id.'"'.$target_class.'>' . $targets . ' Targets</a>';
-
+			*/
+			
 			// nkowald - 2010-11-09 - Adding number of student status changes for this year
 			// nkowald - 2010-11-22 - Removed the course search, now shows all progresses for student.
 			//$query = "SELECT * FROM mdl_ilpconcern_posts WHERE setforuserid = ".$auser->id." AND course = ".$courseid." AND status=3 AND timecreated > $ts_year_start";
@@ -447,9 +449,9 @@
 				$row[] .= $report4text;				
 			}
 
-			// nkowald - 2011-10-18 - Adding subject targets oustanding
+			// nkowald - 2011-10-18 - Adding targets oustanding
             $complete_modules_txt = $attpunc->getModuleCompletion($auser, $attpunc->current_term_no);
-            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'">'. $complete_modules_txt . ' Subject Targets</a>';
+            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'">'. $complete_modules_txt . ' Targets</a>';
 			
 			// nkowald - 2011-05-19 - View ILP
             $row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/view.php?courseid='.$courseid.'&id='.$auser->id.'" class="view_ilp">View ILP</a>';

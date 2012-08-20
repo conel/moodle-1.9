@@ -24,7 +24,7 @@
                         <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
                        <?php } ?>
                 </td>
-                <td class="quater" colspan="2">
+                <td class="quater">
                     <?php
                     if($can_write && $editable) {
                         echo choose_from_menu($lecturers, 'lecturer_id', $lpr->lecturer_id, '&nbsp;');
@@ -40,6 +40,9 @@
                         }
                     } ?>
                 </td>
+				<!--td>
+					<?php //echo ilptarget_update_target_status_menu($lpr->id);?>
+				</td-->
             </tr>
 			<tr>
 				<td class="quater <?php echo ($can_write && $editable) ? 'required' : ''; ?>">
@@ -48,7 +51,7 @@
                         <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
                    <?php } ?>
 				</td>
-				<td class="quater" colspan="2">
+				<td class="quater">
 				<?php
 					if($can_write && $editable) {
                         echo choose_from_menu($terms, 'term_id', $current_term, '&nbsp;');
@@ -59,8 +62,60 @@
                         echo (!empty($lpr_term)) ?  $lpr_term->term_name : 'undefined';
                     }
 				?>
+				</td>	
+				<td>
+					<label>Deadline:</label>
 				</td>
+				<td>
+					<?php
+						if($can_write && $editable) {
+					?>
+							<label for="id_c67626" class="accesshide">Day</label>
+							<select id="id_c67626" name="dday">
+								<?php 
+										$d=date('j',time());
+										for($i=1;$i<32;$i++)echo '<option value="'.$i.'" '.($i==$d?'selected="selected"':'').'>'.$i.'</option>'; 
+								?>
+							</select>&nbsp;
+							<label for="id_968541" class="accesshide">Month</label>
+							<select id="id_968541" name="dmonth">
+								<?php 
+										$ms = array('','January','February','March','April','May','June','July','August','September','October','November','December');
+										$m=date('m',time());
+										for($i=1;$i<13;$i++)echo '<option value="'.$i.'" '.($i==$m?'selected="selected"':'').'>'.$ms[$i].'</option>'; 
+								?>
+							</select>&nbsp;
+							<label for="id_a46d22" class="accesshide">Year</label>
+							<select id="id_a46d22" name="dyear">
+								<?php 
+										$y=date('Y',time());
+										for($i=1970;$i<2021;$i++)echo '<option value="'.$i.'" '.($i==$y?'selected="selected"':'').'>'.$i.'</option>'; 
+								?>
+							</select>			
+					<?php
+						} else {
+							echo date("d F Y",$lpr->deadline);
+						}
+					?>
+				</td>
+				<td>
+					<?php if($lpr->achieved == 1){ ?><img class="achieved" src="<?php echo $CFG->pixpath;?>/mod/ilptarget/achieved.gif" alt="" /><?php } ?>&nbsp;
+				</td>		
 			</tr>
+            <tr>
+               <td>
+                    <?php echo get_string('name', 'ilptarget'); ?>
+                </td>
+                <td>
+                   <?php
+                    if($can_write && $editable) {
+                        print_textfield ('areaofdev', !empty($lpr->areaofdev) ? $lpr->areaofdev : '','',80);
+                    } else {
+                        echo !empty($lpr->areaofdev) ? $lpr->areaofdev : 'None.';
+                    } ?>
+                </td>
+                <td colspan="2">&nbsp;</td>            
+            </tr>
             <tr>
                 <td>
                     <?php //echo get_string('assessmentgroup', 'block_lpr'); ?>
@@ -189,7 +244,7 @@
 			?>
             <tr>
                 <th colspan="5">
-					Subject / Unit Progress
+					Target
                     <?php //echo get_string('comments', 'block_lpr'); ?>
                 </th>
             </tr>
@@ -242,7 +297,7 @@
 
 					echo '
 					<div class="note">
-						<p><span>This is the subject target you just added/updated</span><br /><span>Options:</span> Add tutor review for this user, add subject target for the next user, view the ILP list.</p>
+						<p><span>This is the target you just added/updated</span><br /><span>Options:</span> Add tutor review for this user, add target for the next user, view the ILP list.</p>
 					</div>';
 
 					if (!$editable) {
@@ -265,7 +320,7 @@
 							$learner_name_btn = (strlen($learner_name) > 15) ? trim(substr($learner_name, 0, 15)) . '...' : $learner_name;
 							echo '<h5>Next Learner</h5>';
 							echo "$user_pic $learner_name";
-							echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$course->id.'&ilp=1&learner_id='.$next_student->id.'\'" name="subject_target" value="Add Subject Target for '.$learner_name_btn.'" />';
+							echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$course->id.'&ilp=1&learner_id='.$next_student->id.'\'" name="subject_target" value="Add Target for '.$learner_name_btn.'" />';
 							echo '<br /><br />';
 						}
 

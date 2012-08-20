@@ -17,7 +17,7 @@
     $id = optional_param('id', 0, PARAM_INT); // Course Module ID, or
     $a  = optional_param('a', 0, PARAM_INT);  // concerns ID
 	$userid = optional_param('userid', 0, PARAM_INT); // User's concerns we wish to view
-	$courseid     = optional_param('courseid', 0, PARAM_INT); 
+	$courseid     = optional_param('courseid', 0, PARAM_INT);
 	$status = optional_param('status', 0, PARAM_INT);
 	$studentstatus = optional_param('studentstatus', 0, PARAM_INT);
 	$concernspost = optional_param('concernspost', 0, PARAM_INT);
@@ -25,7 +25,9 @@
 	$template = optional_param('template',0,PARAM_INT);
 	// nkowald - 2010-11-30 - Added required param for target grade change
 	$g = optional_param('g', '', PARAM_RAW);
-	
+
+	$achieved = optional_param('achieved', 0, PARAM_INT);
+		
 	require_login();
     //add_to_log($userid, "concerns", "view", "view.php", "$userid");
 	// nkowald - 2011-10-25 - Updated this to use it as it's supposed to be used and change 'concerns' to 'ilp' as module level more useful (and correct)
@@ -64,11 +66,11 @@
 		$link_values = '?id='.$cm->id.'&amp;userid='.$user->id;
 
 		$navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> -> <a href=\"../../blocks/ilp/view.php?courseid=$course->id&amp;id=$user->id\">$strilp</a>";		
+
 		print_header("$strconcerns: ".fullname($user)."", "$course->fullname",
                  "$navigation -> ".$strconcerns." -> ".fullname($user)."", 
                   "", "", true, update_module_button($cm->id, $course->id, $strconcerns), 
                   navmenu($course, $cm));
-
 		
 		$baseurl = $CFG->wwwroot.'/mod/ilpconcern/view.php?id='.$id.'&amp;userid='.$user->id;
 		$footer = $course;
@@ -76,10 +78,11 @@
     }elseif ($courseid > 0) { //module is accessed via report from within course 
 
 
-	$course = $course = get_record('course', 'id', $courseid);
+		$course = $course = get_record('course', 'id', $courseid);
 		$context = get_context_instance(CONTEXT_COURSE, $course->id);
 		$link_values = '?courseid='.$course->id.'&amp;userid='.$user->id;
 		$navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> -> <a href=\"../../blocks/ilp/view.php?courseid=$course->id&amp;id=$user->id\">$strilp</a>";	
+    
 		print_header("$strconcerns: ".fullname($user)."", "$course->fullname",
                  "$navigation -> ".$strconcerns." -> ".fullname($user)."", 
                   "", "", true, "", "");
@@ -304,12 +307,12 @@ if($action == 'updateconcern'){
 		$tabrows[] = new tabobject('3', "$link_values&amp;status=3", "Student Progress");
 		}
 		// nkowald - 2010-07-01 - Added Subject Reviews to this page
-		$tabrows[] = new tabobject('4', "$link_values&amp;status=4", "Subject Targets");
+		$tabrows[] = new tabobject('4', "$link_values&amp;status=4", "Targets");
 
 		$tabs[] = $tabrows;
 
     	print_tabs($tabs, $status);
-		
+			
 		// nkowald - 2011-07-22 - Moved this above content to make it easier to add these
 		echo '<div class="addbox">';
 
@@ -326,18 +329,40 @@ if($action == 'updateconcern'){
 				echo '<a href="'.$link_values.'&amp;action=updateconcern&amp;status=3"><span></span>'.get_string('addconcern', 'ilpconcern', 'Student Progress').'</a>';
 			}
 			if($CFG->ilpconcern_report4 == 1 && (has_capability('mod/ilpconcern:addreport4', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport4', $context)))) {
-				echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'"><span></span>Add Subject Target</a>';
+				echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'"><span></span>Add Target</a>';
 			}
 
 		echo '<br class="clear_both" />';
 		echo '</div><br class="clear_both" />';
+	
+		if ($status == 4) {
+			$tabs = array();
+			$tabrows = array();
+			
+			$tabrows[] = new tabobject('0', "$link_values&amp;status=4&amp;achieved=0", get_string('outstanding', 'ilptarget'));
+			$tabrows[] = new tabobject('1', "$link_values&amp;status=4&amp;achieved=1", get_string('achieved', 'ilptarget'));
+			$tabrows[] = new tabobject('3', "$link_values&amp;status=4&amp;achieved=3", get_string('withdrawn', 'ilptarget'));
+			$tabs[] = $tabrows;
+			
+			print_tabs($tabs, $achieved);
+
+			echo '<div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div>';	
+		}	
 
     	$i = $status + 1;
 		display_ilpconcern($user->id, $courseid, $i, TRUE, FALSE, FALSE, $sortorder='DESC', 0);
 		
+		if(isset($_POST['lprid'])) {
+			require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
+			$lpr_db = new block_lpr_db();
+			$lpr = $lpr_db->get_lpr((int)$_POST['lprid']);
+			$lpr->achieved = (int)$_POST['achieved']; 
+			$lpr_db->set_lpr($lpr);
+		}
+		
 		// nkowald - 2010-07-01 - Added Subject Reviews to this page
 		if ($status == 4) {
-			display_ilp_lprs($user->id, $courseid, TRUE, TRUE, TRUE, 'DESC', 10);
+			display_ilp_lprs($user->id, $courseid, TRUE, TRUE, TRUE, 'DESC', 10, true, $achieved);
 		}
 
 		$saved = (isset($_POST['saved'])) ? $_POST['saved'] : 0;
@@ -353,11 +378,11 @@ if($action == 'updateconcern'){
             if ($status == 0) {
 				// Tutor Reviews
 				echo '<p><span>This is the tutor review you just added/edited</span><br />
-				<span>Options:</span> Add subject target for this user, add tutor review for the next user, view the ILP list.</p>';
+				<span>Options:</span> Add target for this user, add tutor review for the next user, view the ILP list.</p>';
             } else if ($status == 3) {
-				// Subject Target
+				// Target
 				echo '<p><span>This is the student progress you just added/edited</span><br />
-				<span>Options:</span> Add subject target for this user, add student progress for the next user, view the ILP list.</p>';
+				<span>Options:</span> Add target for this user, add student progress for the next user, view the ILP list.</p>';
 			}
 			echo '</div>';
 
@@ -370,8 +395,8 @@ if($action == 'updateconcern'){
 				
 				if ($status == 0) {
 					// Tutor Reviews
-					// Add button to add a subject target for student	
-					echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$user->id.'\'" name="subject_target" value="Add Subject Target for '.$learner_name.'" />';
+					// Add button to add a target for student	
+					echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$user->id.'\'" name="subject_target" value="Add Target for '.$learner_name.'" />';
 					
 					// nkowald - added a way to show next learner based on chosen group
 					// get_next_user_in_course defined in /lib/weblib.php
@@ -390,7 +415,7 @@ if($action == 'updateconcern'){
 				} else if ($status == 3) {
 					// Student Progress
 					// Add button to add a for student
-					echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$user->id.'\'" name="subject_target" value="Add Subject Target for '.$learner_name.'" />';
+					echo '<br /><input class="ilpn_button" type="button" onclick="javascript:window.location = \''. $CFG->wwwroot .'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$user->id.'\'" name="subject_target" value="Add Target for '.$learner_name.'" />';
 					
 					// nkowald - added a way to show next learner based on chosen group
 					// get_next_user_in_course defined in /lib/weblib.php

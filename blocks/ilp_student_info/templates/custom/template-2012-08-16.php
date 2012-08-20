@@ -1,7 +1,6 @@
 <?php 
 include ('access_context.php'); 
 require_once($CFG->dirroot.'/blocks/ilp/templates/custom/dbconnect.php'); 
-require_once("{$CFG->dirroot}/blocks/lpr/access_content.php");
 
 $query = "SELECT * FROM mdl_user where id = $userid";
 if ($ausers = get_records_sql($query)) {
@@ -258,42 +257,11 @@ echo $html;
 
 echo '</div>';
 
-// view/set target grade
-
-if($can_write) {
-	if(isset($_POST['tgrade'])){
-		$tgrade = (int)$_POST['tgrade'];
-		set_target_grade($user->id, $tgrade);	
-	}
-}
-
-$targets=get_records('targets','','','id');
-$target_grade = (get_target_grade($user->id)) ? get_target_grade($user->id) : 'not set';
-                
-echo '<div class="generalbox" id="ilp-student_info-overview">';
-echo '<div class="target_grade">';
-if($can_write) {
-	echo '<b>Update Target Grade</b>'; 
-	echo '<form method="post">';
-	echo '<select name="tgrade" onchange="this.form.submit();">';
-	foreach($targets as $target) {
-		echo '<option value='.$target->id.' '.($target->name==$target_grade?'selected="selected"':'').'>'.$target->name.'</option>';
-	}
-	echo '</select>';
-	echo '</form>';
-} else {
-	echo '<b>Target Grade:</b> '. $target_grade;
-}
-print '</div>';
-echo '</div>';
-
-    
 // Not sure if this is needed, will restore if so
 
 if($config->ilp_show_student_info == '1' && ($view == 'info' || $view == 'all')) {
     echo '<div class="generalbox" id="ilp-student_info-overview">'; 
-    echo '<h3>Student Overall Goal</h3>'; 
-    display_ilp_student_info($user->id,$courseid,true,false); 
+    display_ilp_student_info($user->id,$courseid); 
     echo '</div>';
 }
 

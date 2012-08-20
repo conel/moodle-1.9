@@ -24,7 +24,7 @@ if(!$can_write) {
 // include the LPR databse library
 require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
 
-// nkowald - 2011-10-13 - Adding My Attendance Punctuality Class because these subject targets need to come from the new views
+// nkowald - 2011-10-13 - Adding My Attendance Punctuality Class because these targets need to come from the new views
 require_once($CFG->dirroot . '/blocks/ilp/AttendancePunctuality.class.php');
 
 // include the LPR library

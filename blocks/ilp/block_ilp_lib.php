@@ -427,7 +427,7 @@ if($full == TRUE) {
 	 * @param status	    -1 means all otherwise a particular status can be entered
 */
 
-function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='DESC',$limit=0) {
+function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='DESC',$limit=0,$showcmds=TRUE) {
 
 	global $CFG,$USER;
 	require_once("$CFG->dirroot/blocks/ilp_student_info/block_ilp_student_info_lib.php");
@@ -458,9 +458,11 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 
 		if ($icon == TRUE) {
 			if (file_exists('templates/custom/pix/report'.$report.'.gif')) {
-				echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/templates/custom/pix/report'.$report.'.gif" alt="" />';
+				//echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/templates/custom/pix/report'.$report.'.gif" alt="" />';
+				echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/templates/custom/pix/lpr.gif" alt="LPR" />';
 			}else{
-      			echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/pix/report'.$report.'.gif" alt="" />';
+      			//echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/pix/report'.$report.'.gif" alt="" />';
+      			echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/pix/lpr.gif" alt="" />';
 			}
 		}
 
@@ -514,9 +516,10 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 
 					$commentcount = count_records('ilpconcern_comments', 'concernspost', $post->id);
 
-					echo '<div class="commands"><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;concernspost='.$post->id.'">'.$commentcount.' '.get_string("comments", "ilpconcern").'</a>';
-
-					echo ilpconcern_update_menu($post->id,$context);
+					if($showcmds){
+						echo '<div class="commands"><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;concernspost='.$post->id.'">'.$commentcount.' '.get_string("comments", "ilpconcern").'</a>';
+						echo ilpconcern_update_menu($post->id,$context);
+					}
 
 					echo '</div>';
 
@@ -753,9 +756,10 @@ function display_ilp_subject_report ($id,$courseid,$full=TRUE,$title=TRUE,$icon=
      * @param limit         limit the number of LPRs shown on the page
 */
 
-function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='ASC',$limit=0) {
+function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='ASC',$limit=0,$iplpage=true, $achieved='') {
 
     global $CFG, $USER;
+    require_once("$CFG->dirroot/mod/ilptarget/lib.php");
     include ('access_context.php');
 
     $module = 'project/ilp';
@@ -775,13 +779,13 @@ function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sort
     // instantiate the lpr db wrapper
     $lpr_db = new block_lpr_db();
 
-    // get all the LPRs
+    // get all the LPRs  
     if(!empty($config->ilp_lprs_course_specific) && ($courseid > 1)){
-        $lprs = $lpr_db->get_lprs($id, $courseid, $sortorder, $limit);
+        $lprs = $lpr_db->get_lprs($id, $courseid, $sortorder, $limit, $achieved);
     } else {
-        $lprs = $lpr_db->get_lprs($id, null, $sortorder, $limit);
+        $lprs = $lpr_db->get_lprs($id, null, $sortorder, $limitt, $achieved);
     }
-
+		
     if($title == TRUE) {
         echo '<h2';
         if($full == FALSE) {
@@ -791,17 +795,17 @@ function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sort
 
         if ($icon == TRUE) {
             if (file_exists('templates/custom/pix/target.gif')) {
-                echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/templates/custom/pix/lpr.gif" alt="LPR" />';
+                echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/templates/custom/pix/target.gif" alt="LPR" />';
             }else{
-                echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/pix/lpr.gif" alt="LPR" />';
+                echo '<img src="'.$CFG->wwwroot.'/blocks/ilp/pix/target.gif" alt="LPR" />';
             }
         }
         
-        //echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?'.(($courseid > 1)?'course_id='.$courseid.'&amp;' : '').'learner_id='.$id.'&amp;ilp=1">'.(($access_isuser) ? 'My Subject Targets' : 'Subject Targets' ).'</a></h2>';
+        //echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/list.php?'.(($courseid > 1)?'course_id='.$courseid.'&amp;' : '').'learner_id='.$id.'&amp;ilp=1">'.(($access_isuser) ? 'My Targets' : 'Targets' ).'</a></h2>';
 		if ($courseid > 1) {
-			echo '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$id.'&amp;status=4">'.(($access_isuser) ? 'My Subject Targets' : 'Subject Targets' ).'</a></h2>';
+			echo '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$id.'&amp;status=4">'.(($access_isuser||$iplpage) ? 'My Targets' : 'Targets' ).'</a></h2>';
 		} else {
-			echo '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$id.'&amp;status=4">'.(($access_isuser) ? 'My Subject Targets' : 'Subject Targets' ).'</a></h2>';
+			echo '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$id.'&amp;status=4">'.(($access_isuser||$iplpage) ? 'My Targets' : 'Targets' ).'</a></h2>';
 		}
 	}
 
@@ -815,7 +819,7 @@ function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sort
         );
 		*/
 		
-		// Only get subject targets added this year
+		// Only get targets added this year
         $lpr_count = count_records_sql(
             'SELECT COUNT(*)
             FROM '.$CFG->prefix.'block_lpr
@@ -825,13 +829,13 @@ function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sort
 		
 		$review_txt = ($lpr_count > 1) ? 'Targets' : 'Target';
 
-        echo '<p style="display:inline; margin-left: 5px">'.$lpr_count.' '.$review_txt.'</p>';
+        //echo '<p style="display:inline; margin-left: 5px">'.$lpr_count.' '.$review_txt.'</p>';
     }
 
     if($full == TRUE) {
         echo '<div class="block_ilp_lprs">';
 
-if(!empty($lprs)) {
+	if(!empty($lprs)) {
             foreach($lprs as $lpr) {
                 $lecturer = get_record('user','id',$lpr->lecturer_id);
                 $course = get_record('course','id',$lpr->course_id);
@@ -856,6 +860,8 @@ if(!empty($lprs)) {
 							}
 						$report_html .= '</td>';
 						$report_html .= '</tr>';
+						
+						
 						$report_html .= '<tr>';
 						$report_html .= '<td class="label">'.get_string('punctuality', 'block_lpr').'</td>';
 						$report_html .= '<td>';
@@ -864,6 +870,16 @@ if(!empty($lprs)) {
 							}
 						$report_html .= '</td>';
 						$report_html .= '</tr>';
+						
+						$report_html .= '<tr>';
+						$report_html .= '<td class="label">'.get_string('name', 'ilptarget').'</td>';
+						$report_html .= '<td>';
+							if(!empty($lpr->areaofdev)) {
+								$report_html .= $lpr->areaofdev;
+							}
+						$report_html .= '</td>';
+						$report_html .= '</tr>';
+												
 						foreach($indicators as $ind) {
 							if (!empty($answers[$ind->id])) {
 								$report_html .= '<tr>';
@@ -877,25 +893,27 @@ if(!empty($lprs)) {
 						$report_html .= '<tr><td class="label">';
 						// nkowald - 2011-02-02 - Changed name to 'Subject / Unit Progress' at the request of Scott
 						//$report_html .= get_string('comments', 'block_lpr');
-						$report_html .= 'Subject / Unit Progress';
+						$report_html .= 'Target';
 						$report_html .= '</td>';
 						$report_html .= '<td>';
-						$report_html .= $lpr->comments;
+						$report_html .= $lpr->comments; 
 						$report_html .= '</td>';
 						$report_html .= '</tr>';
 
 					$report_html .= '</table>';
-				$report_html .= '</td><td width="20%" class="subject_report_meta">';
+					$report_html .= '</td><td width="20%" class="subject_report_meta">';
 
 					// Tutor details here	
 					$report_html .= '<ul>';
 					$report_html .= '<li><strong>'.get_string('lecturer', 'block_lpr').'</strong>: '.fullname($lecturer);
 					$report_html .= '<li><strong>'.get_string('course').'</strong>: '.$course->shortname.'</li>';
+					
 					if ($ass_desc != '') {
 						$report_html .= '<li><strong>Assessment Description</strong>: '.$ass_desc.'</li>';
 					}
+					
 					if(!empty($modules)) {
-					$report_html .= '<li><strong>'.get_string('modules', 'block_lpr').'</strong>:';
+						$report_html .= '<li><strong>'.get_string('modules', 'block_lpr').'</strong>:';
 						$report_html .= '<ul>';
 						foreach ($modules as $module) {
 							$report_html .= '<li>'.$module->module_code.' '.$module->module_desc.'</li>';
@@ -905,17 +923,38 @@ if(!empty($lprs)) {
 					$report_html .= '</li>';
 					$report_html .= '<li><strong>'.get_string('set', 'ilptarget').'</strong>: '.userdate($lpr->timecreated, get_string('strftimedate'));
 					$report_html .= '</li></ul>';
-
+					
+					if(!empty($lpr->deadline)){
+						$report_html .= '<ul><li><strong>Deadline:</strong> '.date('d F Y',$lpr->deadline).'</li></ul>';
+					} else {
+						$report_html .= '<ul><li><strong>Deadline:</strong> not set</li></ul>';						
+					}
+					
 					$report_html .= '<div class="commands">';
-					if($can_view) {
+					if($can_view) {					
+						$commentcount = count_records('block_lpr_comments', 'lprid', $lpr->id, 'setforuserid', $id);
+						//$report_html .= '<a href="'.$CFG->wwwroot.'/mod/ilptarget/target_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;targetpost='.$post->id.'">'.$commentcount.' '.get_string("comments", "ilptarget").'</a> ';
+						$report_html .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;lprid='.$lpr->id.'">'.$commentcount.' '.get_string("comments", "ilptarget").'</a> ';
+
 						$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/view.php?id='.$lpr->id.'&amp;ilp=1" title="'.get_string('view').'"><img alt="'.get_string('view').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/preview.gif" /> '.get_string('view').'</a> | ';
+
 					}
 					if($can_write) {
 						$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/edit.php?id='.$lpr->id.'&amp;ilp=1" title="'.get_string('edit').'"><img alt="'.get_string('edit').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/edit.gif"/> '.get_string('edit').'</a> | ';
 						$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/delete.php?id='.$lpr->id.'&amp;url='.$url.'" title="'.get_string('delete').'"><img alt="'.get_string('delete').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/delete.gif" /> '.get_string('delete').'</a> | ';
+
+						$report_html .=  ilptarget_update_target_status_menu($lpr);		
 					}
-					
+				
+				
+				if($lpr->achieved == 1){
+					$report_html .= '<img class="achieved" src="'.$CFG->pixpath.'/mod/ilptarget/achieved.gif" alt="" />';
+				}	
+						
+				$report_html .= '</div>';
+									
 				$report_html .= '</td></tr>';
+				
 				$report_html .= '</table>';
 				
 				echo $report_html;
@@ -924,6 +963,155 @@ if(!empty($lprs)) {
         }
         echo '</div>';
     }
+    //if(!empty($courseid)) { // you can't create an LPR without a learner and a course
+    //    echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/create.php?learner_id='.$id.'&amp;course_id='.$courseid.'">'.get_string('createnew', 'block_lpr').'</a>';
+    //}
+}
+
+function display_ilp_lpr ($lprid,$userid,$courseid) {
+
+    global $CFG, $USER;
+    require_once("$CFG->dirroot/mod/ilptarget/lib.php");
+    include ('access_context.php');
+
+    $module = 'project/ilp';
+    $config = get_config($module);
+
+    $user = get_record('user','id',$userid);
+
+    // include the LPR databse library
+    require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
+
+	// include the LPR library
+    require_once("{$CFG->dirroot}/blocks/lpr/block_lpr_lib.php");
+
+    // include the LPR permissions check
+    require_once("{$CFG->dirroot}/blocks/lpr/access_content.php");
+
+    // instantiate the lpr db wrapper
+    $lpr_db = new block_lpr_db();
+
+    $lpr = $lpr_db->get_lpr($lprid);
+
+    echo '<div class="block_ilp_lprs">';
+
+	$lecturer = get_record('user','id',$lpr->lecturer_id);
+	$course = get_record('course','id',$lpr->course_id);
+	$modules = $lpr_db->get_modules($lpr->id, true);
+	$indicators = $lpr_db->get_indicators();
+	$answers = $lpr_db->get_indicator_answers($lpr->id);
+	$atten = $lpr_db->get_attendance($lpr->id);
+	// We've moved LPR so need to update this url redirect link
+	//$url = urlencode("{$CFG->wwwroot}/blocks/ilp/view.php?id={$id}" . ((!empty($courseid)) ? "&courseid={$courseid}" : ''));
+	$url = urlencode($CFG->wwwroot. "/mod/ilpconcern/concerns_view.php" . ((!empty($courseid)) ? "?courseid=" . $courseid : "") . ((!empty($user->id)) ? "&userid=".$user->id : "") . "&status=4");
+	// nkowald - 2010-07-01 - Need to show assessment Description
+	$block_lpr_det = get_record('block_lpr','id',$lpr->id);
+	$ass_desc = ($block_lpr_det->unit_desc != NULL) ? $block_lpr_det->unit_desc : '';
+
+	$report_html = '<table class="subject_report target_block"><tr><td style="vertical-align:top;" width="80%">';
+	
+	// Main table with stats here
+	$report_html .= '<table border="1" width="100%"><tr>';
+		$report_html .= '<td width="200" class="label">'. get_string('attendance', 'block_lpr'). '</td>';
+		$report_html .= '<td>';
+			if(!empty($atten->attendance)) {
+				$report_html .= round($atten->attendance, 2). '% ('.map_attendance($atten->attendance).')';
+			}
+		$report_html .= '</td>';
+		$report_html .= '</tr>';
+		$report_html .= '<tr>';
+		$report_html .= '<td class="label">'.get_string('punctuality', 'block_lpr').'</td>';
+		$report_html .= '<td>';
+			if(!empty($atten->punctuality)) {
+				$report_html .= round($atten->punctuality, 2).'% ('.map_attendance($atten->punctuality).')';
+			}
+		$report_html .= '</td>';
+		$report_html .= '</tr>';
+		foreach($indicators as $ind) {
+			if (!empty($answers[$ind->id])) {
+				$report_html .= '<tr>';
+				$report_html .= '<td class="label">' . $ind->indicator . '</td>';
+				$report_html .= '<td>';
+				$report_html .= !empty($answers[$ind->id]) ? $answers[$ind->id]->answer : null;
+				$report_html .= '</td>';
+				$report_html .= '</tr>';
+			}
+		}
+		$report_html .= '<tr><td class="label">';
+		// nkowald - 2011-02-02 - Changed name to 'Subject / Unit Progress' at the request of Scott
+		//$report_html .= get_string('comments', 'block_lpr');
+		$report_html .= 'Target';
+		$report_html .= '</td>';
+		$report_html .= '<td>';
+		$report_html .= $lpr->comments; 
+		$report_html .= '</td>';
+		$report_html .= '</tr>';
+
+	$report_html .= '</table>';
+	$report_html .= '</td><td width="20%" class="subject_report_meta">';
+
+	// Tutor details here	
+	$report_html .= '<ul>';
+	$report_html .= '<li><strong>'.get_string('lecturer', 'block_lpr').'</strong>: '.fullname($lecturer);
+	$report_html .= '<li><strong>'.get_string('course').'</strong>: '.$course->shortname.'</li>';
+	
+	if ($ass_desc != '') {
+		$report_html .= '<li><strong>Assessment Description</strong>: '.$ass_desc.'</li>';
+	}
+	
+	if(!empty($modules)) {
+		$report_html .= '<li><strong>'.get_string('modules', 'block_lpr').'</strong>:';
+		$report_html .= '<ul>';
+		foreach ($modules as $module) {
+			$report_html .= '<li>'.$module->module_code.' '.$module->module_desc.'</li>';
+		}
+		$report_html .= '</ul>';
+	}
+	$report_html .= '</li>';
+	$report_html .= '<li><strong>'.get_string('set', 'ilptarget').'</strong>: '.userdate($lpr->timecreated, get_string('strftimedate'));
+	$report_html .= '</li></ul>';
+	
+	if(!empty($lpr->deadline)){
+		$report_html .= '<ul><li><strong>Deadline:</strong> '.date('d F Y',$lpr->deadline).'</li></ul>';
+	} else {
+		$report_html .= '<ul><li><strong>Deadline:</strong> not set</li></ul>';						
+	}
+	
+	/*
+	$report_html .= '<div class="commands">';
+	
+	if($can_view) {					
+		$commentcount = count_records('lpr_comments', 'lprid', $lpr->id);
+		//$report_html .= '<a href="'.$CFG->wwwroot.'/mod/ilptarget/target_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;targetpost='.$post->id.'">'.$commentcount.' '.get_string("comments", "ilptarget").'</a> ';
+		$report_html .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_comments.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$id.'&amp;lprid='.$lpr->id.'">'.$commentcount.' '.get_string("comments", "ilptarget").'</a> ';
+
+		$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/view.php?id='.$lpr->id.'&amp;ilp=1" title="'.get_string('view').'"><img alt="'.get_string('view').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/preview.gif" /> '.get_string('view').'</a> | ';
+
+	}
+	
+	if($can_write) {
+		$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/edit.php?id='.$lpr->id.'&amp;ilp=1" title="'.get_string('edit').'"><img alt="'.get_string('edit').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/edit.gif"/> '.get_string('edit').'</a> | ';
+		$report_html .= '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/delete.php?id='.$lpr->id.'&amp;url='.$url.'" title="'.get_string('delete').'"><img alt="'.get_string('delete').'" src="'.$CFG->wwwroot.'/theme/conel/pix/t/delete.gif" /> '.get_string('delete').'</a> | ';
+
+		$report_html .=  ilptarget_update_target_status_menu($lpr);		
+	}
+
+	
+	if($lpr->achieved == 1){
+		$report_html .= '<img class="achieved" src="'.$CFG->pixpath.'/mod/ilptarget/achieved.gif" alt="" />';
+	}	
+			
+	$report_html .= '</div>';
+	*/
+						
+	$report_html .= '</td></tr>';
+	
+	$report_html .= '</table>';
+	
+	echo $report_html;
+
+    echo '</div>';
+
     //if(!empty($courseid)) { // you can't create an LPR without a learner and a course
     //    echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/create.php?learner_id='.$id.'&amp;course_id='.$courseid.'">'.get_string('createnew', 'block_lpr').'</a>';
     //}
@@ -1037,8 +1225,9 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	$html = '';
 	
 	$html .= '<div class="generalbox">';
-	
+		
 	if ($results = get_records_sql($query)) {
+		if(!empty($results)) $html .= '<span class="author" style="color:red;float:left">You have a cause of concern.</span>';	//mdl_ilpconcern_posts
 		foreach ($results as $result) {
 			$html .= '<span class="author">By '.$result->firstname.' '.$result->lastname.' '.date('d/m/y', $result->timemodified).'</span>';
 			$html .= '<p>'.$result->concernset.'</p>';
@@ -1053,7 +1242,9 @@ function display_ilp_your_progress($learner_id, $course_id) {
 		} else {
 			$datestring = get_string("never");
 		}	
+		
 		$html .= '<span class="last_logged_in">Last logged in: '.$datestring.'</span>';
+
 	}
 	$html .= '</div>';
 	echo $html;

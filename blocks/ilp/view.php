@@ -36,7 +36,8 @@
         print_header(fullname($user)." ".(($access_isuser)?get_string('viewmyilp','block_ilp'):get_string('ilp','block_ilp')), $course->fullname,                    (($access_isuser)?get_string('viewmyilp','block_ilp'):(($courseid)?"<a href=\"list.php?courseid=$course->id\">".get_string('ilps','block_ilp')."</a>":get_string('ilp','block_ilp')))." -> ".fullname($user)."", "", "", true, "&nbsp;", navmenu($course));
     }
 
-    block_ilp_report($user->id, $course->id);
+	block_ilp_report($user->id, $course->id);
+    
     print_footer($course);
 
 ?>

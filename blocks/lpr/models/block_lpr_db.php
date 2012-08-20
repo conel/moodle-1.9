@@ -94,7 +94,7 @@ class block_lpr_db {
      * @param string $limit The numer of LPRs to return
      * @return array The array of result objects
      */
-    function get_lprs($learner_id = null, $course_id = null, $sortorder = 'ASC', $limit = null) {
+    function get_lprs($learner_id = null, $course_id = null, $sortorder = 'ASC', $limit = null, $achieved='') {
         global $CFG;
 
         $where = array();
@@ -103,6 +103,9 @@ class block_lpr_db {
             $where[] = "lpr.learner_id={$learner_id}";
         if(!empty($course_id))
             $where[] = "lpr.course_id={$course_id}";
+            
+        if($achieved!=='')
+            $where[] = "lpr.achieved={$achieved}";
 
         return get_records_sql(
             "SELECT lpr.*

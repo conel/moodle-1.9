@@ -33,7 +33,7 @@
     }
 
     block_ilp_report($user->id,$course->id);
-
+	
     print_footer($course);
 
 ?>
