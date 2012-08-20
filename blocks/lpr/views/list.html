@@ -9,14 +9,14 @@ $user_id_post = (isset($_GET['learner_id']) && $_GET['learner_id'] != '') ? $_GE
 if ($can_write && !empty($learner)) { ?>
         <form action="<?php echo $CFG->wwwroot;?>/blocks/lpr/actions/new.php?<?php echo implode('&amp;', $params); ?>" method="post">
             <div>
-                <input type="submit" name="submit" value="Add Subject Target" />
+                <input type="submit" name="submit" value="Add Target" />
             </div>
         </form>
 <?php
 }
 if ($can_view && !empty($learner)) {
 	echo '<form action="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$course_id_post.'&amp;userid='.$user_id_post.'&amp;status=4" method="post">';
-	echo '<div><input type="submit" name="submit" value="View 10 Latest Subject Targets" /></div></form>';
+	echo '<div><input type="submit" name="submit" value="View 10 Latest Targets" /></div></form>';
 }
 // display a small form for adjusting the number of records to display in the table 
 ?>
@@ -26,7 +26,7 @@ if ($can_view && !empty($learner)) {
         <tr>
             <td>
                 <input type="hidden" id="updatepref" name="updatepref" value="1" />
-                <label for="perpage"><?php //echo get_string('pagesize','block_lpr');?>Subject Targets per page:</label>
+                <label for="perpage"><?php //echo get_string('pagesize','block_lpr');?>Targets per page:</label>
             </td>
             <td>
                 <input type="text" id="perpage" name="perpage" size="1" value="<?php echo $perpage;?>" />

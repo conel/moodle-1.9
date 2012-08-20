@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Saves the POST data sent by edit.php, to update a Learner Progress Review
  *
@@ -56,7 +57,7 @@ if(empty($lpr->lecturer_id)) {
 // update the lecturer
 $lpr->term_id = required_param('term_id', PARAM_INT);
 
-if(empty($lpr->lecturer_id)) {
+if(empty($lpr->term_id)) {
     $errors[] = 'term_id';
 }
 
@@ -69,6 +70,19 @@ $lpr->unit_desc = required_param('unit_desc');
 // update the timemodified stamp
 $lpr->timemodified = time();
 
+// set deadline
+$dday = optional_param('dday', PARAM_INT); 
+$dmonth = optional_param('dmonth', PARAM_INT); 
+$dyear = optional_param('dyear', PARAM_INT);
+ 
+if(! checkdate ($dmonth, $dday, $dyear)) {
+    $errors[] = 'deadline';
+} else {
+	$lpr->deadline = strtotime("$dday-$dmonth-$dyear");
+}
+
+$lpr->areaofdev = optional_param('areaofdev', '', PARAM_RAW);
+	
 // save it to the database
 $lpr_db->set_lpr($lpr);
 

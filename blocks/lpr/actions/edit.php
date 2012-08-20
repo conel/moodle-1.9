@@ -32,6 +32,8 @@ require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
 // include the LPR library
 require_once("{$CFG->dirroot}/blocks/lpr/block_lpr_lib.php");
 
+require_once("{$CFG->dirroot}/mod/ilptarget/lib.php");
+
 // fetch the mandatory id paramater
 $id = required_param('id', PARAM_INT);
 

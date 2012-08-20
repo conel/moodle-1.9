@@ -113,7 +113,7 @@ $navlinks[] = array(
 );
 
 $navlinks = build_navigation($navlinks);
-$heading = $course->shortname.' : '.str_replace('LPR', 'Subject Target ', $lpr->name).' - '.fullname($learner);
+$heading = $course->shortname.' : '.str_replace('LPR', 'Target ', $lpr->name).' - '.fullname($learner);
 
 // get the indicators
 //$indicators = $lpr_db->get_indicators();

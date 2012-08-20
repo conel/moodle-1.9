@@ -26,12 +26,12 @@
     $navigation = "<a href=\"../../blocks/ilp/view.php?id=$user->id\">ILP</a>";
 
     $reports = '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/view_students.php?courseid='.$courseid.'">Reports</a>';
-    print_header("Subject Targets Overview", "Subject Targets", "$navigation -> ".$reports." -> ".fullname($user)."", "", "", true, "", "");
+    print_header("Targets Overview", "Targets", "$navigation -> ".$reports." -> ".fullname($user)."", "", "", true, "", "");
 
     echo '<div id="subject_targets">';
-    echo '<h2>Subject Targets for <a href="'.$CFG->wwwroot.'/user/view.php?id='.$userid.'&course='.$courseid.'" title="View '.fullname($user).'\'s profile">'.fullname($user).'</a></h2>';
+    echo '<h2>Targets for <a href="'.$CFG->wwwroot.'/user/view.php?id='.$userid.'&course='.$courseid.'" title="View '.fullname($user).'\'s profile">'.fullname($user).'</a></h2>';
 
-    // Get subject target data for this user
+    // Get target data for this user
     $data = $attpunc->getModuleDetails($user->idnumber, $attpunc->current_term_no);
 	
     $table = "<table>\n";
@@ -43,7 +43,7 @@
 			$row_class = ($c % 2 == 0) ? ' class="r1"' : ' class="r0"';
 			$table .= '<tr'.$row_class.'><td><span title="'.$c.'">'.$datum['module_code'] . '</span></td>';
 			$table .= '<td>'.$datum['module_desc'] . '</td>';
-			$table .= '<td><a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$userid.'&tutor='.$datum['tutor_id'].'#tutor" title="View Subject Targets for '.$datum['tutor'].'">'.$datum['tutor'] . '</a></td>';
+			$table .= '<td><a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$userid.'&tutor='.$datum['tutor_id'].'#tutor" title="View Targets for '.$datum['tutor'].'">'.$datum['tutor'] . '</a></td>';
 			$complete_img = ($datum['complete'] == 0) ? $CFG->wwwroot .'/theme/standard/pix/i/cross_red_big.gif' : $CFG->wwwroot .'/theme/standard/pix/i/tick_green_big.gif';
 			$table .= '<td class="center"><img src="'.$complete_img . '" alt="" width="16" height="16" /></td></tr>';
 			$c++;
@@ -54,7 +54,7 @@
     echo $table;
 	
 	echo '<br />';
-	echo '<p>[<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$userid.'">Add Subject Target for '.fullname($user).'</a>]</p>';
+	echo '<p>[<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&ilp=1&learner_id='.$userid.'">Add Target for '.fullname($user).'</a>]</p>';
 	
 	echo '<br />';
 	
@@ -72,9 +72,9 @@
 	}
 	if ($tutor != 0 && array_key_exists($tutor, $tutor_list)) {
 		$tutor_name = $tutor_list[$tutor];
-		echo '<h2>Subject Targets for <a href="'.$CFG->wwwroot.'/user/view.php?id='.$tutor.'&course=1" title="View '.$tutor_name.'\'s profile">'.$tutor_name.'</a></h2>';
+		echo '<h2>Targets for <a href="'.$CFG->wwwroot.'/user/view.php?id='.$tutor.'&course=1" title="View '.$tutor_name.'\'s profile">'.$tutor_name.'</a></h2>';
 	} else {
-		echo '<h2>Subject Targets for Tutor</h2>';
+		echo '<h2>Targets for Tutor</h2>';
 	}
 	echo '<a name="tutor"></a>';
 	
@@ -98,9 +98,9 @@
 	
 	// If no tutor has been selected show message.
 	if ($tutor == 0) {
-		echo '<p><b>Select a Tutor to view their subject targets.</b></p>';
+		echo '<p><b>Select a Tutor to view their targets.</b></p>';
 	} else {
-		// Get subject target completion details for teacher
+		// Get target completion details for teacher
 		$tutor_name = (isset($tutor_list[$tutor])) ? $tutor_list[$tutor] : '';
 		if ($tutor_name != '') {	
 				

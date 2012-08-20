@@ -404,9 +404,10 @@ function count_records_sql($sql) {
 function get_record($table, $field1, $value1, $field2='', $value2='', $field3='', $value3='', $fields='*') {
 
     global $CFG;
-
+	
     // Check to see whether this record is eligible for caching (fields=*, only condition is id)
     $docache = false;
+    
     if (!empty($CFG->rcache) && $CFG->rcache === true && $field1=='id' && !$field2 && !$field3 && $fields=='*') {
         $docache = true;
         // If it's in the cache, return it
@@ -415,9 +416,9 @@ function get_record($table, $field1, $value1, $field2='', $value2='', $field3=''
             return $cached;
         }
     }
-
+	
     $select = where_clause($field1, $value1, $field2, $value2, $field3, $value3);
-
+	
     $record = get_record_sql('SELECT '.$fields.' FROM '. $CFG->prefix . $table .' '. $select);
 
     // If we're caching records, store this one

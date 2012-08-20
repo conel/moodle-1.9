@@ -257,6 +257,25 @@ function ilptarget_update_status_menu($targetpost,$context) {
 	return $output;
 }
 
+//Creates a drop-down menu and/or editing options to update the status of a (subject) target
+
+function ilptarget_update_target_status_menu($lpr) {
+	
+	$output .= '<form method="post">';
+	$output .= '<input type="hidden" name="lprid" value="'.$lpr->id.'" />';	
+	$output .= '<select name="achieved">';
+	$output .= '<option value="0">'.get_string('outstanding', 'ilptarget').'</option>';
+	$output .= '<option value="1">'.get_string('achieved', 'ilptarget').'</option>';
+	//$output .= '<option value="2">'.get_string('notachieved', 'ilptarget').'</option>';
+	$output .= '<option value="3">'.get_string('withdrawn', 'ilptarget').'</option>';
+	$output .= '</select>';
+	$output .= '<input type="submit" name="submit" value="'.get_string('updatestatus', 'ilptarget').'" />';
+	$output .= '</form>';
+
+	return $output;
+
+}
+
 /**
  * Creates the form to update/add comments
  */

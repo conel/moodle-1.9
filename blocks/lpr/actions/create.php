@@ -46,6 +46,8 @@ $unit_desc = optional_param('unit_desc', '', PARAM_RAW);
 $comments = optional_param('comments', PARAM_CLEANHTML);
 $modules = required_param('modules', PARAM_RAW);
 
+$areaofdev = optional_param('areaofdev', '', PARAM_RAW);
+
 // Modules come in array format
 
 // fetch the course, or fail if the id is wrong
@@ -76,6 +78,19 @@ $data->timemodified = time();
 $data->term_id = $term_id; // nkowald - 2010-11-23 - Needed term_id as it's a required field
 $data->unit_desc = $unit_desc;
 $data->comments = $comments;
+
+$data->areaofdev = $areaofdev;
+
+// set deadline
+$dday = optional_param('dday', PARAM_INT); 
+$dmonth = optional_param('dmonth', PARAM_INT); 
+$dyear = optional_param('dyear', PARAM_INT);
+ 
+if(! checkdate ($dmonth, $dday, $dyear)) {
+    $errors[] = 'deadline';
+} else {
+	$lpr->deadline = strtotime("$dday-$dmonth-$dyear");
+}
 
 // insert the record
 $id = $lpr_db->create_lpr($data);
@@ -124,7 +139,7 @@ foreach ($allmodules as $module) {
 	
 	// Now update mdl_module_complete to update ilp stats table
 	$term = $lpr_db->get_term_by_id($term_id);
-	// Should only update modules completes that have been selected (otherwise it will set to incomplete even if complete in another subject target 1).
+	// Should only update modules completes that have been selected (otherwise it will set to incomplete even if complete in another target 1).
 	if ($data->selected == 1) {
 		$lpr_db->update_module_complete($data->module_code, $term->term_code, $term->ac_year_code, $learner_id, $data->selected);
 	}

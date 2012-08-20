@@ -53,7 +53,7 @@
                         <img class="req" src="<?php echo $CFG->wwwroot; ?>/theme/conel/pix/req.gif" alt="Required field" title="Required field"/>
                    <?php } ?>
 				</td>
-				<td class="quater" colspan="2">
+				<td class="quater">
 				<?php
 					if($can_write && $editable) {
                         echo choose_from_menu($terms, 'term_id', $current_term, '&nbsp;');
@@ -65,7 +65,56 @@
                     }
 				?>
 				</td>
+				<td>
+					<label>Deadline:</label>
+				</td>
+				<td>
+					<?php
+						if($can_write && $editable) {
+					?>
+							<label for="id_c67626" class="accesshide">Day</label>
+							<select id="id_c67626" name="dday">
+								<?php 
+										$d=date('j',time());
+										for($i=1;$i<32;$i++)echo '<option value="'.$i.'" '.($i==$d?'selected="selected"':'').'>'.$i.'</option>'; 
+								?>
+							</select>&nbsp;
+							<label for="id_968541" class="accesshide">Month</label>
+							<select id="id_968541" name="dmonth">
+								<?php 
+										$ms = array('','January','February','March','April','May','June','July','August','September','October','November','December');
+										$m=date('m',time());
+										for($i=1;$i<13;$i++)echo '<option value="'.$i.'" '.($i==$m?'selected="selected"':'').'>'.$ms[$i].'</option>'; 
+								?>
+							</select>&nbsp;
+							<label for="id_a46d22" class="accesshide">Year</label>
+							<select id="id_a46d22" name="dyear">
+								<?php 
+										$y=date('Y',time());
+										for($i=1970;$i<2021;$i++)echo '<option value="'.$i.'" '.($i==$y?'selected="selected"':'').'>'.$i.'</option>'; 
+								?>
+							</select>			
+					<?php
+						} else {
+							echo date("d F Y",$lpr->deadline);
+						}
+					?>
+				</td>
 			</tr>
+            <tr>
+               <td>
+                    <?php echo get_string('name', 'ilptarget'); ?>
+                </td>
+                <td>
+                   <?php
+                    if($can_write && $editable) {
+                        print_textfield ('areaofdev', !empty($lpr->areaofdev) ? $lpr->areaofdev : '','',80);
+                    } else {
+                        echo !empty($lpr->areaofdev) ? $lpr->areaofdev : 'None.';
+                    } ?>
+                </td>
+                <td colspan="2">&nbsp;</td>            
+            </tr>
             <tr>
                 <td>
                     <?php //echo get_string('assessmentgroup', 'block_lpr'); ?>
@@ -172,7 +221,7 @@
             </tr>
             <tr>
                 <th colspan="5">
-					Subject / Unit Progress
+					Target
                     <?php //echo get_string('comments', 'block_lpr'); ?>
                 </th>
             </tr>
@@ -181,9 +230,9 @@
                     <?php
                     if($can_write && $editable) {
 						// nkowald - 2011-02-01 - Default should now be an HTML table
-						if ($lpr->comments == '') {
+						//if ($lpr->comments == '') {
 
-							$lpr->comments = "<table width=\"100%\"><tr><td width=\"140\">Smart Targets:</td><td>&nbsp;</td></tr><tr><td>Comments:</td><td>&nbsp;</td></tr></table>";
+							//$lpr->comments = "<table width=\"100%\"><tr><td width=\"140\">Smart Targets:</td><td>&nbsp;</td></tr><tr><td>Comments:</td><td>&nbsp;</td></tr></table>";
 							
 /*
 $lpr->comments = "Smart Targets: 
@@ -192,7 +241,7 @@ smart targets here.
 Comments: 
 comments here.";
 */
-						}
+						//}
                         print_textarea(true, 20, 80, 0, 0, 'comments', $lpr->comments);
                         use_html_editor('comments');
                     } else {
@@ -260,7 +309,6 @@ jQuery(document).ready(function() {
 			alert("Module is a required field.\nPlease select a module to report on.");
 			return false;
 		}
-		
 	});
 	
 	jQuery(function(){
