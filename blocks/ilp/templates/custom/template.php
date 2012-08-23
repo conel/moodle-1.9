@@ -298,7 +298,8 @@ if ($config->ilp_show_lprs == 1) {
 		
 	echo '</div>';
 	
-	display_ilp_lprs($id, $courseid, TRUE, FALSE, TRUE, 'DESC', 10);
+	//display_ilp_lprs($id, $courseid, TRUE, FALSE, TRUE, 'DESC', 10);
+	display_ilp_lprs($id, $courseid, TRUE, FALSE, TRUE, 'DESC', 10, TRUE, '', FALSE);
 }
 echo '</div>';
 ?>

@@ -342,6 +342,7 @@ if($action == 'updateconcern'){
 			$tabrows[] = new tabobject('0', "$link_values&amp;status=4&amp;achieved=0", get_string('outstanding', 'ilptarget'));
 			$tabrows[] = new tabobject('1', "$link_values&amp;status=4&amp;achieved=1", get_string('achieved', 'ilptarget'));
 			$tabrows[] = new tabobject('3', "$link_values&amp;status=4&amp;achieved=3", get_string('withdrawn', 'ilptarget'));
+			$tabrows[] = new tabobject('4', "$link_values&amp;status=4&amp;achieved=4", 'Archived');
 			$tabs[] = $tabrows;
 			
 			print_tabs($tabs, $achieved);
@@ -356,7 +357,9 @@ if($action == 'updateconcern'){
 			require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
 			$lpr_db = new block_lpr_db();
 			$lpr = $lpr_db->get_lpr((int)$_POST['lprid']);
-			$lpr->achieved = (int)$_POST['achieved']; 
+			$p_achieved = (int)$_POST['achieved']; 
+			if($p_achieved>3 && $lpr->achieved<4) $lpr->arch_achieved = $lpr->achieved; //archive the achieved state (if not archive yet)
+			$lpr->achieved = $p_achieved; 
 			$lpr_db->set_lpr($lpr);
 		}
 		

@@ -317,14 +317,14 @@
 			}
 			
 			
-			$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0" class="no_link"><span class="status-'.$studentstatus.'">'.$thisstudentstatus.'</span></a>';
+			$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0" class="no_link" target="_blank"><span class="status-'.$studentstatus.'">'.$thisstudentstatus.'</span></a>';
 			// change text
 			//$change_txt = ($no_changes == 1) ? ' Status Change' : ' Status Changes';
 			$change_txt = ($no_changes == 1) ? '  change' : ' changes';
 			if ($no_changes == 0) {
-				$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0" class="no_link">No changes</a>';
+				$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0" class="no_link" target="_blank">No changes</a>';
 			} else {
-				$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0">'.$no_changes . $change_txt .'</a>';
+				$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&userid='.$auser->id.'&status=0" target="_blank">'.$no_changes . $change_txt .'</a>';
 			}
 
             $atten = $attpunc->get_attendance_avg($auser->idnumber);
@@ -333,14 +333,14 @@
 			$att_class = ' class="att_'.$att_data['colour'].'"';
 			
 
-			$row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/attendance.php?courseid='.$courseid.'&amp;userid='.$auser->id.'"'.$att_class.'>' .$att_perc . '% Attendance</a>';
+			$row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/attendance.php?courseid='.$courseid.'&amp;userid='.$auser->id.'"'.$att_class.' target="_blank">' .$att_perc . '% Attendance</a>';
 
 			$punc = $attpunc->get_punctuality_avg($auser->idnumber);
 			$punc_data = $attpunc->getAttPuncData($punc->PUNCTUALITY);
 			$punc_perc = round($punc_data['decimal'], 0);
 			$punc_class = ' class="punc_'.$punc_data['colour'].'"';
 
-			$row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/attendance.php?courseid='.$courseid.'&amp;userid='.$auser->id.'"'.$punc_class.'>' .$punc_perc . '% Punctuality</a>';
+			$row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/attendance.php?courseid='.$courseid.'&amp;userid='.$auser->id.'"'.$punc_class.' target="_blank">' .$punc_perc . '% Punctuality</a>';
 
 
 			// nkowald - 2011-06-16 - Added Target Grade
@@ -366,7 +366,7 @@
 			}
 			
 			$class = ($grade_name == 'Not Set') ? ' class="no_link"' : '';
-			$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$auser->id.'&amp;status=0"'.$class.'>Target Grade: ' . $grade_name . '</a>';
+			$row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$auser->id.'&amp;status=0"'.$class.' target="_blank">Target Grade: ' . $grade_name . '</a>';
 
             // nkowald - 2011-05-19 - Added Targets - 
             // nkowald - 2012-04-06 - Commented this out as it was doubling the amount of queries that needed to be run
@@ -409,10 +409,10 @@
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
 				$report1total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 0 AND timecreated >= '.$ts_year_start.'' );
 				if ($report1total == 0) {
-					$report1text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=0" class="no_link">No Tutor Reviews</a>';
+					$report1text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=0" class="no_link" target="_blank">No Tutor Reviews</a>';
 				} else {
 					$review_txt = ($report1total == 1) ? ' Tutor Review' : ' Tutor Reviews';
-					$report1text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=0">'.$report1total . $review_txt .'</a>';
+					$report1text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=0" target="_blank">'.$report1total . $review_txt .'</a>';
 				}
 				$row[] .= $report1text;				
 			}
@@ -421,10 +421,10 @@
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
 				$report2total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 1 AND timecreated >= '.$ts_year_start.'' );
 				if ($report2total == 0) {
-					$report2text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=1" class="no_link">No Good Performance Records</a>';
+					$report2text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=1" class="no_link" target="_blank">No Good Performance Records</a>';
 				} else {
 					$good_perf_txt = ($report2total == 1) ? ' Good Performance Record' : ' Good Performance Records';
-					$report2text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=1">'.$report2total . $good_perf_txt . '</a>';
+					$report2text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=1" target="_blank">'.$report2total . $good_perf_txt . '</a>';
 				}
 				$row[] .= $report2text;				
 			}
@@ -433,10 +433,10 @@
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
 				$report3total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 2 AND timecreated >= '.$ts_year_start.'' );
 				if ($report3total == 0) {
-					$report3text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=2" class="no_link">No Cause for Concerns</a>';
+					$report3text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=2" class="no_link" target="_blank">No Cause for Concerns</a>';
 				} else {
 					$cause_txt = ($report3total == 1) ? ' Cause for Concern' : ' Cause for Concerns';
-					$report3text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=2">'.$report3total . $cause_txt.'</a>';
+					$report3text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=2" target="_blank">'.$report3total . $cause_txt.'</a>';
 				}
 				$row[] .= $report3text;				
 			}
@@ -445,16 +445,16 @@
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
 				$report4total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 3 AND timecreated >= '.$ts_year_start.'' );
 				if ($report4total == '0') $report4total = 'No';
-				$report4text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=3">'.$report4total.' Student Progress</a>';
+				$report4text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=3" target="_blank">'.$report4total.' Student Progress</a>';
 				$row[] .= $report4text;				
 			}
 
 			// nkowald - 2011-10-18 - Adding targets oustanding
             $complete_modules_txt = $attpunc->getModuleCompletion($auser, $attpunc->current_term_no);
-            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'">'. $complete_modules_txt . ' Targets</a>';
+            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'" target="_blank">'. $complete_modules_txt . ' Targets</a>';
 			
 			// nkowald - 2011-05-19 - View ILP
-            $row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/view.php?courseid='.$courseid.'&id='.$auser->id.'" class="view_ilp">View ILP</a>';
+            $row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/view.php?courseid='.$courseid.'&id='.$auser->id.'" class="view_ilp" target="_blank">View ILP</a>';
                $table->add_data($row);
             }
         }
@@ -471,7 +471,7 @@
 		} elseif($courseid > 0){
 			echo '<form name="options" action="view_students.php?courseid='.$course->id.'" method="post">';
 		}
-		
+	
         echo '<input type="hidden" id="updatepref" name="updatepref" value="1" />';
         echo '<table id="optiontable" align="center">';
         echo '<tr align="right"><td>';

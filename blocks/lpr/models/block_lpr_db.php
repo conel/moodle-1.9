@@ -94,7 +94,7 @@ class block_lpr_db {
      * @param string $limit The numer of LPRs to return
      * @return array The array of result objects
      */
-    function get_lprs($learner_id = null, $course_id = null, $sortorder = 'ASC', $limit = null, $achieved='') {
+    function get_lprs($learner_id = null, $course_id = null, $sortorder = 'ASC', $limit = null, $achieved='', $list_archives=true) {
         global $CFG;
 
         $where = array();
@@ -106,6 +106,9 @@ class block_lpr_db {
             
         if($achieved!=='')
             $where[] = "lpr.achieved={$achieved}";
+            
+        if(!$list_archives)
+            $where[] = "lpr.achieved<4";
 
         return get_records_sql(
             "SELECT lpr.*

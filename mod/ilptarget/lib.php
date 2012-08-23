@@ -268,6 +268,7 @@ function ilptarget_update_target_status_menu($lpr) {
 	$output .= '<option value="1">'.get_string('achieved', 'ilptarget').'</option>';
 	//$output .= '<option value="2">'.get_string('notachieved', 'ilptarget').'</option>';
 	$output .= '<option value="3">'.get_string('withdrawn', 'ilptarget').'</option>';
+	$output .= '<option value="4">Archived</option>';
 	$output .= '</select>';
 	$output .= '<input type="submit" name="submit" value="'.get_string('updatestatus', 'ilptarget').'" />';
 	$output .= '</form>';

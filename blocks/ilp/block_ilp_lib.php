@@ -756,7 +756,7 @@ function display_ilp_subject_report ($id,$courseid,$full=TRUE,$title=TRUE,$icon=
      * @param limit         limit the number of LPRs shown on the page
 */
 
-function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='ASC',$limit=0,$iplpage=true, $achieved='') {
+function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='ASC',$limit=0,$iplpage=true, $achieved='', $list_archives=true) {
 
     global $CFG, $USER;
     require_once("$CFG->dirroot/mod/ilptarget/lib.php");
@@ -781,9 +781,9 @@ function display_ilp_lprs ($id,$courseid,$full=TRUE,$title=TRUE,$icon=TRUE,$sort
 
     // get all the LPRs  
     if(!empty($config->ilp_lprs_course_specific) && ($courseid > 1)){
-        $lprs = $lpr_db->get_lprs($id, $courseid, $sortorder, $limit, $achieved);
+        $lprs = $lpr_db->get_lprs($id, $courseid, $sortorder, $limit, $achieved, $list_archives);
     } else {
-        $lprs = $lpr_db->get_lprs($id, null, $sortorder, $limitt, $achieved);
+        $lprs = $lpr_db->get_lprs($id, null, $sortorder, $limitt, $achieved, $list_archives);
     }
 		
     if($title == TRUE) {
@@ -1355,10 +1355,10 @@ function get_target_grade($userid) {
             $grade_name = $target_name->name;
             return $grade_name;
         } else {
-            return false;
+            return 'not yet set'; //false;
         }
     } else {
-        return false;
+        return 'not yet set'; //false;
     }
 }
 

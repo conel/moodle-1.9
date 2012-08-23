@@ -268,7 +268,7 @@ if($can_write) {
 }
 
 $targets=get_records('targets','','','id');
-$target_grade = (get_target_grade($user->id)) ? get_target_grade($user->id) : 'not set';
+$target_grade = (get_target_grade($user->id)) ? get_target_grade($user->id) : 'not yet set';
                 
 echo '<div class="generalbox" id="ilp-student_info-overview">';
 echo '<div class="target_grade">';
