@@ -427,7 +427,7 @@ if($full == TRUE) {
 	 * @param status	    -1 means all otherwise a particular status can be entered
 */
 
-function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='DESC',$limit=0,$showcmds=TRUE) {
+function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=TRUE,$sortorder='DESC',$limit=0,$showcmds=TRUE,$stage='') {
 
 	global $CFG,$USER;
 	require_once("$CFG->dirroot/blocks/ilp_student_info/block_ilp_student_info_lib.php");
@@ -447,6 +447,10 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 
 	if($CFG->ilpconcern_course_specific == 1 && $courseid != 0){
 		$where .= 'AND course = '.$courseid.' ';
+	}
+
+	if($stage !== ''){
+		$where .= 'AND stage = '.$stage.' ';
 	}
 
     $order = "ORDER BY deadline $sortorder ";
@@ -1225,9 +1229,12 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	$html = '';
 	
 	$html .= '<div class="generalbox">';
-		
+	
+	if ($cconcerns = get_records_sql('SELECT id FROM mdl_ilpconcern_posts WHERE setforuserid='.$learner_id.' AND status=2 and stage=0')) {
+		if(!empty($cconcerns)) $html .= '<span class="author" style="color:red;float:left">You have a cause of concern.</span>';
+	}
+	
 	if ($results = get_records_sql($query)) {
-		if(!empty($results)) $html .= '<span class="author" style="color:red;float:left">You have a cause of concern.</span>';	//mdl_ilpconcern_posts
 		foreach ($results as $result) {
 			$html .= '<span class="author">By '.$result->firstname.' '.$result->lastname.' '.date('d/m/y', $result->timemodified).'</span>';
 			$html .= '<p>'.$result->concernset.'</p>';
@@ -1360,6 +1367,23 @@ function get_target_grade($userid) {
     } else {
         return 'not yet set'; //false;
     }
+}
+
+
+function get_all_target_grade($userid) {
+
+    $grades = array();
+        			
+    if (is_array($targets = get_records('target_grades', 'mdl_user_id', $userid, 'live desc, date_added desc ', '*,date(from_unixtime(date_added)) as dad', 0, 2))) {
+        foreach($targets as $target) {
+			$target_id = $target->target_grade_id;
+			if ($target_name = get_record('targets', 'id', $target_id)) {
+				$grades[] = array($target->dad, $target_name->name);
+			}
+		}
+    }
+    
+    return $grades;
 }
 
 ?>

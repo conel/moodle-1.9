@@ -35,14 +35,14 @@ echo '<div class="generalbox" id="ilp-profile-overview">';
 $print_to_pdf = '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/export.php?learner_id='.$user->id.'&amp;single=1" id="print_to_pdf">Print to PDF</a>';
 ?>
 <table id="ilp_header">
-    <tr>
+    <tr valign="top">
         <td width="313">
         <?php 
             echo '<h1><a href="'.$CFG->wwwroot.'/user/view.php?'.(($courseid)?'courseid='.$courseid.'&amp;' : '').'id='.$id.'">'. fullname($user) .'</a></h1>';
         ?>
         </td>
         <td width="180" style="text-align:left;"><?php if($CFG->ilpconcern_status_per_student == 1){ echo $status_html; } ?></td>
-        <td>
+        <td valing="top">
         <?php
             if ((has_capability('block/lpr:print', $context)) || (has_capability('moodle/site:doanything', $context))) { ?>
             <div class="add_button">
@@ -52,8 +52,15 @@ $print_to_pdf = '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/export.php?learne
         <?php } ?>
         <div class="target_grade">
         <?php 
-                $target_grade = (get_target_grade($user->id)) ? get_target_grade($user->id) : 'not set';
-                echo '<b>Target Grade:</b> '. $target_grade;
+                //$target_grade = get_target_grade($user->id);
+                //echo '<b>Target Grade:</b> '. $target_grade;
+                
+                $grades = get_all_target_grade($user->id);
+                $grades = get_all_target_grade($user->id);
+                echo '<b>Target Grade:</b>';
+                foreach($grades as $grade){
+					echo '<br>'.$grade[0].' &nbsp; '.$grade[1];
+				}
         ?>
         </div>
         </td>

@@ -238,7 +238,17 @@ function ilpconcern_update_menu($concernpost, $context) {
 			$output .= ' | <a title="'.get_string('edit').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$user->id.'&amp;concernspost='.$report->id.'&amp;action=updateconcern&amp;status='.$status.'"><img src="'.$CFG->pixpath.'/t/edit.gif" alt="'.get_string('edit').'" /> '.get_string('edit').'</a> |
 			<a title="'.get_string('delete').'" href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'userid='.$user->id.'&amp;concernspost='.$report->id.'&amp;action=delete&amp;status='.$status.'""><img src="'.$CFG->pixpath.'/t/delete.gif" alt="'.get_string('delete').'" /> '.get_string('delete').'</a> | ';
 	}
-	
+
+	$output .= '<form method="post">';
+	$output .= '<input type="hidden" name="concernspost" value="'.$report->id.'" />';	
+	$output .= '<select name="stage" style="font-size:99%">';
+	$output .= '<option value="0">In progress</option>';
+	$output .= '<option value="1">Resolved</option>';
+	$output .= '<option value="2">Escalated</option>';
+	$output .= '</select>';
+	$output .= '<input type="submit" name="submit" value="'.get_string('updatestatus', 'ilptarget').'" style="font-size:99%" />';
+	$output .= '</form>';
+		
 	return $output;
 }
 

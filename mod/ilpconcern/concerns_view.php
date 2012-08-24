@@ -27,6 +27,7 @@
 	$g = optional_param('g', '', PARAM_RAW);
 
 	$achieved = optional_param('achieved', 0, PARAM_INT);
+	$stage = optional_param('stage', 0, PARAM_INT);
 		
 	require_login();
     //add_to_log($userid, "concerns", "view", "view.php", "$userid");
@@ -349,10 +350,31 @@ if($action == 'updateconcern'){
 
 			echo '<div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div>';	
 		}	
+		
+		if ($status == 2) {
+			$tabs = array();
+			$tabrows = array();
+			
+			$tabrows[] = new tabobject('0', "$link_values&amp;status=2&amp;stage=0", 'In progress');
+			$tabrows[] = new tabobject('1', "$link_values&amp;status=2&amp;stage=1", 'Resolved');
+			$tabrows[] = new tabobject('2', "$link_values&amp;status=2&amp;stage=2", 'Escalated');
+			$tabs[] = $tabrows;
+			
+			print_tabs($tabs, $stage);
+
+			echo '<div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div>';	
+		}	
 
     	$i = $status + 1;
-		display_ilpconcern($user->id, $courseid, $i, TRUE, FALSE, FALSE, $sortorder='DESC', 0);
-		
+		display_ilpconcern($user->id, $courseid, $i, TRUE, FALSE, FALSE, $sortorder='DESC', 0, true, $stage);
+
+		if(isset($_POST['concernspost'])) {
+			$report = get_record('ilpconcern_posts', 'id', (int)$_POST['concernspost']);
+			$p_stage = (int)$_POST['stage']; 
+			$report->stage = $p_stage; 
+			update_record('ilpconcern_posts', $report);
+		}
+				
 		if(isset($_POST['lprid'])) {
 			require_once("{$CFG->dirroot}/blocks/lpr/models/block_lpr_db.php");
 			$lpr_db = new block_lpr_db();
