@@ -56,8 +56,9 @@ $print_to_pdf = '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/export.php?learne
                 //echo '<b>Target Grade:</b> '. $target_grade;
                 
                 $grades = get_all_target_grade($user->id);
-                $grades = get_all_target_grade($user->id);
-                echo '<b>Target Grade:</b>';
+		echo '<b>Target Grade:</b>';
+		if(empty($grades)) echo '<br>not yet set';
+		else
                 foreach($grades as $grade){
 					echo '<br>'.$grade[0].' &nbsp; '.$grade[1];
 				}

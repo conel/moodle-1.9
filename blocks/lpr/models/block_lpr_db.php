@@ -108,7 +108,7 @@ class block_lpr_db {
             $where[] = "lpr.achieved={$achieved}";
             
         if(!$list_archives)
-            $where[] = "lpr.achieved<4";
+            $where[] = "lpr.achieved<1";
 
         return get_records_sql(
             "SELECT lpr.*
