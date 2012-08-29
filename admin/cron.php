@@ -36,7 +36,11 @@
 
 	// nkowald - 2010-10-04 - Added nightly cron to generate statistics for the current month
     require_once($CFG->dirroot.'/stats/StatsEnhanced.class.php');
-
+	
+/// Switch on debugging	
+    //$CFG->showcronsql = 1;
+    //$CFG->showcrondebugging = 1;
+	
 /// Extra debugging (set in config.php)
     if (!empty($CFG->showcronsql)) {
         $db->debug = true;
@@ -169,6 +173,8 @@
     get_mailer('close');
     mtrace("Finished activity modules");
 
+	//this is separated to cron2.php
+	/*
     mtrace("Starting blocks");
     if ($blocks = get_records_select("block", "cron > 0 AND (($timenow - lastcron) > cron) AND visible = 1")) {
         // we will need the base class.
@@ -195,6 +201,7 @@
         }
     }
     mtrace('Finished blocks');
+*/
 
     mtrace('Starting admin reports');
     // Admin reports do not have a database table that lists them. Instead a
@@ -227,7 +234,7 @@
         mtrace('Updating languages cache');
         get_list_of_languages(true);
     }
-
+ 
     mtrace('Removing expired enrolments ...', '');     // See MDL-8785
     $timenow = time();
     $somefound = false;
@@ -267,7 +274,7 @@
     srand ((double) microtime() * 10000000);
     $random100 = rand(0,100);
 
-    if ($random100 < 20) {     // Approximately 20% of the time.
+    //if ($random100 < 20) {     // Approximately 20% of the time.
         mtrace("Running clean-up tasks...");
 
         /// Unenrol users who haven't logged in for $CFG->longtimenosee
@@ -418,8 +425,7 @@
 
         mtrace("Finished clean-up tasks...");
 
-    } // End of occasional clean-up tasks
-
+    //} // End of occasional clean-up tasks
 
     if (empty($CFG->disablescheduledbackups)) {   // Defined in config.php
         //Execute backup's cron

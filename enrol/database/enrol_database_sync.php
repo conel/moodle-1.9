@@ -32,6 +32,7 @@
         
     foreach ($roles as $role) {
         $enrol->sync_enrolments($role);
+		//$enrol->setup_enrolments($role);
     }
     
     // sync metacourses
