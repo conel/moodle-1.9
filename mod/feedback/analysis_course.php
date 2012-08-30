@@ -34,7 +34,7 @@
     $current_tab = 'analysis';
  
     $id = required_param('id', PARAM_INT);  //the POST dominated the GET
-	
+
     // if the learner survey feedback, redirect to specific file
     // get params
     $query_string = $_SERVER['QUERY_STRING'];
@@ -60,8 +60,13 @@
     } else if ($id == 218909) {
         header('Location: analysis_course_exit_survey_1112.php?'.$query_string);
         exit;
+    } else if ($id == 228782) {
+        header('Location: analysis_course_learner_survey_1213.php?'.$query_string);
+        exit;	
+    } else if ($id == 228783) {
+        header('Location: analysis_course_learner_record_1213.php?'.$query_string);
+        exit;
     }
-	
     $coursefilter = optional_param('coursefilter', '0', PARAM_INT);
     $courseitemfilter = optional_param('courseitemfilter', '0', PARAM_INT);
     $courseitemfiltertyp = optional_param('courseitemfiltertyp', '0', PARAM_ALPHANUM);
