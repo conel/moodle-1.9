@@ -1215,7 +1215,12 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	//if ($start != '' && $end != '') {
 		//$query = "SELECT ilpc.id, ilpc.timemodified, ilpc.concernset, usr.firstname, usr.lastname  FROM mdl_ilpconcern_posts ilpc, mdl_user usr WHERE ilpc.setforuserid = ".$learner_id." AND usr.id = ilpc.setbyuserid AND ilpc.status = 3 AND ilpc.timemodified > $start ORDER BY timecreated DESC LIMIT 1";
 	//} else {
-		$query = "SELECT ilpc.id, ilpc.timemodified, ilpc.concernset, usr.firstname, usr.lastname  FROM mdl_ilpconcern_posts ilpc, mdl_user usr WHERE ilpc.setforuserid = ".$learner_id." AND usr.id = ilpc.setbyuserid AND ilpc.status = 3 ORDER BY timecreated DESC LIMIT 1";
+		$query = "SELECT ilpc.id, ilpc.timemodified, ilpc.concernset, usr.firstname, usr.lastname 
+		          FROM mdl_ilpconcern_posts ilpc, mdl_user usr 
+		          WHERE ilpc.setforuserid = ".$learner_id." AND usr.id = ilpc.setbyuserid AND ilpc.status = 3 
+		          AND ilpc.timecreated>(select a.ac_year_start_date from mdl_academic_years a order by a.id desc limit 1) 
+		          ORDER BY timecreated DESC 
+		          LIMIT 1";	          
 	//}
 	/*
 	} else {
@@ -1237,7 +1242,7 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	if ($results = get_records_sql($query)) {
 		foreach ($results as $result) {
 			$html .= '<span class="author">By '.$result->firstname.' '.$result->lastname.' '.date('d/m/y', $result->timemodified).'</span>';
-			$html .= '<p>'.$result->concernset.'</p>';
+			$html .= '<p> '.$result->concernset.'</p>';
 			$concerns_post = $result->id;
 		}
 	} else {
