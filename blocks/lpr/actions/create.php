@@ -89,7 +89,7 @@ $dyear = optional_param('dyear', PARAM_INT);
 if(! checkdate ($dmonth, $dday, $dyear)) {
     $errors[] = 'deadline';
 } else {
-	$lpr->deadline = strtotime("$dday-$dmonth-$dyear");
+	$data->deadline = strtotime("$dday-$dmonth-$dyear");
 }
 
 // insert the record

@@ -72,24 +72,24 @@
 					?>
 							<label for="id_c67626" class="accesshide">Day</label>
 							<select id="id_c67626" name="dday">
-								<?php 
-										$d=date('j',time());
-										for($i=1;$i<32;$i++)echo '<option value="'.$i.'" '.($i==$d?'selected="selected"':'').'>'.$i.'</option>'; 
+								<?php
+									$d=date('j',$lpr->deadline);
+									for($i=1;$i<32;$i++)echo '<option value="'.$i.'" '.($i==$d?'selected="selected"':'').'>'.$i.'</option>'; 
 								?>
 							</select>&nbsp;
 							<label for="id_968541" class="accesshide">Month</label>
 							<select id="id_968541" name="dmonth">
 								<?php 
-										$ms = array('','January','February','March','April','May','June','July','August','September','October','November','December');
-										$m=date('m',time());
-										for($i=1;$i<13;$i++)echo '<option value="'.$i.'" '.($i==$m?'selected="selected"':'').'>'.$ms[$i].'</option>'; 
+									$ms = array('','January','February','March','April','May','June','July','August','September','October','November','December');
+									$m=date('m',$lpr->deadline);
+									for($i=1;$i<13;$i++)echo '<option value="'.$i.'" '.($i==$m?'selected="selected"':'').'>'.$ms[$i].'</option>'; 
 								?>
 							</select>&nbsp;
 							<label for="id_a46d22" class="accesshide">Year</label>
 							<select id="id_a46d22" name="dyear">
 								<?php 
-										$y=date('Y',time());
-										for($i=1970;$i<2021;$i++)echo '<option value="'.$i.'" '.($i==$y?'selected="selected"':'').'>'.$i.'</option>'; 
+									$y=date('Y',$lpr->deadline);
+									for($i=1970;$i<2021;$i++)echo '<option value="'.$i.'" '.($i==$y?'selected="selected"':'').'>'.$i.'</option>'; 
 								?>
 							</select>			
 					<?php
