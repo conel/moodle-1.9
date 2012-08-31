@@ -519,6 +519,8 @@ jQuery(document).ready(function() {
 		
 /// Finish the page
 
+	display_ilp_lprs($userid, $courseid, TRUE, TRUE, TRUE, 'DESC', 10, TRUE, '', FALSE);
+
     print_footer($footer);
 
 ?>
