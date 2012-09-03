@@ -519,7 +519,7 @@ jQuery(document).ready(function() {
 		
 /// Finish the page
 
-	if($action=='updateconcern'&&$status==2)display_ilp_lprs($userid, $courseid, TRUE, TRUE, TRUE, 'DESC', 10, TRUE, '', FALSE);
+	if($action=='updateconcern'&&$status==0)display_ilp_lprs($userid, $courseid, TRUE, TRUE, TRUE, 'DESC', 10, TRUE, '', FALSE);
 
     print_footer($footer);
 
