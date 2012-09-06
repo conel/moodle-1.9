@@ -1236,7 +1236,7 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	$html .= '<div class="generalbox">';
 	
 	if ($cconcerns = get_records_sql('SELECT id FROM mdl_ilpconcern_posts WHERE setforuserid='.$learner_id.' AND status=2 and stage=0')) {
-		if(!empty($cconcerns)) $html .= '<span class="author" style="color:red;float:left">You have a cause of concern.</span>';
+		if(!empty($cconcerns)) $html .= '<span class="author" style="color:red;float:left">You have a cause for concern.</span>';
 	}
 	
 	if ($results = get_records_sql($query)) {
