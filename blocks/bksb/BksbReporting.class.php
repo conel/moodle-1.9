@@ -595,7 +595,7 @@
 			}
 				
 			// Get the session id 
-			$query = "SELECT session_id FROM dbo.bksb_Sessions WHERE userName = '".$username."' AND assessment_id = '".$bksb_ass_type."'";
+			$query = "SELECT session_id FROM dbo.bksb_Sessions WHERE userName = '".$username."' AND assessment_id = '".$bksb_ass_type."' AND status='Complete'";
 			
 			// Perform SQL query here
 			if ($result = $this->connection->execute($query)) {
