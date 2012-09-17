@@ -157,7 +157,7 @@
 					
 					<td>".$user['reason']."</td>
 					
-					<td>&nbsp;<a href=\"/VLE/blocks/bksb/bksb_update.php?old_username=".urlencode($user['username'])."&amp;firstname=".urlencode($user['firstname'])."&amp;lastname=".urlencode($user['lastname'])."&amp;row=$i\" target=\"_blank\" class=\"update_user\" id=\"update_$i\">Update</a>&nbsp;</td>
+					<td>&nbsp;<a href=\"/blocks/bksb/bksb_update.php?old_username=".urlencode($user['username'])."&amp;firstname=".urlencode($user['firstname'])."&amp;lastname=".urlencode($user['lastname'])."&amp;row=$i\" target=\"_blank\" class=\"update_user\" id=\"update_$i\">Update</a>&nbsp;</td>
 
 					</tr>";
 				$i++;
