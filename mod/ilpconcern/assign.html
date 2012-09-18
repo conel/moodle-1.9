@@ -1,0 +1,76 @@
+<form id="assignform" method="post" action="">
+<div style="text-align:center;">
+	
+<input type="hidden" name="previoussearch" value="<?php p($previoussearch) ?>" />
+<input type="hidden" name="userid" value="<?php p($userid) ?>" />
+<input type="hidden" name="courseid" value="<?php p($courseid) ?>" />
+<input type="hidden" name="sesskey" value="<?php p(sesskey()) ?>" />
+<input type="hidden" name="contextid" value="<?php p($contextid) ?>" />
+<input type="hidden" name="roleid" value="<?php p($roleid) ?>" />
+
+  <table summary="" style="margin-left:auto;margin-right:auto" border="0" cellpadding="5" cellspacing="0">
+    <tr>
+      <td valign="top">
+          <label for="addselect"><?php print_string('potentialusers', 'role', $usercount); ?></label>
+          <br />	  
+		  <label for="searchtext" class="accesshide"><?php p($strsearch) ?></label>
+         <input type="text" name="searchtext" id="searchtext" size="30" value="<?php p($searchtext, true) ?>"
+                  onfocus ="getElementById('assignform').add.disabled=true;
+                            getElementById('assignform').remove.disabled=true;
+                            getElementById('assignform').removeselect.selectedIndex=-1;
+                            getElementById('assignform').addselect.selectedIndex=-1;"
+                  onkeydown = "var keyCode = event.which ? event.which : event.keyCode;
+                               if (keyCode == 13) {
+                                    getElementById('assignform').previoussearch.value=1;
+                                    getElementById('assignform').submit();
+                               } " />
+         <input name="search" id="search" type="submit" value="<?php p($strsearch) ?>" />
+         <?php
+              if (!empty($searchtext)) {
+                  echo '<input name="showall" id="showall" type="submit" value="'.$strshowall.'" />'."\n";
+              }
+         ?>
+		 <br />
+
+          <select name="addselect[]" size="20" id="addselect"
+                  onfocus="getElementById('assignform').add.disabled=false;
+                           getElementById('assignform').remove.disabled=true;
+                           getElementById('assignform').removeselect.selectedIndex=-1;" style="margin-top:12px;">
+          <?php
+            $i=0;
+            if (!empty($searchtext)) {
+                echo "<optgroup label=\"$strsearchresults (" . $usercount . ")\">\n";
+                while ($user = rs_fetch_next_record($availableusers)) {
+                    $fullname = fullname($user, true);
+                    echo "<option value=\"$user->id\">".$fullname.", ".$user->email."</option>\n";
+                    $i++;
+                }
+                echo "</optgroup>\n";
+
+            } else {
+                if ($usercount > MAX_USERS_PER_PAGE) {
+                    echo '<optgroup label="'.get_string('toomanytoshow').'"><option></option></optgroup>'."\n"
+                          .'<optgroup label="'.get_string('trysearching').'"><option></option></optgroup>'."\n";
+                } else {
+                    while ($user = rs_fetch_next_record($availableusers)) {
+                        $fullname = fullname($user, true);
+                        echo "<option value=\"$user->id\">".$fullname.", ".$user->email."</option>\n";
+                        $i++;
+                    }
+                }
+            }
+            if ($i==0) {
+                echo '<option/>'; // empty select breaks xhtml strict
+            }
+          ?>
+         </select>
+       </td>
+    </tr>
+    <tr>
+		<td>
+			<input type="button" value="Select" onclick="var $ = window.opener.jQuery; var s = $('#addselect', window.document);$('input[name=id_support_tutor_id]').val(s.val());$('#id_support_tutor_name').val(s.find('option:selected').text());window.close();" />
+		</td>
+    </tr>
+  </table>
+</div>
+</form>

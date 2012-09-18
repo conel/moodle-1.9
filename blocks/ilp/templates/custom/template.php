@@ -50,20 +50,26 @@ $print_to_pdf = '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/export.php?learne
                 <input type="submit" value="Print Report" name="submit" /></form>
             </div>
         <?php } ?>
-        <div class="target_grade">
-        <?php 
-                //$target_grade = get_target_grade($user->id);
-                //echo '<b>Target Grade:</b> '. $target_grade;
-                
-                $grades = get_all_target_grade($user->id);
-		echo '<b>Target Grade:</b>';
-		if(empty($grades)) echo '<br>not yet set';
-		else
-                foreach($grades as $grade){
-					echo '<br>'.$grade[0].' &nbsp; '.$grade[1];
+		
+			<div class="target_grade">
+			<?php                 
+				echo '<b>Target Grade:</b>';
+				
+				//get the most current not yet set grade (if there is one)
+				$grades = get_all_target_grade($user->id,1,0,0);
+				if(!empty($grades)) echo '<br>'.$grades[0][0].' &nbsp; '.$grades[0][1];
+				
+				//get all previous grades (except the not yet set ones)
+				$grades = get_all_target_grade($user->id);
+				if(empty($grades)) echo '<br>not yet set';
+				else {
+					foreach($grades as $grade){
+						echo '<br>'.$grade[0].' &nbsp; '.$grade[1];
+					}
 				}
-        ?>
-        </div>
+			?>
+			</div>
+        
         </td>
     </tr>
 </table>

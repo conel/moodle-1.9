@@ -1374,12 +1374,12 @@ function get_target_grade($userid) {
     }
 }
 
-
-function get_all_target_grade($userid) {
+function get_all_target_grade($userid, $limit=2, $mingrade=1, $maxgrade=100) {
 
     $grades = array();
         			
-    if (is_array($targets = get_records('target_grades', 'mdl_user_id', $userid, 'live desc, date_added desc ', '*,date(from_unixtime(date_added)) as dad', 0, 2))) {
+    //if (is_array($targets = get_records('target_grades', array('mdl_user_id'), array($userid), 'live desc, date_added desc ', '*,date(from_unixtime(date_added)) as dad', 0, $limit))) {
+    if (is_array($targets = recordset_to_array(get_recordset_select('target_grades', 'mdl_user_id="'.(int)$userid.'" AND target_grade_id>="'.(int)$mingrade.'" AND target_grade_id<="'.(int)$maxgrade.'"', 'live desc, date_added desc ', '*,date(from_unixtime(date_added)) as dad', 0, $limit)))) {
         foreach($targets as $target) {
 			$target_id = $target->target_grade_id;
 			if ($target_name = get_record('targets', 'id', $target_id)) {

@@ -284,9 +284,17 @@ if($can_write) {
 } else {
 	echo '<b>Target Grade:</b> '. $target_grade;
 }
-print '</div>';
-echo '</div>';
 
+$grades = get_all_target_grade($user->id, 100);
+if(!empty($grades)){
+	echo '<br /><b>Previous Target Grades:</b>';
+	foreach($grades as $grade){
+		echo '<br>'.$grade[0].' &nbsp; '.$grade[1];
+	}
+}
+
+echo '</div>';
+echo '</div>';
     
 // Not sure if this is needed, will restore if so
 

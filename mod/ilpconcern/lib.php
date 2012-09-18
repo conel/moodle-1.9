@@ -26,9 +26,12 @@ function update_student_status_menu($userid,$courseid) {
 
 }
 
-
 class ilpconcern_updateconcern_form extends moodleform {
 
+	function getForm() {
+		return $this->_form;
+	}
+	
     function definition() {
         global $USER, $CFG;		
         require_once("$CFG->dirroot/blocks/ilp/block_ilp_lib.php");
@@ -42,17 +45,15 @@ class ilpconcern_updateconcern_form extends moodleform {
 		$concernspost = $this->_customdata['concernspost'];	
 		$thisreporttype = $this->_customdata['reporttype'];	
 		$template = $this->_customdata['template'];
-		
+				
 		$user = get_record('user','id',$userid);
 
-				//$report_no = $status + 1;
-				//$template = stripslashes(eval('return $CFG->ilpconcern_report'.$report_no.'_template;'));
-			//}else{
-				//$template = '';
-			//}
-		
-		
-		
+		//$report_no = $status + 1;
+		//$template = stripslashes(eval('return $CFG->ilpconcern_report'.$report_no.'_template;'));
+		//}else{
+		//$template = '';
+		//}
+			
 		if($concernspost > 0){
 			$report = get_record('ilpconcern_posts', 'setforuserid', $userid, 'id', $concernspost);
 		}
@@ -126,10 +127,21 @@ class ilpconcern_updateconcern_form extends moodleform {
 			$mform->setDefault('deadline', time());
 		}
 
+		if($thisreporttype=='Cause for Concern'){		
+			$mform->addElement('text', 'support_tutor_name', 'Personal tutor', "size=80 readonly='readonly' onblur='return false;' onclick=\"openpopup('/mod/ilpconcern/assign.php?contextid=302599&roleid=3', 'message', 'menubar=0,location=0,scrollbars,status,resizable,width=400,height=500', 0);\"");
+ 			$mform->addRule('support_tutor_name', null, 'required', null, 'client');
+ 			$mform->addElement('hidden', 'id_support_tutor_id', 0);		
+			$mform->setType('id_support_tutor_id', PARAM_INT);
+			$mform->addRule('id_support_tutor_id', null, 'nonzero', null, 'client');
+		}
+		
 		$this->add_action_buttons($cancel = true, $submitlabel=get_string('savechanges'));
 	}
 			
 	function process_data($data) {
+		
+		if($this->is_cancelled()) return;
+		
 		global $USER,$CFG;
 		require_once("$CFG->dirroot/message/lib.php");
 			
@@ -143,9 +155,11 @@ class ilpconcern_updateconcern_form extends moodleform {
 		//Sets message details for Reports
 		$messagefrom = get_record('user', 'id', $USER->id);
 		$messageto = get_record('user', 'id', $userid);
+		
 		$newconcern = get_string('newconcern','ilpconcern', $thisreporttype);
 		$updatedconcern = get_string('updatedconcern','ilpconcern', $thisreporttype);
 		$concernview = get_string('concernviewlink','ilpconcern');
+		
 		$concernurl = $CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '').'&amp;userid='.$userid.'&amp;status='.$status;
 
 		$plpurl = $CFG->wwwroot.'/blocks/ilp/view.php?'.(($courseid > 1)?'courseid='.$courseid.'&amp;' : '');		
@@ -195,7 +209,14 @@ class ilpconcern_updateconcern_form extends moodleform {
 				
 			$message = '<p>'.$updatedconcern;				
 		}
-		
+
+		if($thisreporttype=='Cause for Concern'){
+			$ruser = $messageto->firstname.' '.$messageto->lastname.' ('.$messageto->idnumber.')';
+			$msg = 'A new Cause for Concern has been added to your student '.$ruser.'<br /><a href="'.$concernurl.'">'.$concernview.'</a></p>'.$data->concernset;	
+			$support_tutor = get_record('user', 'id', $data->id_support_tutor_id); 
+			message_post_message($messagefrom, $support_tutor, $msg, FORMAT_HTML, 'direct');							
+		}
+
 		if($CFG->ilpconcern_send_concern_message == 1){
 			$message .= '<br /><a href="'.$concernurl.'">'.$concernview.'</a></p>'.$data->concernset;
 			message_post_message($messagefrom, $messageto, $message, FORMAT_HTML, 'direct');
