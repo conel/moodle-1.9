@@ -54,6 +54,7 @@
 		$sql = 'SELECT u.id, u.firstname, u.lastname, u.email
 				FROM '.$CFG->prefix.'user u, '.$CFG->prefix.'role_assignments r
 			    WHERE '.$select.' AND u.id=r.userid AND r.roleid=3 
+			    GROUP BY u.email
 			    ORDER BY u.lastname ASC, u.firstname ASC';
 
 		$availableusers = get_recordset_sql($sql);

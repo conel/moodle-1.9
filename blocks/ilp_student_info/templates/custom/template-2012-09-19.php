@@ -25,7 +25,7 @@ foreach ($details->fields as $key => $value) {
 	}
 }
 
-$html .= '
+$html = '
 <div id="student_profile">
 <h2>'.$user->firstname.' '.$user->lastname.'</h2>
 <div class="student_personal_details">
@@ -138,7 +138,6 @@ $table->setup();
 
 $bksb_results = $bksb->getResults($conel_id);
 $row = $bksb_results;
-
 $table->add_data($row);
 ob_start();
 $table->print_html();  // Print the whole table
@@ -187,7 +186,7 @@ foreach ($assessment_types as $key => $value) {
 		
 		$tablecolumns = $questions;
 		$tableheaders = $questions;
-		
+
 		$table = new flexible_table('mod-targets');
 						
 		$table->define_columns($tablecolumns);
@@ -253,101 +252,6 @@ if ($results_found == false) {
 
 $html .= $diag_html;
 
-
-// Predicted Functional Skills grades
-
-//$pstatus = $mis->Execute("SELECT COURSE_CODE,ACADEMIC_YEAR,MODULE_DESC,ENROL_STATUS FROM FES.MOODLE_CURRENT_ENROLMENTS WHERE ID = '381800'");
-$pstatus = $mis->Execute("SELECT COURSE_CODE,ACADEMIC_YEAR,MODULE_DESC,ENROL_STATUS FROM FES.MOODLE_CURRENT_ENROLMENTS WHERE ID = '$user->idnumber'");
-
-$mcodes = array('FS Maths' => 'Maths','FS English' => 'English','FS ICT' => 'ICT');
-
-$stes = array();
-
-if (!$pstatus) {} /*print $mis->ErrorMsg();*/ else  
-while (!$pstatus->EOF) {
-	
-	$mdesc = $pstatus->fields['MODULE_DESC'];
-	
-	if(isset($mcodes[$mdesc])) $stes[$mdesc] = $pstatus->fields['ENROL_STATUS'];
-	
-	$pstatus->MoveNext();
-}
- 
-$fsrows = array();
-
-$grades = array('P' => 'Pass','R' => 'At Risk','F'=>'Fail');
-
-$i = 0;
-
-foreach ($stes as $key => $value) {
-
-	$fsrow[$i]['Unit'] = $key;
-	$fsrow[$i]['Status'] = $value;
-	
-	//Functional Skills Level
-	$poutcome = $mis->Execute("SELECT FS_LEVEL_DESC FROM FES.MOODLE_PREDICTED_OUTCOMES WHERE PERSON_CODE='$user->idnumber' AND OBJECT_TYPE='Functional Skills Level' AND FS_TYPE_DESC='$key'");	
-	$fsrow[$i]['Level'] = $poutcome->fields['FS_LEVEL_DESC'];
-	
-	//Mock Results
-	$poutcome = $mis->Execute("SELECT GRADE_DESC FROM FES.MOODLE_PREDICTED_OUTCOMES WHERE PERSON_CODE='$user->idnumber' AND OBJECT_TYPE='Mock Results' AND FS_TYPE_DESC='$key' ORDER BY REVIEW_NUMBER");
-	$j=0;
-	$mress = array('Dec','Feb');
-	if (!$poutcome) {} else
-	while (!$poutcome->EOF) {
-		if(!isset($mress[$j]))break;		
-		$fsrow[$i][$mress[$j]] = $grades[$poutcome->fields['GRADE']]; 
-		$poutcome->MoveNext();
-		$j++;
-	}
-	
-	//Functional Skills Review
-	$poutcome = $mis->Execute("SELECT GRADE,REVIEW_NUMBER FROM FES.MOODLE_PREDICTED_OUTCOMES WHERE PERSON_CODE='$user->idnumber' AND OBJECT_TYPE='Functional Skills Review' AND FS_TYPE_DESC='$key' ORDER BY REVIEW_NUMBER");
-	
-	$j=1;
-	if (!$poutcome) {} else
-	while (!$poutcome->EOF) {		
-		$fsrow[$i][$j] = $grades[$poutcome->fields['GRADE']]; 
-		$poutcome->MoveNext();
-		$j++;
-	}
-	
-	$i++;
-}
-
-$html .= '<div id="predicted_outcome">';
-$html .= '<h4>Predicted Functional Skills grades</h4>';
-
-$html .= '<table id="predicted-outcomeFS ICT" class="flexible bksb_results" cellspacing="0" align="center" width="90%">
-<tbody>
-<tr>
-<th colspan="3" class="header c0" scope="col">&nbsp;<div class="commands"></div></th>
-<th colspan="2" class="header c0" scope="col">Mocks<div class="commands"></div></th>
-<th colspan="3" class="header c0" scope="col">Reviews<div class="commands"></div></th>
-</tr>
-<tr>
-<th class="header c0" scope="col">Unit<div class="commands"></div></th>
-<th class="header c1" scope="col">Status<div class="commands"></div></th>
-<th class="header c2" scope="col">Level<div class="commands"></div></th>
-<th class="header c3" scope="col">Dec<div class="commands"></div></th>
-<th class="header c4" scope="col">Feb<div class="commands"></div></th>
-<th class="header c5" scope="col">1<div class="commands"></div></th>
-<th class="header c6" scope="col">2<div class="commands"></div></th>
-<th class="header c7" scope="col">3<div class="commands"></div></th>
-</tr>
-<tr class="r0">';
-
-foreach($fsrow as $fsrr) {
-	foreach($fsrr as $key => $value) {
-		$html .= '<td class="cell c'.$key.'">'.$value.'</td>';
-	}
-}
-
-$html .= '</tr>
-</tbody>
-</table>';
-
-$html .= '</div>';
-			
 $html .= '</div>';
 
 echo $html;
