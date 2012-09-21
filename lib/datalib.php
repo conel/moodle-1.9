@@ -2307,10 +2307,10 @@ function count_login_failures($mode, $username, $lastlogin) {
  * @param mixed $object The data to be printed
  */
 function print_object($object) {
-    //echo '<pre class="notifytiny">' . htmlspecialchars(print_r($object,true)) . '</pre>';
+    echo '<pre class="notifytiny">' . htmlspecialchars(print_r($object,true)) . '</pre>';
 	// we may need a lot of memory here
-    raise_memory_limit(MEMORY_EXTRA);
-    echo s(print_r($object, true));
+    //raise_memory_limit(MEMORY_EXTRA);
+    //echo s(print_r($object, true));
 }
 
 /*
