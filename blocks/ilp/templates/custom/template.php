@@ -242,7 +242,7 @@ if ($config->ilp_show_concerns == 1) {
         // nkowald - 2011-08-10 - Adding four new links to this section
 		
 		echo '<div class="generalbox" id="ilp-concerns-overview" style="margin-bottom:0 !important;">';
-		
+
 		if($CFG->ilpconcern_report1 == 1 && (has_capability('mod/ilpconcern:addreport1', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport1', $context)))) {
 			echo '<div class="add_button">';
 			if ($courseid != 1) {
@@ -262,10 +262,12 @@ if ($config->ilp_show_concerns == 1) {
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;status=1">Good performance records</a></li>';
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;status=2">Causes for concern</a></li>';
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;status=3">Student progress</a></li>';
+			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?courseid='.$courseid.'&amp;userid='.$user->id.'&amp;status=5">Disciplinary</a></li>';
 		} else {
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$user->id.'&amp;status=1">Good performance records</a></li>';
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$user->id.'&amp;status=2">Causes for concern</a></li>';
 			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$user->id.'&amp;status=3">Student progress</a></li>';
+			echo '<li><a href="'.$CFG->wwwroot.'/mod/ilpconcern/concerns_view.php?userid='.$user->id.'&amp;status=5">Disciplinary</a></li>';
 		}
         echo '</ul>';
 

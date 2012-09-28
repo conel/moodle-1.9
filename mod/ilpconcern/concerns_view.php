@@ -199,6 +199,9 @@ switch($status) {
         // TODO: nkowald - Find where get_string 'Communication Record' is located and use this instead
         $thisreporttype = 'Student Progress';
         break;
+    case "5":
+        $thisreporttype = 'Disciplinary';
+        break;
 }
 
 // nkowald - Form action wasn't set and was messing up student status changing
@@ -321,12 +324,16 @@ if($action == 'updateconcern'){
     // nkowald - 2010-07-01 - Added Subject Reviews to this page
     $tabrows[] = new tabobject('4', "$link_values&amp;status=4", "Targets");
 
+    if($CFG->ilpconcern_report5 == 1){
+        $tabrows[] = new tabobject('5', "$link_values&amp;status=5", "Disciplinary");
+    }
+    
     $tabs[] = $tabrows;
 
     print_tabs($tabs, $status);
         
     // nkowald - 2011-07-22 - Moved this above content to make it easier to add these
-    echo '<div class="addbox">';
+    echo '<div class="addbox" style="width:1100px">';
 
     if($CFG->ilpconcern_report1 == 1 && (has_capability('mod/ilpconcern:addreport1', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport1', $context)))) {
         echo '<a href="'.$link_values.'&amp;action=updateconcern&amp;status=0"><span></span>'.get_string('addconcern', 'ilpconcern', get_string('report1', 'ilpconcern')).'</a>';
@@ -346,6 +353,10 @@ if($action == 'updateconcern'){
 
     if($CFG->ilpconcern_report4 == 1 && (has_capability('mod/ilpconcern:addreport4', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport4', $context)))) {
         echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'"><span></span>Add Target</a>';
+    }
+
+    if($CFG->ilpconcern_report5 == 1 && (has_capability('mod/ilpconcern:addreport5', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport5', $context)))) {
+        echo '<a href="'.$link_values.'&amp;action=updateconcern&amp;status=5"><span></span>Add Disciplinary</a>';
     }
 
     echo '<br class="clear_both" />';
@@ -380,11 +391,23 @@ if($action == 'updateconcern'){
         echo '<div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div>';   
     }   
 
+    if ($status == 5) {
+        $tabs = array();
+        $tabrows = array();
+        
+        $tabrows[] = new tabobject('0', "$link_values&amp;status=5&amp;stage=0", 'In progress');
+        $tabrows[] = new tabobject('1', "$link_values&amp;status=5&amp;stage=1", 'Resolved');
+        $tabs[] = $tabrows;
+        
+        print_tabs($tabs, $stage);
+
+        echo '<div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div><div class="clearer"></div>';   
+    }   
+
     $i = $status + 1;
     display_ilpconcern($user->id, $courseid, $i, TRUE, FALSE, FALSE, $sortorder='DESC', 0, true, $stage);
 
     if(isset($_POST['concernspost'])) {
-		print_r($_POST);
         $report = get_record('ilpconcern_posts', 'id', (int)$_POST['concernspost']);
         $p_stage = (int)$_POST['stage']; 
         $report->stage = $p_stage; 

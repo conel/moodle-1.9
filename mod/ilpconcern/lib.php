@@ -127,7 +127,7 @@ class ilpconcern_updateconcern_form extends moodleform {
 			$mform->setDefault('deadline', time());
 		}
 
-		if($thisreporttype=='Cause for Concern'){		
+		if($thisreporttype=='Cause for Concern' || $thisreporttype=='Disciplinary'){		
 			$mform->addElement('text', 'support_tutor_name', 'Personal tutor', "size=80 readonly='readonly' onblur='return false;' onclick=\"openpopup('/mod/ilpconcern/assign.php?contextid=302599&roleid=3', 'message', 'menubar=0,location=0,scrollbars,status,resizable,width=400,height=500', 0);\"");
  			$mform->addRule('support_tutor_name', null, 'required', null, 'client');
  			$mform->addElement('hidden', 'id_support_tutor_id', 0);		
@@ -217,6 +217,13 @@ class ilpconcern_updateconcern_form extends moodleform {
 			message_post_message($messagefrom, $support_tutor, $msg, FORMAT_HTML, 'direct');							
 		}
 
+		if($thisreporttype=='Disciplinary'){
+			$ruser = $messageto->firstname.' '.$messageto->lastname.' ('.$messageto->idnumber.')';
+			$msg = 'A new Disciplinary has been added to your student '.$ruser.'<br /><a href="'.$concernurl.'">'.$concernview.'</a></p>'.$data->concernset;	
+			$support_tutor = get_record('user', 'id', $data->id_support_tutor_id); 
+			message_post_message($messagefrom, $support_tutor, $msg, FORMAT_HTML, 'direct');							
+		}
+
 		if($CFG->ilpconcern_send_concern_message == 1){
 			$message .= '<br /><a href="'.$concernurl.'">'.$concernview.'</a></p>'.$data->concernset;
 			message_post_message($messagefrom, $messageto, $message, FORMAT_HTML, 'direct');
@@ -265,7 +272,7 @@ function ilpconcern_update_menu($concernpost, $context) {
 	$output .= '<select name="stage" style="font-size:99%">';
 	$output .= '<option value="0">In progress</option>';
 	$output .= '<option value="1">Resolved</option>';
-	$output .= '<option value="2">Escalated</option>';
+	if($report->status!=5) $output .= '<option value="2">Escalated</option>';
 	$output .= '</select>';
 	$output .= '<input type="submit" name="submit" value="'.get_string('updatestatus', 'ilptarget').'" style="font-size:99%" />';
 	$output .= '</form>';

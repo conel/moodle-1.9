@@ -474,10 +474,12 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 	}
 
 	if($full == TRUE) {
+		
 		echo '<div class="block_ilp_ilpconcern">';
 
 		if($concerns_posts) {
 			foreach($concerns_posts as $post) {
+				
 				$posttutor = get_record('user','id',$post->setbyuserid);
 
 				echo '<div class="ilp_post yui-t4">';
@@ -494,10 +496,13 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 						echo '</div>';
 					echo '</div>';
 					}
+					
 				echo '<div class="yui-gd">';
 					echo '<div class="yui-u first">';
 					if ($report == 4) {
 						echo '<p>Your Progress</p>';
+					} else if ($report == 6) {
+						echo '<p>Disciplinary</p>';
 					} else {
 						echo '<p>'.get_string('report'.$report,'ilpconcern').'</p>';
 					}
@@ -506,6 +511,7 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 					echo '<p>'.$post->concernset.'</p>';
 						echo '</div>';
 				echo '</div>';
+				
 				echo '</div>';
 					echo '</div>';
 					echo '<div class="yui-b">';
@@ -534,6 +540,7 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 		}
 		echo '</div>';
 	}
+
 }
 
 /**
@@ -1235,8 +1242,17 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	
 	$html .= '<div class="generalbox">';
 	
-	if ($cconcerns = get_records_sql('SELECT id FROM mdl_ilpconcern_posts WHERE setforuserid='.$learner_id.' AND status=2 and stage=0')) {
-		if(!empty($cconcerns)) $html .= '<span class="author" style="color:red;float:left">You have a cause for concern.</span>';
+	if ($cconcerns = get_records_sql('SELECT id,status
+	                                  FROM mdl_ilpconcern_posts 
+	                                  WHERE setforuserid='.$learner_id.' 
+	                                  AND ((status=2 AND stage=0) OR (status=5 AND stage=0))
+	                                  ORDER BY timecreated DESC
+	                                  LIMIT 1')) {
+		if(!empty($cconcerns)) {
+			$cconcerns = array_pop($cconcerns);
+			$cmsg = $cconcerns->status == 2 ? 'cause for concern' : 'disciplinary';
+			$html .= '<span class="author" style="color:red;float:left">You have a '.$cmsg.'.</span><br />';
+		}
 	}
 	
 	if ($results = get_records_sql($query)) {

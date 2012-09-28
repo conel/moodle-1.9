@@ -19,6 +19,8 @@
 		{ $CFG->ilpconcern_report3 = 0; }	
 	if ( !isset($CFG->ilpconcern_report4))
 		{ $CFG->ilpconcern_report4 = 0; }	
+	if ( !isset($CFG->ilpconcern_report5))
+		{ $CFG->ilpconcern_report5 = 0; }	
 	if ( !isset($CFG->ilpconcern_use_template))
 		{ $CFG->ilpconcern_use_template = 0; }
 	
@@ -118,6 +120,18 @@
     </td>
 </tr>
 <tr valign="top">
+    <td align="right">report5:</td>
+    <td>
+    <?php
+       choose_from_menu_yesno ("ilpconcern_report5", $CFG->ilpconcern_report5, "", "", "");
+    ?>
+    </td>
+    <td>
+		Disciplinary
+    <?php //print_string("report4", "ilpconcern") ?>
+    </td>
+</tr>
+<tr valign="top">
     <td align="right">use_template:</td>
     <td>
     <?php
@@ -141,15 +155,21 @@ print_heading(get_string('templates', 'ilpconcern'),'left');
 echo '<p><a href="'.$CFG->wwwroot.'/mod/ilpconcern/add_template.php">'.get_string('addtemplate','ilpconcern').'</a></p>';
 
 $i = 1;
-while ($i <= 4){	
-if ($i == 4) {
-	print_heading('Student Progress','left',3);
-} else {
-	print_heading(get_string('report'.$i.'plural','ilpconcern'),'left',3);
-}
+while ($i <= 6){	
 
-$status = $i - 1;
-$select = "module = 'ilpconcern' AND status = $status"; 	
+    if($i==5){$i++; continue;}
+    		
+	if ($i == 4) {
+		print_heading('Student Progress','left',3);
+	} else if ($i == 6) {
+		print_heading('Disciplinary','left',3);
+	} else {
+		print_heading(get_string('report'.$i.'plural','ilpconcern'),'left',3);
+	}
+
+	$status = $i - 1;
+	$select = "module = 'ilpconcern' AND status = $status"; 	
+	
 	if($templates = get_records_select('ilp_module_template',$select,'name')){
     	echo '<ul>';
 		foreach ($templates as $template){
@@ -159,6 +179,7 @@ $select = "module = 'ilpconcern' AND status = $status";
     }else{
     	echo get_string('notemplates','ilpconcern');
     }
+    
     $i++;
 }
  
