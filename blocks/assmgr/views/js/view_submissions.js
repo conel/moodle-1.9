@@ -26,7 +26,7 @@ M.assmgr.view_submissions = (function() {
 
 		// nkowald - 2011-02-21 - Changed the relative path to include /VLE/ - needed on live environment
         YAHOO.util.Connect.asyncRequest('POST',
-                                        '/VLE/blocks/assmgr/actions/save_outcomes_assessment.php',
+                                        '/blocks/assmgr/actions/save_outcomes_assessment.php',
                                         M.assmgr.view_submissions.callback,
                                         'ajax=true&course_id='+course_id+'&candidate_id='+candidate_id+'&outcomes['+outcomeid+']='+outcomescaleitem);
 
@@ -92,7 +92,7 @@ M.assmgr.view_submissions = (function() {
         },
 
         add_loader_icon : function(div) {
-            div.innerHTML = '<img src="/VLE/pix/i/loading_small.gif" />';
+            div.innerHTML = '<img src="/pix/i/loading_small.gif" />';
         },
 
         remove_loader_icon : function(div) {
@@ -100,7 +100,7 @@ M.assmgr.view_submissions = (function() {
         },
 
         add_error_icon : function(div) {
-            div.innerHTML = '<img src="/VLE/pix/i/cross_red_big.gif" />';
+            div.innerHTML = '<img src="/pix/i/cross_red_big.gif" />';
         },
 
         add_style : function(classname, style) {

@@ -7,7 +7,7 @@ M.assmgr.lock_portfolio.callback = {};
 // nkowald - 2011-02-21 - Changed the relative path to include /VLE/ - needed on live environment
 M.assmgr.lock_portfolio.assmgr_renew_lock = function(){
     YAHOO.util.Connect.asyncRequest('POST',
-                                    '/VLE/blocks/assmgr/actions/lock_portfolio.php',
+                                    '/blocks/assmgr/actions/lock_portfolio.php',
                                     M.assmgr.lock_portfolio.callback,
                                     'course_id='+M.assmgr.lock_portfolio.course_id+'&candidate_id='+M.assmgr.lock_portfolio.candidate_id);
     // renew the lock every 4 minutes using a recursive function call

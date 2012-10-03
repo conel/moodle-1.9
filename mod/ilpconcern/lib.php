@@ -597,7 +597,7 @@ class ilpconcern_addtemplate_form extends moodleform {
             $mform->setDefault('name', $template->name);
         }
 		
-		$options = array(get_string('report1','ilpconcern'),get_string('report2','ilpconcern'),get_string('report3','ilpconcern'),get_string('report4','ilpconcern'));
+		$options = array(get_string('report1','ilpconcern'),get_string('report2','ilpconcern'),get_string('report3','ilpconcern'),get_string('report4','ilpconcern'),get_string('report5','ilpconcern'),get_string('report6','ilpconcern'));
 		$mform->addElement('select', 'status', get_string('status','ilpconcern'), $options);
 		$mform->addRule('status', null, 'required', null, 'client');
 		if($id > 0 && $template){

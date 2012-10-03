@@ -17,7 +17,7 @@ $PAGE->title = $course->shortname.': '.get_string('blockname','block_assmgr');
 $PAGE->set_heading($course->fullname);
 $PAGE->set_navigation = assmgr_build_navigation($navlinks);
 // nkowald - 2011-02-21 - Changed the relative path to include /VLE/ - needed on live environment
-$PAGE->set_url('/VLE/blocks/assmgr/actions/edit_evidence.php', $PARSER->get_params());
+$PAGE->set_url('/blocks/assmgr/actions/edit_evidence.php', $PARSER->get_params());
 
 echo $OUTPUT->header();
 

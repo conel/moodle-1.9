@@ -174,7 +174,6 @@
     mtrace("Finished activity modules");
 
 	//this is separated to cron2.php
-	/*
     mtrace("Starting blocks");
     if ($blocks = get_records_select("block", "cron > 0 AND (($timenow - lastcron) > cron) AND visible = 1")) {
         // we will need the base class.
@@ -192,7 +191,7 @@
                             mtrace('Error: could not update timestamp for '.$block->name);
                         }
                     }
-                /// Reset possible changes by blocks to time_limit. MDL-11597
+					/// Reset possible changes by blocks to time_limit. MDL-11597
                     @set_time_limit(0);
                     mtrace('done.');
                 }
@@ -201,7 +200,6 @@
         }
     }
     mtrace('Finished blocks');
-*/
 
     mtrace('Starting admin reports');
     // Admin reports do not have a database table that lists them. Instead a
