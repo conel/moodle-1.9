@@ -355,7 +355,7 @@ if($action == 'updateconcern'){
         echo '<a href="'.$CFG->wwwroot.'/blocks/lpr/actions/new.php?course_id='.$courseid.'&amp;ilp=1&amp;learner_id='.$user->id.'"><span></span>Add Target</a>';
     }
 
-    if($CFG->ilpconcern_report5 == 1 && (has_capability('mod/ilpconcern:addreport5', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport5', $context)))) {
+    if($CFG->ilpconcern_report5 == 1 && (has_capability('mod/ilpconcern:addreport4', $context) || ($USER->id == $user->id && has_capability('mod/ilpconcern:addownreport4', $context)))) {
         echo '<a href="'.$link_values.'&amp;action=updateconcern&amp;status=5"><span></span>Add Disciplinary</a>';
     }
 
