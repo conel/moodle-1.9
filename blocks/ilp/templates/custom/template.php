@@ -277,7 +277,7 @@ if ($config->ilp_show_concerns == 1) {
 		
 		//echo "<div class='generalbox'>";
 		echo "<div>";
-		display_ilpconcern($id, $courseid, 1, true, false, false, 'ASC', 1, false);
+		display_ilpconcern($id, $courseid, 1, true, false, false, 'DESC', 1, false);
 		//echo '</div>';
 		
 		echo '<br />';
