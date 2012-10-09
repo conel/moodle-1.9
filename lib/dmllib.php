@@ -1692,7 +1692,8 @@ function update_record($table, $dataobject) {
                 $value = (int)$value;
                 $update[] = "$key = $value";   // lets keep pg happy, '' is not correct smallint MDL-13038
             } else {
-                $update[] = "$key = '$value'"; // All incoming data is already quoted
+				if($table == 'block_lpr') $update[] = "$key = ".$db->qstr($value); //This is for sure not quoted!!!
+                else $update[] = "$key = '$value'"; // All incoming data is already quoted   (seriously???? i don't think so!)                
             }
         }
     }
