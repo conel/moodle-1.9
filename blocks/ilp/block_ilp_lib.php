@@ -443,7 +443,7 @@ function display_ilpconcern ($id,$courseid,$report,$full=TRUE,$title=TRUE,$icon=
 
 	$select = "SELECT {$CFG->prefix}ilpconcern_posts.*, up.username ";
 	$from = "FROM {$CFG->prefix}ilpconcern_posts, {$CFG->prefix}user up ";
-	$where = "WHERE up.id = setbyuserid AND status = $status AND setforuserid = $id ";
+	$where = "WHERE up.id = setbyuserid AND timecreated>1346454000 AND status = $status AND setforuserid = $id ";
 
 	if($CFG->ilpconcern_course_specific == 1 && $courseid != 0){
 		$where .= 'AND course = '.$courseid.' ';
