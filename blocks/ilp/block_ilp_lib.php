@@ -1239,6 +1239,20 @@ function display_ilp_your_progress($learner_id, $course_id) {
 	
 	$html .= '<div class="generalbox">';
 
+	if ($cconcerns = get_records_sql('SELECT id,status
+									  FROM mdl_ilpconcern_posts 
+									  WHERE setforuserid='.$learner_id.' 
+									  AND ((status=2 AND stage=0) OR (status=5 AND stage=0))
+									  ORDER BY timecreated DESC
+									  LIMIT 1')) {
+		//print_object($cconcerns);
+		if(!empty($cconcerns)) {
+			$cconcerns = array_pop($cconcerns);
+			$cmsg = $cconcerns->status == 2 ? 'cause for concern' : 'disciplinary';
+			$html .= '<span class="author" style="color:red;float:left">You have a '.$cmsg.'.</span><br />';
+		}
+	}
+		
 	$query = "SELECT ilpc.id, ilpc.timemodified, ilpc.concernset, usr.firstname, usr.lastname 
 			  FROM mdl_ilpconcern_posts ilpc, mdl_user usr 
 			  WHERE ilpc.setforuserid = ".$learner_id." AND usr.id = ilpc.setbyuserid AND ilpc.status = 3 
@@ -1253,21 +1267,8 @@ function display_ilp_your_progress($learner_id, $course_id) {
 			$concerns_post = $result->id;
 		}
 	} else {
-		if ($cconcerns = get_records_sql('SELECT id,status
-										  FROM mdl_ilpconcern_posts 
-										  WHERE setforuserid='.$learner_id.' 
-										  AND ((status=2 AND stage=0) OR (status=5 AND stage=0))
-										  ORDER BY timecreated DESC
-										  LIMIT 1')) {
-			if(!empty($cconcerns)) {
-				$cconcerns = array_pop($cconcerns);
-				$cmsg = $cconcerns->status == 2 ? 'cause for concern' : 'disciplinary';
-				$html .= '<span class="author" style="color:red;float:left">You have a '.$cmsg.'.</span><br />';
-			}
-			
 		
-			$html .= '<p>No progress has been set this academic year.</p>';
-		}
+		$html .= '<p>No progress has been set this academic year.</p>';
 	}
 	
 	if ($user = get_record("user", "id", $learner_id) ) {
