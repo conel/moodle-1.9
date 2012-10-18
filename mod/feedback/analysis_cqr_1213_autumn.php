@@ -61,7 +61,7 @@ $search_directorates = optional_param('multichoice_1456', 0, PARAM_INT);
 <tr><?php print_feedback_item('Curriculum Area', 4, $search_curriculum_areas, $feedback);?></tr>
 <tr><?php print_feedback_item('School', 5, $search_schools, $feedback);?></tr>			
 <tr><?php print_feedback_item('Directorate', 6, $search_directorates, $feedback);?></tr>
-<tr><td colspan="2"><div class="form-buttons"><div class="singlebutton"><input type="submit" value="<?php echo get_string('search'); ?>"/></div></div></td></tr>
+<tr><td colspan="2"><div class="form-buttons"><div class="singlebutton"><input type="submit" value="Filter"/></div></div></td></tr>
 </form><tr><td colspan="2">
 <?php   
 	echo '<div class="form-buttons">';
@@ -118,12 +118,13 @@ if($search_directorates!='') {
 }
 
 if(isset($cp)) {	
+	$completedscount = count($cp);
 	if(count($cp)<1) $cp = array(0);
 	$where = "completed IN (".implode(',',$cp).")";
+} else {
+	//get completed feedbacks
+	$completedscount = feedback_get_completeds_group_count($feedback);
 }
-
-//get completed feedbacks
-$completedscount = feedback_get_completeds_group_count($feedback);
 
 //show the count
 echo '<b>'.get_string('completed_feedbacks', 'feedback').': '.$completedscount. '</b><br />';
