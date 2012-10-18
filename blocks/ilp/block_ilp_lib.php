@@ -1241,7 +1241,7 @@ function display_ilp_your_progress($learner_id, $course_id) {
 
 	if ($cconcerns = get_records_sql('SELECT id,status
 									  FROM mdl_ilpconcern_posts 
-									  WHERE setforuserid='.$learner_id.' 
+									  WHERE setforuserid='.$learner_id.' AND deadline>unix_timestamp()
 									  AND ((status=2 AND stage=0) OR (status=5 AND stage=0))
 									  ORDER BY timecreated DESC
 									  LIMIT 1')) {

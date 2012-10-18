@@ -18,8 +18,13 @@
     $courseid = optional_param('courseid', false, PARAM_INT);
 
     $query_string = $_SERVER['QUERY_STRING'];
+    
     if ($id == 57017) {
         header('Location: analysis_staff_survey.php?'.$query_string.'');
+    }
+    
+    if ($id == 246253) {
+        header('Location: analysis_cqr_1213_autumn.php?'.$query_string.'');
     }
 
     if ($id) {

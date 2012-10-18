@@ -56,6 +56,7 @@ class feedback_item_numeric extends feedback_item_base {
         $values = feedback_get_group_values($item, $groupid, $courseid, $where_clause);
         
         $avg = 0.0;
+        $sum = 0.0;
         $counter = 0;
         if($values) {
             $data = array();
@@ -63,13 +64,15 @@ class feedback_item_numeric extends feedback_item_base {
                 if(is_numeric($value->value)) {
                     $data[] = $value->value;
                     $avg += $value->value;
+                    $sum += $value->value;
                     $counter++;
                 }
-            }
+            }        
             $avg = $counter > 0 ? $avg / $counter : 0;
             $analysed->data = $data;
             $analysed->avg = $avg;
         }
+        $analysed->sum = $sum;
         return $analysed;
     }
 
@@ -98,6 +101,10 @@ class feedback_item_numeric extends feedback_item_base {
                 $avg = number_format(0, 2, $this->sep_dec, $this->sep_thous);
             }
             echo '<tr><td align="left" colspan="2"><b>'.get_string('average', 'feedback').': '.$avg.'</b></td></tr>';
+            
+            if(isset($values->sum)) {
+				echo '<tr><td align="left" colspan="2"><b>Sum: '.number_format($values->sum, 2, $this->sep_dec, $this->sep_thous).'</b></td></tr>';
+			}
         }
         // return $itemnr;
     }

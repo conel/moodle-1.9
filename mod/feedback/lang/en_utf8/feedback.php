@@ -2,6 +2,7 @@
 $string['add_item'] = 'Add question to activity';
 $string['add_items'] = 'Add question to activity';
 $string['add_pagebreak'] = 'Add a pagebreak';
+$string['table'] = 'Table';
 $string['adjustment'] = 'Adjustment';
 $string['after_submit'] = 'After submitting';
 $string['oldvalueswillbedeleted'] = 'The current questions and all your user\'s responses will be deleted';
