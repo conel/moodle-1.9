@@ -110,30 +110,28 @@ class feedback_item_numeric extends feedback_item_base {
     }
 
     function excelprint_item(&$worksheet, $rowOffset, $item, $groupid, $courseid = false, $where_clause = false) {
+        
         $analysed_item = $this->get_analysed($item, $groupid, $courseid, $where_clause);
 
         $worksheet->setFormat("<l><f><ro2><vo><c:green>");
         $worksheet->write_string($rowOffset, 0, stripslashes($item->name));
-        $data = $analysed_item->data;
+		
+		$data = $analysed_item->data;
+		
         if(is_array($data)) {
-            // $worksheet->setFormat("<l><ro2><vo>");
-            // $worksheet->write_number($rowOffset, 1, $data[0]);
-            // $rowOffset++;
-            // for($i = 1; $i < sizeof($data); $i++) {
-                // $worksheet->setFormat("<l><vo>");
-                // $worksheet->write_number($rowOffset, 1, $data[$i]);
-                // $rowOffset++;
-            // }
-        
-            //mittelwert anzeigen
+			
             $worksheet->setFormat("<l><f><ro2><vo><c:red>");
             $worksheet->write_string($rowOffset, 1, get_string('average', 'feedback'));
-            
+            $worksheet->write_string($rowOffset, 2, "Sum");
+		
             $worksheet->setFormat("<l><f><vo>");
             $worksheet->write_number($rowOffset + 1, 1, $analysed_item->avg);
-            $rowOffset++;
-        }
-        $rowOffset++;
+		
+            $worksheet->setFormat("<l><f><vo>");
+            $worksheet->write_number($rowOffset + 1, 2, $analysed_item->sum);
+		}
+
+        $rowOffset +=2 ;
         return $rowOffset;
     }
 

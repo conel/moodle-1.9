@@ -26,6 +26,10 @@
     if ($id == 246253) {
         header('Location: analysis_cqr_1213_autumn.php?'.$query_string.'');
     }
+    
+    if ($id == 247339) {
+        header('Location: analysis_cqr_1213_autumn_feedback.php?'.$query_string.'');
+    }
 
     if ($id) {
         if (! $cm = get_coursemodule_from_id('feedback', $id)) {
