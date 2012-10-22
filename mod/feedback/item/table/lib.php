@@ -106,48 +106,44 @@ class feedback_item_table extends feedback_item_base {
         $align = get_string('thisdirection') == 'ltr' ? 'left' : 'right';
         
         $presentation = explode ("|", $item->presentation);
-        if($highlightrequire AND $item->required AND strval($value) == '') {
+        
+        //if($highlightrequire AND $item->required AND strval($value) == '') {
+        if($highlightrequire && $item->required && (! $this->check_value($value, $item))) {
             $highlight = 'bgcolor="#FFAAAA" class="missingrequire"';
         }else {
             $highlight = '';
         }
+        
         $requiredmark =  ($item->required == 1)?'<span class="feedback_required_mark">*</span>':'';
     ?>
-        <td <?php echo $highlight;?> valign="top" align="<?php echo $align;?>"><?php echo format_text(stripslashes_safe($item->name) . $requiredmark, true, false, false);?></td>
+        <td <?php echo $highlight; ?> valign="top" align="<?php echo $align;?>"><?php echo format_text(stripslashes_safe($item->name) . $requiredmark, true, false, false);?></td>
+        
         <td valign="top" align="<?php echo $align;?>">
+    
     <?php
         if($readonly) print_box_start('generalbox boxalign'.$align);
     ?>          
+    
            <style>.titem table, .titem tr, .titem td {border:1px solid #000;text-align:center;} .titem td{width:200px;height:10px}</style>
            
            <table class="titem">
 			   <tr>
-				   <td>Area for Action Identified in 2011/12</td><td>Actions Taken in 2012/13</td><td>By Whom</td><td>Date</td><td>Impact of Action(s) Taken</td>
+				   <td>Area for Action Identified</td><td>Actions Taken</td><td>By Whom</td><td>Date</td><td>Impact of Action(s) Taken</td>
 			   </tr>
-			   <tr>				       			   
-					<?php
-						for($i=0;$i<5;$i++) {
-			   
-							if($readonly){
-								?><td><?php echo isset($values[$i])?htmlspecialchars($values[$i]):'';?></td><?php								
-							} else {
-								?><td><input type="text" value="<?php echo isset($values[$i])?htmlspecialchars($values[$i]):'';?>" size="<?php echo $presentation[0];?>" maxlength="<?php echo $presentation[1];?>" name="<?php echo $item->typ . '_' . $item->id;?>[]" /></td><?php
+			   <?php for($j=0;$j<5;$j++) { ?> 
+				   <tr>				       			   
+						<?php
+							for($i=0;$i<5;$i++) {
+				   
+								if($readonly){
+									?><td><?php echo isset($values[$i+($j*5)])?htmlspecialchars($values[$i+($j*5)]):'';?></td><?php								
+								} else {
+									?><td><input type="text" value="<?php echo isset($values[$i+($j*5)])?htmlspecialchars($values[$i+($j*5)]):'';?>" size="<?php echo $presentation[0];?>" maxlength="<?php echo $presentation[1];?>" name="<?php echo $item->typ . '_' . $item->id;?>[]" /></td><?php
+								}
 							}
-						}
-					?>  			   		   					
-			   </tr>
-			   <tr>				       			   
-					<?php
-						for($i=0;$i<5;$i++) {
-			   
-							if($readonly){
-								?><td><?php echo isset($values[$i+5])?htmlspecialchars($values[$i+5]):'';?></td><?php								
-							} else {
-								?><td><input type="text" value="<?php echo isset($values[$i+5])?htmlspecialchars($values[$i+5]):'';?>" size="<?php echo $presentation[0];?>" maxlength="<?php echo $presentation[1];?>" name="<?php echo $item->typ . '_' . $item->id;?>[]" /></td><?php
-							}
-						}
-					?>  			   		   					
-			   </tr>
+						?>  			   		   					
+				   </tr>
+				<?php } ?>
 		   </table>
     <?php
         if($readonly) print_box_end();
@@ -158,10 +154,14 @@ class feedback_item_table extends feedback_item_base {
     }
 
     function check_value($value, $item) {
-        //if the item is not required, so the check is true if no value is given
-        if((!isset($value) OR $value == '') AND $item->required != 1) return true;
-        if($value == "")return false;
-        return true;
+
+        if($item->required != 1) return true;
+
+		foreach($value as $val) {
+			if($val != '') return true;
+		}
+			
+        return false;
     }
 
     function create_value($data) {
@@ -188,7 +188,7 @@ class feedback_item_table extends feedback_item_base {
         
         for($i = 1; $i < sizeof($arrvals); $i++) {
             //$retval .= FEEDBACK_TABLE_LINE_SEP.$arrvals[$i];
-            $retval .= FEEDBACK_TABLE_LINE_SEP.addslashes(clean_text($arrvals[$i]));
+            $retval .= FEEDBACK_TABLE_LINE_SEP.addslashes(clean_text($arrvals[$i]));  //prevent sql-injection
         }
         return $retval;
     }
