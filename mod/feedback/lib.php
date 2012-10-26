@@ -23,6 +23,15 @@ define('FEEDBACK_MAX_PIX_LENGTH', '400'); //max. Breite des grafischen Balkens i
 
 $feedback_names = feedback_load_feedback_items('mod/feedback/item');
 
+function print_feedback_item($label, $position, $value, $feedback) {	
+	$item = get_record('feedback_item', 'feedback', $feedback->id, 'position', $position);
+	$item->name = $label;		
+	$item->required = 0;	
+	$itemclass = 'feedback_item_'.$item->typ;
+	$itemobj = new $itemclass();
+	$itemobj->print_item($item, $value, false, false, false);
+}
+
 /**
 * this will create a new instance and return the id number 
 * of the new instance.
