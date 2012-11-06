@@ -322,13 +322,14 @@
 
                             // nkowald - 2010-06-22 - Needs these CURL options for it to work on LIVE
 							// nkowald - 2010-06-22 - Thought it may require proxy, but doesn't
-							//curl_setopt($ch, CURLOPT_PROXY, PROXY_SERVER);
-							//curl_setopt($ch, CURLOPT_PROXYPORT, PROXY_PORT);
-							//curl_setopt($ch, CURLOPT_PROXYUSERPWD, PROXY_USERNAME .":". PROXY_PASSWORD);
+							curl_setopt($ch, CURLOPT_PROXY, PROXY_SERVER);
+							curl_setopt($ch, CURLOPT_PROXYPORT, PROXY_PORT);
+							curl_setopt($ch, CURLOPT_PROXYUSERPWD, PROXY_USERNAME .":". PROXY_PASSWORD);
                             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
                             //curl_setopt($ch, CURLOPT_USERPWD, $_SERVER['AUTH_USER'].":".$_SERVER['AUTH_PASSWORD']);
                             curl_setopt($ch, CURLOPT_USERPWD, AUTH_USER.':'.AUTH_PASS);
-                            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                            //curl_setopt($ch, CURLOPT_USERPWD, 'CONEL\sszabo:conel123');
+							curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
                             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
                             curl_setopt($ch, CURLOPT_CAINFO, $cert_url);
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -521,7 +522,7 @@
             // Run batch file so we can redirect script
             // solution found on this website: http://www.somacon.com/p395.php
             $WshShell = new COM("WScript.Shell");
-            $oExec = $WshShell->Run("cmd /C F:\\moodle\\blocks\\lpr\\actions\\process-pdfs.bat", 0, false);
+            $oExec = $WshShell->Run("cmd /C D:\\moodle\\blocks\\lpr\\actions\\process-pdfs.bat", 0, false);
         }
 
         public function checkForBrokenExports() {

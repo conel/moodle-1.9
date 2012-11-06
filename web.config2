@@ -29,7 +29,7 @@
 		<handlers accessPolicy="Read, Execute, Script">
                 <remove name="WebDAV" />
                 <remove name="PHP_via_FastCGI" />
-                <add name="PHP_via_FastCGI" path="*.php" verb="*" modules="FastCgiModule" scriptProcessor="C:\Program Files (x86)\PHP\php-cgi.exe" resourceType="Either" requireAccess="Script" />
+                <add name="PHP_via_FastCGI" path="*.php" verb="*" modules="FastCgiModule" scriptProcessor="C:\PHP\php-cgi.exe" resourceType="Either" requireAccess="Script" />
                 <add name="WebDAV" path="*" verb="PROPFIND,PROPPATCH,MKCOL,PUT,COPY,DELETE,MOVE,LOCK,UNLOCK" modules="WebDAVModule" resourceType="Unspecified" requireAccess="Execute" />
             </handlers>
     </system.webServer>
