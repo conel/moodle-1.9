@@ -1426,4 +1426,225 @@ class grade_category extends grade_object {
         execute_sql($sql, false);
     }
 }
+
+class grade_category2 extends grade_category {
+
+    function _get_children_recursion($category) {
+
+        $children_array = array();
+        
+        foreach($category->children as $sortorder => $child) {
+            
+            if (array_key_exists('itemtype', $child)) {
+                
+                $grade_item = new grade_item($child, false);
+                
+                if (in_array($grade_item->itemtype, array('course', 'category'))) {
+                    $type  = $grade_item->itemtype.'item';
+                    $depth = $category->depth;
+                } else {
+                    $type  = 'item';
+                    $depth = $category->depth; // we use this to set the same colour
+                }
+                
+                $children_array[$sortorder] = array('object'=>$grade_item, 'type'=>$type, 'depth'=>$depth);
+
+            } else {
+                
+                $children = grade_category::_get_children_recursion($child);
+                
+                $grade_category = new grade_category($child, false);
+                
+                if (empty($children)) {
+                    $children = array();
+                }
+                
+                $children_array[$sortorder] = array('object'=>$grade_category, 'type'=>'category', 'depth'=>$grade_category->depth, 'children'=>$children);
+            }
+        }
+
+        // sort the array
+        ksort($children_array);
+
+        return $children_array;
+    }
+    
+    function get_children($module, $include_category_items=false) {
+		
+        $cats  = get_records('grade_categories', 'courseid', $this->courseid);
+		        
+        //$items = get_records('grade_items', 'courseid', $this->courseid);
+        $items = recordset_to_array(get_recordset_select('grade_items', "courseid='".$this->courseid."' AND (itemmodule='$module' OR ISNULL(itemmodule))"));
+        //$items = recordset_to_array(get_recordset_select('grade_items', "courseid='".$this->courseid."' AND (itemmodule='$module' OR itemtype='course')"));
+		
+        foreach ($cats as $catid=>$cat) {
+            $cats[$catid]->children = array();
+        }
+
+        //first attach items to cats and add category sortorder
+        foreach ($items as $item) {
+			
+            if ($item->itemtype == 'course' or $item->itemtype == 'category') {
+                
+                $cats[$item->iteminstance]->sortorder = $item->sortorder;
+
+                if (!$include_category_items) {
+                    continue;
+                }
+                
+                $categoryid = $item->iteminstance;
+                
+            } else {
+                
+                $categoryid = $item->categoryid;
+            }
+
+            // prevent problems with duplicate sortorders in db
+            $sortorder = $item->sortorder;
+            
+            while(array_key_exists($sortorder, $cats[$categoryid]->children)) {
+                //debugging("$sortorder exists in item loop");
+                $sortorder++;
+            }
+
+            $cats[$categoryid]->children[$sortorder] = $item;
+
+        }
+
+        // now find the requested category and connect categories as children
+        $category = false;
+        
+        foreach ($cats as $catid=>$cat) {
+            
+            if (empty($cat->parent)) {
+                
+                if ($cat->path !== '/'.$cat->id.'/') {
+                    $grade_category = new grade_category2($cat, false);
+                    $grade_category->path  = '/'.$cat->id.'/';
+                    $grade_category->depth = 1;
+                    $grade_category->update('system');
+                    return $this->get_children($include_category_items);
+                }
+            
+            } else {
+                
+                if (empty($cat->path) or !preg_match('|/'.$cat->parent.'/'.$cat->id.'/$|', $cat->path)) {
+                    //fix paths and depts
+                    static $recursioncounter = 0; // prevents infinite recursion
+                    $recursioncounter++;
+                    if ($recursioncounter < 5) {
+                        // fix paths and depths!
+                        $grade_category = new grade_category2($cat, false);
+                        $grade_category->depth = 0;
+                        $grade_category->path  = null;
+                        $grade_category->update('system');
+                        return $this->get_children($include_category_items);
+                    }
+                }
+                
+                // prevent problems with duplicate sortorders in db
+                $sortorder = $cat->sortorder;
+                
+                while(array_key_exists($sortorder, $cats[$cat->parent]->children)) {
+                    //debugging("$sortorder exists in cat loop");
+                    $sortorder++;
+                }
+
+                $cats[$cat->parent]->children[$sortorder] = &$cats[$catid];
+            }
+
+            if ($catid == $this->id) {
+                $category = &$cats[$catid];
+            }
+        }
+		
+        unset($items); // not needed
+        unset($cats); // not needed
+
+		//print_object($category);
+		
+        $children_array = grade_category2::_get_children_recursion($category);
+
+        ksort($children_array);
+
+		//print_object($children_array);
+		
+        return $children_array;
+
+    }
+
+    function fetch($params) {
+        return grade_object::fetch_helper('grade_categories', 'grade_category2', $params);
+    }
+    
+    function fetch_course_category($courseid) {
+		
+        if (empty($courseid)) {
+            debugging('Missing course id!');
+            return false;
+        }
+		
+        // course category has no parent
+        if ($course_category = grade_category2::fetch(array('courseid'=>$courseid, 'parent'=>null))) {         
+            return $course_category;
+        }
+
+        // create a new one
+        $course_category = new grade_category2();
+        $course_category->insert_course_category($courseid);
+		
+        return $course_category;
+    }
+            
+    function fetch_course_tree($courseid, $module, $include_category_items=false) {
+		
+        $course_category = grade_category2::fetch_course_category($courseid);
+        
+        $category_array = array('object'=>$course_category, 'type'=>'category', 'depth'=>1,
+                                'children'=>$course_category->get_children($module, $include_category_items));
+        
+        $sortorder = 1;
+        
+        $course_category->set_sortorder($sortorder);
+        $course_category->sortorder = $sortorder;
+        
+        return grade_category2::_fetch_course_tree_recursion($category_array, $sortorder);
+    }
+
+    function _fetch_course_tree_recursion($category_array, &$sortorder) {
+        
+        // update the sortorder in db if needed
+        if ($category_array['object']->sortorder != $sortorder) {
+            $category_array['object']->set_sortorder($sortorder);
+        }
+
+        // store the grade_item or grade_category instance with extra info
+        $result = array('object'=>$category_array['object'], 'type'=>$category_array['type'], 'depth'=>$category_array['depth']);
+
+        // reuse final grades if there
+        if (array_key_exists('finalgrades', $category_array)) {
+            $result['finalgrades'] = $category_array['finalgrades'];
+        }
+
+        // recursively resort children
+        if (!empty($category_array['children'])) {
+            $result['children'] = array();
+            //process the category item first
+            $cat_item_id = null;
+            foreach($category_array['children'] as $oldorder=>$child_array) {
+                if ($child_array['type'] == 'courseitem' or $child_array['type'] == 'categoryitem') {
+                    $result['children'][$sortorder] = grade_category2::_fetch_course_tree_recursion($child_array, $sortorder);
+                }
+            }
+            foreach($category_array['children'] as $oldorder=>$child_array) {
+                if ($child_array['type'] != 'courseitem' and $child_array['type'] != 'categoryitem') {
+                    $result['children'][++$sortorder] = grade_category2::_fetch_course_tree_recursion($child_array, $sortorder);
+                }
+            }
+        }
+
+        return $result;
+    }
+}
+
 ?>

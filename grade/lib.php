@@ -707,8 +707,11 @@ function grade_get_plugin_info($courseid, $active_type, $active_plugin) {
  * @return string HTML code or nothing if $return == false
  */
 function print_grade_page_head($courseid, $active_type, $active_plugin=null, $heading = false, $return=false, $bodytags='', $buttons=false, $extracss=array()) {
+    
     global $CFG, $COURSE;
+       
     $strgrades = get_string('grades');
+    
     $plugin_info = grade_get_plugin_info($courseid, $active_type, $active_plugin);
 
     // Determine the string of the active plugin
@@ -732,45 +735,54 @@ function print_grade_page_head($courseid, $active_type, $active_plugin=null, $he
         $CFG->stylesheets[] = $css_url;
     }
 
+    /*
     $navlinks[] = array('name' => $strgrades,
                         'link' => $first_link,
                         'type' => 'misc');
-
+	*/
+	
     $active_type_link = '';
 
     if (!empty($plugin_info[$active_type]['link']) && $plugin_info[$active_type]['link'] != qualified_me()) {
         $active_type_link = $plugin_info[$active_type]['link'];
     }
-
+	
+	/*
     if (!empty($plugin_info[$active_type]['parent']['link'])) {
         $active_type_link = $plugin_info[$active_type]['parent']['link'];
         $navlinks[] = array('name' => $stractive_type, 'link' => $active_type_link, 'type' => 'misc');
     }
-
+	
     if (empty($plugin_info[$active_type]['id'])) {
         $navlinks[] = array('name' => $stractive_type, 'link' => $active_type_link, 'type' => 'misc');
     }
-
-    $navlinks[] = array('name' => $stractive_plugin, 'link' => null, 'type' => 'misc');
+	*/
+	
+    //$navlinks[] = array('name' => $stractive_plugin, 'link' => null, 'type' => 'misc');
+    $navlinks[] = array('name' => 'Portfolios', 'link' => null, 'type' => 'misc');
 
     $navigation = build_navigation($navlinks);
 
     $title = ': ' . $stractive_plugin;
+    
     if (empty($plugin_info[$active_type]['id']) || !empty($plugin_info[$active_type]['parent'])) {
         $title = ': ' . $stractive_type . ': ' . $stractive_plugin;
     }
 	
     $returnval = print_header_simple($strgrades . ': ' . $stractive_type, $title, $navigation, '',
             $bodytags, true, $buttons, navmenu($COURSE), false, '', $return);
-
+	
     // Guess heading if not given explicitly
     if (!$heading) {
         $heading = $stractive_plugin;
     }
 
+	/*
     if ($CFG->grade_navmethod == GRADE_NAVMETHOD_COMBO || $CFG->grade_navmethod == GRADE_NAVMETHOD_DROPDOWN) {
         $returnval .= print_grade_plugin_selector($plugin_info, $return);
     }
+    */
+    
     $returnval .= print_heading($heading);
 
     if ($CFG->grade_navmethod == GRADE_NAVMETHOD_COMBO || $CFG->grade_navmethod == GRADE_NAVMETHOD_TABS) {
@@ -1879,6 +1891,52 @@ class grade_tree extends grade_structure {
 
         return null;
     }
+}
+
+//get only assesment manager's portfolios
+class grade_tree2 extends grade_tree {
+    
+    function grade_tree2 ($courseid, $module, $fillers=true, $category_grade_last=false, $collapsed=null, $nooutcomes=false) {
+        global $USER, $CFG;
+
+        $this->courseid   = $courseid;
+        $this->commonvars = "&amp;sesskey=$USER->sesskey&amp;id=$this->courseid";
+        $this->levels     = array();
+        $this->context    = get_context_instance(CONTEXT_COURSE, $courseid);
+
+        // get course grade tree
+        $this->top_element = grade_category2::fetch_course_tree($courseid, $module, true);
+
+        // collapse the categories if requested
+        if (!empty($collapsed)) {
+            grade_tree2::category_collapse($this->top_element, $collapsed);
+        }
+
+        // no otucomes if requested
+        if (!empty($nooutcomes)) {
+            grade_tree2::no_outcomes($this->top_element);
+        }
+
+        // move category item to last position in category
+        if ($category_grade_last) {
+            grade_tree2::category_grade_last($this->top_element);
+        }
+
+        if ($fillers) {
+            // inject fake categories == fillers
+            grade_tree2::inject_fillers($this->top_element, 0);
+            // add colspans to categories and fillers
+            grade_tree2::inject_colspans($this->top_element);
+        }
+
+        grade_tree2::fill_levels($this->levels, $this->top_element, 0);
+    }
+
+    function get_element_header(&$element, $withlink=false, $icon=true, $spacerifnone=false) {
+        
+        return $element['object']->get_name();
+    
+    }    
 }
 
 ?>
