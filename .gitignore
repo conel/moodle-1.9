@@ -1,4 +1,5 @@
 config.php
+web.config
 mod/object/repository/*
 blocks/lpr/print/*
 blocks/lpr/actions/dompdf/lib/fonts/log.htm
