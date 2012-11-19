@@ -51,6 +51,8 @@ class assmgr_ajax_table extends flexible_table {
 
     // language token for nothing to display
     var $nothing        = 'nothingtodisplay';
+    
+    var $category_id;
 
     /**
      * Constructor
@@ -464,13 +466,13 @@ class assmgr_ajax_table extends flexible_table {
        $onclickevent =  (!empty($onclick)) ? ' onclick="'.$onclick.'" ' : '';
 
         echo '<tr  class="' . implode(' ', $rowclasses) . '">';
-
+		
         // If we have a separator, print it
         if ($row === NULL) {
             $colcount = count($this->columns);
             echo '<td colspan="'.$colcount.'"><div class="tabledivider"></div></td>';
         } else {
-            $colbyindex = array_flip($this->columns);
+            $colbyindex = array_flip($this->columns);   //print_object($row);
             foreach ($row as $index => $data) {
                 $column = $colbyindex[$index];
                 echo '<td '.$onclickevent.' class="cell c'.$index.$this->column_class[$column].'"'.$this->make_styles_string($this->column_style[$column]).'>';
@@ -486,9 +488,9 @@ class assmgr_ajax_table extends flexible_table {
                     echo '&nbsp;';
                 }
                 echo '</td>';
-            }
+            }         
         }
-
+		
         echo '</tr>';
 
         $suppress_enabled = array_sum($this->column_suppress);
@@ -518,6 +520,12 @@ class assmgr_ajax_table extends flexible_table {
             if(in_array(TABLE_P_BOTTOM, $this->showdownloadbuttonsat)) {
                 echo $this->download_buttons();
             }
+
+			echo '<input type="hidden" name="category_id" value="'.$this->category_id.'">';
+			echo '<div class="submit" style="text-align:center">';
+			echo '<input type="submit" name="outcome" value="Update">';
+			echo '</div>';						
+			echo '</form>';            
         }
     }
 
@@ -658,6 +666,7 @@ class assmgr_ajax_table extends flexible_table {
             }
 
         }
+        
         echo '</tr>';
     }
 
@@ -681,8 +690,10 @@ class assmgr_ajax_table extends flexible_table {
         }
 
         $this->wrap_html_start();
+        
+        echo '<form method="post">';
+        
         // Start of main data table
-
         echo '<table'.$this->make_attributes_string($this->attributes).'>';
 
     }
@@ -837,7 +848,7 @@ class assmgr_ajax_table extends flexible_table {
             ?>
             <tr>
                 <th class="headerrow category catlevel1 cell removebottomborder" colspan="<?php echo count($this->columns) - $this->hozcols; ?>">&nbsp;</th>
-                <th class="headerrow category catlevel1 cell" colspan="<?php echo $colspan; ?>">
+                <th class="headerrow category catlevel1 cell" colspan="<?php echo $colspan+2; ?>">
                     <?php
                     $hozleftdouble = ($this->currhoz == 0) ? false : $this->currhoz - $this->hozsize;
                     $hozleftdouble = ($hozleftdouble < 0) ? 0 : $hozleftdouble;
@@ -942,6 +953,7 @@ class assmgr_ajax_table extends flexible_table {
      * @return array The sublist to show on the current page
      */
     function limitcols($collist, $hozsize = null) {
+        
         if(!empty($hozsize)) {
             $this->hozsize = $hozsize;
         }
@@ -954,7 +966,7 @@ class assmgr_ajax_table extends flexible_table {
             // return the requested set of columns, whilst preserving keys
             $collist = array_slice($collist, $this->currhoz, $this->hozsize, true);
         }
-
+		
         $this->hozcols = count($collist);
 
         return $collist;

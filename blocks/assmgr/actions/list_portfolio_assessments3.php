@@ -32,9 +32,9 @@ if ($is_ie6 = stripos($_SERVER['HTTP_USER_AGENT'], 'MSIE 6')) {
     print_error('incompatablebrowserie6', 'block_assmgr');
 }
 
-$category_id = empty($course->category) ? $PARSER->optional_param('category_id', null, PARAM_INT) : $course->category;
-
 $dbc = new assmgr_db();
+
+$category_id = empty($course->category) ? $PARSER->optional_param('category_id', null, PARAM_INT) : $course->category;
 
 // if there is a category_id: fetch the category, or fail if the id is wrong
 if(!empty($category_id) && ($category = $dbc->get_category($category_id)) == false) {
@@ -59,45 +59,6 @@ if(!empty($course_id)) {
 	header("Location: ".$CFG->wwwroot."/grade/report/grader/portfolios.php?id=$course_id");
 	exit;
 }
-
-if(isset($USER->access)) {
-	$accessinfo = $USER->access;
-} else {
-	$accessinfo = $USER->access = get_user_access_sitewide($USER->id);
-}
-
-//find all courses that this user has the assess portfolio capability on
-$allowedcourses = get_user_courses_bycap(
-	$USER->id,
-	"block/assmgr:assessportfolio",
-	$accessinfo,
-	true,
-	'c.sortorder ASC',
-	//'c.shortname ASC',
-	array('category', 'fullname', 'groupmode', 'defaultgroupingid')
-);
-
-// the user is an assessor if they have at least one course they can assess
-$access_isassessor = !empty($allowedcourses);
-
-if(!$access_isassessor) {
-	print_error('nopageaccess', 'block_assmgr');
-}
-
-/*
-if(isset($_POST['outcome'])) {
-	print_object($_POST);
-	$tcrs = $_POST['total_credit']; 
-	$pdgs = $_POST['predicted_grades']; 
-	foreach($tcrs as $cid => $tcr){
-		$pdg = $pdgs[$cid];
-		execute_sql("INSERT INTO mdl_qualification_outcomes (id, category_id, candidate_id, assessor_id, total_credit, predicted_grades, timecreated, timemodified) 
-		             VALUES ('0',$category_id,$cid,'".$USER->id."',$tcr,$pdg,NOW(),NOW())")
-		
-		$qoutcome = get_record('qualification_outcomes','category_id',$category_id,'candidate_id',$candidate->candidate_id);		
-	}
-}
-*/
 			
 // setup the navigation breadcrumbs
 $navlinks[] = array('name' => get_string('blockname', 'block_assmgr'), 'link' => null, 'type' => 'title');
@@ -137,7 +98,26 @@ echo $OUTPUT->header();
     <?php echo $OUTPUT->heading(get_string('listportfolios', 'block_assmgr')); ?>
     <div id="assmgr_assessments_container" class="portcontainer">
         <?php       
-			
+			if(isset($USER->access)) {
+				$accessinfo = $USER->access;
+			} else {
+				$accessinfo = $USER->access = get_user_access_sitewide($USER->id);
+			}
+
+			//find all courses that this user has the assess portfolio capability on
+			$allowedcourses = get_user_courses_bycap(
+				$USER->id,
+				"block/assmgr:assessportfolio",
+				$accessinfo,
+				true,
+				'c.sortorder ASC',
+				//'c.shortname ASC',
+				array('category', 'fullname', 'groupmode', 'defaultgroupingid')
+			);
+
+			// the user is an assessor if they have at least one course they can assess
+			$access_isassessor = !empty($allowedcourses);
+
 			// get the first course
 			$groupcourse = $allowedcourses[0];
 
@@ -149,6 +129,10 @@ echo $OUTPUT->header();
 
 			// check to see if groups are being used in this course
 			$group_id = groups_get_course_group($groupcourse, true);
+
+			if(!$access_isassessor) {
+				print_error('nopageaccess', 'block_assmgr');
+			}
 
 			// get the unique list of categories from that course list
 			$categories = array();
@@ -227,11 +211,9 @@ echo $OUTPUT->header();
 			
 			// set up the flexible table for displaying the portfolios
 			$flextable = new assmgr_ajax_table($assessments_table_uprefix);
-			
-			$flextable->category_id = $category_id;
-			
-			$flextable->define_baseurl($CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments.php?category_id={$category_id}&amp;course_id={$course_id}&amp;group_id={$group_id}");
-			$flextable->define_ajaxurl($CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments.ajax.php?category_id={$category_id}&amp;course_id={$course_id}&amp;group_id={$group_id}");
+
+			$flextable->define_baseurl($CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments3.php?category_id={$category_id}&amp;course_id={$course_id}&amp;group_id={$group_id}");
+			$flextable->define_ajaxurl($CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments3.ajax.php?category_id={$category_id}&amp;course_id={$course_id}&amp;group_id={$group_id}");
 
 			// apply the horizontal pagination
 			$courses = (empty($course_id)) ? $flextable->limitcols($courselist, get_config('block_assmgr', 'maxunits')) : array($course->id => $courselist[$course->id]);
@@ -246,10 +228,7 @@ echo $OUTPUT->header();
 			foreach(array_keys($courses) as $id) {
 				$columns[] = 'course'.$id;
 			}
-			
-			$columns[] = "total_credit";
-			$columns[] = "predicted_grade";
-				
+
 			// determine how long each course name can be based on how many columns there are
 			$maxlength = ($flextable->hozcols > 1) ? (100 / $flextable->hozcols) : 100;
 
@@ -258,9 +237,6 @@ echo $OUTPUT->header();
 				$headers[] = limit_length($courseobj->shortname, $maxlength, $courseobj->fullname);
 			}
 
-			$headers[] = "Total credits";
-			$headers[] = "Predicted grades";
-			
 			$flextable->define_columns($columns);
 			$flextable->define_headers($headers);
 
@@ -358,12 +334,6 @@ echo $OUTPUT->header();
 			// print the group selector
 			groups_print_course_menu($groupcourse, $flextable->baseurl);
 
-			$rtargets = get_records('targets','','','id');	
-			$targets = '';
-			foreach($rtargets as $target) {
-				$targets .= "<option value='".$target->id."'>".$target->name."</option>";
-			}
-					
 			if(!empty($matrix)) {
 				foreach($matrix as $candidate) {
 					// build the row
@@ -416,34 +386,20 @@ echo $OUTPUT->header();
 
 							$highlight = ($needsassess) ? 'highlight' : null;
 						}
-						
-						
+
 						$data['course'.$id] = "<div class='progress_bar_cell {$highlight}'>{$cell}</div>";
 					}
-					
-					$qoutcome = get_record('qualification_outcomes','category_id',$category_id,'candidate_id',$candidate->candidate_id);
-					
-					if(!$qoutcome) {
-						$quotcome = new Object();
-						$quotcome->total_credit = '';
-						$quotcome->predicted_grade = 0;						
-					}
-					
-					$targets = str_replace("<option value='".$quotcome->predicted_grade."'>","<option value='".$quotcome->predicted_grade."' selected='selected'>",$targets);
-								
-					$data['total_credit'] = "<input type='text' name='total_credit[".$candidate->candidate_id."]' value='".$quotcome->total_credit."' style='text-align:right' />";
-					$data['predicted_grade'] = "<select name='predicted_grade[".$candidate->candidate_id."]'>".$targets."</select>";
 					
 					$flextable->add_data_keyed($data);
 				}
 			}
-			
-			$flextable->print_html();      
-?>
-	        
-    </div>    
-</div>
 
+			$flextable->print_html();
+
+        
+        ?>
+    </div>
+</div>
 <?php
 
 echo $OUTPUT->footer();

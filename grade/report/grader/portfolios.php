@@ -107,7 +107,7 @@ if (!empty($target) && !empty($action) && confirm_sesskey()) {
     grade_report_grader::process_action($target, $action);
 }
 
-$reportname = 'Portfolios'; //get_string('modulename', 'gradereport_grader');
+$reportname = 'Unit grade overview'; //get_string('modulename', 'gradereport_grader');
 
 // Initialise the grader report object
 //$report = new grade_report_grader($courseid, $gpr, $context, $page, $sortitemid);
@@ -145,9 +145,9 @@ $numusers = $report->get_numusers();
 $report->load_final_grades();
 
 /// Print header
-
 print_grade_page_head($courseid, 'report', 'grader', $reportname, false, null, $buttons);
-//print_grade_page_head(1234, '', '', $reportname, false, null, $buttons);
+		
+echo "<p><a href='/blocks/assmgr/actions/list_portfolio_assessments.php?category_id=".$course->category."'>&lt;&lt; To Qualification Overview</a></p>";
 
 echo $report->group_selector;
 echo '<div class="clearer"></div>';

@@ -1706,11 +1706,18 @@ class grade_report_grader2 extends grade_report_grader {
 			
 			$candidate = array_pop($matrix);
 
+            $needsassess = "needsassess{$this->courseid}";
+            $needsassess = (bool) $candidate->$needsassess;
+            
 			$achieved = 'course'.$this->courseid;			
 			
 			$progbar = $progress->get_unit_progress($userid, $this->courseid, $access_isassessor, 'small', $candidate->$achieved);
-
-			$cell = $progbar;	
+            
+            $linkstr = ($needsassess) ? get_string('assess', 'block_assmgr') : get_string('view', 'block_assmgr') ;
+            
+            $link = "<a href='/blocks/assmgr/actions/edit_portfolio.php?course_id={$this->courseid}&amp;candidate_id={$candidate->candidate_id}#submittedevidence'>{$linkstr}</a>";
+                
+			$cell = $progbar.' '.$link;	
 			
 			$highlight = null;
 					
