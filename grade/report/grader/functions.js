@@ -26,3 +26,12 @@ function set_col(idx) {
         }
     }
 }
+/** highlight/unset the column of a table **/
+function set_col_grades(idx, selected) {
+    var table = document.getElementById('user-grades');
+    for (var i = 1; i < table.rows.length; i++) {
+        if (table.rows[i].cells[idx]) {
+			table.rows[i].cells[idx].childNodes[1].selectedIndex = selected;
+        }
+    }
+}

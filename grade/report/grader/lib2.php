@@ -869,7 +869,8 @@ class grade_report_grader extends grade_report {
                                 $nogradestr = $this->get_lang_string('nooutcome', 'grades');
                             }
                             $studentshtml .= '<input type="hidden" name="oldgrade_'.$userid.'_'
-                                          .$item->id.'" value="'.$oldval.'"/>';
+                                          .$item->id.'" value="'.$oldval.'"/>';                                             
+                            
                             $studentshtml .= choose_from_menu($scaleopt, 'grade_'.$userid.'_'.$item->id,
                                                               $gradeval, $nogradestr, '', '-1',
                                                               true, false, $tabindices[$item->id]['grade']);
@@ -1508,9 +1509,9 @@ class grade_report_grader2 extends grade_report_grader {
             $perpage = '&amp;perpage='.$studentsperpage;
             $curpage = '&amp;page='.$this->page;
         }
-        $this->baseurl = 'index.php?id='.$this->courseid. $perpage.$curpage.'&amp;';
+        $this->baseurl = 'portfolios.php?id='.$this->courseid. $perpage.$curpage.'&amp;';
 
-        $this->pbarurl = 'index.php?id='.$this->courseid.$perpage.'&amp;';
+        $this->pbarurl = 'portfolios.php?id='.$this->courseid.$perpage.'&amp;';
 
         $this->setup_groups();
 
@@ -1518,7 +1519,7 @@ class grade_report_grader2 extends grade_report_grader {
     }
 
     function get_headerhtml() {
-		
+			
         global $CFG, $USER;
         
         $this->rowcount = 0;
@@ -1550,10 +1551,22 @@ class grade_report_grader2 extends grade_report_grader {
 				//insert progress bar
 				$headerhtml .='<th class=" c0" scope="col">Progress</th>';
 			}
-			
-			
+								
             foreach ($row as $columnkey => $element) {
+
+					//print "element<br>";				
+					//print_object($element);
+			
+					//print "scaleid<br>";				
+					//print_object($element['object']->scaleid);
 				
+				$scales = array();
+				if (!empty($element['object']->scaleid)) {
+					$scale = get_record('scale', 'id', $element['object']->scaleid);
+					//print_object($scale);
+					$scales = explode(',', $scale->scale);							
+				}
+					            							
                 $sort_link = '';
                 
                 if (isset($element['object']->id)) {
@@ -1585,11 +1598,23 @@ class grade_report_grader2 extends grade_report_grader {
                 else if ($type == 'category') {}
                 else {
                     $headerlink = $this->gtree->get_element_header($element, true, $this->get_pref('showactivityicons'), false);
-                    $headerhtml .= '<th class=" '.$columnclass.' '.$type.$catlevel.'" scope="col" onclick="set_col(this.cellIndex)">'
-                                . shorten_text($headerlink);
+                    $headerhtml .= '<th class=" '.$columnclass.' '.$type.$catlevel.'" scope="col" onclick="set_col(this.cellIndex)">'.shorten_text($headerlink);
+					
+					//grade fill down select
+					if(count($scales)>0 && $USER->gradeediting[$this->courseid]) {
+						if (empty($element['object']->outcomeid)) {
+							$nogradestr = $this->get_lang_string('nograde');
+						} else {
+							$nogradestr = $this->get_lang_string('nooutcome', 'grades');
+						}												
+						$headerhtml .= "<br><select style='float:right' onchange='set_col_grades(this.parentNode.cellIndex,this.selectedIndex)' onclick='event.stopPropagation();event.preventDefault()'>";
+						$headerhtml .= "<option value='-1'>".$nogradestr."</option>";
+						for($i=0;$i<count($scales);$i++) $headerhtml .= "<option value='".($i+1)."'>".$scales[$i]."</option>"; 
+						$headerhtml .= "</select>";
+					}
+                    
                     $headerhtml .= '</th>';
                 }
-
             }
 
             $headerhtml .= '</tr>';
@@ -1617,6 +1642,8 @@ class grade_report_grader2 extends grade_report_grader {
         $scales_list = '';
         $tabindices = array();
 
+		//print_object($this->gtree->items);
+		
         foreach ($this->gtree->items as $item) {
             
             if (!empty($item->scaleid)) {
@@ -1629,12 +1656,17 @@ class grade_report_grader2 extends grade_report_grader {
         }
         
         $scales_array = array();
-
+		
+		//print "scales_list: $scales_list<br>";
+		
         if (!empty($scales_list)) {
             $scales_list = substr($scales_list, 0, -1);
             $scales_array = get_records_list('scale', 'id', $scales_list);
         }
-
+		
+		//print "scales_array<br>";
+		//print_object($scales_array);
+		
         $row_classes = array(' even ', ' odd ');
 
         $row_classes = array(' even ', ' odd ');
@@ -1740,8 +1772,11 @@ class grade_report_grader2 extends grade_report_grader {
 			
             foreach ($this->gtree->items as $itemid => $unused) {
                 
-                $item =& $this->gtree->items[$itemid];
+                $item =& $this->gtree->items[$itemid];   
                 $grade = $this->grades[$userid][$item->id];
+                
+                //print "item:<br>";
+                //print_object($item);
 
                 // Get the decimal points preference for this item
                 $decimalpoints = $item->get_decimals();
@@ -1820,7 +1855,10 @@ class grade_report_grader2 extends grade_report_grader {
                     $studentshtml .= '<span class="gradingerror'.$hidden.'">'.get_string('error').'</span>';
 
                 } else if ($USER->gradeediting[$this->courseid]) {
-
+					
+					//print "item->scaleid: $item->scaleid<br>";
+					//print_r($scales_array);
+					
                     if ($item->scaleid && !empty($scales_array[$item->scaleid])) {
                         $scale = $scales_array[$item->scaleid];
                         $gradeval = (int)$gradeval; // scales use only integers
@@ -1843,8 +1881,12 @@ class grade_report_grader2 extends grade_report_grader {
                             } else {
                                 $nogradestr = $this->get_lang_string('nooutcome', 'grades');
                             }
-                            $studentshtml .= '<input type="hidden" name="oldgrade_'.$userid.'_'
-                                          .$item->id.'" value="'.$oldval.'"/>';
+                            
+                            $studentshtml .= '<input type="hidden" name="oldgrade_'.$userid.'_'.$item->id.'" value="'.$oldval.'"/>';
+                            
+                            //print "scaleopt:<br>";
+                            //print_object($scaleopt);
+                                                        
                             $studentshtml .= choose_from_menu($scaleopt, 'grade_'.$userid.'_'.$item->id,
                                                               $gradeval, $nogradestr, '', '-1',
                                                               true, false, $tabindices[$item->id]['grade']);

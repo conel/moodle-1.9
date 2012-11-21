@@ -84,20 +84,26 @@ if(!$access_isassessor) {
 	print_error('nopageaccess', 'block_assmgr');
 }
 
-/*
 if(isset($_POST['outcome'])) {
-	print_object($_POST);
 	$tcrs = $_POST['total_credit']; 
-	$pdgs = $_POST['predicted_grades']; 
+	$pdgs = $_POST['predicted_grade']; 
 	foreach($tcrs as $cid => $tcr){
-		$pdg = $pdgs[$cid];
-		execute_sql("INSERT INTO mdl_qualification_outcomes (id, category_id, candidate_id, assessor_id, total_credit, predicted_grades, timecreated, timemodified) 
-		             VALUES ('0',$category_id,$cid,'".$USER->id."',$tcr,$pdg,NOW(),NOW())")
-		
-		$qoutcome = get_record('qualification_outcomes','category_id',$category_id,'candidate_id',$candidate->candidate_id);		
+		$cid = (int) $cid;
+		$tcr = (int) $tcr;
+		$pdg = (int)$pdgs[$cid];	
+		$exists = record_exists('qualification_outcomes', 'category_id', $category_id, 'candidate_id', $cid);	
+		if($exists) {
+			$sql = "UPDATE mdl_qualification_outcomes 
+			        SET assessor_id='".$USER->id."', total_credit='".$tcr."', predicted_grade='".$pdg."', timemodified=UNIX_TIMESTAMP() 
+					WHERE category_id='".$category_id."' AND candidate_id='".$cid."' LIMIT 1";		
+			execute_sql($sql,false);	
+		} else {
+			$sql = "INSERT INTO mdl_qualification_outcomes (id, category_id, candidate_id, assessor_id, total_credit, predicted_grade, timecreated, timemodified) 
+				    VALUES ('0','".$category_id."','".$cid."','".$USER->id."','".$tcr."','".$pdg."',UNIX_TIMESTAMP(),UNIX_TIMESTAMP())";
+			execute_sql($sql,false);					
+		}	
 	}
 }
-*/
 			
 // setup the navigation breadcrumbs
 $navlinks[] = array('name' => get_string('blockname', 'block_assmgr'), 'link' => null, 'type' => 'title');
@@ -423,16 +429,17 @@ echo $OUTPUT->header();
 					
 					$qoutcome = get_record('qualification_outcomes','category_id',$category_id,'candidate_id',$candidate->candidate_id);
 					
-					if(!$qoutcome) {
-						$quotcome = new Object();
-						$quotcome->total_credit = '';
-						$quotcome->predicted_grade = 0;						
+					if($qoutcome==false) {
+						$qoutcome = new Object();
+						$qoutcome->total_credit = 0;
+						$qoutcome->predicted_grade = 0;						
 					}
 					
-					$targets = str_replace("<option value='".$quotcome->predicted_grade."'>","<option value='".$quotcome->predicted_grade."' selected='selected'>",$targets);
+					$trgts = $targets;
+					$trgts = str_replace("<option value='".$qoutcome->predicted_grade."'>","<option value='".$qoutcome->predicted_grade."' selected='selected'>",$trgts);
 								
-					$data['total_credit'] = "<input type='text' name='total_credit[".$candidate->candidate_id."]' value='".$quotcome->total_credit."' style='text-align:right' />";
-					$data['predicted_grade'] = "<select name='predicted_grade[".$candidate->candidate_id."]'>".$targets."</select>";
+					$data['total_credit'] = "<input type='text' name='total_credit[".$candidate->candidate_id."]' value='".$qoutcome->total_credit."' style='text-align:right' />";
+					$data['predicted_grade'] = "<select name='predicted_grade[".$candidate->candidate_id."]'>".$trgts."</select>";
 					
 					$flextable->add_data_keyed($data);
 				}
