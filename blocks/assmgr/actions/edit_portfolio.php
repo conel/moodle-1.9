@@ -16,6 +16,7 @@
 
 // remove this when testing is complete
 $path_to_config = dirname($_SERVER['SCRIPT_FILENAME']).'/../../../config.php';
+
 while (($collapsed = preg_replace('|/[^/]+/\.\./|','/',$path_to_config,1)) !== $path_to_config) {
     $path_to_config = $collapsed;
 }
@@ -47,6 +48,7 @@ $verification_id = $PARSER->optional_param('verification_id', null, PARAM_INT);
 // instantiate the db
 $dbc = new assmgr_db();
 
+/*
 if (!empty($verification_id)) {
     if (!$access_isverifier) {
         print_error('nosubmissionverify', 'block_assmgr');
@@ -55,19 +57,25 @@ if (!empty($verification_id)) {
 } else {
     $access_isverifier = false;
 }
+*/
 
+/*
 // you must be either a candidate or an assessor to edit a portfolio
 if(!$access_iscandidate && !$access_isassessor) {
     print_error('noeditportfoliopermission','block_assmgr');
 }
+*/
 
 // nkowald - 2011-06-23 - Instead of checking logged in user != candidate, use a role
+/*
 if($access_iscandidate && $USER->id != $candidate_id) {
 //if($access_iscandidate && !has_capability('block/assmgr:verifyportfolio', $coursecontext, $USER->id)) {
     // candidates can't edit someone else's portfolio
     print_error('noeditothersportfolio', 'block_assmgr');
 }
+*/
 
+/*
 if($access_isassessor) {
     // assessors can't assess their own portfolio
     if($USER->id == $candidate_id) {
@@ -81,6 +89,7 @@ if($access_isassessor) {
         print_error('portfolionotincourse', 'block_assmgr');
     }
 }
+*/
 
 // get the candidate, course and category
 $candidate = $dbc->get_user($candidate_id);
@@ -115,7 +124,8 @@ if($access_isassessor || $access_isverifier) {
     $page_heading = get_string('candidateportfolio', 'block_assmgr', fullname($candidate));
 } else {
     // references to the candidate should be in the 1st person
-    $page_heading = get_string('myportfolio', 'block_assmgr');
+    //$page_heading = get_string('myportfolio', 'block_assmgr');
+    print_error('noeditportfoliopermission','block_assmgr');
 }
 
 // setup the navigation breadcrumbs

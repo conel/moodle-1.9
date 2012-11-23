@@ -95,24 +95,29 @@ if (has_capability('moodle/grade:edit', $context)) {
 $gradeserror = array();
 
 // Handle toggle change request
+/*
 if (!is_null($toggle) && !empty($toggle_type)) {
     set_user_preferences(array('grade_report_show'.$toggle_type => $toggle));
 }
+*/
 
 //first make sure we have proper final grades - this must be done before constructing of the grade tree
 grade_regrade_final_grades($courseid);
 
-// Perform actions
+// Perform actions   action = switch_plus | switch_minus | switch_whole
+/*
 if (!empty($target) && !empty($action) && confirm_sesskey()) {
     grade_report_grader::process_action($target, $action);
 }
+*/
 
 $reportname = 'Unit grade overview'; //get_string('modulename', 'gradereport_grader');
 
 // Initialise the grader report object
 //$report = new grade_report_grader($courseid, $gpr, $context, $page, $sortitemid);
 //$report = new grade_report_grader2($courseid, $gpr, $context, $page, $sortitemid);
-$report = new grade_report_grader2($courseid, 'block_assmgr', $gpr, $context, $page, $sortitemid);
+$report = new grade_report_grader2($courseid, 'block_assmgr', $gpr, $context, $page, 'firstname');
+
 
 // make sure separate group does not prevent view
 if ($report->currentgroup == -2) {
