@@ -355,8 +355,7 @@ class grade_report_grader extends grade_report {
                            AND ra.contextid ".get_related_contexts_string($this->context)."
                   ORDER BY $sort";
         }
-
-
+		
         $this->users = get_records_sql($sql, $this->get_pref('studentsperpage') * $this->page,
                             $this->get_pref('studentsperpage'));
 
@@ -1498,8 +1497,9 @@ class grade_report_grader2 extends grade_report_grader {
         // Grab the grade_tree for this course
         $this->gtree = new grade_tree2($this->courseid, $module, true, $switch, $this->collapsed, $nooutcomes);
 		
-        $this->sortitemid = $sortitemid;
-
+        //$this->sortitemid = $sortitemid;
+		//$this->sortorder = $SESSION->gradeuserreport->sort = 'DESC'; 
+		
         // base url for sorting by first/last name
         $studentsperpage = $this->get_pref('studentsperpage');
         $perpage = '';
@@ -1518,6 +1518,50 @@ class grade_report_grader2 extends grade_report_grader {
         $this->setup_sortitemid();
     }
 
+    /**
+     * fixed sort by firstname, lastname like on the course ilp students' page
+     */
+    function load_users() {
+        global $CFG;
+			
+		$sort = "u.firstname, u.lastname";
+		
+		$sql = "SELECT DISTINCT u.id, u.firstname, u.lastname, u.imagealt, u.picture, u.idnumber
+				  FROM {$CFG->prefix}user u
+					   JOIN {$CFG->prefix}role_assignments ra ON u.id = ra.userid
+					   $this->groupsql
+				 WHERE ra.roleid in ($this->gradebookroles)
+					   $this->groupwheresql
+					   AND ra.contextid ".get_related_contexts_string($this->context)."
+			  ORDER BY $sort";
+		
+        $this->users = get_records_sql($sql, $this->get_pref('studentsperpage') * $this->page,
+                            $this->get_pref('studentsperpage'));
+
+        if (empty($this->users)) {
+            $this->userselect = '';
+            $this->users = array();
+        } else {
+            $this->userselect = 'AND g.userid in ('.implode(',', array_keys($this->users)).')';
+        }
+		
+		// nkowald - 2011-03-30 - Remove 'administrators'
+		// get e-zone admins ids
+		$query = "SELECT userid FROM mdl_role_assignments WHERE roleid = 1";
+		$ezone_admin_ids = get_records_sql($query);
+		foreach($ezone_admin_ids as $admin) {
+			$ezone_admins[] = $admin->userid;
+		}
+		
+		foreach ($this->users as $user) {
+			if (in_array($user->id, $ezone_admins)) {
+				unset($this->users[$user->id]);
+			}
+		}
+		// nkowald
+		
+        return $this->users;
+    }
     function get_headerhtml() {
 			
         global $CFG, $USER;

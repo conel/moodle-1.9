@@ -32,7 +32,12 @@ if ($is_ie6 = stripos($_SERVER['HTTP_USER_AGENT'], 'MSIE 6')) {
     print_error('incompatablebrowserie6', 'block_assmgr');
 }
 
-$category_id = empty($course->category) ? $PARSER->optional_param('category_id', null, PARAM_INT) : $course->category;
+//$category_id = empty($course->category) ? $PARSER->optional_param('category_id', null, PARAM_INT) : $course->category;
+$category_id = (int) $_GET['category_id'];
+//print "category_id: $category_id<br>";
+
+$subcategory_id = $PARSER->optional_param('subcategory_id', null, PARAM_INT);
+//print "subcategory_id: $subcategory_id<br>";
 
 $dbc = new assmgr_db();
 
@@ -140,7 +145,7 @@ echo $OUTPUT->header();
 ?>
 
 <div class="assmgr yui-skin-sam">	
-    <?php echo $OUTPUT->heading(get_string('listportfolios', 'block_assmgr')); ?>
+    <?php echo $OUTPUT->heading('Course Overview'); ?>
     <div id="assmgr_assessments_container" class="portcontainer">
         <?php       
 			
@@ -177,7 +182,8 @@ echo $OUTPUT->header();
 				// Exclude elts
 				$excludes_csv = '';
 				$excludes = array();
-				$query = "SELECT DISTINCT userid FROM mdl_role_assignments WHERE roleid = 17"; // E-learning technologists
+				//$query = "SELECT DISTINCT userid FROM mdl_role_assignments WHERE roleid = 17"; // E-learning technologists
+				$query = "SELECT DISTINCT userid FROM mdl_role_assignments WHERE roleid != 5"; // Exclude all role except students
 				if ($elts = get_records_sql($query)) {
 					foreach ($elts as $elt) {
 						$excludes[] = $elt->userid;
@@ -187,8 +193,9 @@ echo $OUTPUT->header();
 				$excludes_csv = implode(',', $excludes);
 				
 				foreach($allowedcourses as $allowedcourse) {
-					// filter out courses not in the chosen category, if there is one
+					// filter out courses not in the chosen category, if there is one					
 					if(empty($category_id) || $category_id == $allowedcourse->category) {
+						
 						$courselist[$allowedcourse->id] = $allowedcourse;
 
 						// get the current course context
@@ -220,14 +227,23 @@ echo $OUTPUT->header();
 					}
 				}
 			}
-
+		
+			$fos = array();
+			
 			foreach ($courselist as $c_id => $course_ob) {
+				
 				$block_instance = $dbc->get_block_course_ids($c_id);
 				if (empty($block_instance)) {
 					unset($courselist[$c_id]);
 				}
-			}
 
+				if($subcategory_id<1) continue;
+				
+				if($c_id == $subcategory_id) {
+					$fos[$c_id] = $course_ob;																
+				}
+			}
+			
 			// table unique prefix
 			$assessments_table_uprefix = "assmgr_assessments";
 			
@@ -271,8 +287,8 @@ echo $OUTPUT->header();
 			$flextable->define_headers($headers);
 
 			// make the table sortable
-			$flextable->sortable(true, 'lastname', 'DESC');
-			$flextable->initialbars(true);
+			//$flextable->sortable(true, 'lastname', 'DESC');
+			//$flextable->initialbars(true);
 
 			// MODIFY THIS
 			$flextable->set_attribute('summary', get_string('listportfolios', 'block_assmgr'));
@@ -281,7 +297,12 @@ echo $OUTPUT->header();
 			$flextable->set_attribute('class', 'generaltable fit');
 
 			$flextable->setup();
-
+											
+			if(count($fos)>0) {
+				$szar = array_pop($fos);				
+				$candidatelist = array_intersect($candidatelist, $szar->candidates);
+			}
+			
 			// fetch all the candidates needing assessment
 			$matrix = $dbc->get_portfolio_matrix($candidatelist, $courses, $flextable, $group_id);
 
@@ -304,7 +325,9 @@ echo $OUTPUT->header();
 					$rootName = $rootCategories[$categ->rootId]->name;
 					$categSelect[$rootName][$categ->name] = $categ;
 				}
-				
+
+				$groups = get_records_sql('SELECT * FROM mdl_course where category='.(int)$category->id.' and metacourse=0 and visible=1 order by fullname');
+															
 			?>
 				<form id="switch_category" action="<?php echo $flextable->baseurl;?>" method="get" class="mform">
 					<div class="fitem">
@@ -333,7 +356,8 @@ echo $OUTPUT->header();
 						</div>
 					</div>
 				</form>
-				<!--form id="switch_course" action="<?php echo $flextable->baseurl;?>" method="get" class="mform"-->
+				
+				<!--form id="switch_course" action="<?php echo $flextable->baseurl;?>" method="get" class="mform"-->				
 				<form id="switch_course" action="/grade/report/grader/portfolios.php?plugin=grader" method="get" class="mform">
 					<div class="fitem">
 						<div class="fitemtitle">
@@ -358,19 +382,51 @@ echo $OUTPUT->header();
 						</div>
 					</div>
 				</form>
-				<?php
-			}
+				
+				<p>					
+					<!--form id="switch_subcategory" action="<?php echo $_SERVER['HTTP_REFERER']; ?>" method="post" class="mform"-->
+					<form id="switch_subcategory" action="<?php echo $flextable->baseurl;?>" method="post" class="mform">
+						<div class="fitem">
+							<div class="fitemtitle">
+								<label for="switch_subcategory_id">
+									<?php echo 'Separate groups'; ?>
+								</label>
+							</div>
+							<div class="felement fselect">
+								<select name="subcategory_id" id="subcategory_id" onchange="document.getElementById('switch_subcategory').submit();">
+									<option value="0"><?php echo 'All participants'; ?></option>
+									<?php
+									foreach ($groups as $g) {
+										if($g->id == 1) continue;										
+										$selected = ($g->id == $subcategory_id) ? 'selected="selected"' : ''; ?>
+										<option value="<?php echo $g->id; ?>" <?php echo $selected; ?>>
+											<?php echo $g->fullname; ?>
+										</option>
+										<?php
+									} ?>
+								</select>
+							</div>
+						</div>
+					</form>
+				</p>
 
-			// print the group selector
-			groups_print_course_menu($groupcourse, $flextable->baseurl);
+				<?php
+				
+			}
+			
+			//groups_print_course_menu($groupcourse, $flextable->baseurl);
 
 			$rtargets = get_records('targets','','','id');	
 			$targets = '';
 			foreach($rtargets as $target) {
 				$targets .= "<option value='".$target->id."'>".$target->name."</option>";
 			}
+
+
+			//print_object($flextable);
 					
 			if(!empty($matrix)) {
+				
 				foreach($matrix as $candidate) {
 					// build the row
 					$data = array();

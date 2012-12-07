@@ -2837,7 +2837,7 @@ $select = "SELECT MIN(logtable.timecreated) AS timecreated
      * @return array results objects (matrix rows) including blank spaces if no results
      */
     function get_portfolio_matrix($candidatelist, $courselist, $flextable, $group) {
-
+		
         // no candidates
         if(empty($candidatelist)) {
             return false;
@@ -2918,17 +2918,21 @@ $select = "SELECT MIN(logtable.timecreated) AS timecreated
         $sort = "";
 
         // fetch any additional filters provided by the table
-        $sql_where = $flextable->get_sql_where();
+        $sql_where = $flextable->get_sql_where();  
+        
         if(!empty($sql_where)) {
             $where .= ' AND '.$sql_where;
         }
 
         // fetch any sort keys provided by the table
         $sql_sort = $flextable->get_sql_sort();
+        
         if(!empty($sql_sort)) {
             $sort = ' ORDER BY '.$sql_sort;
-        }
-
+        } else {
+            $sort = ' ORDER BY cand.firstname ASC';			
+		}
+                
         if(!empty($group)) {
             $from  .= "LEFT JOIN {groups_members} AS group_mem
                               ON (cand.id = group_mem.userid) ";
@@ -2942,7 +2946,7 @@ $select = "SELECT MIN(logtable.timecreated) AS timecreated
 
         // tell the table how many pages it needs
         $flextable->totalrows($count);
-
+		
         return $this->dbc->get_records_sql(
             $select.$from.$where.$sort,
             null,
