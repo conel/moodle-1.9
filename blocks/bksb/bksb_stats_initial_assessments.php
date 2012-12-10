@@ -115,7 +115,7 @@
 	);
 	
 	$year_start = 2009;
-	while ($year_start <= date('Y')) {
+	while ($year_start <= date('Y', strtotime('+1 year'))) {
 		$years[] = $year_start;
 		$year_start++;
 	}
