@@ -777,11 +777,9 @@ function print_grade_page_head($courseid, $active_type, $active_plugin=null, $he
         $heading = $stractive_plugin;
     }
 
-	/*
     if ($CFG->grade_navmethod == GRADE_NAVMETHOD_COMBO || $CFG->grade_navmethod == GRADE_NAVMETHOD_DROPDOWN) {
         $returnval .= print_grade_plugin_selector($plugin_info, $return);
     }
-    */
     
     $returnval .= print_heading($heading);
 
