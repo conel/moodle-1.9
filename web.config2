@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<location inheritInChildApplications="false"> 
+    <system.webServer>
+        <defaultDocument>
+            <files>
+		<clear />
+                <add value="index.php" />
+                <add value="Default.htm" />
+                <add value="index.htm" />
+                <add value="index.html" />
+            </files>
+        </defaultDocument>
+        <tracing>
+            <traceFailedRequests>
+            </traceFailedRequests>
+        </tracing>
+		<security>
+			<requestFiltering>
+				<requestLimits maxAllowedContentLength="314572800" />
+                    <verbs allowUnlisted="true" applyToWebDAV="true">
+						<add verb="DELETE" allowed="true" />
+						<add verb="POST" allowed="true" />
+                        <add verb="GET" allowed="true" />
+					</verbs>
+			</requestFiltering>
+		</security>
+        <urlCompression doStaticCompression="true" doDynamicCompression="true" />
+		<handlers accessPolicy="Read, Execute, Script">
+                <remove name="WebDAV" />
+                <remove name="PHP_via_FastCGI" />
+                <add name="PHP_via_FastCGI" path="*.php" verb="*" modules="FastCgiModule" scriptProcessor="C:\PHP\php-cgi.exe" resourceType="Either" requireAccess="Script" />
+                <add name="WebDAV" path="*" verb="PROPFIND,PROPPATCH,MKCOL,PUT,COPY,DELETE,MOVE,LOCK,UNLOCK" modules="WebDAVModule" resourceType="Unspecified" requireAccess="Execute" />
+            </handlers>
+    </system.webServer>
+</location>
+    <system.webServer>
+        <caching enabled="false" enableKernelCache="false">
+            <profiles>
+            </profiles>
+        </caching>
+        <httpRedirect enabled="false" destination="https://vle.conel.ac.uk/" childOnly="false" httpResponseStatus="Temporary" />
+        <httpErrors errorMode="Custom" />
+    </system.webServer>
+	<system.web>
+		<httpRuntime maxRequestLength="307200" />
+	</system.web>
+</configuration>

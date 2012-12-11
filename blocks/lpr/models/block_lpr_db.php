@@ -107,8 +107,12 @@ class block_lpr_db {
         if($achieved!=='')
             $where[] = "lpr.achieved={$achieved}";
             
-        if(!$list_archives)
-            $where[] = "lpr.achieved<1";
+        if(!$list_archives) {
+			$module = 'project/lpr';
+			$config = get_config($module);		
+			$c_term	= $this->get_current_term($config->academicyear,time());			
+            $where[] = "lpr.term_id='".$c_term->id."' AND lpr.achieved<2";
+		}		
 
         return get_records_sql(
             "SELECT lpr.*
