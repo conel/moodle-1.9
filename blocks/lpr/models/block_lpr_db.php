@@ -111,9 +111,13 @@ class block_lpr_db {
 			$module = 'project/lpr';
 			$config = get_config($module);		
 			$c_term	= $this->get_current_term($config->academicyear,time());			
-            $where[] = "lpr.term_id='".$c_term->id."' AND lpr.achieved<2";
+			
+			//scott's new rule on 03.01.2012: show only targets that has deadline in current term
+			//so from now on targets are handled by deadline not by set date 
+            //$where[] = "lpr.term_id='".$c_term->id."' AND lpr.achieved<2";
+            $where[] = " lpr.deadline>'".$c_term->term_start_date."' AND lpr.achieved<2"; 
 		}		
-
+		
         return get_records_sql(
             "SELECT lpr.*
              FROM {$CFG->prefix}block_lpr AS lpr
@@ -1943,7 +1947,7 @@ class block_lpr_db {
 	function get_current_term($year,$current_date) {
 		global $CFG;
 
-		$sql = "SELECT 		id, term_name
+		$sql = "SELECT 		id, term_name, term_start_date
 				FROM 		{$CFG->prefix}terms
 				WHERE		ac_year_code = '{$year}'
 				AND			term_start_date <= {$current_date}

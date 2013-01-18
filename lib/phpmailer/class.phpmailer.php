@@ -381,7 +381,8 @@ class PHPMailer
 		// If email address contains @student.conel.ac.uk change host to smpt-1
 		if (strstr($this->to[0][0], '@student.conel.ac.uk') !== FALSE) {
 			// Student
-			$this->Host = 'smtp-1';
+			//$this->Host = 'smtp-1';
+			$this->Host = '172.20.200.45';
 		} else if (strstr($this->to[0][0], '@staff.conel.ac.uk') !== FALSE) {
 			// Staff
 			$this->Host = 'ADMIN-EXCH.conel.ac.uk';

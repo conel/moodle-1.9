@@ -142,7 +142,7 @@
 		public function getCurrentTermNo() {
 			$timestamp = time();
 			// This query makes sure that even if today's timestamp is after term 1 end date but before term 2 start date, it'll still get the correct term (term 1)
-			$query = sprintf("SELECT term_code FROM mdl_terms WHERE term_start_date < %d and ac_year_code = '%4d' ORDER BY term_code LIMIT 1", 
+			$query = sprintf("SELECT term_code FROM mdl_terms WHERE term_start_date < %d and ac_year_code = '%4d' ORDER BY term_code DESC LIMIT 1", 
 				$timestamp,
 				$this->academic_year_4digit
 			);

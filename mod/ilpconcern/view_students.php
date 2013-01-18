@@ -24,6 +24,9 @@
 	require_once($CFG->dirroot . '/blocks/ilp/AttendancePunctuality.class.php');
 	$attpunc = new AttendancePunctuality();
 	
+	$term_dates = $attpunc->getCurrentTermDates();
+	$start_term = $term_dates[$attpunc->current_term_no]['start'];
+	
 	$id 		  = optional_param('id', 0, PARAM_INT); // Course Module ID, or
 	$courseid     = optional_param('courseid', 0, PARAM_INT); //Courseid
 	$a  		  = optional_param('a', 0, PARAM_INT);  // concerns ID
@@ -407,7 +410,9 @@
 			if ($CFG->ilpconcern_report1 == 1){
 				//$report1total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 0' );
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
-				$report1total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 0 AND timecreated >= '.$ts_year_start.'' );
+				//$report1total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 0 AND timecreated >= '.$ts_year_start.'' );
+				// sid - 2012-01-04 - Need to show only target overviews set this term
+				$report1total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 0 AND timecreated >= '.$start_term.'' );
 				if ($report1total == 0) {
 					$report1text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=0" class="no_link" target="_blank">No Tutor Reviews</a>';
 				} else {
@@ -419,7 +424,9 @@
 			if ($CFG->ilpconcern_report2 == 1){
 				//$report2total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 1' );
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
-				$report2total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 1 AND timecreated >= '.$ts_year_start.'' );
+				//$report2total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 1 AND timecreated >= '.$ts_year_start.'' );
+				// sid - 2012-01-04 - Need to show only good performance records set this term
+				$report2total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 1 AND timecreated >= '.$start_term.'' );
 				if ($report2total == 0) {
 					$report2text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=1" class="no_link" target="_blank">No Good Performance Records</a>';
 				} else {
@@ -432,6 +439,8 @@
 				//$report3total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 2' );
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
 				$report3total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 2 AND timecreated >= '.$ts_year_start.'' );
+				// sid - 2012-01-04 - Need to show only cause of concerns set this term
+				$report3total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 2 AND timecreated >= '.$start_term.'' );
 				if ($report3total == 0) {
 					$report3text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=2" class="no_link" target="_blank">No Cause for Concerns</a>';
 				} else {
@@ -443,11 +452,15 @@
 			if ($CFG->ilpconcern_report4 == 1){
 				//$report3total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 3' );
 				// nkowald - 2010-10-21 - Need to show only target overviews set this year
-				$report4total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 3 AND timecreated >= '.$ts_year_start.'' );
+				//$report4total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 3 AND timecreated >= '.$ts_year_start.'' );
+				// sid - 2012-01-04 - Need to show only student progress set this term
+				$report4total = count_records_sql('SELECT COUNT(*) FROM '.$CFG->prefix.'ilpconcern_posts WHERE setforuserid = '.$auser->id.' AND status = 3 AND timecreated >= '.$start_term.'' );
 				if ($report4total == '0') $report4total = 'No';
 				$report4text  = '<a href="concerns_view.php'.$link_values.'&amp;userid='.$auser->id.'&amp;status=3" target="_blank">'.$report4total.' Student Progress</a>';
 				$row[] .= $report4text;				
 			}
+
+			//print "attpunc->current_term_no: ".$attpunc->current_term_no."<br>";
 
 			// nkowald - 2011-10-18 - Adding targets oustanding
             $complete_modules_txt = $attpunc->getModuleCompletion($auser, $attpunc->current_term_no);
