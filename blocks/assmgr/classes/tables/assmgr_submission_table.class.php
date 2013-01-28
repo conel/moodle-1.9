@@ -326,6 +326,36 @@ class assmgr_submission_table extends assmgr_ajax_table {
     }
 
     /**
+	 * ssz(250113): Modified function that gives back an empty string instead of an error message
+	 *              if no evidence exists. This is to make it possible to show the grades on the portfolio
+	 *              view page even if there is no submission by the user. 
+	 *              This will be called from d:\moodle\blocks\assmgr\actions\view_submissions.ajax.php line 194
+	 *
+     * Returns an HTML link to a piece of portfolio evidence
+     *
+     * @param object $row A row from the submissions matrix object
+     * @return string HTML link
+     */
+    function get_evidence_resource_link2($row) {
+        global $CFG;
+
+        // get the evidence and the resource
+        $evidence = $this->dbc->get_evidence_resource($row->evidence_id);
+
+        // include the class for this type of evidence
+        @include_once($CFG->dirroot."/blocks/assmgr/classes/resources/plugins/{$evidence->resource_type}.php");
+
+        if(!class_exists($evidence->resource_type)) {
+            return '';
+        }
+
+        $evidence_resource = new $evidence->resource_type;
+        $evidence_resource->load($evidence->resource_id);
+
+        return $evidence_resource->get_link();
+    }
+
+    /**
      * Returns an HTML link icon for an evidence claim in a portfolio
      *
      * @param object $row A row from the submissions matrix object

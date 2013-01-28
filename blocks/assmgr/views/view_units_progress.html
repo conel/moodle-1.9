@@ -17,8 +17,8 @@
         </tr>
         <?php
 
-        foreach ($courses as $index => $course) {
-           $block_instance = $dbc->get_block_course_ids($course->id);
+        foreach ($courses as $index => $course2) {
+           $block_instance = $dbc->get_block_course_ids($course2->id);
            if (empty($block_instance)) {
                 unset($courses[$index]);
             }

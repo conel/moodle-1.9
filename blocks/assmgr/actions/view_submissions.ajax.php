@@ -164,39 +164,62 @@ $oddrow = true;
 
 $scales = array();
 
+//if(empty($matrix))$matrix = array ( 12825 => stdClass::__set_state(array( 'portfolio_id' => '11425', 'course_id' => '26110', 'candidate_id' => '31789', 'evidence_id' => '12850', 'name' => 'P5 Assessment', 'hidden' => '0', 'outcome22707' => NULL, 'claim22707' => NULL, 'outcome22708' => NULL, 'claim22708' => NULL, 'outcome22709' => NULL, 'claim22709' => NULL, 'outcome22710' => NULL, 'claim22710' => NULL, 'outcome22711' => NULL, 'claim22711' => NULL, 'outcome22712' => NULL, 'claim22712' => NULL, 'outcome22713' => NULL, 'claim22713' => NULL, 'outcome22714' => NULL, 'claim22714' => NULL, 'submission_id' => '12825')));
+
+if(empty($matrix)) {
+    
+	$m = new stdClass; 
+	
+	$m->portfolio_id = ''; //'11425';
+	$m->course_id = ''; //'26110';
+	$m->candidate_id = ''; //'31789';
+	$m->evidence_id = 0; //'12851';
+	$m->name = ''; //'P5 Assessment;';
+	$m->hidden = ''; //0;
+	$m->submission_id = ''; //12825;
+	
+	$matrix = array (0 => $m);
+}
+
+//if($USER->username=='ezoneadmin')print_object($matrix);
+		
 if(!empty($matrix)) {
 
     // iterate through the result set
     foreach ($matrix as $row) {
-        $data = array();
+	
+		$data = array();
 
         // get the evidence name and make it a link to the resource
-        $data['name'] = $flextable->get_evidence_resource_link($row);
+        $data['name'] = $flextable->get_evidence_resource_link2($row);	//ssz(250113): modified function call to make it possible to show the grades even if there are no submissions
 
-        // add the action links
-        $data['name'] .= '<span class="commands">';
+		if($data['name'] != '') {
 
-        // add an edit link
-        if ($access_isassessor) {
-            $data['name'] .= $flextable->get_edit_assessment_link($row);
-        } else {
-            $data['name'] .= $flextable->get_edit_claim_link($row);
-        }
+			// add the action links
+			$data['name'] .= '<span class="commands">';
+		
+			// add an edit link
+			if ($access_isassessor) {
+				$data['name'] .= $flextable->get_edit_assessment_link($row);
+			} else {
+				$data['name'] .= $flextable->get_edit_claim_link($row);
+			}
 
-        // if the submission is not locked then show the editing options
-        $graded = $dbc->has_submission_grades($row->submission_id);
-        $mine   = $dbc->is_submission_mine($row->submission_id);
+			// if the submission is not locked then show the editing options
+			$graded = $dbc->has_submission_grades($row->submission_id);
+			$mine   = $dbc->is_submission_mine($row->submission_id);
 
-        // add a delete link
-        $data['name'] .= $flextable->get_delete_submission_link($row);
+			// add a delete link
+			$data['name'] .= $flextable->get_delete_submission_link($row);
 
-        if(!$access_isassessor) {
-            // add a hide/show link
-            $data['name'] .= $flextable->get_hidden_submission_link($row);
-        }
+			if(!$access_isassessor) {
+				// add a hide/show link
+				$data['name'] .= $flextable->get_hidden_submission_link($row);
+			}
 
-        $data['name'] .= '</span>';
-
+			$data['name'] .= '</span>';
+		}
+		
         if ($flextable->get_filter('show_details')) {
             // get the evidence description
             $data['description'] = limit_length($row->description, 50);
