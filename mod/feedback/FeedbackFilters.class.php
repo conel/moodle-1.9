@@ -302,7 +302,7 @@ class FeedbackFilters {
             return false;
         }
 		$query = sprintf(
-			"SELECT path FROM ".$this->CFG->prefix."course_categories WHERE path REGEXP('(/%d){1}(/)?')", 
+			"SELECT path FROM ".$this->CFG->prefix."course_categories WHERE path REGEXP('(/%d/){1}(/)?')", 
             $category_id
         );
 
