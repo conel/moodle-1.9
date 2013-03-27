@@ -460,11 +460,33 @@
 				$row[] .= $report4text;				
 			}
 
-			//print "attpunc->current_term_no: ".$attpunc->current_term_no."<br>";
-
 			// nkowald - 2011-10-18 - Adding targets oustanding
-            $complete_modules_txt = $attpunc->getModuleCompletion($auser, $attpunc->current_term_no);
-            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'" target="_blank">'. $complete_modules_txt . ' Targets</a>';
+            //$complete_modules_txt = $attpunc->getModuleCompletion($auser, $attpunc->current_term_no);
+            
+            // sszabo - 2013-02-15			
+			$sql = 'select id from mdl_terms where term_start_date>='.$start_term.' AND term_code='.$attpunc->current_term_no;
+			$term = get_record_sql($sql);
+			$term_id = $term->id;
+			
+			$sql = 'select id from mdl_block_lpr where learner_id='.$auser->id.' and term_id='.$term_id;			
+			$lprs = get_records_sql($sql);
+
+            $lprs = array_keys($lprs);
+ 			           
+            $lpr_ids = implode(',', $lprs);
+            
+            $sql = 'select count(distinct(module_desc)) from mdl_block_lpr_mis_modules where lpr_id in ('.$lpr_ids.') and selected=1';
+            			
+			$completed = count_records_sql($sql);
+            			
+			$modules = $attpunc->getModules($auser->idnumber);
+                    
+            $mcount = count($modules);
+			
+			$complete_modules_txt = "$completed/$mcount";
+			// end sszabo - 2013-02-15
+			
+            $row[] .= '<a href="'.$CFG->wwwroot.'/mod/ilpconcern/subject_targets.php?courseid='.$courseid.'&userid='.$auser->id.'" target="_blank">'. $complete_modules_txt .' Targets</a>';
 			
 			// nkowald - 2011-05-19 - View ILP
             $row[] .= '<a href="'.$CFG->wwwroot.'/blocks/ilp/view.php?courseid='.$courseid.'&id='.$auser->id.'" class="view_ilp" target="_blank">View ILP</a>';

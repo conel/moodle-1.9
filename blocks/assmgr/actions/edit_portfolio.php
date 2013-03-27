@@ -131,6 +131,7 @@ if($access_isassessor || $access_isverifier) {
 // setup the navigation breadcrumbs
 $navlinks[] = array('name' => get_string('blockname', 'block_assmgr'), 'link' => null, 'type' => 'title');
 
+/*
 if($access_isassessor && !$access_isverifier) {
     // assessor breadcrumbs
 	$course_link = $CFG->wwwroot . '/course/view.php?id='.$course_id;
@@ -148,7 +149,14 @@ if($access_isassessor && !$access_isverifier) {
     // candidate breadcrumbs
     $navlinks[] = array('name' => get_string('myportfolio', 'block_assmgr'), 'link' => '', 'type' => 'title');
 }
+*/
 
+$course_link = $CFG->wwwroot . '/course/view.php?id='.$course_id;
+$navlinks[] = array('name' => $coursecat->name, 'link' => $CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments.php?category_id={$coursecat->id}", 'type' => 'title');
+$navlinks[] = array('name' => $course->shortname, 'link' => $course_link, 'type' => 'title');
+$navlinks[] = array('name' => 'Portfolios', 'link' => $CFG->wwwroot."/blocks/assmgr/actions/list_portfolio_assessments.php?course_id={$course->id}", 'type' => 'title');
+$navlinks[] = array('name' => fullname($candidate), 'link' => '', 'type' => 'title');
+    
 // setup the page title and heading
 $PAGE->title = $course->shortname.': '.get_string('blockname','block_assmgr');
 $PAGE->set_heading($course->fullname);

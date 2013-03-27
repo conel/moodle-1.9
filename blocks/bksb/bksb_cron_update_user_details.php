@@ -46,6 +46,13 @@
 	$invalid_users = $bksb->getInvalidBksbUsers();
 	$no_invalids = count($invalid_users);
 	
+	/*
+	print "invalid_users:\n";
+	print_r($invalid_users);
+	print "no_invalids: $no_invalids";
+	exit;	
+	*/
+	
 	if ($no_invalids > 0) {
 		$bksb->updateInvalidUsers($invalid_users);
 	}
