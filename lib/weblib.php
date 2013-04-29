@@ -5405,7 +5405,7 @@ function navmenu($course, $cm=NULL, $targetwindow='self') {
 
             if ($thissection->visible or !$course->hiddensections or
                 has_capability('moodle/course:viewhiddensections', $context)) {
-                $thissection->summary = strip_tags(format_string($thissection->summary,true));
+                //$thissection->summary = strip_tags(format_string($thissection->summary,true));
                 if ($course->format == 'weeks' or empty($thissection->summary)) {
                     $menu[] = '--'.$strsection ." ". $mod->sectionnum;
                 } else {
